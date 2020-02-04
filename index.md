@@ -22,13 +22,13 @@ The _NiPreps_ framework (Figure 1) encompasses a wide array of software projects
 
 # Principles of end-user _NiPreps_
 
-#. _NiPreps_ only and fully support BIDS and BIDS-Derivatives for the input and output data.
-#. _NiPreps_ are packaged as a fully-compliant BIDS-Apps [6], not just in its user interface, but also in the continuous integration, testing, and delivery.
-#. The scope of _NiPreps_ is strictly limited to preprocessing tasks.
-#. _NiPreps_ are agnostic to subsequent analysis, i.e., any software supporting BIDS-Derivatives for its inputs should be amenable to analyze data preprocessed with them.
-#. _NiPreps_ are thoroughly and transparently documented (including the generation of individual, visual reports with a consistent format that serve as scaffolds for understanding the underpinnings and design decisions).
-#. _NiPreps_ are community-driven, and contributors (in any sense) always get credited with authorship within relevant publications.
-#. _NiPreps_ are modular, reliant on widely-used tools such as _AFNI_, _ANTs_, _FreeSurfer_, _FSL_, _NiLearn_, or _DIPY_ [7-12] and extensible via plug-ins.
+  1. _NiPreps_ only and fully support BIDS and BIDS-Derivatives for the input and output data.
+  1. _NiPreps_ are packaged as a fully-compliant BIDS-Apps [6], not just in its user interface, but also in the continuous integration, testing, and delivery.
+  1. The scope of _NiPreps_ is strictly limited to preprocessing tasks.
+  1. _NiPreps_ are agnostic to subsequent analysis, i.e., any software supporting BIDS-Derivatives for its inputs should be amenable to analyze data preprocessed with them.
+  1. _NiPreps_ are thoroughly and transparently documented (including the generation of individual, visual reports with a consistent format that serve as scaffolds for understanding the underpinnings and design decisions).
+  1. _NiPreps_ are community-driven, and contributors (in any sense) always get credited with authorship within relevant publications.
+  1. _NiPreps_ are modular, reliant on widely-used tools such as _AFNI_, _ANTs_, _FreeSurfer_, _FSL_, _NiLearn_, or _DIPY_ [7-12] and extensible via plug-ins.
 
 
 [1]: http://fmriprep.org/ "fMRIPrep documentation"
