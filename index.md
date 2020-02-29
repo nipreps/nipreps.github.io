@@ -15,13 +15,13 @@ The vision for _NiPreps_ is to provide end-users (i.e., researchers) with applic
   * [_MRIQC_][8] ([GitHub](https://github.com/poldracklab/mriqc)): MRI quality control
   * [_SDCflows_][5] ([GitHub](https://github.com/nipreps/sdcflows)): Susceptibility-derived distortion correction (SDC) workflows
   * [_NiWorkflows_][4] ([GitHub](https://github.com/nipreps/niworkflows)): General/miscellaneous workflow utilities
-
+  * [_TemplateFlow_][9]: A registry of neuroimaging templates and spatial mappings between them.
 
 # Overview of the framework
 
 The _NiPreps_ framework (Figure 1) encompasses a wide array of software projects organized into three layers of scientific software:
 
-  * **Software infrastructure**: including quite mature projects such as [_NiPype_][2] and [_NiBabel_][3]; the standard specifications of the Brain Imaging Data Structure (BIDS [3], and BIDS-Derivatives); and some other tools such as _NiTransforms_ or _TemplateFlow_, under development.
+  * **Software infrastructure**: including quite mature projects such as [_NiPype_][2] and [_NiBabel_][3]; the standard specifications of the Brain Imaging Data Structure (BIDS, and BIDS-Derivatives); and some other tools such as _NiTransforms_ or _TemplateFlow_, under development.
     These tools deliver low-level interfaces (e.g., data access to images and spatial transforms) and utilities (see Figure 1).
   * **Middleware**: these are utilities that generalize their functionalities across the end-user tools.
     These utilities cover foundational processing methodologies (e.g., [_NiWorkflows_][4] and [_SDCflows_][5]), the crowdsourcing of metadata (e.g., _MRIQC Web-API_), and the support for deep learning models (_MRIQC-nets_).
@@ -48,3 +48,4 @@ The _NiPreps_ framework (Figure 1) encompasses a wide array of software projects
 [6]: https://www.nipreps.org/dmriprep/ "dMRIPrep documentation"
 [7]: https://poldracklab.github.io/smriprep "sMRIPrep documentation"
 [8]: https://mriqc.readthedocs.io/ "MRIQC Documentation"
+[9]: https://www.templateflow.org/ "TemplateFlow"
