@@ -6,7 +6,7 @@ As of January 2020, *fMRIPrep* has adopted a Calendar Versioning scheme, and wit
 	This conversation started as a [Google Doc](https://docs.google.com/document/d/1hapyg61FRKZ2DqikVYKvckwQqnbobFQnnZoZi_WCDfo/edit?usp=sharing).
 
 ## Principles
-The basic release form is `YY.MINOR.PATCH`, so the first minor release of 2020 is 20.0.0, and the first minor release of 2021 will be 21.0.0, whatever the final minor release of 2020 is. A series of releases share a "YY.MINOR." prefix, which we refer to as the "YY.MINOR.x series". For example, the 20.0.x series contains version 20.0.0, 20.0.1, and any other releases needed.
+The basic release form is `YY.MINOR.PATCH`, so the first minor release of 2020 is 20.0.0, and the first minor release of 2021 will be 21.0.0, whatever the final minor release of 2020 is. A series of releases share a `YY.MINOR.` prefix, which we refer to as the `YY.MINOR.x` series. For example, the 20.0.x series contains version 20.0.0, 20.0.1, and any other releases needed.
 
 ### Feature releases
 Minor releases are considered *feature* releases. Because there is no concept of a "major" release (just a calendar year rollover), most changes to the code base will result in a new feature release. Changes targeting a new feature release should target the master branch. Feature releases may be released as often as is deemed appropriate.
@@ -15,6 +15,7 @@ Minor releases are considered *feature* releases. Because there is no concept of
 Patch releases are considered bug-fix releases. Each minor release triggers the creation of a new maint/<YY>.<MINOR>.x branch, and changes targeting a bug-fix release should target this branch. A "minor release series" is the initial feature release and the bug-fix releases that share the minor release prefix. Bug-fix releases may be released on minimal notice to other developers.
 
 These releases must satisfy four conditions:
+
 1. Resolving one or more bugs. These mostly include failures of *fMRIPrep* to complete or producing invalid derivatives (e.g., a NIfTI file of all zeroes).
 1. Derivatives compatibility. If a subject may be successfully run on 20.0.n, then the imaging derivatives should be identical if rerun with 20.0.(n+1), modulo rounding errors and the effects of nondeterministic algorithms. The changes between successful runs of 20.0.n and 20.0.(n+1) should not be larger than the changes between two successful runs of 20.0.n. Cosmetic changes to reports are acceptable, while differing fields of view or data types in a NIfTI file would not be.
 1. API compatibility. Workflow-generating functions, workflow input- and outputnode fields must not change. As an end-user application, this may seem overly strict, but the odds of introducing a bug are much higher in these cases.
@@ -93,16 +94,17 @@ Support windows of greater than a year have a much higher potential to run into 
 Additional tasks required of an LTS manager:
 
 * Tracking possible breaking changes and broken URLs in upstream projects outside of the nipreps ecosystem.
-  * Neurodebian dependencies (AFNI, FSL, Convert3D, Connectome WB)
-  * FreeSurfer
-  * ANTs
-  * NodeJS - BIDS-validator, SVGO
-  * Pandoc
-  * ICA-AROMA
-  * Miniconda
-  * Python minor series end-of-life
-  * numpy, scipy, pandas, nipype, nibabel, matplotlib
+    * Neurodebian dependencies (AFNI, FSL, Convert3D, Connectome WB)
+    * FreeSurfer
+    * ANTs
+    * NodeJS - BIDS-validator, SVGO
+    * Pandoc
+    * ICA-AROMA
+    * Miniconda
+    * Python minor series end-of-life
+    * numpy, scipy, pandas, nipype, nibabel, matplotlib
+
 * Backporting fixes from other maintained series.
-  * If a bug is identified as existing within the LTS series and can be fixed without breaking API or derivative compatibility.
+    * If a bug is identified as existing within the LTS series and can be fixed without breaking API or derivative compatibility.
 
 As many dependencies as possible should be pinned to specific versions relevant to the environment they are installed in. Packages (Debian `.deb` files, conda packages, Python wheels) should be archived in case of a loss of the external packages.
