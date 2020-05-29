@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="Augmenting neuroimaging acquisition devices to produce analysis-grade data" name="description"/>
+  <link href="https://www.templateflow.org/devs/guidelines/" rel="canonical"/>
+  <meta content="The NiPreps developers" name="author"/>
+  <link href="../../assets/images/favicon.png" rel="shortcut icon"/>
+  <meta content="mkdocs-1.1.2, mkdocs-material-5.2.2" name="generator"/>
+  <title>
+   Contributing Guidelines - NiPreps
+  </title>
+  <link href="../../assets/stylesheets/main.a2408e81.min.css" rel="stylesheet"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+  <style>
+   body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}
+  </style>
+ </head>
+ <body dir="ltr">
+  <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+  <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+  <label class="md-overlay" for="__drawer">
+  </label>
+  <div data-md-component="skip">
+   <a class="md-skip" href="#driving-principles">
+    Skip to content
+   </a>
+  </div>
+  <div data-md-component="announce">
+  </div>
+  <header class="md-header" data-md-component="header">
+   <nav aria-label="Header" class="md-header-nav md-grid">
+    <a aria-label="NiPreps" class="md-header-nav__button md-logo" href="https://www.templateflow.org" title="NiPreps">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z">
+      </path>
+     </svg>
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z">
+      </path>
+     </svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+     <div class="md-header-nav__ellipsis">
+      <span class="md-header-nav__topic md-ellipsis">
+       NiPreps
+      </span>
+      <span class="md-header-nav__topic md-ellipsis">
+       Contributing Guidelines
+      </span>
+     </div>
+    </div>
+   </nav>
+  </header>
+  <div class="md-container" data-md-component="container">
+   <nav aria-label="Tabs" class="md-tabs md-tabs--active" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+     <ul class="md-tabs__list">
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="../..">
+        Home
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link md-tabs__link--active" href="./">
+        Developers
+       </a>
+      </li>
+     </ul>
+    </div>
+   </nav>
+   <main class="md-main" data-md-component="main">
+    <div class="md-main__inner md-grid">
+     <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+         <label class="md-nav__title" for="__drawer">
+          <a aria-label="NiPreps" class="md-nav__button md-logo" href="https://www.templateflow.org" title="NiPreps">
+           <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z">
+            </path>
+           </svg>
+          </a>
+          NiPreps
+         </label>
+         <ul class="md-nav__list" data-md-scrollfix="">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../.." title="Home">
+            Home
+           </a>
+          </li>
+          <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+           <input checked="" class="md-nav__toggle md-toggle" data-md-toggle="nav-2" id="nav-2" type="checkbox"/>
+           <label class="md-nav__link" for="nav-2">
+            Developers
+            <span class="md-nav__icon md-icon">
+             <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z">
+              </path>
+             </svg>
+            </span>
+           </label>
+           <nav aria-label="Developers" class="md-nav" data-md-level="1">
+            <label class="md-nav__title" for="nav-2">
+             <span class="md-nav__icon md-icon">
+              <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+               <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z">
+               </path>
+              </svg>
+             </span>
+             Developers
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix="">
+             <li class="md-nav__item md-nav__item--active">
+              <input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+              <label class="md-nav__link md-nav__link--active" for="__toc">
+               Contributing Guidelines
+               <span class="md-nav__icon md-icon">
+                <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                 <path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z">
+                 </path>
+                </svg>
+               </span>
+              </label>
+              <a class="md-nav__link md-nav__link--active" href="./" title="Contributing Guidelines">
+               Contributing Guidelines
+              </a>
+              <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+               <label class="md-nav__title" for="__toc">
+                <span class="md-nav__icon md-icon">
+                 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z">
+                  </path>
+                 </svg>
+                </span>
+                Table of contents
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#driving-principles">
+                  Driving principles
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#practical-guide-to-submitting-your-contribution">
+                  Practical guide to submitting your contribution
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#joining-the-conversation">
+                  Joining the conversation
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#contributing-through-github">
+                  Contributing through GitHub
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#understanding-issues">
+                  Understanding issues
+                 </a>
+                 <nav aria-label="Understanding issues" class="md-nav">
+                  <ul class="md-nav__list">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#issue-labels">
+                     Issue Labels
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#making-a-change">
+                  Making a change
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#nipreps-coding-style-guide">
+                  NiPreps coding style guide
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#recognizing-contributions">
+                  Recognizing contributions
+                 </a>
+                 <nav aria-label="Recognizing contributions" class="md-nav">
+                  <ul class="md-nav__list">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#developers">
+                     Developers
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#contributors">
+                     Contributors
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#publications">
+                     Publications
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#licensing">
+                  Licensing
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#thank-you">
+                  Thank you!
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../versions/" title="Versions Matrix">
+               Versions Matrix
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../releases/" title="Releases">
+               Releases
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+         <label class="md-nav__title" for="__toc">
+          <span class="md-nav__icon md-icon">
+           <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z">
+            </path>
+           </svg>
+          </span>
+          Table of contents
+         </label>
+         <ul class="md-nav__list" data-md-scrollfix="">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#driving-principles">
+            Driving principles
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#practical-guide-to-submitting-your-contribution">
+            Practical guide to submitting your contribution
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#joining-the-conversation">
+            Joining the conversation
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#contributing-through-github">
+            Contributing through GitHub
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#understanding-issues">
+            Understanding issues
+           </a>
+           <nav aria-label="Understanding issues" class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#issue-labels">
+               Issue Labels
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#making-a-change">
+            Making a change
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#nipreps-coding-style-guide">
+            NiPreps coding style guide
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#recognizing-contributions">
+            Recognizing contributions
+           </a>
+           <nav aria-label="Recognizing contributions" class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#developers">
+               Developers
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#contributors">
+               Contributors
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#publications">
+               Publications
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#licensing">
+            Licensing
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#thank-you">
+            Thank you!
+           </a>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-content">
+      <article class="md-content__inner md-typeset">
+       <h1>
+        Contributing Guidelines
+       </h1>
+       <p>
+        Welcome to the
+        <em>
+         NiPreps
+        </em>
+        project!
+We're excited you're here and want to contribute.
+       </p>
+       <div class="admonition info">
+        <p class="admonition-title">
+         Imposter's syndrome disclaimer
+        </p>
+        <p>
+         <strong>
+          Imposter's syndrome disclaimer
+         </strong>
+         <sup id="fnref:1">
+          <a class="footnote-ref" href="#fn:1">
+           1
+          </a>
+         </sup>
+         : We want your help. No, really.
+        </p>
+        <p>
+         There may be a little voice inside your head that is telling you that
+you're not ready to be an open-source contributor; that your skills
+aren't nearly good enough to contribute. What could you possibly offer a
+project like this one?
+        </p>
+        <p>
+         We assure you - the little voice in your head is wrong. If you can
+write code at all, you can contribute code to open-source. Contributing
+to open-source projects is a fantastic way to advance one's coding
+skills. Writing perfect code isn't the measure of a good developer (that
+would disqualify all of us!); it's trying to create something, making
+mistakes, and learning from those mistakes. That's how we all improve,
+and we are happy to help others learn.
+        </p>
+        <p>
+         Being an open-source contributor doesn't just mean writing code, either.
+You can help out by writing documentation, tests, or even giving
+feedback about the project (and yes - that includes giving feedback
+about the contribution process). Some of these contributions may be the
+most valuable to the project as a whole, because you're coming to the
+project with fresh eyes, so you can see the errors and assumptions that
+seasoned contributors have glossed over.
+        </p>
+       </div>
+       <h2 id="driving-principles">
+        Driving principles
+        <a class="headerlink" href="#driving-principles" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        <em>
+         NiPreps
+        </em>
+        are built around three overarching principles:
+       </p>
+       <ol>
+        <li>
+         <strong>
+          Robustness
+         </strong>
+         - The pipeline adapts the preprocessing steps depending on
+   the input dataset and should provide results as good as possible
+   independently of scanner make, scanning parameters or presence of additional
+   correction scans (such as fieldmaps).
+        </li>
+        <li>
+         <strong>
+          Ease of use
+         </strong>
+         - Thanks to dependence on the BIDS standard, manual
+   parameter input is reduced to a minimum, allowing the pipeline to run in an
+   automatic fashion.
+        </li>
+        <li>
+         <strong>
+          "Glass box"
+         </strong>
+         philosophy - Automation should not mean that one should not
+   visually inspect the results or understand the methods.
+   Thus,
+         <em>
+          NiPreps
+         </em>
+         provides visual reports for each subject, detailing the
+   accuracy of the most important processing steps.
+   This, combined with the documentation, can help researchers to understand
+   the process and decide which subjects should be kept for the group level
+   analysis.
+        </li>
+       </ol>
+       <p>
+        These principles distill some design and organizational foundations:
+       </p>
+       <ol>
+        <li>
+         <em>
+          NiPreps
+         </em>
+         only and fully support BIDS and BIDS-Derivatives for the input and output data.
+        </li>
+        <li>
+         <em>
+          NiPreps
+         </em>
+         are packaged as a fully-compliant BIDS-Apps [6], not just in its user interface, but also in the continuous integration, testing, and delivery.
+        </li>
+        <li>
+         The scope of
+         <em>
+          NiPreps
+         </em>
+         is strictly limited to preprocessing tasks.
+        </li>
+        <li>
+         <em>
+          NiPreps
+         </em>
+         are agnostic to subsequent analysis, i.e., any software supporting BIDS-Derivatives for its inputs should be amenable to analyze data preprocessed with them.
+        </li>
+        <li>
+         <em>
+          NiPreps
+         </em>
+         are thoroughly and transparently documented (including the generation of individual, visual reports with a consistent format that serve as scaffolds for understanding the underpinnings and design decisions).
+        </li>
+        <li>
+         <em>
+          NiPreps
+         </em>
+         are community-driven, and contributors (in any sense) always
+         <a href="#recognizing-contributions">
+          get credited
+         </a>
+         with authorship within relevant publications.
+        </li>
+        <li>
+         <em>
+          NiPreps
+         </em>
+         are modular, reliant on widely-used tools such as
+         <em>
+          AFNI
+         </em>
+         ,
+         <em>
+          ANTs
+         </em>
+         ,
+         <em>
+          FreeSurfer
+         </em>
+         ,
+         <em>
+          FSL
+         </em>
+         ,
+         <em>
+          NiLearn
+         </em>
+         , or
+         <em>
+          DIPY
+         </em>
+         [7-12] and extensible via plug-ins.
+        </li>
+       </ol>
+       <h2 id="practical-guide-to-submitting-your-contribution">
+        Practical guide to submitting your contribution
+        <a class="headerlink" href="#practical-guide-to-submitting-your-contribution" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        These guidelines are designed to make it as easy as possible to get involved.
+If you have any questions that aren't discussed below,
+please let us know by opening an
+        <a href="https://github.com/poldracklab/fmriprep/issues">
+         issue
+        </a>
+        !
+       </p>
+       <p>
+        Before you start, you'll need to set up a free
+        <a href="https://github.com/">
+         GitHub
+        </a>
+        account and sign in.
+Here are some
+        <a href="https://help.github.com/articles/signing-up-for-a-new-github-account">
+         instructions
+        </a>
+        .
+       </p>
+       <p>
+        Already know what you're looking for in this guide? Jump to the following sections:
+       </p>
+       <ul>
+        <li>
+         <a href="#joining-the-conversation">
+          Joining the conversation
+         </a>
+        </li>
+        <li>
+         <a href="#contributing-through-github">
+          Contributing through Github
+         </a>
+        </li>
+        <li>
+         <a href="#understanding-issues">
+          Understanding issues
+         </a>
+        </li>
+        <li>
+         <a href="#making-a-change">
+          Making a change
+         </a>
+        </li>
+        <li>
+         <a href="#NiPreps-coding-style-guide">
+          Structuring contributions
+         </a>
+        </li>
+        <li>
+         <a href="#licensing">
+          Licensing
+         </a>
+        </li>
+        <li>
+         <a href="#recognizing-contributions">
+          Recognizing contributors
+         </a>
+        </li>
+       </ul>
+       <h2 id="joining-the-conversation">
+        Joining the conversation
+        <a class="headerlink" href="#joining-the-conversation" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        <em>
+         NiPreps
+        </em>
+        is maintained by a growing group of enthusiastic developers—
+and we're excited to have you join!
+Most of our discussions will take place on open
+        <a href="https://github.com/poldracklab/fmriprep/issues">
+         issues
+        </a>
+        .
+       </p>
+       <p>
+        We also encourage users to report any difficulties they encounter on
+        <a href="https://neurostars.org/tags/fmriprep">
+         NeuroStars
+        </a>
+        ,
+a community platform for discussing neuroimaging.
+       </p>
+       <p>
+        We actively monitor both spaces and look forward to hearing from you in either venue!
+       </p>
+       <h2 id="contributing-through-github">
+        Contributing through GitHub
+        <a class="headerlink" href="#contributing-through-github" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        <a href="https://git-scm.com/">
+         git
+        </a>
+        is a really useful tool for version control.
+        <a href="https://github.com/">
+         GitHub
+        </a>
+        sits on top of git and supports collaborative and distributed working.
+       </p>
+       <p>
+        If you're not yet familiar with
+        <code>
+         git
+        </code>
+        , there are lots of great resources to help you
+        <em>
+         git
+        </em>
+        started!
+Some of our favorites include the
+        <a href="https://guides.github.com/introduction/git-handbook/">
+         git Handbook
+        </a>
+        and
+the
+        <a href="http://swcarpentry.github.io/git-novice/">
+         Software Carpentry introduction to git
+        </a>
+        .
+       </p>
+       <p>
+        On GitHub, You'll use
+        <a href="https://daringfireball.net/projects/markdown">
+         Markdown
+        </a>
+        to chat in issues and pull requests.
+You can think of Markdown as a few little symbols around your text that will allow GitHub
+to render the text with a little bit of formatting.
+For example, you could write words as bold (
+        <code>
+         **bold**
+        </code>
+        ), or in italics (
+        <code>
+         *italics*
+        </code>
+        ),
+or as a
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+         link
+        </a>
+        (
+        <code>
+         [link](https://youtu.be/dQw4w9WgXcQ)
+        </code>
+        ) to another webpage.
+       </p>
+       <p>
+        GitHub has a really helpful page for getting started with
+        <a href="https://help.github.com/articles/getting-started-with-writing-and-formatting-on-github">
+         writing and formatting Markdown on GitHub
+        </a>
+        .
+       </p>
+       <h2 id="understanding-issues">
+        Understanding issues
+        <a class="headerlink" href="#understanding-issues" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        Every project on GitHub uses
+        <a href="https://github.com/poldracklab/fmriprep/issues">
+         issues
+        </a>
+        slightly differently.
+       </p>
+       <p>
+        The following outlines how the
+        <em>
+         NiPreps
+        </em>
+        developers think about these tools.
+       </p>
+       <ul>
+        <li>
+         <p>
+          <strong>
+           Issues
+          </strong>
+          are individual pieces of work that need to be completed to move the project forward.
+A general guideline: if you find yourself tempted to write a great big issue that
+is difficult to describe as one unit of work, please consider splitting it into two or more issues.
+         </p>
+         <p>
+          Issues are assigned
+          <a href="#issue-labels">
+           labels
+          </a>
+          which explain how they relate to the overall project's
+goals and immediate next steps.
+         </p>
+        </li>
+       </ul>
+       <h3 id="issue-labels">
+        Issue Labels
+        <a class="headerlink" href="#issue-labels" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <p>
+        The current list of issue labels are
+        <a href="https://github.com/poldracklab/fmriprep/labels">
+         here
+        </a>
+        and include:
+       </p>
+       <ul>
+        <li>
+         <p>
+          <a href="https://github.com/poldracklab/fmriprep/labels/good%20first%20issue">
+           <img alt="Good first issue" src="https://img.shields.io/github/labels/poldracklab/fmriprep/good%20first%20issue"/>
+          </a>
+          <em>
+           These issues contain a task that is amenable to new contributors because it doesn't entail a steep learning curve.
+          </em>
+         </p>
+         <p>
+          If you feel that you can contribute to one of these issues,
+we especially encourage you to do so!
+         </p>
+        </li>
+        <li>
+         <p>
+          <a href="https://github.com/poldracklab/fmriprep/labels/bug">
+           <img alt="Bug" src="https://img.shields.io/github/labels/poldracklab/fmriprep/bug"/>
+          </a>
+          <em>
+           These issues point to problems in the project.
+          </em>
+         </p>
+         <p>
+          If you find new a bug, please give as much detail as possible in your issue,
+including steps to recreate the error.
+If you experience the same bug as one already listed,
+please add any additional information that you have as a comment.
+         </p>
+        </li>
+        <li>
+         <p>
+          <a href="https://github.com/poldracklab/fmriprep/labels/enhancement">
+           <img alt="Feature" src="https://img.shields.io/github/labels/poldracklab/fmriprep/feature"/>
+          </a>
+          <em>
+           These issues are asking for new features and improvements to be considered by the project.
+          </em>
+         </p>
+         <p>
+          Please try to make sure that your requested feature is distinct from any others
+that have already been requested or implemented.
+If you find one that's similar but there are subtle differences,
+please reference the other request in your issue.
+         </p>
+        </li>
+       </ul>
+       <p>
+        In order to define priorities and directions in the development roadmap,
+we have two sets of special labels:
+       </p>
+       <table>
+        <thead>
+         <tr>
+          <th>
+           Label
+          </th>
+          <th>
+           Description
+          </th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr>
+          <td>
+           <img alt="GitHub labels" src="https://img.shields.io/github/labels/poldracklab/fmriprep/impact%3A%20high"/>
+           <br/>
+           <img alt="GitHub labels" src="https://img.shields.io/github/labels/poldracklab/fmriprep/impact%3A%20medium"/>
+           <br/>
+           <img alt="GitHub labels" src="https://img.shields.io/github/labels/poldracklab/fmriprep/impact%3A%20low"/>
+          </td>
+          <td>
+           Estimation of the downstream impact the proposed feature/bugfix will have.
+          </td>
+         </tr>
+         <tr>
+          <td>
+           <img alt="GitHub labels" src="https://img.shields.io/github/labels/poldracklab/fmriprep/effort%3A%20high"/>
+           <br/>
+           <img alt="GitHub labels" src="https://img.shields.io/github/labels/poldracklab/fmriprep/effort%3A%20medium"/>
+           <br/>
+           <img alt="GitHub labels" src="https://img.shields.io/github/labels/poldracklab/fmriprep/effort%3A%20low"/>
+          </td>
+          <td>
+           Estimation of effort required to implement the requested feature or fix the reported bug.
+          </td>
+         </tr>
+        </tbody>
+       </table>
+       <p>
+        One way to understand these labels is to consider how they would apply to an imaginary issue.
+For example, if -- after a release -- a bug is identified that re-introduces a previously solved issue
+(i.e., its regresses the code outputs to some undesired behavior), we might assign it the following labels:
+        <img alt="GitHub labels" src="https://img.shields.io/github/labels/poldracklab/fmriprep/bug"/>
+        <img alt="GitHub labels" src="https://img.shields.io/github/labels/poldracklab/fmriprep/impact%3A%20high"/>
+        <img alt="GitHub labels" src="https://img.shields.io/github/labels/poldracklab/fmriprep/effort%3A%20low"/>
+        .
+Its development priority would then be "high", since it is a low-effort, high-impact change.
+       </p>
+       <p>
+        Long-term goals may be labelled as a combination of:
+        <img alt="GitHub labels" src="https://img.shields.io/github/labels/poldracklab/fmriprep/effort%3A%20high"/>
+        and
+        <img alt="GitHub labels" src="https://img.shields.io/github/labels/poldracklab/fmriprep/impact%3A%20medium"/>
+        or
+        <img alt="GitHub labels" src="https://img.shields.io/github/labels/poldracklab/fmriprep/impact%3A%20high"/>
+        since they will have a high-impact on the code-base, but require a medium or high amount of effort.
+Of note, issues with the labels:
+        <img alt="GitHub labels" src="https://img.shields.io/github/labels/poldracklab/fmriprep/impact%3A%20low"/>
+        or
+        <img alt="GitHub labels" src="https://img.shields.io/github/labels/poldracklab/fmriprep/effort%3A%20high"/>
+        are less likely to be addressed because they are less likely to impact the code-base, or because they will require a very high activation energy to do so.
+       </p>
+       <h2 id="making-a-change">
+        Making a change
+        <a class="headerlink" href="#making-a-change" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        We appreciate all contributions to
+        <em>
+         NiPreps
+        </em>
+        ,
+but those accepted fastest will follow a workflow similar to the following:
+       </p>
+       <ol>
+        <li>
+         <p>
+          <strong>
+           Comment on an existing issue or open a new issue referencing your addition.
+          </strong>
+          <br>
+           This allows other members of the
+           <em>
+            NiPreps
+           </em>
+           development team to confirm that you aren't
+  overlapping with work that's currently underway and that everyone is on the same page
+  with the goal of the work you're going to carry out.
+           <br>
+            <a href="https://www.igvita.com/2011/12/19/dont-push-your-pull-requests/">
+             This blog
+            </a>
+            is a nice explanation of why putting this work in up front
+  is so useful to everyone involved.
+           </br>
+          </br>
+         </p>
+        </li>
+        <li>
+         <p>
+          <strong>
+           <a href="https://help.github.com/articles/fork-a-repo/">
+            Fork
+           </a>
+           the particular
+           <em>
+            NiPrep
+           </em>
+           repository (e.g.,
+           <a href="http://fmriprep.org">
+            fMRIPrep
+           </a>
+           )
+  with your GitHub user.
+          </strong>
+          <br>
+           This is now your own unique copy of that particular
+           <em>
+            NiPreps
+           </em>
+           component.
+  Changes here won't affect anyone else's work, so it's a safe space to explore edits to the code!
+          </br>
+         </p>
+        </li>
+        <li>
+         <p>
+          <strong>
+           <a href="https://help.github.com/articles/cloning-a-repository">
+            Clone
+           </a>
+           your forked NiPreps repository to your machine/computer.
+          </strong>
+          <br>
+           While you can edit files
+           <a href="https://help.github.com/articles/editing-files-in-your-repository">
+            directly on github
+           </a>
+           , sometimes the changes
+  you want to make will be complex and you will want to use a
+           <a href="https://en.wikipedia.org/wiki/Text_editor">
+            text editor
+           </a>
+           that you have installed on your local machine/computer.
+  (One great text editor is
+           <a href="https://code.visualstudio.com/">
+            vscode
+           </a>
+           ).
+           <br/>
+           In order to work on the code locally, you must clone your forked repository.
+           <br/>
+           To keep up with changes in the NiPreps repository,
+  add the
+           <a href="https://help.github.com/articles/configuring-a-remote-for-a-fork">
+            "upstream" NiPreps repository as a remote
+           </a>
+           to your locally cloned repository.
+           <code>
+            Shell
+    git remote add upstream https://github.com/poldracklab/fmriprep.git
+           </code>
+           Make sure to
+           <a href="https://help.github.com/articles/syncing-a-fork/">
+            keep your fork up to date
+           </a>
+           with the upstream repository.
+           <br/>
+           For example, to update your master branch on your local cloned repository:
+           <code>
+            Shell
+      git fetch upstream
+      git checkout master
+      git merge upstream/master
+           </code>
+          </br>
+         </p>
+        </li>
+        <li>
+         <p>
+          <strong>
+           Create a
+           <a href="https://help.github.com/articles/creating-and-deleting-branches-within-your-repository/">
+            new branch
+           </a>
+           to develop and maintain the proposed code changes.
+          </strong>
+          <br/>
+          For example:
+          <code>
+           Shell
+    git fetch upstream  # Always start with an updated upstream
+    git checkout -b fix/bug-1222 upstream/master
+          </code>
+          Please consider using appropriate branch names as those listed below, and mind that some of them
+    are special (e.g.,
+          <code>
+           doc/
+          </code>
+          and
+          <code>
+           docs/
+          </code>
+          ):
+         </p>
+         <ul>
+          <li>
+           <code>
+            fix/&lt;some-identifier&gt;
+           </code>
+           : for bugfixes
+          </li>
+          <li>
+           <code>
+            enh/&lt;feature-name&gt;
+           </code>
+           : for new features
+          </li>
+          <li>
+           <code>
+            doc/&lt;some-identifier&gt;
+           </code>
+           : for documentation improvements.
+    You should name all your documentation branches with the prefix
+           <code>
+            doc/
+           </code>
+           or
+           <code>
+            docs/
+           </code>
+           as that will preempt triggering the full battery of continuous integration tests.
+          </li>
+         </ul>
+        </li>
+        <li>
+         <p>
+          <strong>
+           Make the changes you've discussed, following the
+           <a href="#NiPreps-coding-style-guide">
+            NiPreps coding style guide
+           </a>
+           .
+          </strong>
+          <br/>
+          Try to keep the changes focused: it is generally easy to review changes that address one feature or bug at a time.
+  It can also be helpful to test your changes locally,
+  using a
+          <a href="https://fmriprep.readthedocs.io/en/latest/contributors.html">
+           NiPreps development environment
+          </a>
+          .
+  Once you are satisfied with your local changes,
+          <a href="https://help.github.com/articles/adding-a-file-to-a-repository-using-the-command-line">
+           add/commit/push them
+          </a>
+          to the branch on your forked repository.
+         </p>
+        </li>
+        <li>
+         <p>
+          <strong>
+           Submit a
+           <a href="https://help.github.com/articles/creating-a-pull-request-from-a-fork">
+            pull request
+           </a>
+           .
+          </strong>
+          <br/>
+          A member of the development team will review your changes to confirm
+   that they can be merged into the main code base.
+          <br/>
+          Pull request titles should begin with a descriptive prefix
+   (for example,
+          <code>
+           ENH: Support for SB-reference in multi-band datasets
+          </code>
+          ):
+         </p>
+         <ul>
+          <li>
+           <code>
+            ENH
+           </code>
+           : enhancements or new features (
+           <a href="https://github.com/poldracklab/fmriprep/pull/1508">
+            example
+           </a>
+           )
+          </li>
+          <li>
+           <code>
+            FIX
+           </code>
+           : bug fixes (
+           <a href="https://github.com/poldracklab/fmriprep/pull/1378">
+            example
+           </a>
+           )
+          </li>
+          <li>
+           <code>
+            TST
+           </code>
+           : new or updated tests (
+           <a href="https://github.com/poldracklab/fmriprep/pull/1098">
+            example
+           </a>
+           )
+          </li>
+          <li>
+           <code>
+            DOC
+           </code>
+           : new or updated documentation (
+           <a href="https://github.com/poldracklab/fmriprep/pull/1515">
+            example
+           </a>
+           )
+          </li>
+          <li>
+           <code>
+            STY
+           </code>
+           : style changes (
+           <a href="https://github.com/poldracklab/fmriprep/pull/675">
+            example
+           </a>
+           )
+          </li>
+          <li>
+           <code>
+            REF
+           </code>
+           : refactoring existing code (
+           <a href="https://github.com/poldracklab/fmriprep/pull/816">
+            example
+           </a>
+           )
+          </li>
+          <li>
+           <code>
+            CI
+           </code>
+           : updates to continous integration infrastructure (
+           <a href="https://github.com/poldracklab/fmriprep/pull/1048">
+            example
+           </a>
+           )
+          </li>
+          <li>
+           <code>
+            MAINT
+           </code>
+           : general maintenance (
+           <a href="https://github.com/poldracklab/fmriprep/pull/1239">
+            example
+           </a>
+           )
+          </li>
+          <li>
+           For works-in-progress, add the
+           <code>
+            WIP
+           </code>
+           tag in addition to the descriptive prefix.
+   Pull-requests tagged with
+           <code>
+            WIP:
+           </code>
+           will not be merged until the tag is removed.
+          </li>
+         </ul>
+        </li>
+        <li>
+         <p>
+          <strong>
+           Have your PR reviewed by the developers team, and update your changes accordingly in your branch.
+          </strong>
+          <br/>
+          The reviewers will take special care in assisting you address their comments, as well as dealing with conflicts
+   and other tricky situations that could emerge from distributed development.
+         </p>
+        </li>
+       </ol>
+       <h2 id="nipreps-coding-style-guide">
+        NiPreps coding style guide
+        <a class="headerlink" href="#nipreps-coding-style-guide" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        Whenever possible, instances of Nipype
+        <code>
+         Node
+        </code>
+        s and
+        <code>
+         Workflow
+        </code>
+        s should use the same names
+as the variables they are assigned to.
+This makes it easier to relate the content of the working directory to the code
+that generated it when debugging.
+       </p>
+       <p>
+        Workflow variables should end in
+        <code>
+         _wf
+        </code>
+        to indicate that they refer to Workflows
+and not Nodes.
+For instance, a workflow whose basename is
+        <code>
+         myworkflow
+        </code>
+        might be defined as
+follows:
+       </p>
+       <div class="codehilite">
+        <pre><span></span><code><span class="kn">from</span> <span class="nn">nipype.pipeline</span> <span class="kn">import</span> <span class="n">engine</span> <span class="k">as</span> <span class="n">pe</span>
+
+<span class="n">myworkflow_wf</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Workflow</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'myworkflow_wf'</span><span class="p">)</span>
+</code></pre>
+       </div>
+       <p>
+        If a workflow is generated by a function, the name of the function should take
+the form
+        <code>
+         init_&lt;basename&gt;_wf
+        </code>
+        :
+       </p>
+       <div class="codehilite">
+        <pre><span></span><code><span class="k">def</span> <span class="nf">init_myworkflow_wf</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'myworkflow_wf):</span>
+    <span class="n">workflow</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Workflow</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+    <span class="o">...</span>
+    <span class="k">return</span> <span class="n">workflow</span>
+
+<span class="n">myworkflow_wf</span> <span class="o">=</span> <span class="n">init_workflow_wf</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'myworkflow_wf'</span><span class="p">)</span>
+</code></pre>
+       </div>
+       <p>
+        If multiple instances of the same workflow might be instantiated in the same
+namespace, the workflow names and variables should include either a numeric
+identifier or a one-word description, such as:
+       </p>
+       <div class="codehilite">
+        <pre><span></span><code><span class="n">myworkflow0_wf</span> <span class="o">=</span> <span class="n">init_workflow_wf</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'myworkflow0_wf'</span><span class="p">)</span>
+<span class="n">myworkflow1_wf</span> <span class="o">=</span> <span class="n">init_workflow_wf</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'myworkflow1_wf'</span><span class="p">)</span>
+
+<span class="c1"># or</span>
+
+<span class="n">myworkflow_lh_wf</span> <span class="o">=</span> <span class="n">init_workflow_wf</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'myworkflow_lh_wf'</span><span class="p">)</span>
+<span class="n">myworkflow_rh_wf</span> <span class="o">=</span> <span class="n">init_workflow_wf</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'myworkflow_rh_wf'</span><span class="p">)</span>
+</code></pre>
+       </div>
+       <h2 id="recognizing-contributions">
+        Recognizing contributions
+        <a class="headerlink" href="#recognizing-contributions" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        We welcome and recognize all contributions regardless their size, content or scope:
+from documentation to testing and code development.
+You can see a list of current developers and contributors in our
+        <a href="https://github.com/poldracklab/fmriprep/blob/master/.zenodo.json">
+         zenodo file
+        </a>
+        .
+Before every release, a new
+        <a href="https://github.com/poldracklab/fmriprep/blob/master/.zenodo.json">
+         zenodo file
+        </a>
+        will be generated.
+The
+        <a href="https://github.com/poldracklab/fmriprep/blob/master/.maintenance/update_zenodo.py">
+         update script
+        </a>
+        will also sort creators and contributors by
+the relative size of their contributions, as provided by the
+        <code>
+         git-line-summary
+        </code>
+        utility
+distributed with the
+        <code>
+         git-extras
+        </code>
+        package.
+Last positions in both the
+        <em>
+         creators
+        </em>
+        and
+        <em>
+         contributors
+        </em>
+        list will be reserved to
+the project leaders.
+These special positions can be revised to add names by punctual request and revised for
+removal and update of ordering in an scheduled manner every two years.
+All the authors enlisted as
+        <em>
+         creators
+        </em>
+        participate in the revision of modifications.
+       </p>
+       <h3 id="developers">
+        Developers
+        <a class="headerlink" href="#developers" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <p>
+        Developers are members of a wonderful team
+        <em>
+         driving the project
+        </em>
+        .
+Names and contacts of all developers are included in the
+        <a href="https://github.com/poldracklab/fmriprep/blob/master/.maint/developers.json">
+         <code>
+          .maint/developers.json
+         </code>
+         file
+        </a>
+        Examples of steering activities that
+        <em>
+         drive the project
+        </em>
+        are: actively participating in the
+follow-up meetings, leading documentation sprints, helping in the design of the tool and definition of the roadmap,
+providing resources (in the broad sense, including funding), code-review, etc.
+       </p>
+       <h3 id="contributors">
+        Contributors
+        <a class="headerlink" href="#contributors" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <p>
+        Contributors enlisted in the
+        <a href="https://github.com/poldracklab/fmriprep/blob/master/.maint/contributors.json">
+         <code>
+          .maint/contributors.json
+         </code>
+         file
+        </a>
+        actively help or have previously helped the project in a broad sense: writing code, writing documentation,
+benchmarking modules of the tool, proposing new features, helping improve the scientific
+rigor of implementations, giving out support on the different communication
+channels (
+        <a href="https://mattermost.brainhack.org/brainhack/channels/fmriprep">
+         mattermost
+        </a>
+        ,
+        <a href="https://neurostars.org/tags/fmriprep">
+         NeuroStars
+        </a>
+        ,
+        <a href="https://github.com/poldracklab/fmriprep/issues">
+         GitHub issues
+        </a>
+        , etc.).
+If you are new to the project, don't forget to add your name and affiliation to the list
+of contributors there!
+Our Welcome Bot will send an automated message reminding this to first-time contributors.
+Before every release, unlisted contributors will be invited again to add their names to the file
+(just in case they missed the automated message from our Welcome Bot).
+       </p>
+       <p>
+        Contributors who have contributed at some point to the project but were required or they wished to
+disconnect from the project's updates and to drop-out from publications and other dissemination activities,
+are listed in the
+        <a href="https://github.com/poldracklab/fmriprep/blob/master/.maint/former.json">
+         <code>
+          .maint/former.json
+         </code>
+         file
+        </a>
+        .
+       </p>
+       <h3 id="publications">
+        Publications
+        <a class="headerlink" href="#publications" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <p>
+        Anyone listed as a
+        <em>
+         developer
+        </em>
+        or a
+        <em>
+         contributor
+        </em>
+        can start the submission process of a manuscript
+as first author.
+To compose the author list, all the
+        <em>
+         creators
+        </em>
+        MUST be included (except for those people who
+opt to drop-out) and all the
+        <em>
+         contributors
+        </em>
+        MUST be invited to participate.
+First authorship(s) is (are) reserved for the authors that originated and kept the initiative
+of submission and wrote the manuscript.
+To generate the ordering of your paper, please run
+        <code>
+         python .maint/paper_author_list.py
+        </code>
+        from the
+root of the repository, on the up-to-date
+        <code>
+         upstream/master
+        </code>
+        branch.
+Then, please modify this list and place your name first.
+All developers and contributors are pulled together in a unique list, and last authorships assigned.
+        <em>
+         NiPreps
+        </em>
+        and its community adheres to open science principles, such that a pre-print should
+be posted on an adequate archive service (e.g.,
+        <a href="https://arxiv.org">
+         ArXiv
+        </a>
+        or
+        <a href="https://biorxiv.org">
+         BioRxiv
+        </a>
+        ) prior publication.
+       </p>
+       <h2 id="licensing">
+        Licensing
+        <a class="headerlink" href="#licensing" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        <em>
+         NiPreps
+        </em>
+        is licensed under the Apache 2.0 license.
+By contributing to
+        <em>
+         NiPreps
+        </em>
+        ,
+you acknowledge that any contributions will be licensed under the same terms.
+       </p>
+       <h2 id="thank-you">
+        Thank you!
+        <a class="headerlink" href="#thank-you" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        You're awesome.
+        <img alt="👋" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f44b.svg" title=":wave:"/>
+        <img alt="😃" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f603.svg" title=":smiley:"/>
+       </p>
+       <p>
+        <br/>
+       </p>
+       <p>
+        <em>
+         — Based on contributing guidelines from the
+         <a href="https://github.com/KirstieJane/STEMMRoleModels">
+          STEMMRoleModels
+         </a>
+         project.
+        </em>
+       </p>
+       <div class="footnote">
+        <hr/>
+        <ol>
+         <li id="fn:1">
+          <p>
+           The imposter syndrome disclaimer was originally written by
+           <a href="https://github.com/adriennefriend">
+            Adrienne Lowe
+           </a>
+           for a
+           <a href="https://www.youtube.com/watch?v=6Uj746j9Heo">
+            PyCon talk
+           </a>
+           , and was
+adapted based on its use in the README file for the
+           <a href="https://github.com/Unidata/MetPy">
+            MetPy project
+           </a>
+           .
+           <a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">
+            ↩
+           </a>
+          </p>
+         </li>
+        </ol>
+       </div>
+      </article>
+     </div>
+    </div>
+   </main>
+   <footer class="md-footer">
+    <div class="md-footer-nav">
+     <nav aria-label="Footer" class="md-footer-nav__inner md-grid">
+      <a class="md-footer-nav__link md-footer-nav__link--prev" href="../.." rel="prev" title="Home">
+       <div class="md-footer-nav__button md-icon">
+        <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z">
+         </path>
+        </svg>
+       </div>
+       <div class="md-footer-nav__title">
+        <div class="md-ellipsis">
+         <span class="md-footer-nav__direction">
+          Previous
+         </span>
+         Home
+        </div>
+       </div>
+      </a>
+      <a class="md-footer-nav__link md-footer-nav__link--next" href="../versions/" rel="next" title="Versions Matrix">
+       <div class="md-footer-nav__title">
+        <div class="md-ellipsis">
+         <span class="md-footer-nav__direction">
+          Next
+         </span>
+         Versions Matrix
+        </div>
+       </div>
+       <div class="md-footer-nav__button md-icon">
+        <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z">
+         </path>
+        </svg>
+       </div>
+      </a>
+     </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+     <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+       <div class="md-footer-copyright__highlight">
+        Copyright © 2020
+       </div>
+       Made with
+       <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+        Material for MkDocs
+       </a>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script src="../../assets/javascripts/vendor.d710d30a.min.js">
+  </script>
+  <script src="../../assets/javascripts/bundle.5f27aba8.min.js">
+  </script>
+  <script id="__lang" type="application/json">
+   {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}
+  </script>
+  <script>
+   app = initialize({
+          base: "../..",
+          features: ["tabs"],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.27c6a5e6.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+  </script>
+ </body>
+</html>
