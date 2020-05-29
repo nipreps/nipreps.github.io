@@ -331,7 +331,15 @@ This conversation started as a
         <code>
          YY.MINOR.PATCH
         </code>
-        , so the first minor release of 2020 is 20.0.0, and the first minor release of 2021 will be 21.0.0, whatever the final minor release of 2020 is. A series of releases share a "YY.MINOR." prefix, which we refer to as the "YY.MINOR.x series". For example, the 20.0.x series contains version 20.0.0, 20.0.1, and any other releases needed.
+        , so the first minor release of 2020 is 20.0.0, and the first minor release of 2021 will be 21.0.0, whatever the final minor release of 2020 is. A series of releases share a
+        <code>
+         YY.MINOR.
+        </code>
+        prefix, which we refer to as the
+        <code>
+         YY.MINOR.x
+        </code>
+        series. For example, the 20.0.x series contains version 20.0.0, 20.0.1, and any other releases needed.
        </p>
        <h3 id="feature-releases">
         Feature releases
@@ -363,19 +371,29 @@ This conversation started as a
        </p>
        <p>
         These releases must satisfy four conditions:
-1. Resolving one or more bugs. These mostly include failures of
-        <em>
-         fMRIPrep
-        </em>
-        to complete or producing invalid derivatives (e.g., a NIfTI file of all zeroes).
-1. Derivatives compatibility. If a subject may be successfully run on 20.0.n, then the imaging derivatives should be identical if rerun with 20.0.(n+1), modulo rounding errors and the effects of nondeterministic algorithms. The changes between successful runs of 20.0.n and 20.0.(n+1) should not be larger than the changes between two successful runs of 20.0.n. Cosmetic changes to reports are acceptable, while differing fields of view or data types in a NIfTI file would not be.
-1. API compatibility. Workflow-generating functions, workflow input- and outputnode fields must not change. As an end-user application, this may seem overly strict, but the odds of introducing a bug are much higher in these cases.
-1. User interface compatibility. Substantial changes to
-        <em>
-         fMRIPrep
-        </em>
-        command line must not happen (e.g., the addition of a new, relevant flag).
        </p>
+       <ol>
+        <li>
+         Resolving one or more bugs. These mostly include failures of
+         <em>
+          fMRIPrep
+         </em>
+         to complete or producing invalid derivatives (e.g., a NIfTI file of all zeroes).
+        </li>
+        <li>
+         Derivatives compatibility. If a subject may be successfully run on 20.0.n, then the imaging derivatives should be identical if rerun with 20.0.(n+1), modulo rounding errors and the effects of nondeterministic algorithms. The changes between successful runs of 20.0.n and 20.0.(n+1) should not be larger than the changes between two successful runs of 20.0.n. Cosmetic changes to reports are acceptable, while differing fields of view or data types in a NIfTI file would not be.
+        </li>
+        <li>
+         API compatibility. Workflow-generating functions, workflow input- and outputnode fields must not change. As an end-user application, this may seem overly strict, but the odds of introducing a bug are much higher in these cases.
+        </li>
+        <li>
+         User interface compatibility. Substantial changes to
+         <em>
+          fMRIPrep
+         </em>
+         command line must not happen (e.g., the addition of a new, relevant flag).
+        </li>
+       </ol>
        <p>
         Note that not all bugs can be fixed in a way that satisfies all three of these criteria without significant effort. A developer may determine that the bug will be fixed in the next feature release.
        </p>
@@ -608,40 +626,48 @@ Multiple feature releases of
        </p>
        <ul>
         <li>
-         Tracking possible breaking changes and broken URLs in upstream projects outside of the nipreps ecosystem.
+         <p>
+          Tracking possible breaking changes and broken URLs in upstream projects outside of the nipreps ecosystem.
+         </p>
+         <ul>
+          <li>
+           Neurodebian dependencies (AFNI, FSL, Convert3D, Connectome WB)
+          </li>
+          <li>
+           FreeSurfer
+          </li>
+          <li>
+           ANTs
+          </li>
+          <li>
+           NodeJS - BIDS-validator, SVGO
+          </li>
+          <li>
+           Pandoc
+          </li>
+          <li>
+           ICA-AROMA
+          </li>
+          <li>
+           Miniconda
+          </li>
+          <li>
+           Python minor series end-of-life
+          </li>
+          <li>
+           numpy, scipy, pandas, nipype, nibabel, matplotlib
+          </li>
+         </ul>
         </li>
         <li>
-         Neurodebian dependencies (AFNI, FSL, Convert3D, Connectome WB)
-        </li>
-        <li>
-         FreeSurfer
-        </li>
-        <li>
-         ANTs
-        </li>
-        <li>
-         NodeJS - BIDS-validator, SVGO
-        </li>
-        <li>
-         Pandoc
-        </li>
-        <li>
-         ICA-AROMA
-        </li>
-        <li>
-         Miniconda
-        </li>
-        <li>
-         Python minor series end-of-life
-        </li>
-        <li>
-         numpy, scipy, pandas, nipype, nibabel, matplotlib
-        </li>
-        <li>
-         Backporting fixes from other maintained series.
-        </li>
-        <li>
-         If a bug is identified as existing within the LTS series and can be fixed without breaking API or derivative compatibility.
+         <p>
+          Backporting fixes from other maintained series.
+         </p>
+         <ul>
+          <li>
+           If a bug is identified as existing within the LTS series and can be fixed without breaking API or derivative compatibility.
+          </li>
+         </ul>
         </li>
        </ul>
        <p>
