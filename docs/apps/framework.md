@@ -111,10 +111,10 @@ derivatives/
 │ │ │ └── sub-01_from-orig_to-T1w_mode-image_xfm.txt
 │ │ ├── figures/
 │ │ └── func/
-│ │ ├── sub-01_task-rhymejudgment_space-MNI152_boldref.nii.gz
-│ │ ├── sub-01_task-rhymejudgment_space-MNI152_desc-preproc_bold.nii.gz
-│ │ ├── sub-01_task-rhymejudgment_space-MNI152_desc-confounds_regressors.nii.gz
-│ │ └── sub-01_task-rhymejudgment_space-MNI152_desc-brain_mask.nii.gz
+│ │   ├── sub-01_task-rhymejudgment_space-MNI152_boldref.nii.gz
+│ │   ├── sub-01_task-rhymejudgment_space-MNI152_desc-preproc_bold.nii.gz
+│ │   ├── sub-01_task-rhymejudgment_space-MNI152_desc-confounds_regressors.nii.gz
+│ │   └── sub-01_task-rhymejudgment_space-MNI152_desc-brain_mask.nii.gz
 │ ├── sub-02.html
 │ ├── sub-02/
 │ ├── sub-03.html

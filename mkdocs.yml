@@ -12,8 +12,10 @@ copyright: Copyright &copy; 2020
 
 nav:
     - Home: index.md
+    - NiPreps:
+      - Framework: intro/nipreps.md
     - BIDS-Apps:
-      - Framework: apps/framework.md
+      - Introduction: apps/framework.md
       - Executing with Docker: apps/docker.md
       - Executing with Singularity: apps/singularity.md
     - Developers:

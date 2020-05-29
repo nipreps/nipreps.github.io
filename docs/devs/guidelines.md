@@ -48,7 +48,7 @@ We're excited you're here and want to contribute.
 These principles distill some design and organizational foundations:
 
   1. *NiPreps* only and fully support BIDS and BIDS-Derivatives for the input and output data.
-  1. *NiPreps* are packaged as a fully-compliant BIDS-Apps [6], not just in its user interface, but also in the continuous integration, testing, and delivery.
+  1. *NiPreps* are packaged as a fully-compliant [BIDS-Apps](../apps/framework.md), not just in its user interface, but also in the continuous integration, testing, and delivery.
   1. The scope of *NiPreps* is strictly limited to preprocessing tasks.
   1. *NiPreps* are agnostic to subsequent analysis, i.e., any software supporting BIDS-Derivatives for its inputs should be amenable to analyze data preprocessed with them.
   1. *NiPreps* are thoroughly and transparently documented (including the generation of individual, visual reports with a consistent format that serve as scaffolds for understanding the underpinnings and design decisions).
