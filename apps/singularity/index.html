@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="Augmenting neuroimaging acquisition devices to produce analysis-grade data" name="description"/>
+  <link href="https://www.nipreps.org/apps/singularity/" rel="canonical"/>
+  <meta content="The NiPreps developers" name="author"/>
+  <link href="../../assets/images/favicon.png" rel="shortcut icon"/>
+  <meta content="mkdocs-1.1.2, mkdocs-material-5.2.2" name="generator"/>
+  <title>
+   Executing with Singularity - NiPreps
+  </title>
+  <link href="../../assets/stylesheets/main.a2408e81.min.css" rel="stylesheet"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+  <style>
+   body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}
+  </style>
+ </head>
+ <body dir="ltr">
+  <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+  <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+  <label class="md-overlay" for="__drawer">
+  </label>
+  <div data-md-component="skip">
+   <a class="md-skip" href="#preparing-a-singularity-image">
+    Skip to content
+   </a>
+  </div>
+  <div data-md-component="announce">
+  </div>
+  <header class="md-header" data-md-component="header">
+   <nav aria-label="Header" class="md-header-nav md-grid">
+    <a aria-label="NiPreps" class="md-header-nav__button md-logo" href="https://www.nipreps.org" title="NiPreps">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z">
+      </path>
+     </svg>
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z">
+      </path>
+     </svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+     <div class="md-header-nav__ellipsis">
+      <span class="md-header-nav__topic md-ellipsis">
+       NiPreps
+      </span>
+      <span class="md-header-nav__topic md-ellipsis">
+       Executing with Singularity
+      </span>
+     </div>
+    </div>
+   </nav>
+  </header>
+  <div class="md-container" data-md-component="container">
+   <nav aria-label="Tabs" class="md-tabs md-tabs--active" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+     <ul class="md-tabs__list">
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="../..">
+        Home
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link md-tabs__link--active" href="../framework/">
+        BIDS-Apps
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="../../devs/guidelines/">
+        Developers
+       </a>
+      </li>
+     </ul>
+    </div>
+   </nav>
+   <main class="md-main" data-md-component="main">
+    <div class="md-main__inner md-grid">
+     <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+         <label class="md-nav__title" for="__drawer">
+          <a aria-label="NiPreps" class="md-nav__button md-logo" href="https://www.nipreps.org" title="NiPreps">
+           <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z">
+            </path>
+           </svg>
+          </a>
+          NiPreps
+         </label>
+         <ul class="md-nav__list" data-md-scrollfix="">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../.." title="Home">
+            Home
+           </a>
+          </li>
+          <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+           <input checked="" class="md-nav__toggle md-toggle" data-md-toggle="nav-2" id="nav-2" type="checkbox"/>
+           <label class="md-nav__link" for="nav-2">
+            BIDS-Apps
+            <span class="md-nav__icon md-icon">
+             <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z">
+              </path>
+             </svg>
+            </span>
+           </label>
+           <nav aria-label="BIDS-Apps" class="md-nav" data-md-level="1">
+            <label class="md-nav__title" for="nav-2">
+             <span class="md-nav__icon md-icon">
+              <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+               <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z">
+               </path>
+              </svg>
+             </span>
+             BIDS-Apps
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix="">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../framework/" title="Framework">
+               Framework
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../docker/" title="Executing with Docker">
+               Executing with Docker
+              </a>
+             </li>
+             <li class="md-nav__item md-nav__item--active">
+              <input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+              <label class="md-nav__link md-nav__link--active" for="__toc">
+               Executing with Singularity
+               <span class="md-nav__icon md-icon">
+                <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                 <path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z">
+                 </path>
+                </svg>
+               </span>
+              </label>
+              <a class="md-nav__link md-nav__link--active" href="./" title="Executing with Singularity">
+               Executing with Singularity
+              </a>
+              <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+               <label class="md-nav__title" for="__toc">
+                <span class="md-nav__icon md-icon">
+                 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z">
+                  </path>
+                 </svg>
+                </span>
+                Table of contents
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#preparing-a-singularity-image">
+                  Preparing a Singularity image
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#running-a-singularity-image">
+                  Running a Singularity Image
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#handling-environment-variables">
+                  Handling environment variables
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#accessing-the-hosts-filesystem">
+                  Accessing the host's filesystem
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#templateflow-and-singularity">
+                  TemplateFlow and Singularity
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#restricted-internet-access">
+                  Restricted Internet access
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#troubleshooting">
+                  Troubleshooting
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#running-singularity-on-a-slurm-system">
+                  Running Singularity on a SLURM system
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+            </ul>
+           </nav>
+          </li>
+          <li class="md-nav__item md-nav__item--nested">
+           <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" id="nav-3" type="checkbox"/>
+           <label class="md-nav__link" for="nav-3">
+            Developers
+            <span class="md-nav__icon md-icon">
+             <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z">
+              </path>
+             </svg>
+            </span>
+           </label>
+           <nav aria-label="Developers" class="md-nav" data-md-level="1">
+            <label class="md-nav__title" for="nav-3">
+             <span class="md-nav__icon md-icon">
+              <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+               <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z">
+               </path>
+              </svg>
+             </span>
+             Developers
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix="">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../devs/guidelines/" title="Contributing Guidelines">
+               Contributing Guidelines
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../devs/versions/" title="Versions Matrix">
+               Versions Matrix
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../devs/releases/" title="Releases">
+               Releases
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+         <label class="md-nav__title" for="__toc">
+          <span class="md-nav__icon md-icon">
+           <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z">
+            </path>
+           </svg>
+          </span>
+          Table of contents
+         </label>
+         <ul class="md-nav__list" data-md-scrollfix="">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#preparing-a-singularity-image">
+            Preparing a Singularity image
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#running-a-singularity-image">
+            Running a Singularity Image
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#handling-environment-variables">
+            Handling environment variables
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#accessing-the-hosts-filesystem">
+            Accessing the host's filesystem
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#templateflow-and-singularity">
+            TemplateFlow and Singularity
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#restricted-internet-access">
+            Restricted Internet access
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#troubleshooting">
+            Troubleshooting
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#running-singularity-on-a-slurm-system">
+            Running Singularity on a SLURM system
+           </a>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-content">
+      <article class="md-content__inner md-typeset">
+       <h1>
+        Executing with Singularity
+       </h1>
+       <div class="admonition important">
+        <p class="admonition-title">
+         Summary
+        </p>
+        <p>
+         Here, we describe how to run
+         <em>
+          NiPreps
+         </em>
+         with Singularity containers.
+To illustrate the process, we will show the execution of
+         <em>
+          fMRIPrep
+         </em>
+         , but these guidelines extend to any other end-user
+         <em>
+          NiPrep
+         </em>
+         .
+        </p>
+       </div>
+       <h2 id="preparing-a-singularity-image">
+        Preparing a Singularity image
+        <a class="headerlink" href="#preparing-a-singularity-image" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        <strong>
+         Singularity version &gt;= 2.5
+        </strong>
+        :
+If the version of Singularity installed on your HPC (High-Performance Computing)
+system is modern enough you can create Singularity image
+directly on the system. This is as simple as:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>$ singularity build /my_images/fmriprep-&lt;version&gt;.simg <span class="se">\</span>
+                    docker://poldracklab/fmriprep:&lt;version&gt;
+</code></pre>
+       </div>
+       <p>
+        where
+        <code>
+         &lt;version&gt;
+        </code>
+        should be replaced with the desired version of
+        <em>
+         fMRIPrep
+        </em>
+        that you want to download.
+       </p>
+       <p>
+        <strong>
+         Singularity version &lt; 2.5
+        </strong>
+        :
+In this case, start with a machine (e.g., your personal computer) with
+Docker installed. Use
+        <a href="https://github.com/singularityware/docker2singularity">
+         docker2singularity
+        </a>
+        to create a singularity image. You will need an active internet
+connection and some time:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>$ docker run --privileged -t --rm \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v D:\host\path\where\to\output\singularity\image:/output \
+    singularityware/docker2singularity \
+    poldracklab/fmriprep:&lt;version&gt;
+</code></pre>
+       </div>
+       <p>
+        Where
+        <code>
+         &lt;version&gt;
+        </code>
+        should be replaced with the desired version of
+        <em>
+         fMRIPrep
+        </em>
+        that you want to download.
+       </p>
+       <p>
+        Beware of the back slashes, expected for Windows systems. For *nix
+users the command translates as follows: :
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>$ docker run --privileged -t --rm \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v /absolute/path/to/output/folder:/output \
+    singularityware/docker2singularity \
+    poldracklab/fmriprep:&lt;version&gt;
+</code></pre>
+       </div>
+       <p>
+        Transfer the resulting Singularity image to the HPC, for example, using
+        <code>
+         scp
+        </code>
+        or
+        <code>
+         rsync
+        </code>
+        :
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>$ scp poldracklab_fmriprep*.img user@hcpserver.edu:/my_images
+</code></pre>
+       </div>
+       <h2 id="running-a-singularity-image">
+        Running a Singularity Image
+        <a class="headerlink" href="#running-a-singularity-image" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        If the data to be preprocessed is also on the HPC, you are ready to run
+the
+        <em>
+         NiPrep
+        </em>
+        :
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>$ singularity run --cleanenv fmriprep.simg <span class="se">\</span>
+    path/to/data/dir path/to/output/dir <span class="se">\</span>
+    participant <span class="se">\</span>
+    --participant-label label
+</code></pre>
+       </div>
+       <h2 id="handling-environment-variables">
+        Handling environment variables
+        <a class="headerlink" href="#handling-environment-variables" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        Singularity by default
+        <a href="https://github.com/singularityware/singularity/issues/445">
+         exposes all environment variables from the host inside the container
+        </a>
+        .
+Because of this, your host libraries (e.g.,
+        <a href="https://nipype.readthedocs.io">
+         NiPype
+        </a>
+        or a Python environment) could be accidentally used instead of the ones inside the
+container. To avoid such a situation, we strongly
+        <strong>
+         recommend
+        </strong>
+        using the
+        <code>
+         --cleanenv
+        </code>
+        argument in all scenarios. For example:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>$ singularity run --cleanenv fmriprep.simg <span class="se">\</span>
+  /work/04168/asdf/lonestar/ <span class="nv">$WORK</span>/lonestar/output <span class="se">\</span>
+  participant <span class="se">\</span>
+  --participant-label <span class="m">387</span> --nthreads <span class="m">16</span> -w <span class="nv">$WORK</span>/lonestar/work <span class="se">\</span>
+  --omp-nthreads <span class="m">16</span>
+</code></pre>
+       </div>
+       <p>
+        Alternatively, conflicts might be preempted and some problems mitigated
+by unsetting potentially problematic settings, such as the
+        <code>
+         PYTHONPATH
+        </code>
+        variable, before running:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>$ <span class="nb">unset</span> PYTHONPATH<span class="p">;</span> singularity run fmriprep.simg <span class="se">\</span>
+  /work/04168/asdf/lonestar/ <span class="nv">$WORK</span>/lonestar/output <span class="se">\</span>
+  participant <span class="se">\</span>
+  --participant-label <span class="m">387</span> --nthreads <span class="m">16</span> -w <span class="nv">$WORK</span>/lonestar/work <span class="se">\</span>
+  --omp-nthreads <span class="m">16</span>
+</code></pre>
+       </div>
+       <p>
+        It is possible to define environment variables scoped within the
+container by using the
+        <code>
+         SINGULARITYENV_*
+        </code>
+        magic, in combination with
+        <code>
+         --cleanenv
+        </code>
+        . For example, we can set the FreeSurfer license variable
+(see
+        <a href="https://fmriprep.readthedocs.io/en/latest/usage.html#the-freesurfer-license">
+         <em>
+          fMRIPrep
+         </em>
+         's documentation on this
+        </a>
+        ) as follows: :
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>$ <span class="nb">export</span> <span class="nv">SINGULARITYENV_FS_LICENSE</span><span class="o">=</span><span class="nv">$HOME</span>/.freesurfer.txt
+$ singularity <span class="nb">exec</span> --cleanenv fmriprep.simg env <span class="p">|</span> grep FS_LICENSE
+<span class="nv">FS_LICENSE</span><span class="o">=</span>/home/users/oesteban/.freesurfer.txt
+</code></pre>
+       </div>
+       <p>
+        As we can see, the export in the first line tells Singularity to set a
+corresponding environment variable of the same name after dropping the
+prefix
+        <code>
+         SINGULARITYENV_
+        </code>
+        .
+       </p>
+       <h2 id="accessing-the-hosts-filesystem">
+        Accessing the host's filesystem
+        <a class="headerlink" href="#accessing-the-hosts-filesystem" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        Depending on how Singularity is configured on your cluster it might or
+might not automatically bind (mount or expose) host's folders to the
+container (e.g.,
+        <code>
+         /scratch
+        </code>
+        , or
+        <code>
+         $HOME
+        </code>
+        ). This is particularly relevant
+because,
+        <em>
+         if you can't run Singularity in privileged mode
+        </em>
+        (which is
+almost certainly true in all the scenarios),
+        <strong>
+         Singularity containers
+are read only
+        </strong>
+        . This is to say that you won't be able to write
+        <em>
+         anything
+        </em>
+        unless Singularity can access the host's filesystem in write
+mode.
+       </p>
+       <p>
+        By default, Singularity automatically binds (mounts) the user's
+        <em>
+         home
+        </em>
+        directory and a
+        <em>
+         scratch
+        </em>
+        directory. In addition, Singularity generally
+allows binding the necessary folders with the
+        <code>
+         -B &lt;host_folder&gt;:&lt;container_folder&gt;[:&lt;permissions&gt;]
+        </code>
+        Singularity
+argument. For example:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>$ singularity run --cleanenv -B /work:/work fmriprep.simg <span class="se">\</span>
+  /work/my_dataset/ /work/my_dataset/derivatives/fmriprep <span class="se">\</span>
+  participant <span class="se">\</span>
+  --participant-label <span class="m">387</span> --nthreads <span class="m">16</span> <span class="se">\</span>
+  --omp-nthreads <span class="m">16</span>
+</code></pre>
+       </div>
+       <div class="admonition warning">
+        <p class="admonition-title">
+         Warning
+        </p>
+        <p>
+         If your Singularity installation doesn't allow you to bind non-existent
+bind points, you'll get an error saying
+         <code>
+          WARNING: Skipping user bind, non existent bind point (directory) in container
+         </code>
+         .
+In this scenario, you can either try to bind things onto some other bind
+point you know it exists in the image or rebuild your singularity image
+with
+         <code>
+          docker2singularity
+         </code>
+         as follows:
+        </p>
+        <div class="highlight">
+         <pre><span></span><code>$ docker run --privileged -ti --rm -v /var/run/docker.sock:/var/run/docker.sock \
+         -v $PWD:/output singularityware/docker2singularity \
+         -m "/gpfs /scratch /work /share /lscratch /opt/templateflow"
+</code></pre>
+        </div>
+        <p>
+         In the example above, the following bind points are created:
+         <code>
+          /gpfs
+         </code>
+         ,
+         <code>
+          /scratch
+         </code>
+         ,
+         <code>
+          /work
+         </code>
+         ,
+         <code>
+          /share
+         </code>
+         ,
+         <code>
+          /opt/templateflow
+         </code>
+         .
+        </p>
+       </div>
+       <div class="admonition important">
+        <p class="admonition-title">
+         Important
+        </p>
+        <p>
+         One great feature of containers is their confinement or isolation from
+the host system. Binding mount points breaks this principle, as the
+container has now access to create changes in the host. Therefore, it is
+generally recommended to use binding scarcely and granting very limited
+access to the minimum necessary resources. In other words, it is
+preferred to bind just one subdirectory of
+         <code>
+          $HOME
+         </code>
+         than the full
+         <code>
+          $HOME
+         </code>
+         directory of the host (see
+         <a href="https://github.com/poldracklab/fmriprep/issues/1778#issuecomment-538009563">
+          poldracklab/fmriprep#1778 (comment)
+         </a>
+         ).
+        </p>
+       </div>
+       <p>
+        <strong>
+         Relevant aspects of the
+        </strong>
+        <code>
+         $HOME
+        </code>
+        <strong>
+         directory within the container
+        </strong>
+        :
+By default, Singularity will bind the user's
+        <code>
+         $HOME
+        </code>
+        directory in the
+host into the
+        <code>
+         /home/$USER
+        </code>
+        (or equivalent) in the container. Most of
+the times, it will also redefine the
+        <code>
+         $HOME
+        </code>
+        environment variable and
+update it to point to the corresponding mount point in
+        <code>
+         /home/$USER
+        </code>
+        .
+However, these defaults can be overwritten in your system. It is
+recommended to check your settings with your system's administrators.
+If your Singularity installation allows it, you can workaround the
+        <code>
+         $HOME
+        </code>
+        specification combining the bind mounts argument (
+        <code>
+         -B
+        </code>
+        ) with the
+home overwrite argument (
+        <code>
+         --home
+        </code>
+        ) as follows:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>$ singularity run -B <span class="nv">$HOME</span>:/home/fmriprep --home /home/fmriprep <span class="se">\</span>
+      --cleanenv fmriprep.simg &lt;fmriprep arguments&gt;
+</code></pre>
+       </div>
+       <h2 id="templateflow-and-singularity">
+        <em>
+         TemplateFlow
+        </em>
+        and Singularity
+        <a class="headerlink" href="#templateflow-and-singularity" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        <a href="https://www.templateflow.org">
+         <em>
+          TemplateFlow
+         </em>
+        </a>
+        is a helper tool that allows neuroimaging workflows to programmatically access a repository of standard neuroimaging templates.
+In other words,
+        <em>
+         TemplateFlow
+        </em>
+        allows
+        <em>
+         NiPreps
+        </em>
+        to dynamically change
+the templates that are used, e.g., in the atlas-based brain extraction
+step or spatial normalization.
+       </p>
+       <p>
+        Default settings in the Singularity image should get along with the
+Singularity installation of your system. However, deviations from the
+default configurations of your installation may break this
+compatibility. A particularly problematic case arises when the home
+directory is mounted in the container, but the
+        <code>
+         $HOME
+        </code>
+        environment
+variable is not correspondingly updated. Typically, you will experience
+errors like
+        <code>
+         OSError: [Errno 30] Read-only file system
+        </code>
+        or
+        <code>
+         FileNotFoundError: [Errno 2] No such file or directory: '/home/fmriprep/.cache'
+        </code>
+        .
+       </p>
+       <p>
+        If it is not explicitly forbidden in your installation, the first
+attempt to overcome this issue is manually setting the
+        <code>
+         $HOME
+        </code>
+        directory
+as follows:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>$ singularity run --home <span class="nv">$HOME</span> --cleanenv fmriprep.simg &lt;fmriprep arguments&gt;
+</code></pre>
+       </div>
+       <p>
+        If the user's home directory is not automatically bound, then the
+second step would include manually binding it as in the section above: :
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>$ singularity run -B <span class="nv">$HOME</span>:/home/fmriprep --home /home/fmriprep <span class="se">\</span>
+      --cleanenv fmriprep.simg &lt;fmriprep arguments&gt;
+</code></pre>
+       </div>
+       <p>
+        Finally, if the
+        <code>
+         --home
+        </code>
+        argument cannot be used, you'll need to
+provide the container with writable filesystems where
+        <em>
+         TemplateFlow
+        </em>
+        's
+files can be downloaded. In addition, you will need to indicate
+        <em>
+         fMRIPrep
+        </em>
+        to update the default paths with the new mount points setting
+the
+        <code>
+         SINGULARITYENV_TEMPLATEFLOW_HOME
+        </code>
+        variable. :
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><span class="c1"># Tell the NiPrep where TemplateFlow will place downloads</span>
+$ <span class="nb">export</span> <span class="nv">SINGULARITYENV_TEMPLATEFLOW_HOME</span><span class="o">=</span>/opt/templateflow
+$ singularity run -B &lt;writable-path-on-host&gt;:/opt/templateflow <span class="se">\</span>
+      --cleanenv fmriprep.simg &lt;fmriprep arguments&gt;
+</code></pre>
+       </div>
+       <h2 id="restricted-internet-access">
+        Restricted Internet access
+        <a class="headerlink" href="#restricted-internet-access" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        We have identified several conditions in which running
+        <em>
+         NiPreps
+        </em>
+        might
+fail because of spotty or impossible access to Internet.
+       </p>
+       <p>
+        If your compute node cannot have access to Internet, then you'll need
+to pull down from TemplateFlow all the resources that will be necessary
+ahead of run-time.
+       </p>
+       <p>
+        If that is not the case (i.e., you should be able to hit HTTP/s
+endpoints), then you can try the following:
+       </p>
+       <ul>
+        <li>
+         <p>
+          <code>
+           VerifiedHTTPSConnection ... Failed to establish a new connection: [Errno 110] Connection timed out
+          </code>
+          .
+  If you encounter an error like this, probably you'll need to set up an
+  http proxy exporting
+          <code>
+           SINGULARITYENV_http_proxy
+          </code>
+          (see
+          <a href="https://github.com/poldracklab/fmriprep/issues/1778#issuecomment-532297622">
+           poldracklab/fmriprep#1778 (comment)
+          </a>
+          .
+  For example:
+         </p>
+         <div class="highlight">
+          <pre><span></span><code>$ <span class="nb">export</span> <span class="nv">SINGULARITYENV_https_proxy</span><span class="o">=</span>http://&lt;ip or proxy name&gt;:&lt;port&gt;
+</code></pre>
+         </div>
+        </li>
+        <li>
+         <p>
+          <code>
+           requests.exceptions.SSLError: HTTPSConnectionPool ...
+          </code>
+          . In this case,
+  your container seems to be able to reach the Internet, but unable to use
+  SSL encription. There are two potential solutions to the issue. The
+          <a href="https://neurostars.org/t/problems-using-pediatric-template-from-templateflow/4566/17">
+           recommended one
+          </a>
+          is setting
+          <code>
+           REQUESTS_CA_BUNDLE
+          </code>
+          to the appropriate path, and/or binding
+  the appropriate filesystem:
+         </p>
+         <p>
+          <div class="highlight">
+           <pre><span></span><code>$ <span class="nb">export</span> <span class="nv">SINGULARITYENV_REQUESTS_CA_BUNDLE</span><span class="o">=</span>/etc/ssl/certs/ca-certificates.crt
+$ singularity run -B &lt;path-to-certs-folder&gt;:/etc/ssl/certs <span class="se">\</span>
+      --cleanenv fmriprep.simg &lt;fmriprep arguments&gt;
+</code></pre>
+          </div>
+          Otherwise,
+          <a href="https://neurostars.org/t/problems-using-pediatric-template-from-templateflow/4566/15">
+           some users have succeeded pre-fetching the necessary
+  templates onto the TemplateFlow directory to then bind the folder at
+  execution
+          </a>
+          :
+         </p>
+         <div class="highlight">
+          <pre><span></span><code>$ <span class="nb">export</span> <span class="nv">TEMPLATEFLOW_HOME</span><span class="o">=</span>/path/to/keep/templateflow
+$ python -m pip install -U templateflow  <span class="c1"># Install the client</span>
+$ python
+&gt;&gt;&gt; import templateflow.api
+&gt;&gt;&gt; templateflow.api.TF_S3_ROOT <span class="o">=</span> <span class="s1">'http://templateflow.s3.amazonaws.com'</span>
+&gt;&gt;&gt; api.get<span class="o">(</span>‘MNI152NLin6Asym’<span class="o">)</span>
+</code></pre>
+         </div>
+        </li>
+       </ul>
+       <p>
+        Finally, run the singularity image binding the appropriate folder:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>$ <span class="nb">export</span> <span class="nv">SINGULARITYENV_TEMPLATEFLOW_HOME</span><span class="o">=</span>/templateflow
+$ singularity run -B <span class="si">${</span><span class="nv">TEMPLATEFLOW_HOME</span><span class="k">:-</span><span class="nv">$HOME</span><span class="p">/.cache/templateflow</span><span class="si">}</span>:/templateflow <span class="se">\</span>
+      --cleanenv fmriprep.simg &lt;fmriprep arguments&gt;
+</code></pre>
+       </div>
+       <h2 id="troubleshooting">
+        Troubleshooting
+        <a class="headerlink" href="#troubleshooting" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        Setting up a functional execution framework with Singularity might be
+tricky in some HPC (high-performance computing) systems.
+Please make sure you have read the relevant
+        <a href="https://sylabs.io/docs/">
+         documentation of Singularity
+        </a>
+        , and checked all the
+defaults and configuration in your system. The next step is checking the
+environment and access to
+        <em>
+         fMRIPrep
+        </em>
+        resources, using
+        <code>
+         singularity shell
+        </code>
+        .
+       </p>
+       <ol>
+        <li>
+         <p>
+          Check access to input data folder, and BIDS validity:
+          <div class="highlight">
+           <pre><span></span><code>$ singularity shell -B path/to/data:/data fmriprep.simg
+Singularity fmriprep.simg:~&gt; ls /data
+CHANGES  README  dataset_description.json  participants.tsv  sub-01  sub-02  sub-03  sub-04  sub-05  sub-06  sub-07  sub-08  sub-09  sub-10  sub-11  sub-12  sub-13  sub-14  sub-15  sub-16  task-balloonanalogrisktask_bold.json
+Singularity fmriprep.simg:~&gt; bids-validator /data
+   <span class="m">1</span>: <span class="o">[</span>WARN<span class="o">]</span> You should define <span class="s1">'SliceTiming'</span> <span class="k">for</span> this file. If you don<span class="err">'</span>t provide this information slice <span class="nb">time</span> correction will not be possible. <span class="o">(</span>code: <span class="m">13</span> - SLICE_TIMING_NOT_DEFINED<span class="o">)</span>
+          ./sub-01/func/sub-01_task-balloonanalogrisktask_run-01_bold.nii.gz
+          ./sub-01/func/sub-01_task-balloonanalogrisktask_run-02_bold.nii.gz
+          ./sub-01/func/sub-01_task-balloonanalogrisktask_run-03_bold.nii.gz
+          ./sub-02/func/sub-02_task-balloonanalogrisktask_run-01_bold.nii.gz
+          ./sub-02/func/sub-02_task-balloonanalogrisktask_run-02_bold.nii.gz
+          ./sub-02/func/sub-02_task-balloonanalogrisktask_run-03_bold.nii.gz
+          ./sub-03/func/sub-03_task-balloonanalogrisktask_run-01_bold.nii.gz
+          ./sub-03/func/sub-03_task-balloonanalogrisktask_run-02_bold.nii.gz
+          ./sub-03/func/sub-03_task-balloonanalogrisktask_run-03_bold.nii.gz
+          ./sub-04/func/sub-04_task-balloonanalogrisktask_run-01_bold.nii.gz
+          ... and <span class="m">38</span> more files having this issue <span class="o">(</span>Use --verbose to see them all<span class="o">)</span>.
+  Please visit https://neurostars.org/search?q<span class="o">=</span>SLICE_TIMING_NOT_DEFINED <span class="k">for</span> existing conversations about this issue.
+</code></pre>
+          </div>
+         </p>
+        </li>
+        <li>
+         <p>
+          Check access to output data folder, and whether you have write
+   permissions
+          <div class="highlight">
+           <pre><span></span><code>$ singularity shell -B path/to/data/derivatives/fmriprep-1.5.0:/out fmriprep.simg
+Singularity fmriprep.simg:~&gt; ls /out
+Singularity fmriprep.simg:~&gt; touch /out/test
+Singularity fmriprep.simg:~&gt; rm /out/test
+</code></pre>
+          </div>
+         </p>
+        </li>
+        <li>
+         <p>
+          Check access and permissions to
+          <code>
+           $HOME
+          </code>
+          :
+          <div class="highlight">
+           <pre><span></span><code>$ singularity shell fmriprep.simg
+Singularity fmriprep.simg:~&gt; mkdir -p <span class="nv">$HOME</span>/.cache/testfolder
+Singularity fmriprep.simg:~&gt; rmdir <span class="nv">$HOME</span>/.cache/testfolder
+</code></pre>
+          </div>
+         </p>
+        </li>
+        <li>
+         <p>
+          Check
+          <em>
+           TemplateFlow
+          </em>
+          operation:
+          <div class="highlight">
+           <pre><span></span><code>$ singularity shell -B path/to/templateflow:/templateflow fmriprep.simg
+Singularity fmriprep.simg:~&gt; <span class="nb">echo</span> <span class="si">${</span><span class="nv">TEMPLATEFLOW_HOME</span><span class="k">:-</span><span class="nv">$HOME</span><span class="p">/.cache/templateflow</span><span class="si">}</span>
+/home/users/oesteban/.cache/templateflow
+Singularity fmriprep.simg:~&gt; python -c <span class="s2">"from templateflow.api import get; get(['MNI152NLin2009cAsym', 'MNI152NLin6Asym', 'OASIS30ANTs', 'MNIPediatricAsym', 'MNIInfant'])"</span>
+   Downloading https://templateflow.s3.amazonaws.com/tpl-MNI152NLin6Asym/tpl-MNI152NLin6Asym_res-01_atlas-HOCPA_desc-th0_dseg.nii.gz
+   304B <span class="o">[</span><span class="m">00</span>:00, <span class="m">1</span>.28kB/s<span class="o">]</span>
+   Downloading https://templateflow.s3.amazonaws.com/tpl-MNI152NLin6Asym/tpl-MNI152NLin6Asym_res-01_atlas-HOCPA_desc-th25_dseg.nii.gz
+   261B <span class="o">[</span><span class="m">00</span>:00, <span class="m">1</span>.04kB/s<span class="o">]</span>
+   Downloading https://templateflow.s3.amazonaws.com/tpl-MNI152NLin6Asym/tpl-MNI152NLin6Asym_res-01_atlas-HOCPA_desc-th50_dseg.nii.gz
+   219B <span class="o">[</span><span class="m">00</span>:00, 867B/s<span class="o">]</span>
+   ...
+</code></pre>
+          </div>
+         </p>
+        </li>
+       </ol>
+       <h2 id="running-singularity-on-a-slurm-system">
+        Running Singularity on a SLURM system
+        <a class="headerlink" href="#running-singularity-on-a-slurm-system" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        An example of
+        <code>
+         sbatch
+        </code>
+        script to run
+        <em>
+         fMRIPrep
+        </em>
+        on a SLURM system
+        <sup id="fnref:1">
+         <a class="footnote-ref" href="#fn:1">
+          1
+         </a>
+        </sup>
+        is
+given
+        <a href="singularity.html#sbatch-slurm">
+         below
+        </a>
+        . The submission script will
+generate one task per subject using a
+        <em>
+         job array
+        </em>
+        . Submission is as easy
+as:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>$ <span class="nb">export</span> <span class="nv">STUDY</span><span class="o">=</span>/path/to/some/folder
+$ sbatch --array<span class="o">=</span><span class="m">1</span>-<span class="k">$((</span> <span class="k">$(</span> wc -l <span class="nv">$STUDY</span>/data/participants.tsv <span class="p">|</span> cut -f1 -d<span class="s1">' '</span> <span class="k">)</span> <span class="o">-</span> <span class="m">1</span> <span class="k">))</span> sbatch.slurm
+</code></pre>
+       </div>
+       <div class="footnote">
+        <hr/>
+        <ol>
+         <li id="fn:1">
+          <p>
+           assuming that
+           <em>
+            job arrays
+           </em>
+           and Singularity are available
+           <a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">
+            ↩
+           </a>
+          </p>
+         </li>
+        </ol>
+       </div>
+      </article>
+     </div>
+    </div>
+   </main>
+   <footer class="md-footer">
+    <div class="md-footer-nav">
+     <nav aria-label="Footer" class="md-footer-nav__inner md-grid">
+      <a class="md-footer-nav__link md-footer-nav__link--prev" href="../docker/" rel="prev" title="Executing with Docker">
+       <div class="md-footer-nav__button md-icon">
+        <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z">
+         </path>
+        </svg>
+       </div>
+       <div class="md-footer-nav__title">
+        <div class="md-ellipsis">
+         <span class="md-footer-nav__direction">
+          Previous
+         </span>
+         Executing with Docker
+        </div>
+       </div>
+      </a>
+      <a class="md-footer-nav__link md-footer-nav__link--next" href="../../devs/guidelines/" rel="next" title="Contributing Guidelines">
+       <div class="md-footer-nav__title">
+        <div class="md-ellipsis">
+         <span class="md-footer-nav__direction">
+          Next
+         </span>
+         Contributing Guidelines
+        </div>
+       </div>
+       <div class="md-footer-nav__button md-icon">
+        <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z">
+         </path>
+        </svg>
+       </div>
+      </a>
+     </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+     <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+       <div class="md-footer-copyright__highlight">
+        Copyright © 2020
+       </div>
+       Made with
+       <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+        Material for MkDocs
+       </a>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script src="../../assets/javascripts/vendor.d710d30a.min.js">
+  </script>
+  <script src="../../assets/javascripts/bundle.5f27aba8.min.js">
+  </script>
+  <script id="__lang" type="application/json">
+   {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}
+  </script>
+  <script>
+   app = initialize({
+          base: "../..",
+          features: ["tabs"],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.27c6a5e6.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+  </script>
+ </body>
+</html>

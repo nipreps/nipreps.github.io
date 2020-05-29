@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="Augmenting neuroimaging acquisition devices to produce analysis-grade data" name="description"/>
+  <link href="https://www.nipreps.org/apps/framework/" rel="canonical"/>
+  <meta content="The NiPreps developers" name="author"/>
+  <link href="../../assets/images/favicon.png" rel="shortcut icon"/>
+  <meta content="mkdocs-1.1.2, mkdocs-material-5.2.2" name="generator"/>
+  <title>
+   Framework - NiPreps
+  </title>
+  <link href="../../assets/stylesheets/main.a2408e81.min.css" rel="stylesheet"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+  <style>
+   body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}
+  </style>
+ </head>
+ <body dir="ltr">
+  <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+  <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+  <label class="md-overlay" for="__drawer">
+  </label>
+  <div data-md-component="skip">
+   <a class="md-skip" href="#what-is-bids">
+    Skip to content
+   </a>
+  </div>
+  <div data-md-component="announce">
+  </div>
+  <header class="md-header" data-md-component="header">
+   <nav aria-label="Header" class="md-header-nav md-grid">
+    <a aria-label="NiPreps" class="md-header-nav__button md-logo" href="https://www.nipreps.org" title="NiPreps">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z">
+      </path>
+     </svg>
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z">
+      </path>
+     </svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+     <div class="md-header-nav__ellipsis">
+      <span class="md-header-nav__topic md-ellipsis">
+       NiPreps
+      </span>
+      <span class="md-header-nav__topic md-ellipsis">
+       Framework
+      </span>
+     </div>
+    </div>
+   </nav>
+  </header>
+  <div class="md-container" data-md-component="container">
+   <nav aria-label="Tabs" class="md-tabs md-tabs--active" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+     <ul class="md-tabs__list">
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="../..">
+        Home
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link md-tabs__link--active" href="./">
+        BIDS-Apps
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="../../devs/guidelines/">
+        Developers
+       </a>
+      </li>
+     </ul>
+    </div>
+   </nav>
+   <main class="md-main" data-md-component="main">
+    <div class="md-main__inner md-grid">
+     <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+         <label class="md-nav__title" for="__drawer">
+          <a aria-label="NiPreps" class="md-nav__button md-logo" href="https://www.nipreps.org" title="NiPreps">
+           <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z">
+            </path>
+           </svg>
+          </a>
+          NiPreps
+         </label>
+         <ul class="md-nav__list" data-md-scrollfix="">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../.." title="Home">
+            Home
+           </a>
+          </li>
+          <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+           <input checked="" class="md-nav__toggle md-toggle" data-md-toggle="nav-2" id="nav-2" type="checkbox"/>
+           <label class="md-nav__link" for="nav-2">
+            BIDS-Apps
+            <span class="md-nav__icon md-icon">
+             <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z">
+              </path>
+             </svg>
+            </span>
+           </label>
+           <nav aria-label="BIDS-Apps" class="md-nav" data-md-level="1">
+            <label class="md-nav__title" for="nav-2">
+             <span class="md-nav__icon md-icon">
+              <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+               <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z">
+               </path>
+              </svg>
+             </span>
+             BIDS-Apps
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix="">
+             <li class="md-nav__item md-nav__item--active">
+              <input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+              <label class="md-nav__link md-nav__link--active" for="__toc">
+               Framework
+               <span class="md-nav__icon md-icon">
+                <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                 <path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z">
+                 </path>
+                </svg>
+               </span>
+              </label>
+              <a class="md-nav__link md-nav__link--active" href="./" title="Framework">
+               Framework
+              </a>
+              <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+               <label class="md-nav__title" for="__toc">
+                <span class="md-nav__icon md-icon">
+                 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z">
+                  </path>
+                 </svg>
+                </span>
+                Table of contents
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#what-is-bids">
+                  What is BIDS?
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#what-is-a-bids-app">
+                  What is a BIDS App?
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#analysis-levels">
+                  Analysis levels
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#a-unified-command-line-interface">
+                  A unified command-line interface
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../docker/" title="Executing with Docker">
+               Executing with Docker
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../singularity/" title="Executing with Singularity">
+               Executing with Singularity
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+          <li class="md-nav__item md-nav__item--nested">
+           <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" id="nav-3" type="checkbox"/>
+           <label class="md-nav__link" for="nav-3">
+            Developers
+            <span class="md-nav__icon md-icon">
+             <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z">
+              </path>
+             </svg>
+            </span>
+           </label>
+           <nav aria-label="Developers" class="md-nav" data-md-level="1">
+            <label class="md-nav__title" for="nav-3">
+             <span class="md-nav__icon md-icon">
+              <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+               <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z">
+               </path>
+              </svg>
+             </span>
+             Developers
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix="">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../devs/guidelines/" title="Contributing Guidelines">
+               Contributing Guidelines
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../devs/versions/" title="Versions Matrix">
+               Versions Matrix
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../devs/releases/" title="Releases">
+               Releases
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+         <label class="md-nav__title" for="__toc">
+          <span class="md-nav__icon md-icon">
+           <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z">
+            </path>
+           </svg>
+          </span>
+          Table of contents
+         </label>
+         <ul class="md-nav__list" data-md-scrollfix="">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#what-is-bids">
+            What is BIDS?
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#what-is-a-bids-app">
+            What is a BIDS App?
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#analysis-levels">
+            Analysis levels
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#a-unified-command-line-interface">
+            A unified command-line interface
+           </a>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-content">
+      <article class="md-content__inner md-typeset">
+       <h1>
+        Framework
+       </h1>
+       <h2 id="what-is-bids">
+        What is BIDS?
+        <a class="headerlink" href="#what-is-bids" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        <a href="https://bids.neuroimaging.io/">
+         The Brain Imaging Data Structure (BIDS)
+        </a>
+        is a standard for organizing and describing
+brain datasets, including MRI.
+The common naming convention and folder structure allow researchers to easily reuse BIDS datasets, re-apply analysis protocols, and run standardized automatic data preprocessing pipelines (and particularly, BIDS Apps).
+The
+        <a href="https://github.com/bids-standard/bids-starter-kit">
+         BIDS starter-kit
+        </a>
+        contains a wide collection of educational resources.
+Validity of the structure can be assessed with the online
+        <a href="https://bids-standard.github.io/bidsvalidator/">
+         BIDS-Validator
+        </a>
+        .
+The tree of a typical, valid (
+        <em>
+         BIDS-compliant
+        </em>
+        ) dataset is shown below:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>ds000003/
+ ├─ CHANGES
+ ├─ dataset_description.json
+ ├─ participants.tsv
+ ├─ README
+ ├─ sub-01/
+ │ ├─ anat/
+ │ │ ├─ sub-01_inplaneT2.nii.gz
+ │ │ └─ sub-01_T1w.nii.gz
+ │ └─ func/
+ │ ├─ sub-01_task-rhymejudgment_bold.nii.gz
+ │ └─ sub-01_task-rhymejudgment_events.tsv
+ ├─ sub-02/
+ ├─ sub-03/
+</code></pre>
+       </div>
+       <h2 id="what-is-a-bids-app">
+        What is a BIDS App?
+        <a class="headerlink" href="#what-is-a-bids-app" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        (Taken from the
+        <a href="https://doi.org/10.1371/journal.pcbi.1005209">
+         BIDS Apps paper
+        </a>
+        )
+       </p>
+       <p>
+        A BIDS App is a container image capturing a neuroimaging pipeline that takes a BIDS-formatted dataset as input.
+Since the input is a whole dataset, apps are able to combine multiple modalities, sessions, and/or subjects, but at the same time need to implement ways to query input datasets.
+Each BIDS App has the same core set of command-line arguments, making them easy to run and integrate into automated platforms.
+BIDS Apps are constructed in a way that does not depend on any software outside of the container image other than the container engine.
+       </p>
+       <p>
+        BIDS Apps rely upon two technologies for container computing:
+       </p>
+       <ol>
+        <li>
+         <a href="https://docker.com">
+          Docker
+         </a>
+         — for building, hosting as well as running containers on local hardware (running Windows, Mac OS X or Linux) or in the cloud.
+        </li>
+        <li>
+         <a href="https://sylabs.io/singularity/">
+          Singularity
+         </a>
+         — for running containers on HPCs (high-performance computing).
+        </li>
+       </ol>
+       <p>
+        BIDS Apps are deposited in the
+        <a href="http://hub.docker.com">
+         Docker Hub
+        </a>
+        repository, making them openly accessible. Each app is versioned and all of the historical versions are available to download. By reporting the BIDS App name and version in a manuscript, authors can provide others with the ability to exactly replicate their analysis workflow.
+       </p>
+       <p>
+        Docker is used for its excellent documentation, maturity, and the Docker Hub service for storage and distribution of the images.
+Docker containers are easily run on personal computers and cloud services.
+However, the
+        <a href="https://www.docker.com/products/container-runtime">
+         Docker Runtime
+        </a>
+        was originally designed to run different components of web services (HTTP servers, databases etc.) using cloud resources.
+Docker thus requires root or root-like permissions, as well as modern versions of Linux kernel (to perform user mapping and management of network resources); though this is not a problem in context of renting cloud resources (which are not shared with other users), it makes it difficult or impossible to use in a multi-tenant environment such as an HPC system, which is often the most cost-effective computational resource available to researchers.
+       </p>
+       <p>
+        Singularity, on the other hand, is a unique container technology designed from the ground up with the encapsulation of binary dependencies and HPC use in mind.
+Its main advantage over Docker is that it does not require root access for container execution and thus is safe to use on multi-tenant systems.
+In addition, it does not require recent Linux kernel functionalities (such as namespaces, cgroups and capabilities), making it easy to install on legacy systems.
+       </p>
+       <h2 id="analysis-levels">
+        Analysis levels
+        <a class="headerlink" href="#analysis-levels" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        BIDS Apps decouple the individual level analysis (processing of independent subjects) from group-level analyses aggregating participants.
+For the analysis of individual subjects, Apps need to understand the BIDS structure of the input dataset, so that the required inputs for the designated subject are found.
+Apps are designed to easily process derivatives generated by the participant-level or other Apps.
+The overall workflow has an entry-point and an end-point responsible of setting-up the map-reduce tasks and the tear-down including organizing the outputs for its archiving, respectively.
+Each App may implement multiple map and reduce steps.
+       </p>
+       <p>
+        <img alt="Apps" src="../../assets/journal.pcbi.1005209.g002.png"/>
+       </p>
+       <h2 id="a-unified-command-line-interface">
+        A unified command-line interface
+        <a class="headerlink" href="#a-unified-command-line-interface" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        To improve user experience and ability to integrate BIDS Apps into various computational platforms, each App follows a set of core command-line arguments:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>$ &lt;entrypoint&gt; &lt;bids_dataset&gt; &lt;output_path&gt; &lt;analysis_level&gt;
+</code></pre>
+       </div>
+       <p>
+        For instance, to run
+        <em>
+         fMRIPrep
+        </em>
+        on a dataset located in
+        <code>
+         /data/bids_root
+        </code>
+        and write the outputs to
+        <code>
+         /data/bids_root/derivatives/
+        </code>
+        :
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>$ fmriprep /data/bids_root /data/bids_root/derivatives/ participant
+</code></pre>
+       </div>
+       <p>
+        In this case, we have selected to run the
+        <code>
+         participant
+        </code>
+        level (to process individual subjects).
+        <em>
+         fMRIPrep
+        </em>
+        does not have a
+        <code>
+         group
+        </code>
+        level, but other BIDS Apps may have.
+For instance,
+        <em>
+         MRIQC
+        </em>
+        generates group-level reports with the following command-line:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>$ mriqc /data/bids_root /data/bids_root/derivatives/ group
+</code></pre>
+       </div>
+      </article>
+     </div>
+    </div>
+   </main>
+   <footer class="md-footer">
+    <div class="md-footer-nav">
+     <nav aria-label="Footer" class="md-footer-nav__inner md-grid">
+      <a class="md-footer-nav__link md-footer-nav__link--prev" href="../.." rel="prev" title="Home">
+       <div class="md-footer-nav__button md-icon">
+        <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z">
+         </path>
+        </svg>
+       </div>
+       <div class="md-footer-nav__title">
+        <div class="md-ellipsis">
+         <span class="md-footer-nav__direction">
+          Previous
+         </span>
+         Home
+        </div>
+       </div>
+      </a>
+      <a class="md-footer-nav__link md-footer-nav__link--next" href="../docker/" rel="next" title="Executing with Docker">
+       <div class="md-footer-nav__title">
+        <div class="md-ellipsis">
+         <span class="md-footer-nav__direction">
+          Next
+         </span>
+         Executing with Docker
+        </div>
+       </div>
+       <div class="md-footer-nav__button md-icon">
+        <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z">
+         </path>
+        </svg>
+       </div>
+      </a>
+     </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+     <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+       <div class="md-footer-copyright__highlight">
+        Copyright © 2020
+       </div>
+       Made with
+       <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+        Material for MkDocs
+       </a>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script src="../../assets/javascripts/vendor.d710d30a.min.js">
+  </script>
+  <script src="../../assets/javascripts/bundle.5f27aba8.min.js">
+  </script>
+  <script id="__lang" type="application/json">
+   {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}
+  </script>
+  <script>
+   app = initialize({
+          base: "../..",
+          features: ["tabs"],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.27c6a5e6.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+  </script>
+ </body>
+</html>

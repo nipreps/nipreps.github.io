@@ -66,6 +66,11 @@
        </a>
       </li>
       <li class="md-tabs__item">
+       <a class="md-tabs__link" href="../../apps/framework/">
+        BIDS-Apps
+       </a>
+      </li>
+      <li class="md-tabs__item">
        <a class="md-tabs__link md-tabs__link--active" href="../guidelines/">
         Developers
        </a>
@@ -94,9 +99,49 @@
             Home
            </a>
           </li>
-          <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-           <input checked="" class="md-nav__toggle md-toggle" data-md-toggle="nav-2" id="nav-2" type="checkbox"/>
+          <li class="md-nav__item md-nav__item--nested">
+           <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" id="nav-2" type="checkbox"/>
            <label class="md-nav__link" for="nav-2">
+            BIDS-Apps
+            <span class="md-nav__icon md-icon">
+             <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z">
+              </path>
+             </svg>
+            </span>
+           </label>
+           <nav aria-label="BIDS-Apps" class="md-nav" data-md-level="1">
+            <label class="md-nav__title" for="nav-2">
+             <span class="md-nav__icon md-icon">
+              <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+               <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z">
+               </path>
+              </svg>
+             </span>
+             BIDS-Apps
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix="">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../apps/framework/" title="Framework">
+               Framework
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../apps/docker/" title="Executing with Docker">
+               Executing with Docker
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../apps/singularity/" title="Executing with Singularity">
+               Executing with Singularity
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+          <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+           <input checked="" class="md-nav__toggle md-toggle" data-md-toggle="nav-3" id="nav-3" type="checkbox"/>
+           <label class="md-nav__link" for="nav-3">
             Developers
             <span class="md-nav__icon md-icon">
              <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -106,7 +151,7 @@
             </span>
            </label>
            <nav aria-label="Developers" class="md-nav" data-md-level="1">
-            <label class="md-nav__title" for="nav-2">
+            <label class="md-nav__title" for="nav-3">
              <span class="md-nav__icon md-icon">
               <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z">
@@ -361,13 +406,11 @@ This conversation started as a
         </a>
        </h3>
        <p>
-        Patch releases are considered bug-fix releases. Each minor release triggers the creation of a new maint/
-        <yy>
-         .
-         <minor>
-          .x branch, and changes targeting a bug-fix release should target this branch. A "minor release series" is the initial feature release and the bug-fix releases that share the minor release prefix. Bug-fix releases may be released on minimal notice to other developers.
-         </minor>
-        </yy>
+        Patch releases are considered bug-fix releases. Each minor release triggers the creation of a new
+        <code>
+         maint/&lt;YY&gt;.&lt;MINOR&gt;.x
+        </code>
+        branch, and changes targeting a bug-fix release should target this branch. A "minor release series" is the initial feature release and the bug-fix releases that share the minor release prefix. Bug-fix releases may be released on minimal notice to other developers.
        </p>
        <p>
         These releases must satisfy four conditions:
@@ -399,11 +442,21 @@ This conversation started as a
        </p>
        <p>
         Additional acceptable changes within a minor release series:
-1. Improved tests. These often come along with bug fixes, but they can be free-standing improvements to the code base.
-1. Improved documentation. Unless the documentation is of a feature that will not be present in a bug-fix release, this is always welcome.
-1. Updates to the Dockerfile that improve operation for Docker and/or Singularity users, but do not risk behavior change. A good example is including more templates to reduce the need for network requests. An example of an update to the Dockerfile that forces a minor release increment is a change in the pinned version of any of the dependencies or the base container image.
-1. Improvements to the fmriprep-docker wrapper. As long as a command-line invocation that worked for the previous version continues to work and produce the same Docker command, there's little chance of harm.
        </p>
+       <ol>
+        <li>
+         Improved tests. These often come along with bug fixes, but they can be free-standing improvements to the code base.
+        </li>
+        <li>
+         Improved documentation. Unless the documentation is of a feature that will not be present in a bug-fix release, this is always welcome.
+        </li>
+        <li>
+         Updates to the Dockerfile that improve operation for Docker and/or Singularity users, but do not risk behavior change. A good example is including more templates to reduce the need for network requests. An example of an update to the Dockerfile that forces a minor release increment is a change in the pinned version of any of the dependencies or the base container image.
+        </li>
+        <li>
+         Improvements to the fmriprep-docker wrapper. As long as a command-line invocation that worked for the previous version continues to work and produce the same Docker command, there's little chance of harm.
+        </li>
+       </ol>
        <h2 id="mechanics">
         Mechanics
         <a class="headerlink" href="#mechanics" title="Permanent link">
@@ -418,12 +471,12 @@ This conversation started as a
        </h3>
        <p>
         A maintenance branch should generally follow directly from the tag of the feature release.
-       </p>
-       <div class="codehilite">
-        <pre><span></span><code><span class="err">git checkout -b maint/20.0.x 20.0.0</span>
-<span class="err">git push upstream maint/20.0.x</span>
+        <div class="highlight">
+         <pre><span></span><code>git checkout -b maint/20.0.x 20.0.0
+git push upstream maint/20.0.x
 </code></pre>
-       </div>
+        </div>
+       </p>
        <p>
         It is expected that
         <code>
@@ -450,22 +503,22 @@ This conversation started as a
          20.0.1
         </code>
         release:
-       </p>
-       <div class="codehilite">
-        <pre><span></span><code><span class="n">git</span> <span class="n">checkout</span> <span class="n">master</span>
-<span class="n">git</span> <span class="k">fetch</span> <span class="n">upstream</span>
-<span class="n">git</span> <span class="k">reset</span> <span class="c1">--hard upstream/master</span>
-<span class="n">git</span> <span class="n">merge</span> <span class="c1">--no-commit 20.0.1</span>
+        <div class="highlight">
+         <pre><span></span><code>git checkout master
+git fetch upstream
+git reset --hard upstream/master
+git merge --no-commit 20.0.1
 
-<span class="o">#</span> <span class="n">Resolve</span> <span class="k">any</span> <span class="n">merge</span> <span class="n">conflicts</span>
-<span class="n">git</span> <span class="k">add</span> <span class="p">.</span>
+# Resolve any merge conflicts
+git add .
 
-<span class="o">#</span> <span class="n">Manually</span> <span class="n">review</span> <span class="k">all</span> <span class="n">changes</span> <span class="k">to</span> <span class="n">ensure</span> <span class="n">compatibility</span>
-<span class="n">git</span> <span class="n">diff</span> <span class="c1">--cached upstream/master</span>
-<span class="n">git</span> <span class="k">commit</span>
-<span class="n">git</span> <span class="n">push</span> <span class="n">upstream</span> <span class="n">master</span>
+# Manually review all changes to ensure compatibility
+git diff --cached upstream/master
+git commit
+git push upstream master
 </code></pre>
-       </div>
+        </div>
+       </p>
        <p>
         If an unreleased bug-fix seems likely to cause merge conflicts, it may be worth doing the above more frequently.
        </p>
@@ -514,13 +567,13 @@ At the time of an
         </a>
         :
        </p>
-       <div class="codehilite">
-        <pre><span></span><code><span class="err">    niworkflows ~= 1.1.7</span>
-<span class="err">    sdcflows ~= 1.2.0</span>
-<span class="err">    smriprep ~= 0.5.2</span>
-</code></pre>
-       </div>
        <p>
+        <div class="highlight">
+         <pre><span></span><code>    niworkflows ~= 1.1.7
+    sdcflows ~= 1.2.0
+    smriprep ~= 0.5.2
+</code></pre>
+        </div>
         <code>
          ~=
         </code>
