@@ -81,6 +81,46 @@ For instance, *MRIQC* generates group-level reports with the following command-l
 $ mriqc /data/bids_root /data/bids_root/derivatives/ group
 ```
 
+## What are *BIDS Derivatives*?
+
+*NiPreps* generate *derivatives* of the original data, and they fulfill the BIDS specification for the results of Apps that are created for subsequent consumption by other BIDS-Apps.
+These derivatives must follow the BIDS Derivatives specification ([draft](https://bids-specification.readthedocs.io/en/derivatives/)).
+An example of BIDS Derivatives filesystem tree, generated with *fMRIPrep* 1.5:
+```
+derivatives/
+├── fmriprep/
+│ ├── dataset_description.json
+│ ├── logs
+│ ├── sub-01.html
+│ ├── sub-01/
+│ │ ├── anat/
+│ │ │ ├── sub-01_desc-brain_mask.nii.gz
+│ │ │ ├── sub-01_dseg.nii.gz
+│ │ │ ├── sub-01_label-GM_probseg.nii.gz
+│ │ │ ├── sub-01_label-WM_probseg.nii.gz
+│ │ │ ├── sub-01_label-CSF_probseg.nii.gz
+│ │ │ ├── sub-01_desc-preproc_T1w.nii.gz
+│ │ │ ├── sub-01_space-MNI152_desc-brain_mask.nii.gz
+│ │ │ ├── sub-01_space-MNI152_dseg.nii.gz
+│ │ │ ├── sub-01_space-MNI152_label-GM_probseg.nii.gz
+│ │ │ ├── sub-01_space-MNI152_label-WM_probseg.nii.gz
+│ │ │ ├── sub-01_space-MNI152_label-CSF_probseg.nii.gz
+│ │ │ ├── sub-01_space-MNI152_desc-preproc_T1w.nii.gz
+│ │ │ ├── sub-01_from-MNI152_to-T1w_mode-image_xfm.h5
+│ │ │ ├── sub-01_from-T1w_to-MNI152_mode-image_xfm.h5
+│ │ │ └── sub-01_from-orig_to-T1w_mode-image_xfm.txt
+│ │ ├── figures/
+│ │ └── func/
+│ │ ├── sub-01_task-rhymejudgment_space-MNI152_boldref.nii.gz
+│ │ ├── sub-01_task-rhymejudgment_space-MNI152_desc-preproc_bold.nii.gz
+│ │ ├── sub-01_task-rhymejudgment_space-MNI152_desc-confounds_regressors.nii.gz
+│ │ └── sub-01_task-rhymejudgment_space-MNI152_desc-brain_mask.nii.gz
+│ ├── sub-02.html
+│ ├── sub-02/
+│ ├── sub-03.html
+│ └── sub-03/
+```
+
 [bids]: https://bids.neuroimaging.io/
 [bidsapps_paper]: https://doi.org/10.1371/journal.pcbi.1005209
 [Singularity]: https://sylabs.io/singularity/

@@ -35,6 +35,9 @@ markdown_extensions:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
   - pymdownx.superfences
+  - pymdownx.snippets
+  - markdown_include.include:
+      base_path: docs
 
 plugins:
   - toc-sidebar

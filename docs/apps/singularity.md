@@ -342,13 +342,17 @@ environment and access to *fMRIPrep* resources, using
 ## Running Singularity on a SLURM system
 
 An example of `sbatch` script to run *fMRIPrep* on a SLURM system[^1] is
-given [below](singularity.html#sbatch-slurm). The submission script will
-generate one task per subject using a *job array*. Submission is as easy
-as:
+given below. The submission script will
+generate one task per subject using a *job array*.
+```Shell
+{!assets/fmriprep.slurm!}
+```
+Submission is then as easy as:
 
 ```Shell
 $ export STUDY=/path/to/some/folder
-$ sbatch --array=1-$(( $( wc -l $STUDY/data/participants.tsv | cut -f1 -d' ' ) - 1 )) sbatch.slurm
+$ sbatch --array=1-$(( $( wc -l $STUDY/data/participants.tsv | cut -f1 -d' ' ) - 1 )) fmriprep.slurm
 ```
+
 
 [^1]: assuming that *job arrays* and Singularity are available

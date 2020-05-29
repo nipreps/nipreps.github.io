@@ -1,5 +1,5 @@
 
-As of January 2020, *fMRIPrep* has adopted a Calendar Versioning scheme, and with it we are attempting to apply more coherent semantic rules to our releases.
+As of January 2020, *fMRIPrep* has adopted a [Calendar Versioning](https://calver.org) scheme, and with it we are attempting to apply more coherent semantic rules to our releases.
 
 !!! warning "Note"
 	This document is a draft for internal and external comment. Any commitments expressed here are proposals, and should not be relied upon at this time.
@@ -16,19 +16,19 @@ Patch releases are considered bug-fix releases. Each minor release triggers the 
 
 These releases must satisfy four conditions:
 
-1. Resolving one or more bugs. These mostly include failures of *fMRIPrep* to complete or producing invalid derivatives (e.g., a NIfTI file of all zeroes).
-1. Derivatives compatibility. If a subject may be successfully run on 20.0.n, then the imaging derivatives should be identical if rerun with 20.0.(n+1), modulo rounding errors and the effects of nondeterministic algorithms. The changes between successful runs of 20.0.n and 20.0.(n+1) should not be larger than the changes between two successful runs of 20.0.n. Cosmetic changes to reports are acceptable, while differing fields of view or data types in a NIfTI file would not be.
-1. API compatibility. Workflow-generating functions, workflow input- and outputnode fields must not change. As an end-user application, this may seem overly strict, but the odds of introducing a bug are much higher in these cases.
-1. User interface compatibility. Substantial changes to *fMRIPrep* command line must not happen (e.g., the addition of a new, relevant flag).
+1. **Resolving one or more bugs.** These mostly include failures of *fMRIPrep* to complete or producing invalid derivatives (e.g., a NIfTI file of all zeroes).
+1. **Derivatives compatibility.** If a subject may be successfully run on 20.0.n, then the imaging derivatives should be identical if rerun with 20.0.(n+1), modulo rounding errors and the effects of nondeterministic algorithms. The changes between successful runs of 20.0.n and 20.0.(n+1) should not be larger than the changes between two successful runs of 20.0.n. Cosmetic changes to reports are acceptable, while differing fields of view or data types in a NIfTI file would not be.
+1. **API compatibility.** Workflow-generating functions, workflow input- and outputnode fields must not change. As an end-user application, this may seem overly strict, but the odds of introducing a bug are much higher in these cases.
+1. **User interface compatibility.** Substantial changes to *fMRIPrep* command line must not happen (e.g., the addition of a new, relevant flag).
 
 Note that not all bugs can be fixed in a way that satisfies all three of these criteria without significant effort. A developer may determine that the bug will be fixed in the next feature release.
 
 Additional acceptable changes within a minor release series:
 
-1. Improved tests. These often come along with bug fixes, but they can be free-standing improvements to the code base.
-1. Improved documentation. Unless the documentation is of a feature that will not be present in a bug-fix release, this is always welcome.
-1. Updates to the Dockerfile that improve operation for Docker and/or Singularity users, but do not risk behavior change. A good example is including more templates to reduce the need for network requests. An example of an update to the Dockerfile that forces a minor release increment is a change in the pinned version of any of the dependencies or the base container image.
-1. Improvements to the fmriprep-docker wrapper. As long as a command-line invocation that worked for the previous version continues to work and produce the same Docker command, there's little chance of harm.
+1. **Improved tests.** These often come along with bug fixes, but they can be free-standing improvements to the code base.
+1. **Improved documentation.** Unless the documentation is of a feature that will not be present in a bug-fix release, this is always welcome.
+1. **Updates to the Dockerfile** that improve operation for Docker and/or Singularity users, but do not risk behavior change. A good example is including more templates to reduce the need for network requests. An example of an update to the Dockerfile that forces a minor release increment is a change in the pinned version of any of the dependencies or the base container image.
+1. **Improvements to the *lightweight wrappers*.** As long as a command-line invocation that worked for the previous version continues to work and produce the same Docker command, there's little chance of harm.
 
 ## Mechanics
 
