@@ -24,7 +24,7 @@
   <label class="md-overlay" for="__drawer">
   </label>
   <div data-md-component="skip">
-   <a class="md-skip" href="#projects">
+   <a class="md-skip" href="#neuroimaging-preprocessing-tools-nipreps">
     Skip to content
    </a>
   </div>
@@ -66,6 +66,11 @@
        </a>
       </li>
       <li class="md-tabs__item">
+       <a class="md-tabs__link" href="intro/nipreps/">
+        NiPreps
+       </a>
+      </li>
+      <li class="md-tabs__item">
        <a class="md-tabs__link" href="apps/framework/">
         BIDS-Apps
        </a>
@@ -96,45 +101,43 @@
          <ul class="md-nav__list" data-md-scrollfix="">
           <li class="md-nav__item md-nav__item--active">
            <input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
-           <label class="md-nav__link md-nav__link--active" for="__toc">
+           <a class="md-nav__link md-nav__link--active" href="." title="Home">
             Home
+           </a>
+          </li>
+          <li class="md-nav__item md-nav__item--nested">
+           <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" id="nav-2" type="checkbox"/>
+           <label class="md-nav__link" for="nav-2">
+            NiPreps
             <span class="md-nav__icon md-icon">
              <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z">
+              <path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z">
               </path>
              </svg>
             </span>
            </label>
-           <a class="md-nav__link md-nav__link--active" href="." title="Home">
-            Home
-           </a>
-           <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-            <label class="md-nav__title" for="__toc">
+           <nav aria-label="NiPreps" class="md-nav" data-md-level="1">
+            <label class="md-nav__title" for="nav-2">
              <span class="md-nav__icon md-icon">
               <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z">
                </path>
               </svg>
              </span>
-             Table of contents
+             NiPreps
             </label>
             <ul class="md-nav__list" data-md-scrollfix="">
              <li class="md-nav__item">
-              <a class="md-nav__link" href="#projects">
-               Projects
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="#overview-of-the-framework">
-               Overview of the framework
+              <a class="md-nav__link" href="intro/nipreps/" title="Framework">
+               Framework
               </a>
              </li>
             </ul>
            </nav>
           </li>
           <li class="md-nav__item md-nav__item--nested">
-           <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" id="nav-2" type="checkbox"/>
-           <label class="md-nav__link" for="nav-2">
+           <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" id="nav-3" type="checkbox"/>
+           <label class="md-nav__link" for="nav-3">
             BIDS-Apps
             <span class="md-nav__icon md-icon">
              <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -144,7 +147,7 @@
             </span>
            </label>
            <nav aria-label="BIDS-Apps" class="md-nav" data-md-level="1">
-            <label class="md-nav__title" for="nav-2">
+            <label class="md-nav__title" for="nav-3">
              <span class="md-nav__icon md-icon">
               <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z">
@@ -155,8 +158,8 @@
             </label>
             <ul class="md-nav__list" data-md-scrollfix="">
              <li class="md-nav__item">
-              <a class="md-nav__link" href="apps/framework/" title="Framework">
-               Framework
+              <a class="md-nav__link" href="apps/framework/" title="Introduction">
+               Introduction
               </a>
              </li>
              <li class="md-nav__item">
@@ -173,8 +176,8 @@
            </nav>
           </li>
           <li class="md-nav__item md-nav__item--nested">
-           <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" id="nav-3" type="checkbox"/>
-           <label class="md-nav__link" for="nav-3">
+           <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" id="nav-4" type="checkbox"/>
+           <label class="md-nav__link" for="nav-4">
             Developers
             <span class="md-nav__icon md-icon">
              <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -184,7 +187,7 @@
             </span>
            </label>
            <nav aria-label="Developers" class="md-nav" data-md-level="1">
-            <label class="md-nav__title" for="nav-3">
+            <label class="md-nav__title" for="nav-4">
              <span class="md-nav__icon md-icon">
               <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z">
@@ -221,239 +224,66 @@
       <div class="md-sidebar__scrollwrap">
        <div class="md-sidebar__inner">
         <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-         <label class="md-nav__title" for="__toc">
-          <span class="md-nav__icon md-icon">
-           <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z">
-            </path>
-           </svg>
-          </span>
-          Table of contents
-         </label>
-         <ul class="md-nav__list" data-md-scrollfix="">
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="#projects">
-            Projects
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="#overview-of-the-framework">
-            Overview of the framework
-           </a>
-          </li>
-         </ul>
         </nav>
        </div>
       </div>
      </div>
      <div class="md-content">
       <article class="md-content__inner md-typeset">
-       <h1>
-        Home
+       <h1 id="neuroimaging-preprocessing-tools-nipreps">
+        NeuroImaging PREProcessing toolS (NiPreps)
+        <a class="headerlink" href="#neuroimaging-preprocessing-tools-nipreps" title="Permanent link">
+         ¶
+        </a>
        </h1>
        <p>
-        The current neuroimaging workflow has matured into a large chain of processing and analysis steps involving a large number of experts, across imaging modalities and applications.
-The development and fast adoption of
-        <a href="http://fmriprep.org/" title="fMRIPrep documentation">
-         <em>
-          fMRIPrep
-         </em>
-        </a>
-        have revealed that neuroscientists need tools that simplify their research workflow, provide visual reports and checkpoints, and engender trust in the tool itself.
-The
-        <em>
-         NiPreps (NeuroImaging Preprocessing toolS)
-        </em>
-        framework extends
-        <em>
-         fMRIPrep
-        </em>
-        's approach and principles to new imaging modalities.
-The vision for
         <em>
          NiPreps
         </em>
-        is to provide end-users (i.e., researchers) with applications that allow them to perform quality control smoothly and to prepare their data for modeling and statistical analysis.
+        <strong>
+         augment the scanner to produce data
+         <em>
+          directly consumable
+         </em>
+         by analyses
+        </strong>
+        .
        </p>
-       <h2 id="projects">
-        Projects
-        <a class="headerlink" href="#projects" title="Permanent link">
-         ¶
-        </a>
-       </h2>
-       <ul>
-        <li>
-         <a href="http://fmriprep.org/" title="fMRIPrep documentation">
-          <em>
-           fMRIPrep
-          </em>
-         </a>
-         (
-         <a href="https://github.com/poldracklab/fmriprep">
-          GitHub
-         </a>
-         ): fMRI Preprocessing
-        </li>
-        <li>
-         <a href="https://www.nipreps.org/dmriprep/" title="dMRIPrep documentation">
-          <em>
-           dMRIPrep
-          </em>
-         </a>
-         (
-         <a href="https://github.com/nipreps/dmriprep">
-          GitHub
-         </a>
-         ): dMRI Preprocessing
-        </li>
-        <li>
-         <a href="https://poldracklab.github.io/smriprep" title="sMRIPrep documentation">
-          <em>
-           sMRIPrep
-          </em>
-         </a>
-         (
-         <a href="https://github.com/poldracklab/smriprep">
-          GitHub
-         </a>
-         ): Structural MRI Preprocessing
-        </li>
-        <li>
-         <a href="https://mriqc.readthedocs.io/" title="MRIQC Documentation">
-          <em>
-           MRIQC
-          </em>
-         </a>
-         (
-         <a href="https://github.com/poldracklab/mriqc">
-          GitHub
-         </a>
-         ): MRI quality control
-        </li>
-        <li>
-         <a href="https://www.nipreps.org/sdcflows/" title="SDCflows documentation">
-          <em>
-           SDCflows
-          </em>
-         </a>
-         (
-         <a href="https://github.com/nipreps/sdcflows">
-          GitHub
-         </a>
-         ): Susceptibility-derived distortion correction (SDC) workflows
-        </li>
-        <li>
-         <a href="https://www.nipreps.org/niworkflows/" title="NiWorkflows documentation">
-          <em>
-           NiWorkflows
-          </em>
-         </a>
-         (
-         <a href="https://github.com/nipreps/niworkflows">
-          GitHub
-         </a>
-         ): General/miscellaneous workflow utilities
-        </li>
-        <li>
-         <a href="https://www.templateflow.org/" title="TemplateFlow">
-          <em>
-           TemplateFlow
-          </em>
-         </a>
-         : A registry of neuroimaging templates and spatial mappings between them.
-        </li>
-       </ul>
-       <h2 id="overview-of-the-framework">
-        Overview of the framework
-        <a class="headerlink" href="#overview-of-the-framework" title="Permanent link">
-         ¶
-        </a>
-       </h2>
        <p>
-        The
+        We refer to data
         <em>
-         NiPreps
+         directly consumable by analyses
         </em>
-        framework (Figure 1) encompasses a wide array of software projects organized into three layers of scientific software:
+        as
+        <strong>
+         <em>
+          analysis-grade data
+         </em>
+        </strong>
+        by analogy with the concept of "
+        <em>
+         sushi-grade (or
+         <a href="https://en.wikipedia.org/wiki/Sashimi">
+          sashimi-grade
+         </a>
+         ) fish
+        </em>
+        " in that both are products that have been:
        </p>
        <ul>
         <li>
          <strong>
-          Software infrastructure
+          minimally preprocessed
          </strong>
-         : including quite mature projects such as
-         <a href="https://nipype.readthedocs.io/" title="NiPype documentation">
-          <em>
-           NiPype
-          </em>
-         </a>
-         and
-         <a href="https://nibabel.readthedocs.io/" title="NiBabel documentation">
-          <em>
-           NiBabel
-          </em>
-         </a>
-         ; the standard specifications of the Brain Imaging Data Structure (BIDS, and BIDS-Derivatives); and some other tools such as
-         <em>
-          NiTransforms
-         </em>
-         or
-         <em>
-          TemplateFlow
-         </em>
-         , under development.
-    These tools deliver low-level interfaces (e.g., data access to images and spatial transforms) and utilities (see Figure 1).
+         , but are
         </li>
         <li>
          <strong>
-          Middleware
+          safe to consume
          </strong>
-         : these are utilities that generalize their functionalities across the end-user tools.
-    These utilities cover foundational processing methodologies (e.g.,
-         <a href="https://www.nipreps.org/niworkflows/" title="NiWorkflows documentation">
-          <em>
-           NiWorkflows
-          </em>
-         </a>
-         and
-         <a href="https://www.nipreps.org/sdcflows/" title="SDCflows documentation">
-          <em>
-           SDCflows
-          </em>
-         </a>
-         ), the crowdsourcing of metadata (e.g.,
-         <em>
-          MRIQC Web-API
-         </em>
-         ), and the support for deep learning models (
-         <em>
-          MRIQC-nets
-         </em>
-         ).
-        </li>
-        <li>
-         <strong>
-          End-user tools such as
-          <em>
-           fMRIPrep
-          </em>
-         </strong>
-         : Some existing end-user tools include
-         <em>
-          sMRIPrep (Structural MRI Preprocessing)
-         </em>
-         , which lies in between an end-user tool and middleware, as it is involved in higher-level tools such as
-         <em>
-          fMRIPrep
-         </em>
-         . Finally, quality control tools (e.g.,
-         <em>
-          MRIQC
-         </em>
-         ) to be executed before any preprocessing happens.
+         directly.
         </li>
        </ul>
-       <!-- ![Branching](https://guides.github.com/activities/hello-world/branching.png) -->
       </article>
      </div>
     </div>
@@ -461,7 +291,7 @@ The vision for
    <footer class="md-footer">
     <div class="md-footer-nav">
      <nav aria-label="Footer" class="md-footer-nav__inner md-grid">
-      <a class="md-footer-nav__link md-footer-nav__link--next" href="apps/framework/" rel="next" title="Framework">
+      <a class="md-footer-nav__link md-footer-nav__link--next" href="intro/nipreps/" rel="next" title="Framework">
        <div class="md-footer-nav__title">
         <div class="md-ellipsis">
          <span class="md-footer-nav__direction">
