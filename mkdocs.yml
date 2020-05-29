@@ -1,7 +1,7 @@
 site_name: NiPreps
 site_description: Augmenting neuroimaging acquisition devices to produce analysis-grade data
 site_author: The NiPreps developers
-site_url: https://www.templateflow.org
+site_url: https://www.nipreps.org
 
 # Repository
 # repo_name: nipreps/nipreps.github.io
