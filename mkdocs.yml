@@ -1,0 +1,35 @@
+site_name: NiPreps
+site_description: Augmenting neuroimaging acquisition devices to produce analysis-grade data
+site_author: The NiPreps developers
+site_url: https://www.templateflow.org
+
+# Repository
+# repo_name: nipreps/nipreps.github.io
+# repo_url: https://github.com/nipreps/nipreps.github.io
+
+# Copyright
+copyright: Copyright &copy; 2020
+
+nav:
+    - Home: index.md
+    - Developers:
+      - Contributing Guidelines: devs/guidelines.md
+      - Versions Matrix: devs/versions.md
+      - Releases: devs/releases.md
+theme:
+  name: material
+  features:
+    - tabs
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
+plugins:
+  - toc-sidebar

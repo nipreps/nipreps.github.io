@@ -1,0 +1,3 @@
+mkdocs
+mkdocs-material
+git+https://github.com/Mandy91/mkdocs-toc-sidebar-plugin.git@drop_python_2.7_support
