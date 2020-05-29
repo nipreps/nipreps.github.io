@@ -39,6 +39,6 @@ jobs:
     - name: Deploy
       run: |
         cd www/
-        find . -type f -exec git add {} +
+        echo -e "a\n*\nq\n"|git add -i
         git commit -am "auto: deploy new website"
         git push
