@@ -12,7 +12,7 @@ The basic release form is `YY.MINOR.PATCH`, so the first minor release of 2020 i
 Minor releases are considered *feature* releases. Because there is no concept of a "major" release (just a calendar year rollover), most changes to the code base will result in a new feature release. Changes targeting a new feature release should target the master branch. Feature releases may be released as often as is deemed appropriate.
 
 ### Bug-fix releases
-Patch releases are considered bug-fix releases. Each minor release triggers the creation of a new maint/<YY>.<MINOR>.x branch, and changes targeting a bug-fix release should target this branch. A "minor release series" is the initial feature release and the bug-fix releases that share the minor release prefix. Bug-fix releases may be released on minimal notice to other developers.
+Patch releases are considered bug-fix releases. Each minor release triggers the creation of a new `maint/<YY>.<MINOR>.x` branch, and changes targeting a bug-fix release should target this branch. A "minor release series" is the initial feature release and the bug-fix releases that share the minor release prefix. Bug-fix releases may be released on minimal notice to other developers.
 
 These releases must satisfy four conditions:
 
@@ -24,6 +24,7 @@ These releases must satisfy four conditions:
 Note that not all bugs can be fixed in a way that satisfies all three of these criteria without significant effort. A developer may determine that the bug will be fixed in the next feature release.
 
 Additional acceptable changes within a minor release series:
+
 1. Improved tests. These often come along with bug fixes, but they can be free-standing improvements to the code base.
 1. Improved documentation. Unless the documentation is of a feature that will not be present in a bug-fix release, this is always welcome.
 1. Updates to the Dockerfile that improve operation for Docker and/or Singularity users, but do not risk behavior change. A good example is including more templates to reduce the need for network requests. An example of an update to the Dockerfile that forces a minor release increment is a change in the pinned version of any of the dependencies or the base container image.
