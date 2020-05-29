@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
-     <loc>https://nipreps.org/</loc>
+     <loc>https://www.nipreps.org/</loc>
      <lastmod>2020-05-29</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://nipreps.org/devs/guidelines/</loc>
+     <loc>https://www.nipreps.org/devs/guidelines/</loc>
      <lastmod>2020-05-29</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://nipreps.org/devs/versions/</loc>
+     <loc>https://www.nipreps.org/devs/versions/</loc>
      <lastmod>2020-05-29</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://nipreps.org/devs/releases/</loc>
+     <loc>https://www.nipreps.org/devs/releases/</loc>
      <lastmod>2020-05-29</lastmod>
      <changefreq>daily</changefreq>
     </url>
