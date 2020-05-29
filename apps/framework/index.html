@@ -166,6 +166,11 @@
                   A unified command-line interface
                  </a>
                 </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#what-is-bids-derivatives">
+                  What is BIDS-Derivatives?
+                 </a>
+                </li>
                </ul>
               </nav>
              </li>
@@ -259,6 +264,11 @@
           <li class="md-nav__item">
            <a class="md-nav__link" href="#a-unified-command-line-interface">
             A unified command-line interface
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#what-is-bids-derivatives">
+            What is BIDS-Derivatives?
            </a>
           </li>
          </ul>
@@ -447,6 +457,67 @@ For instance,
         <pre><span></span><code>$ mriqc /data/bids_root /data/bids_root/derivatives/ group
 </code></pre>
        </div>
+       <h2 id="what-is-bids-derivatives">
+        What is BIDS-Derivatives?
+        <a class="headerlink" href="#what-is-bids-derivatives" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        <em>
+         NiPreps
+        </em>
+        generate
+        <em>
+         derivatives
+        </em>
+        of the original data, and they fulfill the BIDS specification for the results of Apps that are created for subsequent consumption by other BIDS-Apps.
+These derivatives must follow the BIDS-Derivatives specification (
+        <a href="https://bids-specification.readthedocs.io/en/derivatives/">
+         draft
+        </a>
+        ).
+An example of BIDS-Derivatives filesystem tree, generated with
+        <em>
+         fMRIPrep
+        </em>
+        1.5:
+        <div class="highlight">
+         <pre><span></span><code>derivatives/
+├── fmriprep/
+│ ├── dataset_description.json
+│ ├── logs
+│ ├── sub-01.html
+│ ├── sub-01/
+│ │ ├── anat/
+│ │ │ ├── sub-01_desc-brain_mask.nii.gz
+│ │ │ ├── sub-01_dseg.nii.gz
+│ │ │ ├── sub-01_label-GM_probseg.nii.gz
+│ │ │ ├── sub-01_label-WM_probseg.nii.gz
+│ │ │ ├── sub-01_label-CSF_probseg.nii.gz
+│ │ │ ├── sub-01_desc-preproc_T1w.nii.gz
+│ │ │ ├── sub-01_space-MNI152_desc-brain_mask.nii.gz
+│ │ │ ├── sub-01_space-MNI152_dseg.nii.gz
+│ │ │ ├── sub-01_space-MNI152_label-GM_probseg.nii.gz
+│ │ │ ├── sub-01_space-MNI152_label-WM_probseg.nii.gz
+│ │ │ ├── sub-01_space-MNI152_label-CSF_probseg.nii.gz
+│ │ │ ├── sub-01_space-MNI152_desc-preproc_T1w.nii.gz
+│ │ │ ├── sub-01_from-MNI152_to-T1w_mode-image_xfm.h5
+│ │ │ ├── sub-01_from-T1w_to-MNI152_mode-image_xfm.h5
+│ │ │ └── sub-01_from-orig_to-T1w_mode-image_xfm.txt
+│ │ ├── figures/
+│ │ └── func/
+│ │ ├── sub-01_task-rhymejudgment_space-MNI152_boldref.nii.gz
+│ │ ├── sub-01_task-rhymejudgment_space-MNI152_desc-preproc_bold.nii.gz
+│ │ ├── sub-01_task-rhymejudgment_space-MNI152_desc-confounds_regressors.nii.gz
+│ │ └── sub-01_task-rhymejudgment_space-MNI152_desc-brain_mask.nii.gz
+│ ├── sub-02.html
+│ ├── sub-02/
+│ ├── sub-03.html
+│ └── sub-03/
+</code></pre>
+        </div>
+       </p>
       </article>
      </div>
     </div>

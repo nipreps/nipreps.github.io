@@ -350,7 +350,11 @@
         <em>
          fMRIPrep
         </em>
-        has adopted a Calendar Versioning scheme, and with it we are attempting to apply more coherent semantic rules to our releases.
+        has adopted a
+        <a href="https://calver.org">
+         Calendar Versioning
+        </a>
+        scheme, and with it we are attempting to apply more coherent semantic rules to our releases.
        </p>
        <div class="admonition warning">
         <p class="admonition-title">
@@ -417,20 +421,32 @@ This conversation started as a
        </p>
        <ol>
         <li>
-         Resolving one or more bugs. These mostly include failures of
+         <strong>
+          Resolving one or more bugs.
+         </strong>
+         These mostly include failures of
          <em>
           fMRIPrep
          </em>
          to complete or producing invalid derivatives (e.g., a NIfTI file of all zeroes).
         </li>
         <li>
-         Derivatives compatibility. If a subject may be successfully run on 20.0.n, then the imaging derivatives should be identical if rerun with 20.0.(n+1), modulo rounding errors and the effects of nondeterministic algorithms. The changes between successful runs of 20.0.n and 20.0.(n+1) should not be larger than the changes between two successful runs of 20.0.n. Cosmetic changes to reports are acceptable, while differing fields of view or data types in a NIfTI file would not be.
+         <strong>
+          Derivatives compatibility.
+         </strong>
+         If a subject may be successfully run on 20.0.n, then the imaging derivatives should be identical if rerun with 20.0.(n+1), modulo rounding errors and the effects of nondeterministic algorithms. The changes between successful runs of 20.0.n and 20.0.(n+1) should not be larger than the changes between two successful runs of 20.0.n. Cosmetic changes to reports are acceptable, while differing fields of view or data types in a NIfTI file would not be.
         </li>
         <li>
-         API compatibility. Workflow-generating functions, workflow input- and outputnode fields must not change. As an end-user application, this may seem overly strict, but the odds of introducing a bug are much higher in these cases.
+         <strong>
+          API compatibility.
+         </strong>
+         Workflow-generating functions, workflow input- and outputnode fields must not change. As an end-user application, this may seem overly strict, but the odds of introducing a bug are much higher in these cases.
         </li>
         <li>
-         User interface compatibility. Substantial changes to
+         <strong>
+          User interface compatibility.
+         </strong>
+         Substantial changes to
          <em>
           fMRIPrep
          </em>
@@ -445,16 +461,32 @@ This conversation started as a
        </p>
        <ol>
         <li>
-         Improved tests. These often come along with bug fixes, but they can be free-standing improvements to the code base.
+         <strong>
+          Improved tests.
+         </strong>
+         These often come along with bug fixes, but they can be free-standing improvements to the code base.
         </li>
         <li>
-         Improved documentation. Unless the documentation is of a feature that will not be present in a bug-fix release, this is always welcome.
+         <strong>
+          Improved documentation.
+         </strong>
+         Unless the documentation is of a feature that will not be present in a bug-fix release, this is always welcome.
         </li>
         <li>
-         Updates to the Dockerfile that improve operation for Docker and/or Singularity users, but do not risk behavior change. A good example is including more templates to reduce the need for network requests. An example of an update to the Dockerfile that forces a minor release increment is a change in the pinned version of any of the dependencies or the base container image.
+         <strong>
+          Updates to the Dockerfile
+         </strong>
+         that improve operation for Docker and/or Singularity users, but do not risk behavior change. A good example is including more templates to reduce the need for network requests. An example of an update to the Dockerfile that forces a minor release increment is a change in the pinned version of any of the dependencies or the base container image.
         </li>
         <li>
-         Improvements to the fmriprep-docker wrapper. As long as a command-line invocation that worked for the previous version continues to work and produce the same Docker command, there's little chance of harm.
+         <strong>
+          Improvements to the
+          <em>
+           lightweight wrappers
+          </em>
+          .
+         </strong>
+         As long as a command-line invocation that worked for the previous version continues to work and produce the same Docker command, there's little chance of harm.
         </li>
        </ol>
        <h2 id="mechanics">
