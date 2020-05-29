@@ -12,6 +12,10 @@ copyright: Copyright &copy; 2020
 
 nav:
     - Home: index.md
+    - BIDS-Apps:
+      - Framework: apps/framework.md
+      - Executing with Docker: apps/docker.md
+      - Executing with Singularity: apps/singularity.md
     - Developers:
       - Contributing Guidelines: devs/guidelines.md
       - Versions Matrix: devs/versions.md
@@ -30,6 +34,7 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.superfences
 
 plugins:
   - toc-sidebar
