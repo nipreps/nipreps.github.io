@@ -1,3 +1,4 @@
+# Contributing Guidelines
 
 Welcome to the *NiPreps* project!
 We're excited you're here and want to contribute.
@@ -299,37 +300,11 @@ These special positions can be revised to add names by punctual request and revi
 removal and update of ordering in an scheduled manner every two years.
 All the authors enlisted as *creators* participate in the revision of modifications.
 
-### Developers
-
-Developers are members of a wonderful team _driving the project_.
-Names and contacts of all developers are included in the
-[``.maint/developers.json`` file](https://github.com/poldracklab/fmriprep/blob/master/.maint/developers.json)
-Examples of steering activities that _drive the project_ are: actively participating in the
-follow-up meetings, leading documentation sprints, helping in the design of the tool and definition of the roadmap,
-providing resources (in the broad sense, including funding), code-review, etc.
-
-### Contributors
-
-Contributors enlisted in the
-[``.maint/contributors.json`` file](https://github.com/poldracklab/fmriprep/blob/master/.maint/contributors.json)
-actively help or have previously helped the project in a broad sense: writing code, writing documentation,
-benchmarking modules of the tool, proposing new features, helping improve the scientific
-rigor of implementations, giving out support on the different communication
-channels ([mattermost][link_mattermost], [NeuroStars][link_neurostars], [GitHub issues][link_issues], etc.).
-If you are new to the project, don't forget to add your name and affiliation to the list
-of contributors there!
-Our Welcome Bot will send an automated message reminding this to first-time contributors.
-Before every release, unlisted contributors will be invited again to add their names to the file
-(just in case they missed the automated message from our Welcome Bot).
-
-Contributors who have contributed at some point to the project but were required or they wished to
-disconnect from the project's updates and to drop-out from publications and other dissemination activities,
-are listed in the [``.maint/former.json`` file](https://github.com/poldracklab/fmriprep/blob/master/.maint/former.json).
-
 ### Publications
 
 Anyone listed as a *developer* or a *contributor* can start the submission process of a manuscript
-as first author.
+as first author (please see [Membership](members.md), where these concepts are
+described).
 To compose the author list, all the *creators* MUST be included (except for those people who
 opt to drop-out) and all the *contributors* MUST be invited to participate.
 First authorship(s) is (are) reserved for the authors that originated and kept the initiative
