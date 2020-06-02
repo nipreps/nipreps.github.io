@@ -18,8 +18,13 @@ nav:
       - Introduction: apps/framework.md
       - Executing with Docker: apps/docker.md
       - Executing with Singularity: apps/singularity.md
+    - Community:
+      - Welcome: community/index.md
+      - Membership: community/members.md
+      - New features: community/features.md
+      - Contributing: community/CONTRIBUTING.md
+      - Code of Conduct: community/CODE_OF_CONDUCT.md
     - Developers:
-      - Contributing Guidelines: devs/guidelines.md
       - Versions Matrix: devs/versions.md
       - Releases: devs/releases.md
 theme:
