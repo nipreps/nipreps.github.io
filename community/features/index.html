@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="Augmenting neuroimaging acquisition devices to produce analysis-grade data" name="description"/>
+  <link href="https://www.nipreps.org/community/features/" rel="canonical"/>
+  <meta content="The NiPreps developers" name="author"/>
+  <link href="../../assets/images/favicon.png" rel="shortcut icon"/>
+  <meta content="mkdocs-1.1.2, mkdocs-material-5.2.2" name="generator"/>
+  <title>
+   New features - NiPreps
+  </title>
+  <link href="../../assets/stylesheets/main.a2408e81.min.css" rel="stylesheet"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+  <style>
+   body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}
+  </style>
+ </head>
+ <body dir="ltr">
+  <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+  <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+  <label class="md-overlay" for="__drawer">
+  </label>
+  <div data-md-component="skip">
+   <a class="md-skip" href="#the-problem-of-feature-creep">
+    Skip to content
+   </a>
+  </div>
+  <div data-md-component="announce">
+  </div>
+  <header class="md-header" data-md-component="header">
+   <nav aria-label="Header" class="md-header-nav md-grid">
+    <a aria-label="NiPreps" class="md-header-nav__button md-logo" href="https://www.nipreps.org" title="NiPreps">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z">
+      </path>
+     </svg>
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z">
+      </path>
+     </svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+     <div class="md-header-nav__ellipsis">
+      <span class="md-header-nav__topic md-ellipsis">
+       NiPreps
+      </span>
+      <span class="md-header-nav__topic md-ellipsis">
+       New features
+      </span>
+     </div>
+    </div>
+   </nav>
+  </header>
+  <div class="md-container" data-md-component="container">
+   <nav aria-label="Tabs" class="md-tabs md-tabs--active" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+     <ul class="md-tabs__list">
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="../..">
+        Home
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="../../intro/nipreps/">
+        NiPreps
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="../../apps/framework/">
+        BIDS-Apps
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link md-tabs__link--active" href="../">
+        Community
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="../../devs/versions/">
+        Developers
+       </a>
+      </li>
+     </ul>
+    </div>
+   </nav>
+   <main class="md-main" data-md-component="main">
+    <div class="md-main__inner md-grid">
+     <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+         <label class="md-nav__title" for="__drawer">
+          <a aria-label="NiPreps" class="md-nav__button md-logo" href="https://www.nipreps.org" title="NiPreps">
+           <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z">
+            </path>
+           </svg>
+          </a>
+          NiPreps
+         </label>
+         <ul class="md-nav__list" data-md-scrollfix="">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../.." title="Home">
+            Home
+           </a>
+          </li>
+          <li class="md-nav__item md-nav__item--nested">
+           <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" id="nav-2" type="checkbox"/>
+           <label class="md-nav__link" for="nav-2">
+            NiPreps
+            <span class="md-nav__icon md-icon">
+             <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z">
+              </path>
+             </svg>
+            </span>
+           </label>
+           <nav aria-label="NiPreps" class="md-nav" data-md-level="1">
+            <label class="md-nav__title" for="nav-2">
+             <span class="md-nav__icon md-icon">
+              <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+               <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z">
+               </path>
+              </svg>
+             </span>
+             NiPreps
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix="">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../intro/nipreps/" title="Framework">
+               Framework
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+          <li class="md-nav__item md-nav__item--nested">
+           <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" id="nav-3" type="checkbox"/>
+           <label class="md-nav__link" for="nav-3">
+            BIDS-Apps
+            <span class="md-nav__icon md-icon">
+             <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z">
+              </path>
+             </svg>
+            </span>
+           </label>
+           <nav aria-label="BIDS-Apps" class="md-nav" data-md-level="1">
+            <label class="md-nav__title" for="nav-3">
+             <span class="md-nav__icon md-icon">
+              <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+               <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z">
+               </path>
+              </svg>
+             </span>
+             BIDS-Apps
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix="">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../apps/framework/" title="Introduction">
+               Introduction
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../apps/docker/" title="Executing with Docker">
+               Executing with Docker
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../apps/singularity/" title="Executing with Singularity">
+               Executing with Singularity
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+          <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+           <input checked="" class="md-nav__toggle md-toggle" data-md-toggle="nav-4" id="nav-4" type="checkbox"/>
+           <label class="md-nav__link" for="nav-4">
+            Community
+            <span class="md-nav__icon md-icon">
+             <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z">
+              </path>
+             </svg>
+            </span>
+           </label>
+           <nav aria-label="Community" class="md-nav" data-md-level="1">
+            <label class="md-nav__title" for="nav-4">
+             <span class="md-nav__icon md-icon">
+              <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+               <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z">
+               </path>
+              </svg>
+             </span>
+             Community
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix="">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../" title="Welcome">
+               Welcome
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../members/" title="Membership">
+               Membership
+              </a>
+             </li>
+             <li class="md-nav__item md-nav__item--active">
+              <input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+              <label class="md-nav__link md-nav__link--active" for="__toc">
+               New features
+               <span class="md-nav__icon md-icon">
+                <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                 <path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z">
+                 </path>
+                </svg>
+               </span>
+              </label>
+              <a class="md-nav__link md-nav__link--active" href="./" title="New features">
+               New features
+              </a>
+              <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+               <label class="md-nav__title" for="__toc">
+                <span class="md-nav__icon md-icon">
+                 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z">
+                  </path>
+                 </svg>
+                </span>
+                Table of contents
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#the-problem-of-feature-creep">
+                  The problem of feature creep
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#proposing-a-new-feature">
+                  Proposing a new feature
+                 </a>
+                 <nav aria-label="Proposing a new feature" class="md-nav">
+                  <ul class="md-nav__list">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#why-the-new-feature-is-requested">
+                     Why the new feature is requested?
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#some-questions-will-always-be-asked-about-a-new-feature">
+                     Some questions will always be asked about a new feature
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#how-the-integration-of-the-new-feature-willcan-be-validated">
+                     How the integration of the new feature will/can be validated?
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../CONTRIBUTING/" title="Contributing">
+               Contributing
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../CODE_OF_CONDUCT/" title="Code of Conduct">
+               Code of Conduct
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+          <li class="md-nav__item md-nav__item--nested">
+           <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" id="nav-5" type="checkbox"/>
+           <label class="md-nav__link" for="nav-5">
+            Developers
+            <span class="md-nav__icon md-icon">
+             <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z">
+              </path>
+             </svg>
+            </span>
+           </label>
+           <nav aria-label="Developers" class="md-nav" data-md-level="1">
+            <label class="md-nav__title" for="nav-5">
+             <span class="md-nav__icon md-icon">
+              <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+               <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z">
+               </path>
+              </svg>
+             </span>
+             Developers
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix="">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../devs/versions/" title="Versions Matrix">
+               Versions Matrix
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../devs/releases/" title="Releases">
+               Releases
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+         <label class="md-nav__title" for="__toc">
+          <span class="md-nav__icon md-icon">
+           <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z">
+            </path>
+           </svg>
+          </span>
+          Table of contents
+         </label>
+         <ul class="md-nav__list" data-md-scrollfix="">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#the-problem-of-feature-creep">
+            The problem of feature creep
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#proposing-a-new-feature">
+            Proposing a new feature
+           </a>
+           <nav aria-label="Proposing a new feature" class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#why-the-new-feature-is-requested">
+               Why the new feature is requested?
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#some-questions-will-always-be-asked-about-a-new-feature">
+               Some questions will always be asked about a new feature
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#how-the-integration-of-the-new-feature-willcan-be-validated">
+               How the integration of the new feature will/can be validated?
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-content">
+      <article class="md-content__inner md-typeset">
+       <h1>
+        New features
+       </h1>
+       <blockquote>
+        <p>
+         The one bit that worries me is that
+         <em>
+          fMRIPrep
+         </em>
+         may become a Swiss army knife. I think instead it should just be a paring knife (small, efficient, and works for many things).
+        </p>
+        <p>
+         --
+         <cite>
+          Satra (
+          <a href="https://github.com/poldracklab/fmriprep/issues/1963#issuecomment-584455061">
+           source
+          </a>
+          )
+         </cite>
+        </p>
+       </blockquote>
+       <p>
+        When projects grow large, many forking paths created by newly implemented features start
+to open up.
+To account for this, the
+        <em>
+         NiPreps
+        </em>
+        community was created with the vision of building
+tools like
+        <em>
+         fMRIPrep
+        </em>
+        and
+        <em>
+         MRIQC
+        </em>
+        covering new imaging modalities, while keeping
+existing
+        <em>
+         NiPreps
+        </em>
+        tightly within scope.
+Defining such a scope also aids the implementation of the ease-of-use principle:
+       </p>
+       <blockquote>
+        <p>
+         The same way the scanner does not offer an immense space of knobs to turn
+in the acquisition,
+         <em>
+          NiPreps
+         </em>
+         should not add many additional knobs to those
+for them to be considered a viable
+         <em>
+          augmentation
+         </em>
+         or extension of the scanner hw/sw.
+        </p>
+        <p>
+         --
+         <cite>
+          Oscar (
+          <a href="https://github.com/poldracklab/fmriprep/issues/1963#issuecomment-584455061">
+           source
+          </a>
+          )
+         </cite>
+        </p>
+       </blockquote>
+       <h2 id="the-problem-of-feature-creep">
+        The problem of feature creep
+        <a class="headerlink" href="#the-problem-of-feature-creep" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        To avert
+        <a href="https://en.wikipedia.org/wiki/Feature_creep">
+         feature creep
+        </a>
+        and
+to serve each individual
+        <em>
+         NiPrep
+        </em>
+        , we developed the following
+guidelines, with the hopes of keeping these tools in a healthy state.
+       </p>
+       <blockquote>
+        <p>
+         I'm worried
+         <em>
+          fMRIPrep
+         </em>
+         is catching a case of featuritis
+        </p>
+        <p>
+         --
+         <cite>
+          Mathias (
+          <a href="https://github.com/poldracklab/fmriprep/issues/1985#issuecomment-588493059">
+           source
+          </a>
+          )
+         </cite>
+        </p>
+       </blockquote>
+       <p>
+        These guidelines should also serve the community to transparently drive the process
+of including proposals into the road-map, set the ground for healthy conversation,
+and establish some patterns when accepting new-feature contributions.
+Before proposing new features, please be mindful that a road-map may not exist
+for a particular
+        <em>
+         NiPrep
+        </em>
+        .
+Even when a development road-map exists, please understand that it is not always
+possible to rigorously follow them:
+       </p>
+       <blockquote>
+        <p>
+         I think something like this is what we tried to start sketching out with
+the development roadmap. The concern, as I remember it, was that we couldn't
+guarantee (or rule out) specific features when working with a small
+development team.
+        </p>
+        <p>
+         --
+         <cite>
+          Elizabeth (
+          <a href="https://github.com/poldracklab/fmriprep/issues/1963#issuecomment-582453941">
+           source
+          </a>
+          )
+         </cite>
+         .
+        </p>
+       </blockquote>
+       <h2 id="proposing-a-new-feature">
+        Proposing a new feature
+        <a class="headerlink" href="#proposing-a-new-feature" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <h3 id="why-the-new-feature-is-requested">
+        Why the new feature is requested?
+        <a class="headerlink" href="#why-the-new-feature-is-requested" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <p>
+        Before going ahead and proposing a new feature, please take some time to
+learn whether the topic has been covered in the past and what decisions
+were made and why.
+This should be reasonably easy to do with the search tool of GitHub on the
+particular
+        <em>
+         NiPrep
+        </em>
+        repository.
+       </p>
+       <p>
+        If no previous discussion about the new idea is found,
+the next step is ensuring the new feature aligns with the vision and
+the scope of the target tool, as
+        <a href="https://github.com/poldracklab/fmriprep/issues/1963#issuecomment-582453941">
+         Elizabeth points out
+        </a>
+        .
+Taking a look into the Development Road-map of the particular project
+(if it exists), may help finding an answer.
+       </p>
+       <p>
+        If the new feature still seems pertinent after this preliminary work
+or you are unsure about whether it falls within the scope, then
+go ahead and post an issue requesting feedback on your proposal.
+Please make sure to clearly state why the new feature should be considered.
+       </p>
+       <h3 id="some-questions-will-always-be-asked-about-a-new-feature">
+        Some questions will always be asked about a new feature
+        <a class="headerlink" href="#some-questions-will-always-be-asked-about-a-new-feature" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <p>
+        <a href="https://github.com/poldracklab/fmriprep/issues/1963#issuecomment-582220173">
+         These questions by James
+        </a>
+        will certainly help build up the discourse in support of the new feature,
+as the
+        <em>
+         NiPreps
+        </em>
+        maintainers will consider them:
+       </p>
+       <ul>
+        <li>
+         <p>
+          <strong>
+           Is the user interface affected?
+          </strong>
+          Because
+          <em>
+           NiPreps
+          </em>
+          generally expose a
+          <em>
+           command-line interface (CLI)
+          </em>
+          for the
+    interaction with the user, new features involving changes to the CLI must be
+    considered with caution as they may harm the ease-of-use:
+         </p>
+         <blockquote>
+          <p>
+           It also seems that some new features add more confusion than others.
+Especially when the CLI is affected, and yet another option is added,
+that makes the tool more complex to use.
+          </p>
+          <p>
+           --
+           <cite>
+            Alejandro (
+            <a href="https://github.com/poldracklab/fmriprep/    issues/1963#issuecomment-582174814">
+             source
+            </a>
+            )
+           </cite>
+           .
+          </p>
+         </blockquote>
+        </li>
+        <li>
+         <p>
+          Does the new feature substantially
+          <strong>
+           increase the internal complexity
+          </strong>
+          ?
+    Maintainers and developers will attempt to consolidate tools and lower the internal
+    complexity whenever possible.
+    This effort usually competes with the addition of new features as they typically will
+    address particular use-cases rather than general improvements.
+    However, that doesn't need to be the case, as some sections of the code might be
+    objectively improvable and the integration of a new feature revising those might
+    also lower complexity.
+    Lowering the internal complexity will always be considered a great incentive
+    for a new feature to be accepted.
+         </p>
+        </li>
+        <li>
+         <p>
+          Is there
+          <strong>
+           a standard procedure
+          </strong>
+          for the proposed feature in the literature?
+         </p>
+         <ul>
+          <li>
+           if so, could we just use that procedure/value?
+          </li>
+         </ul>
+        </li>
+        <li>
+         <p>
+          Is the
+          <strong>
+           feature dependent
+          </strong>
+          on some attribute of the input data? (e.g., TR, duration, etc.)
+         </p>
+         <ul>
+          <li>
+           if so, can the procedure/value be determined algorithmically?
+          </li>
+         </ul>
+        </li>
+        <li>
+         <p>
+          Does the feature
+          <strong>
+           interact with other settings
+          </strong>
+          ?
+    For instance,
+          <a href="https://github.com/poldracklab/fmriprep/pull/1962">
+           fmriprep#1962
+          </a>
+          interacts with the a/tCompCor implementation.
+         </p>
+        </li>
+        <li>
+         <p>
+          What is the
+          <strong>
+           difficulty of implementing the procedure outside
+          </strong>
+          of a
+          <em>
+           NiPrep
+          </em>
+          ?
+    In other words, does the
+          <em>
+           NiPrep
+          </em>
+          provide all the necessary outputs for a
+    user to perform the non-standard analysis?
+         </p>
+        </li>
+       </ul>
+       <h3 id="how-the-integration-of-the-new-feature-willcan-be-validated">
+        How the integration of the new feature will/can be validated?
+        <a class="headerlink" href="#how-the-integration-of-the-new-feature-willcan-be-validated" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <p>
+        Please propose ways to validate the new feature in the context of
+the workflow. Meaning, the objective here is to validate that the new
+feature works well within the pipeline, rather than validating a specific
+algorithm.
+To ensure the sustainability of
+        <em>
+         NiPreps
+        </em>
+        , the onus of this validation
+should be on the person/group requesting the feature.
+       </p>
+      </article>
+     </div>
+    </div>
+   </main>
+   <footer class="md-footer">
+    <div class="md-footer-nav">
+     <nav aria-label="Footer" class="md-footer-nav__inner md-grid">
+      <a class="md-footer-nav__link md-footer-nav__link--prev" href="../members/" rel="prev" title="Membership">
+       <div class="md-footer-nav__button md-icon">
+        <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z">
+         </path>
+        </svg>
+       </div>
+       <div class="md-footer-nav__title">
+        <div class="md-ellipsis">
+         <span class="md-footer-nav__direction">
+          Previous
+         </span>
+         Membership
+        </div>
+       </div>
+      </a>
+      <a class="md-footer-nav__link md-footer-nav__link--next" href="../CONTRIBUTING/" rel="next" title="Contributing">
+       <div class="md-footer-nav__title">
+        <div class="md-ellipsis">
+         <span class="md-footer-nav__direction">
+          Next
+         </span>
+         Contributing
+        </div>
+       </div>
+       <div class="md-footer-nav__button md-icon">
+        <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z">
+         </path>
+        </svg>
+       </div>
+      </a>
+     </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+     <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+       <div class="md-footer-copyright__highlight">
+        Copyright © 2020
+       </div>
+       Made with
+       <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+        Material for MkDocs
+       </a>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script src="../../assets/javascripts/vendor.d710d30a.min.js">
+  </script>
+  <script src="../../assets/javascripts/bundle.5f27aba8.min.js">
+  </script>
+  <script id="__lang" type="application/json">
+   {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}
+  </script>
+  <script>
+   app = initialize({
+          base: "../..",
+          features: ["tabs"],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.27c6a5e6.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+  </script>
+ </body>
+</html>
