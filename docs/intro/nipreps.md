@@ -30,11 +30,17 @@ The *NiPreps* framework (Figure 1) encompasses a wide array of software projects
 
   * [*fMRIPrep*][1] ([GitHub](https://github.com/poldracklab/fmriprep)): fMRI Preprocessing
   * [*dMRIPrep*][6] ([GitHub](https://github.com/nipreps/dmriprep)): dMRI Preprocessing
-  * [*sMRIPrep*][7] ([GitHub](https://github.com/poldracklab/smriprep)): Structural MRI Preprocessing
+  * [*sMRIPrep*][7] ([GitHub](https://github.com/nipreps/smriprep)): Structural MRI Preprocessing
   * [*MRIQC*][8] ([GitHub](https://github.com/poldracklab/mriqc)): MRI quality control
   * [*SDCflows*][5] ([GitHub](https://github.com/nipreps/sdcflows)): Susceptibility-derived distortion correction (SDC) workflows
   * [*NiWorkflows*][4] ([GitHub](https://github.com/nipreps/niworkflows)): General/miscellaneous workflow utilities
   * [*TemplateFlow*][9]: A registry of neuroimaging templates and spatial mappings between them.
+  * *NiTransforms* ([GitHub](https://github.com/poldracklab/nitransforms))
+
+## Early-stage projects
+
+  * *NiRodents* ([GitHub](https://github.com/nipreps/nirodents)): middleware adaptations for small animals imaging.
+  * *NiBabies* ([GitHub](https://github.com/nipreps/nibabies)): middleware adaptations for infant imaging.
 
 <!-- ![Branching](https://guides.github.com/activities/hello-world/branching.png) -->
 
@@ -44,6 +50,6 @@ The *NiPreps* framework (Figure 1) encompasses a wide array of software projects
 [4]: https://www.nipreps.org/niworkflows/ "NiWorkflows documentation"
 [5]: https://www.nipreps.org/sdcflows/ "SDCflows documentation"
 [6]: https://www.nipreps.org/dmriprep/ "dMRIPrep documentation"
-[7]: https://poldracklab.github.io/smriprep "sMRIPrep documentation"
+[7]: https://www.nipreps.org/smriprep/ "sMRIPrep documentation"
 [8]: https://mriqc.readthedocs.io/ "MRIQC Documentation"
 [9]: https://www.templateflow.org/ "TemplateFlow"
