@@ -6,3 +6,6 @@ We refer to data *directly consumable by analyses* as ***analysis-grade data*** 
 
   * **minimally preprocessed**, but are
   * **safe to consume** directly.
+
+<br />
+![overview](assets/nipreps-chart.png)

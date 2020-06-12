@@ -23,6 +23,9 @@ The *NiPreps* framework (Figure 1) encompasses a wide array of software projects
     These utilities cover foundational processing methodologies (e.g., [*NiWorkflows*][4] and [*SDCflows*][5]), the crowdsourcing of metadata (e.g., *MRIQC Web-API*), and the support for deep learning models (*MRIQC-nets*).
   * **End-user tools such as *fMRIPrep***: Some existing end-user tools include *sMRIPrep (Structural MRI Preprocessing)*, which lies in between an end-user tool and middleware, as it is involved in higher-level tools such as *fMRIPrep*. Finally, quality control tools (e.g., *MRIQC*) to be executed before any preprocessing happens.
 
+<br />
+![overview](../assets/nipreps-chart.png)
+
 ## Projects
 
   * [*fMRIPrep*][1] ([GitHub](https://github.com/poldracklab/fmriprep)): fMRI Preprocessing
