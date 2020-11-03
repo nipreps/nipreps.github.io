@@ -1,0 +1,1997 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="Augmenting neuroimaging acquisition devices to produce analysis-grade data" name="description"/>
+  <link href="https://www.nipreps.org/assets/ORN-Workshop/presentation/" rel="canonical"/>
+  <meta content="The NiPreps developers" name="author"/>
+  <link href="../../images/favicon.png" rel="shortcut icon"/>
+  <meta content="mkdocs-1.1.2, mkdocs-material-6.1.2" name="generator"/>
+  <title>
+   Presentation - NiPreps
+  </title>
+  <link href="../../stylesheets/main.19190aaf.min.css" rel="stylesheet"/>
+  <link href="../../stylesheets/palette.24b84193.min.css" rel="stylesheet"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+  <style>
+   body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}
+  </style>
+  <script>
+   window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-170131052-1","www.nipreps.org"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})
+  </script>
+  <script async="" src="https://www.google-analytics.com/analytics.js">
+  </script>
+ </head>
+ <body data-md-color-accent="none" data-md-color-primary="none" data-md-color-scheme="" dir="ltr">
+  <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+  <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+  <label class="md-overlay" for="__drawer">
+  </label>
+  <div data-md-component="skip">
+   <a class="md-skip" href="#building-communities-around-reproducible-workflows">
+    Skip to content
+   </a>
+  </div>
+  <div data-md-component="announce">
+  </div>
+  <header class="md-header" data-md-component="header">
+   <nav aria-label="Header" class="md-header-nav md-grid">
+    <a aria-label="NiPreps" class="md-header-nav__button md-logo" href="https://www.nipreps.org" title="NiPreps">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z">
+      </path>
+     </svg>
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z">
+      </path>
+     </svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+     <div class="md-header-nav__ellipsis">
+      <span class="md-header-nav__topic md-ellipsis">
+       NiPreps
+      </span>
+      <span class="md-header-nav__topic md-ellipsis">
+       Presentation
+      </span>
+     </div>
+    </div>
+   </nav>
+  </header>
+  <div class="md-container" data-md-component="container">
+   <main class="md-main" data-md-component="main">
+    <div class="md-main__inner md-grid">
+     <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+         <label class="md-nav__title" for="__drawer">
+          <a aria-label="NiPreps" class="md-nav__button md-logo" href="https://www.nipreps.org" title="NiPreps">
+           <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z">
+            </path>
+           </svg>
+          </a>
+          NiPreps
+         </label>
+         <ul class="md-nav__list" data-md-scrollfix="">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../../..">
+            Home
+           </a>
+          </li>
+          <li class="md-nav__item md-nav__item--nested">
+           <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" id="nav-2" type="checkbox"/>
+           <label class="md-nav__link" for="nav-2">
+            NiPreps
+            <span class="md-nav__icon md-icon">
+            </span>
+           </label>
+           <nav aria-label="NiPreps" class="md-nav" data-md-level="1">
+            <label class="md-nav__title" for="nav-2">
+             <span class="md-nav__icon md-icon">
+             </span>
+             NiPreps
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix="">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../../intro/nipreps/">
+               Framework
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+          <li class="md-nav__item md-nav__item--nested">
+           <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" id="nav-3" type="checkbox"/>
+           <label class="md-nav__link" for="nav-3">
+            BIDS-Apps
+            <span class="md-nav__icon md-icon">
+            </span>
+           </label>
+           <nav aria-label="BIDS-Apps" class="md-nav" data-md-level="1">
+            <label class="md-nav__title" for="nav-3">
+             <span class="md-nav__icon md-icon">
+             </span>
+             BIDS-Apps
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix="">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../../apps/framework/">
+               Introduction
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../../apps/docker/">
+               Executing with Docker
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../../apps/singularity/">
+               Executing with Singularity
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+          <li class="md-nav__item md-nav__item--nested">
+           <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" id="nav-4" type="checkbox"/>
+           <label class="md-nav__link" for="nav-4">
+            Community
+            <span class="md-nav__icon md-icon">
+            </span>
+           </label>
+           <nav aria-label="Community" class="md-nav" data-md-level="1">
+            <label class="md-nav__title" for="nav-4">
+             <span class="md-nav__icon md-icon">
+             </span>
+             Community
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix="">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../../community/">
+               Welcome
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../../community/members/">
+               Membership
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../../community/features/">
+               New features
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../../community/CONTRIBUTING/">
+               Contributing
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../../community/CODE_OF_CONDUCT/">
+               Code of Conduct
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+          <li class="md-nav__item md-nav__item--nested">
+           <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" id="nav-5" type="checkbox"/>
+           <label class="md-nav__link" for="nav-5">
+            Developers
+            <span class="md-nav__icon md-icon">
+            </span>
+           </label>
+           <nav aria-label="Developers" class="md-nav" data-md-level="1">
+            <label class="md-nav__title" for="nav-5">
+             <span class="md-nav__icon md-icon">
+             </span>
+             Developers
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix="">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../../devs/versions/">
+               Versions Matrix
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../../devs/releases/">
+               Releases
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+         <label class="md-nav__title" for="__toc">
+          <span class="md-nav__icon md-icon">
+          </span>
+          Table of contents
+         </label>
+         <ul class="md-nav__list" data-md-scrollfix="">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#o-esteban">
+            O. Esteban
+           </a>
+           <nav aria-label="O. Esteban" class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#chuv-lausanne-university-hospital">
+               CHUV | Lausanne University Hospital
+              </a>
+              <nav aria-label="CHUV | Lausanne University Hospital" class="md-nav">
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#wwwniprepsorg">
+                  www.nipreps.org
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+            </ul>
+           </nav>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-content">
+      <article class="md-content__inner md-typeset">
+       <hr/>
+       <p>
+        layout: false
+count: false
+       </p>
+       <p>
+        .middle.center[
+       </p>
+       <h1 id="building-communities-around-reproducible-workflows">
+        Building communities around reproducible workflows
+        <a class="headerlink" href="#building-communities-around-reproducible-workflows" title="Permanent link">
+         ¶
+        </a>
+       </h1>
+       <p>
+        <br/>
+        <br/>
+       </p>
+       <h3 id="o-esteban">
+        O. Esteban
+        <a class="headerlink" href="#o-esteban" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <h4 id="chuv-lausanne-university-hospital">
+        CHUV | Lausanne University Hospital
+        <a class="headerlink" href="#chuv-lausanne-university-hospital" title="Permanent link">
+         ¶
+        </a>
+       </h4>
+       <h6 id="wwwniprepsorg">
+        <a href="https://www.nipreps.org">
+         www.nipreps.org
+        </a>
+        <a class="headerlink" href="#wwwniprepsorg" title="Permanent link">
+         ¶
+        </a>
+       </h6>
+       <p>
+        ]
+       </p>
+       <hr/>
+       <p>
+        layout: false
+count: false
+       </p>
+       <p>
+        .middle.center[
+       </p>
+       <h1 id="building-communities-around-reproducible-workflows_1">
+        Building communities around reproducible workflows
+        <a class="headerlink" href="#building-communities-around-reproducible-workflows_1" title="Permanent link">
+         ¶
+        </a>
+       </h1>
+       <p>
+        <br/>
+        <br/>
+       </p>
+       <h3 id="o-esteban_1">
+        O. Esteban
+        <a class="headerlink" href="#o-esteban_1" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <h4 id="chuv-lausanne-university-hospital_1">
+        CHUV | Lausanne University Hospital
+        <a class="headerlink" href="#chuv-lausanne-university-hospital_1" title="Permanent link">
+         ¶
+        </a>
+       </h4>
+       <h6 id="wwwniprepsorg_1">
+        <a href="https://www.nipreps.org">
+         www.nipreps.org
+        </a>
+        <a class="headerlink" href="#wwwniprepsorg_1" title="Permanent link">
+         ¶
+        </a>
+       </h6>
+       <p>
+        ]
+       </p>
+       <p>
+        ???
+       </p>
+       <h2 id="im-going-to-talk-about-how-we-are-building-a-framework-of-preprocessing-pipelines-for-neuroimaging-called-nipreps-based-on-the-fmriprep-experience">
+        I'm going to talk about how we are building a framework of preprocessing pipelines for neuroimaging called NiPreps, based on the fMRIPrep experience.
+        <a class="headerlink" href="#im-going-to-talk-about-how-we-are-building-a-framework-of-preprocessing-pipelines-for-neuroimaging-called-nipreps-based-on-the-fmriprep-experience" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        name: newsection
+layout: true
+class: section-separator
+       </p>
+       <p>
+        .perma-sidebar[
+       </p>
+       <h2 id="data-processing">
+        Data Processing
+        <a class="headerlink" href="#data-processing" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <h3 id="day-2-15h-cet">
+        (Day 2, 15h CET)
+        <a class="headerlink" href="#day-2-15h-cet" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <h1 id="workflows">
+        Workflows
+        <a class="headerlink" href="#workflows" title="Permanent link">
+         ¶
+        </a>
+       </h1>
+       <p>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+       </p>
+       <p align="center">
+        <img src="../nipreps-qr.svg" width="70%"/>
+       </p>
+       <p>
+        <br/>
+       </p>
+       <p align="center">
+        <a href="http://creativecommons.org/licenses/by/4.0/" rel="license">
+         <img alt="Creative Commons License" src="https://i.creativecommons.org/l/by/4.0/88x31.png" style="border-width:0"/>
+        </a>
+       </p>
+       <p>
+        ]
+       </p>
+       <hr/>
+       <p>
+        name: sidebar
+layout: true
+       </p>
+       <p>
+        .perma-sidebar[
+       </p>
+       <h2 id="data-processing_1">
+        Data Processing
+        <a class="headerlink" href="#data-processing_1" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <h3 id="day-2-15h-cet_1">
+        (Day 2, 15h CET)
+        <a class="headerlink" href="#day-2-15h-cet_1" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <h1 id="workflows_1">
+        Workflows
+        <a class="headerlink" href="#workflows_1" title="Permanent link">
+         ¶
+        </a>
+       </h1>
+       <p>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+       </p>
+       <p align="center">
+        <img src="../nipreps-qr.svg" width="70%"/>
+       </p>
+       <p>
+        <br/>
+       </p>
+       <p align="center">
+        <a href="http://creativecommons.org/licenses/by/4.0/" rel="license">
+         <img alt="Creative Commons License" src="https://i.creativecommons.org/l/by/4.0/88x31.png" style="border-width:0"/>
+        </a>
+       </p>
+       <p>
+        ]
+       </p>
+       <hr/>
+       <p>
+        template: sidebar
+       </p>
+       <h2 id="neuroimaging-is-now-mature">
+        Neuroimaging is now mature
+        <a class="headerlink" href="#neuroimaging-is-now-mature" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <ul>
+        <li>
+         many excellent tools available (from specialized to foundational)
+        </li>
+        <li>
+         large toolboxes (AFNI, ANTs/ITK, FreeSurfer, FSL, Nilearn, SPM, etc.)
+        </li>
+        <li>
+         workflow software (Nipype, Shellscripts, Nextflow, CWL)
+        </li>
+        <li>
+         <p>
+          container technology, CI/CD
+         </p>
+        </li>
+        <li>
+         <p>
+          a wealth of prior knowledge (esp. about humans)
+         </p>
+        </li>
+        <li>
+         <p>
+          LOTS of data acquired everyday
+         </p>
+        </li>
+       </ul>
+       <h2 id="workflows-games-on">
+        Workflows - game's on!
+        <a class="headerlink" href="#workflows-games-on" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <ul>
+        <li>
+         <p>
+          although many neuroimaging areas are still in search of methodological breakthroughs,
+         </p>
+        </li>
+        <li>
+         <p>
+          challenges have moved on to the workflows:
+         </p>
+        </li>
+        <li>
+         workflows within traditional toolboxes - usually not flexible to adapt to new data
+        </li>
+        <li>
+         BIDS and BIDS-Apps.
+        </li>
+       </ul>
+       <p>
+        ???
+       </p>
+       <ul>
+        <li>
+         researchers have a large portfolio of image processing components readily available
+        </li>
+        <li>
+         toolboxes with great support and active maintenance:
+        </li>
+       </ul>
+       <hr/>
+       <h2 id="new-questions-changing-the-focus">
+        New questions changing the focus:
+        <a class="headerlink" href="#new-questions-changing-the-focus" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <h3 id="-validity-does-the-workflow-actually-work-out">
+        -
+        <strong>
+         validity
+        </strong>
+        (does the workflow actually work out?)
+        <a class="headerlink" href="#-validity-does-the-workflow-actually-work-out" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <h3 id="-transparency-is-it-a-black-box-how-precise-is-reporting">
+        -
+        <strong>
+         transparency
+        </strong>
+        (is it a black-box? how precise is reporting?)
+        <a class="headerlink" href="#-transparency-is-it-a-black-box-how-precise-is-reporting" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <h3 id="-vibration-how-each-tool-choice-parameters-affect-overall">
+        -
+        <strong>
+         vibration
+        </strong>
+        (how each tool choice &amp; parameters affect overall?)
+        <a class="headerlink" href="#-vibration-how-each-tool-choice-parameters-affect-overall" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <h3 id="-throughput-how-much-datatime-can-it-possible-take">
+        -
+        <strong>
+         throughput
+        </strong>
+        (how much data/time can it possible take?)
+        <a class="headerlink" href="#-throughput-how-much-datatime-can-it-possible-take" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <h3 id="-robustness-can-i-use-it-on-diverse-studies">
+        -
+        <strong>
+         robustness
+        </strong>
+        (can I use it on diverse studies?)
+        <a class="headerlink" href="#-robustness-can-i-use-it-on-diverse-studies" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <h3 id="-evaluation-what-is-it-unique-about-the-workflow-wrt-existing-alternatives">
+        -
+        <strong>
+         evaluation
+        </strong>
+        (what is it unique about the workflow, w.r.t. existing alternatives?)
+        <a class="headerlink" href="#-evaluation-what-is-it-unique-about-the-workflow-wrt-existing-alternatives" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <hr/>
+       <h2 id="the-garden-of-forking-paths">
+        The garden of forking paths
+        <a class="headerlink" href="#the-garden-of-forking-paths" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p align="center">
+        <img alt="NARPS Paper" src="assets/narps.png" width="800px"/>
+       </p>
+       <p>
+        (Botvinik-Nezer et al., 2020)
+       </p>
+       <p>
+        Around 50% of teams used fMRIPrep'ed inputs.
+       </p>
+       <hr/>
+       <h2 id="the-fmriprep-story">
+        The
+        <em>
+         fMRIPrep
+        </em>
+        story
+        <a class="headerlink" href="#the-fmriprep-story" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <h3 id="fmriprep-produces-analysis-ready-data-from-diverse-data">
+        fMRIPrep produces analysis-ready data from diverse data
+        <a class="headerlink" href="#fmriprep-produces-analysis-ready-data-from-diverse-data" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <ul>
+        <li>
+         minimal requirements (
+         <a href="https://bids-standard.github.io/bids-validator/">
+          BIDS-compliant
+         </a>
+         );
+        </li>
+        <li>
+         <em>
+          agnostic
+         </em>
+         to downstream steps of the workflow
+        </li>
+        <li>
+         produces
+         <a href="https://bids-specification.readthedocs.io/en/derivatives/05-derivatives/01-introduction.html">
+          BIDS-Derivatives
+         </a>
+         ;
+        </li>
+        <li>
+         robust against inhomogeneity of data across studies
+        </li>
+       </ul>
+       <p>
+        ???
+       </p>
+       <p>
+        fMRIPrep takes in a task-based or resting-state
+functional MRI dataset in BIDS-format
+and returns preprocessed data ready for analysis.
+       </p>
+       <p>
+        Preprocessed data can be used for a broad range of analysis, and they are
+formatted following BIDS-Derivatives to maximize compatibility with:
+  * major software packages (AFNI, FSL, SPM*, etc.)
+  * further temporal filtering and denoising:
+        <em>
+         fMRIDenoise
+        </em>
+        * any BIDS-Derivatives compliant tool (e.g.,
+        <em>
+         FitLins
+        </em>
+        ).
+       </p>
+       <p>
+        --
+       </p>
+       <h3 id="fmriprep-is-a-bids-app-gorgolewski-et-al-2017">
+        fMRIPrep is a
+        <a href="https://bids-apps.github.io">
+         BIDS-App
+        </a>
+        (
+        <a href="https://doi.org/10.1371/journal.pcbi.1005209">
+         Gorgolewski, et al. 2017
+        </a>
+        )
+        <a class="headerlink" href="#fmriprep-is-a-bids-app-gorgolewski-et-al-2017" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <ul>
+        <li>
+         adhered to modern software-engineering standards (CI/CD, containers)
+        </li>
+        <li>
+         compatible interface with other BIDS-Apps
+        </li>
+        <li>
+         optimized for automatic execution
+        </li>
+       </ul>
+       <p>
+        ???
+       </p>
+       <p>
+        fMRIPrep adopts the BIDS-App specifications.
+That means the software is tested with every change to the codebase,
+it also means that packaging, containerization, and deployment are also
+automated and require tests to be passing.
+BIDS-Apps are inter-operable (via BIDS-Derivatives),
+and optimized for execution in HPC, Cloud, etc.
+       </p>
+       <p>
+        --
+       </p>
+       <h3 id="minimizes-human-intervention">
+        Minimizes human intervention
+        <a class="headerlink" href="#minimizes-human-intervention" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <ul>
+        <li>
+         avoid error-prone parameters settings (read them from BIDS)
+        </li>
+        <li>
+         adapts the workflow to the actual data available
+        </li>
+        <li>
+         while remaining flexible to some design choices (e.g., whether or not reconstructing surfaces or customizing target normalized standard spaces)
+        </li>
+       </ul>
+       <p>
+        ???
+       </p>
+       <p>
+        fMRIPrep minimizes human intervention because the user does not
+need to fiddle with any parameters - they are obtained from the BIDS structure.
+However, fMRIPrep does allow some flexibility to ensure the preprocessing meets the requirements of the intended analyses.
+       </p>
+       <hr/>
+       <h3 id="fmriprep-was-not-originally-envisioned-as-a-community-project">
+        <em>
+         fMRIPrep
+        </em>
+        was not originally envisioned as a community project ...
+        <a class="headerlink" href="#fmriprep-was-not-originally-envisioned-as-a-community-project" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <p>
+        (we just wanted a robust tool to automatically preprocess incoming data of OpenNeuro.org)
+       </p>
+       <p>
+        --
+       </p>
+       <h3 id="but-a-community-built-up-quickly-around-it">
+        ... but a community built up quickly around it
+        <a class="headerlink" href="#but-a-community-built-up-quickly-around-it" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <p>
+        <br/>
+       </p>
+       <p>
+        --
+       </p>
+       <p>
+        .pull-left[
+       </p>
+       <h2 id="why">
+        Why?
+        <a class="headerlink" href="#why" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <ul>
+        <li>
+         <p>
+          Preprocessing of fMRI was in need for
+          <strong>
+           division of labor
+          </strong>
+          .
+         </p>
+        </li>
+        <li>
+         <p>
+          Obsession with
+          <strong>
+           transparency
+          </strong>
+          made early-adopters confident of the recipes they were applying.
+         </p>
+        </li>
+        <li>
+         <p>
+          <strong>
+           Responsiveness
+          </strong>
+          to feedback.
+]
+         </p>
+        </li>
+       </ul>
+       <p>
+        .pull-right[
+       </p>
+       <p align="center">
+        <img src="../torw2020/assets/fmriprep-ga-viewers.png" width="400px"/>
+       </p>
+       <p>
+        ]
+       </p>
+       <p>
+        ???
+       </p>
+       <p>
+        Preprocessing is a time-consuming effort, requires expertise converging imaging foundations &amp; CS, typically addressed with legacy
+        <em>
+         in-house
+        </em>
+        pipelines.
+       </p>
+       <p>
+        On the right-hand side, you'll find the chart of unique visitors
+to fmriprep.org, which is the documentation website.
+       </p>
+       <hr/>
+       <h2 id="key-aspect-credit-all-direct-contributors">
+        Key aspect: credit all direct contributors
+        <a class="headerlink" href="#key-aspect-credit-all-direct-contributors" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p align="center">
+        <img alt="fMRIPrep authors" src="assets/fmriprep-authors.png" width="700px"/>
+       </p>
+       <p>
+        --
+       </p>
+       <h2 id="and-indirect-citation-boilerplate">
+        .. and indirect:
+        <em>
+         citation boilerplate
+        </em>
+        .
+        <a class="headerlink" href="#and-indirect-citation-boilerplate" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <hr/>
+       <h3 id="researchers-want-to-spend-more-time-on-those-areas-most-relevant-to-them">
+        Researchers want to spend more time on those areas most relevant to them
+        <a class="headerlink" href="#researchers-want-to-spend-more-time-on-those-areas-most-relevant-to-them" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <p>
+        (probably not preprocessing...)
+       </p>
+       <p>
+        ???
+       </p>
+       <p>
+        With the development of fMRIPrep we understood that
+researchers don't want to waste their time on preprocessing
+(except for researchers developing new preprocessing techniques).
+       </p>
+       <p>
+        --
+       </p>
+       <h3 id="writing-fmriprep-required-a-team-of-several-experts-in-processing-methods-for-neuroimaging-with-a-solid-base-on-computer-science">
+        Writing
+        <em>
+         fMRIPrep
+        </em>
+        required a team of several experts in processing methods for neuroimaging, with a solid base on Computer Science.
+        <a class="headerlink" href="#writing-fmriprep-required-a-team-of-several-experts-in-processing-methods-for-neuroimaging-with-a-solid-base-on-computer-science" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <p>
+        (research programs just can't cover the neuroscience and the engineering of the whole workflow - we need to divide the labor)
+       </p>
+       <p>
+        ???
+       </p>
+       <p>
+        The current neuroimaging workflow requires extensive knowledge in
+sometimes orthogonal fields such as neuroscience and computer science.
+Dividing the labor in labs, communities or individuals with the necessary
+expertise is the fundamental for the advance of the whole field.
+       </p>
+       <p>
+        --
+       </p>
+       <h3 id="transparency-helps-against-the-risk-of-super-easy-tools">
+        Transparency helps against the risk of super-easy tools
+        <a class="headerlink" href="#transparency-helps-against-the-risk-of-super-easy-tools" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <p>
+        (easy-to-use tools are risky because they might get a researcher very far with no idea whatsoever of what they've done)
+       </p>
+       <p>
+        ???
+       </p>
+       <p>
+        There is an implicit risk in making things too easy to operate:
+       </p>
+       <p>
+        For instance, imagine someone who runs fMRIPrep on diffusion data by
+tricking the BIDS naming into an apparently functional MRI dataset.
+If fMRIPrep reached the end at all, the garbage at the output could be fed into
+further tools, in a sort of a snowballing problem.
+       </p>
+       <p>
+        When researchers have access to the guts of the software and are given an opportunity to understand what's going on, the risk of misuse dips.
+       </p>
+       <p>
+        --
+       </p>
+       <h3 id="established-toolboxes-do-not-have-incentives-for-compatibility">
+        Established toolboxes do not have incentives for compatibility
+        <a class="headerlink" href="#established-toolboxes-do-not-have-incentives-for-compatibility" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <p>
+        (and to some extent this is not necessarily bad, as long as they are kept well-tested and they embrace/help-develop some minimal standards)
+       </p>
+       <p>
+        ???
+       </p>
+       <p>
+        AFNI, ANTs, FSL, FreeSurfer, SPM, etc. have comprehensive software validation tests,
+methodological validation tests, stress tests, etc. - which pushed up their quality and made them fundamental for the field.
+       </p>
+       <p>
+        Therefore, it is better to keep things that way (although some minimal efforts towards convergence in compatibility are of course welcome)
+       </p>
+       <hr/>
+       <h2 id="the-dmriprep-story">
+        The
+        <em>
+         dMRIPrep
+        </em>
+        story
+        <a class="headerlink" href="#the-dmriprep-story" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        After the success of
+        <em>
+         fMRIPrep
+        </em>
+        , some neuroimagers asked "
+        <em>
+         when a diffussion MRI fMRIPrep?
+        </em>
+        "
+       </p>
+       <h2 id="neurostarsorg">
+        NeuroStars.org
+        <a class="headerlink" href="#neurostarsorg" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        (please note this down)
+       </p>
+       <p>
+        --
+       </p>
+       <p>
+        Same situation in the field of diffusion MRI:
+       </p>
+       <h3 id="image-processing-possible-guidelines-for-the-standardization-clinical-applications-j-veraart">
+        Image Processing: Possible Guidelines for the Standardization &amp; Clinical Applications (J. Veraart)
+        <a class="headerlink" href="#image-processing-possible-guidelines-for-the-standardization-clinical-applications-j-veraart" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <p>
+        (https://www.ismrm.org/19/program_files/MIS15.htm)
+       </p>
+       <p>
+        --
+       </p>
+       <h1 id="please-join">
+        Please join!
+        <a class="headerlink" href="#please-join" title="Permanent link">
+         ¶
+        </a>
+       </h1>
+       <p>
+        Joseph, M.; Pisner, D.; Richie-Halford, A.; Lerma-Usabiaga, G.; Keshavan, A.; Kent, JD.; Cieslak, M.; Poldrack, RA.; Rokem, A.; Esteban, O.
+       </p>
+       <hr/>
+       <p>
+        template: newsection
+layout: false
+       </p>
+       <p>
+        .middle.center[
+       </p>
+       <h1 id="wwwniprepsorg_2">
+        www.nipreps.org
+        <a class="headerlink" href="#wwwniprepsorg_2" title="Permanent link">
+         ¶
+        </a>
+       </h1>
+       <h3 id="nipreps-neuroimaging-preprocessing-tools">
+        (
+        <em>
+         NiPreps
+        </em>
+        == NeuroImaging PREProcessing toolS)
+        <a class="headerlink" href="#nipreps-neuroimaging-preprocessing-tools" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <p>
+        ]
+       </p>
+       <p>
+        ???
+       </p>
+       <p>
+        The enormous success of fMRIPrep led us to propose
+its generalization to other MRI and non-MRI modalities,
+as well as nonhuman species (for instance, rodents),
+and particular populations currently unsupported by fMRIPrep
+such as infants.
+       </p>
+       <hr/>
+       <h2 id="augmenting-scanners-to-produce-analysis-grade-data">
+        Augmenting scanners to produce "
+        <em>
+         analysis-grade
+        </em>
+        " data
+        <a class="headerlink" href="#augmenting-scanners-to-produce-analysis-grade-data" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <h3 id="data-directly-consumable-by-analyses">
+        (data
+        <em>
+         directly consumable
+        </em>
+        by analyses)
+        <a class="headerlink" href="#data-directly-consumable-by-analyses" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <p>
+        <br/>
+        <br/>
+       </p>
+       <p>
+        .pull-left[
+       </p>
+       <p>
+        <strong>
+         <em>
+          Analysis-grade
+         </em>
+         data
+        </strong>
+        is an analogy to the concept of "
+        <em>
+         sushi-grade (or
+         <a href="https://en.wikipedia.org/wiki/Sashimi">
+          sashimi-grade
+         </a>
+         ) fish
+        </em>
+        " in that both are:
+       </p>
+       <p>
+        <br/>
+       </p>
+       <p>
+        .large[
+        <strong>
+         minimally preprocessed
+        </strong>
+        ,]
+       </p>
+       <p>
+        and
+       </p>
+       <p>
+        .large[
+        <strong>
+         safe to consume
+        </strong>
+        directly.]
+]
+       </p>
+       <p>
+        .pull-right[
+        <img align="right" src="https://1.bp.blogspot.com/-Osh4H4WXka0/WlMJmVgkZTI/AAAAAAAAEMY/GynUzSomJ-EBiyqv2m-maiOyKSM7SOmNACLcBGAs/s400/yellowfin%2Btuna%2Bsteaks%2Bnutrition.jpg" style="margin-right: 50px"/>
+        ]
+       </p>
+       <p>
+        ???
+       </p>
+       <p>
+        The goal, therefore, of NiPreps is to extend the scanner
+so that, in a way, they produce data ready for analysis.
+       </p>
+       <p>
+        We liken these analysis-grade data to sushi-grade fish,
+because in both cases the product is minimally preprocessed
+and at the same time safe to consume as is.
+       </p>
+       <hr/>
+       <p>
+        template: newsection
+layout: false
+       </p>
+       <p>
+        .middle.center[
+       </p>
+       <h1 id="deconstructing-fmriprep">
+        Deconstructing
+        <em>
+         fMRIPrep
+        </em>
+        <a class="headerlink" href="#deconstructing-fmriprep" title="Permanent link">
+         ¶
+        </a>
+       </h1>
+       <p>
+        <br/>
+       </p>
+       <p>
+        <img align="center" src="../torw2020/assets/deconstructing.png" style="width: 60%"/>
+        ]
+       </p>
+       <p>
+        ???
+       </p>
+       <p>
+        For the last two years we've been decomposing the architecture of fMRIPrep, spinning off its constituent parts that are valuable in other applications.
+       </p>
+       <p>
+        This process of decoupling (to use a proper CS term) has been greatly facilitated by the modular nature of the code since its inception.
+       </p>
+       <hr/>
+       <div align="center" style="margin-top: 1em">
+        <img alt="The NiPreps framework" src="../nipreps-chart.png" width="60%"/>
+       </div>
+       <p>
+        ???
+       </p>
+       <p>
+        The processing elements extracted from fMRIPrep can be mapped to three
+regimes of responsibility:
+       </p>
+       <ul>
+        <li>
+         Software infrastructure composed by tools ensuring the collaboration and the most basic tooling.
+        </li>
+        <li>
+         Middleware utilities, which build more advanced tooling based on the foundational infrastructure
+        </li>
+        <li>
+         And at the top of the stack end-user applications - namely fMRIPrep, dMRIPrep, sMRIPrep and MRIQC.
+        </li>
+       </ul>
+       <p>
+        As we can see, the boundaries of these three architectural layers are soft and tools such as TemplateFlow may stand in between.
+       </p>
+       <p>
+        Only projects enclosed in the brain shape pertain to the NiPreps community. NiPype, NiBabel and BIDS are so deeply embedded as dependencies that NiPreps can't be understood without them.
+       </p>
+       <hr/>
+       <p>
+        <img src="https://raw.githubusercontent.com/bids-standard/bids-specification/master/BIDS_logo/BIDS_logo_black.svg" width="20%"/>
+       </p>
+       <ul>
+        <li>
+         <p>
+          BIDS provides a standard, guaranteeing I/O agreements:
+         </p>
+        </li>
+        <li>
+         <p>
+          Allows workflows to self-adapt to the inputs
+         </p>
+        </li>
+        <li>
+         <p>
+          Ensures the shareability of the results
+         </p>
+        </li>
+        <li>
+         <p>
+          PyBIDS: a Python tool to query BIDS datasets (
+          <a href="https://doi.org/10.21105/joss.01294">
+           Yarkoni et al., 2019
+          </a>
+          ):
+         </p>
+        </li>
+       </ul>
+       <div class="highlight">
+        <pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">bids</span> <span class="kn">import</span> <span class="n">BIDSLayout</span>
+
+<span class="c1"># Point PyBIDS to the dataset's path</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">layout</span> <span class="o">=</span> <span class="n">BIDSLayout</span><span class="p">(</span><span class="s2">"/data/coolproject"</span><span class="p">)</span>
+
+<span class="c1"># List the participant IDs of present subjects</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">layout</span><span class="o">.</span><span class="n">get_subjects</span><span class="p">()</span>
+<span class="p">[</span><span class="s1">'01'</span><span class="p">,</span> <span class="s1">'02'</span><span class="p">,</span> <span class="s1">'03'</span><span class="p">,</span> <span class="s1">'04'</span><span class="p">,</span> <span class="s1">'05'</span><span class="p">]</span>
+
+<span class="c1"># List session identifiers, if present</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">layout</span><span class="o">.</span><span class="n">get_sessions</span><span class="p">()</span>
+<span class="p">[</span><span class="s1">'01'</span><span class="p">,</span> <span class="s1">'02'</span><span class="p">]</span>
+
+<span class="c1"># List functional MRI tasks</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">layout</span><span class="o">.</span><span class="n">get_tasks</span><span class="p">()</span>
+<span class="p">[</span><span class="s1">'rest'</span><span class="p">,</span> <span class="s1">'nback'</span><span class="p">]</span>
+</code></pre>
+       </div>
+       <p>
+        ???
+       </p>
+       <p>
+        BIDS is one of the keys to success for fMRIPrep and consequently, a strategic element of NiPreps.
+       </p>
+       <p>
+        Because the tools so far are written in Python, PyBIDS is a powerful tool to index and query inputs and outputs.
+       </p>
+       <p>
+        The code snippet illustrates the ease to find out the subject identifiers available in the dataset, sessions, and tasks.
+       </p>
+       <hr/>
+       <h2 id="bids-derivatives">
+        BIDS Derivatives
+        <a class="headerlink" href="#bids-derivatives" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        .cut-right[
+        <div class="highlight">
+         <pre><span></span><code>derivatives/
+├── fmriprep/
+│ ├── dataset_description.json
+│ ├── logs
+│ ├── sub-01.html
+│ ├── sub-01/
+│ │ ├── anat/
+│ │ │ ├── sub-01_desc-brain_mask.nii.gz
+│ │ │ ├── sub-01_dseg.nii.gz
+│ │ │ ├── sub-01_label-GM_probseg.nii.gz
+│ │ │ ├── sub-01_label-WM_probseg.nii.gz
+│ │ │ ├── sub-01_label-CSF_probseg.nii.gz
+│ │ │ ├── sub-01_desc-preproc_T1w.nii.gz
+│ │ │ ├── sub-01_space-MNI152_desc-brain_mask.nii.gz
+│ │ │ ├── sub-01_space-MNI152_dseg.nii.gz
+│ │ │ ├── sub-01_space-MNI152_label-GM_probseg.nii.gz
+│ │ │ ├── sub-01_space-MNI152_label-WM_probseg.nii.gz
+│ │ │ ├── sub-01_space-MNI152_label-CSF_probseg.nii.gz
+│ │ │ ├── sub-01_space-MNI152_desc-preproc_T1w.nii.gz
+│ │ │ ├── sub-01_from-MNI152_to-T1w_mode-image_xfm.h5
+│ │ │ ├── sub-01_from-T1w_to-MNI152_mode-image_xfm.h5
+│ │ │ └── sub-01_from-orig_to-T1w_mode-image_xfm.txt
+│ │ ├── figures/
+│ │ └── func/
+│ │   ├── sub-01_task-rhymejudgment_space-MNI152_boldref.nii.gz
+│ │   ├── sub-01_task-rhymejudgment_space-MNI152_desc-preproc_bold.nii.gz
+│ │   ├── sub-01_task-rhymejudgment_space-MNI152_desc-confounds_regressors.nii.gz
+│ │   └── sub-01_task-rhymejudgment_space-MNI152_desc-brain_mask.nii.gz
+</code></pre>
+        </div>
+        ]
+       </p>
+       <p>
+        ???
+       </p>
+       <p>
+        All NiPreps must write out BIDS-Derivatives.
+As illustrated in the example, the outputs of fMRIPrep are very similar to the BIDS standard for acquired data.
+       </p>
+       <hr/>
+       <h2 id="bids-apps">
+        BIDS-Apps
+        <a class="headerlink" href="#bids-apps" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <ul>
+        <li>
+         BIDS-Apps proposes a workflow structure model:
+        </li>
+       </ul>
+       <p>
+        <img src="../journal.pcbi.1005209.g002.png" width="85%"/>
+       </p>
+       <ul>
+        <li>
+         <p>
+          Use of containers &amp; CI/CD
+         </p>
+        </li>
+        <li>
+         <p>
+          Uniform interface:
+  .cut-right[
+          <div class="highlight">
+           <pre><span></span><code>fmriprep /data /data/derivatives/fmriprep-20.1.1 participant <span class="o">[</span>+OPTIONS<span class="o">]</span>
+</code></pre>
+          </div>
+          ]
+         </p>
+        </li>
+       </ul>
+       <p>
+        ???
+       </p>
+       <p>
+        All end-user applications in NiPreps must conform to the BIDS-Apps specifications.
+       </p>
+       <p>
+        The BIDS-Apps paper identified a common pattern in neuroimaging studies, where individual participants (and runs) are processed first individually, and then based on the outcomes, further levels of data aggregation are executed.
+       </p>
+       <p>
+        For this reason, BIDS-Apps define two major levels of execution: participant and group level.
+       </p>
+       <p>
+        Finally, the paper also stresses the importance of containerizing applications to ensure long-term preservation of run-to-run repeatability and proposes a common command line interface as described at the bottom:
+       </p>
+       <ul>
+        <li>
+         first the name of the BIDS-Apps (fmriprep, in this case)
+        </li>
+        <li>
+         followed by input and output directories (respectively),
+        </li>
+        <li>
+         to finally indicate the analysis level (always participant, for the case of fmriprep)
+        </li>
+       </ul>
+       <hr/>
+       <p>
+        .pull-left[
+       </p>
+       <p align="center">
+        <img src="../card-nipype.svg" width="100%"/>
+       </p>
+       <p>
+        <br/>
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><span class="kn">from</span> <span class="nn">nipype.interfaces.fsl</span> <span class="kn">import</span> <span class="n">BET</span>
+<span class="n">brain_extract</span> <span class="o">=</span> <span class="n">BET</span><span class="p">(</span>
+  <span class="n">in_file</span><span class="o">=</span><span class="s2">"/data/coolproject/sub-01/ses-01/anat/sub-01_ses-01_T1w.nii"</span><span class="p">,</span>
+  <span class="n">out_file</span><span class="o">=</span><span class="s2">"/out/sub-01/ses-01/anat/sub-01_ses-01_desc-brain_T1w.nii"</span>
+<span class="p">)</span>
+<span class="n">brain_extract</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre>
+       </div>
+       <p>
+        Nipype is the gateway to mix-and-match from AFNI, ANTs, Dipy, FreeSurfer, FSL, MRTrix, SPM, etc.
+]
+       </p>
+       <p>
+        .pull-right[
+       </p>
+       <p align="center">
+        <img src="https://nipype.readthedocs.io/en/latest/_images/nipype_architecture_overview2.png" width="60%"/>
+       </p>
+       <p>
+        ]
+       </p>
+       <p>
+        ???
+       </p>
+       <p>
+        Nipype is the glue stitching together all the underlying neuroimaging toolboxes and provides the execution framework.
+       </p>
+       <p>
+        The snippet shows how the widely known BET tool from FSL can be executed using NiPype. This is a particular example instance of interfaces - which provide uniform access to the tooling with Python.
+       </p>
+       <p>
+        Finally, combining these interfaces we generate processing workflows to fulfill higher level processing tasks.
+       </p>
+       <hr/>
+       <p>
+        <img src="../card-nipype.svg" width="39%"/>
+       </p>
+       <p align="center">
+        <img src="https://fmriprep.org/en/stable/_images/workflows-5.png" width="60%"/>
+       </p>
+       <p>
+        ???
+       </p>
+       <p>
+        For instance, we may have a look into fMRIPrep's functional processing block.
+       </p>
+       <p>
+        Nipype helps understand (and opens windows in the black box) generating these graph representation of the workflow.
+       </p>
+       <hr/>
+       <p>
+        <img src="../card-nibabel.svg" width="39%"/>
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><span class="sd">"""Fix the affine of a rodent dataset, imposing 0.2x0.2x0.2 [mm]."""</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nb</span>
+
+<span class="c1"># Open the file</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">"sub-25_MGE_MouseBrain_3D_MGE_150.nii.gz"</span><span class="p">)</span>
+
+<span class="c1"># New (correct) affine</span>
+<span class="n">aff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">((</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+
+<span class="c1"># Use nibabel to reorient to canonical</span>
+<span class="n">card</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">as_closest_canonical</span><span class="p">(</span><span class="n">nb</span><span class="o">.</span><span class="n">Nifti1Image</span><span class="p">(</span>
+    <span class="n">img</span><span class="o">.</span><span class="n">dataobj</span><span class="p">,</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">((</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)),</span>
+    <span class="kc">None</span>
+<span class="p">))</span>
+
+<span class="c1"># Save to disk</span>
+<span class="n">card</span><span class="o">.</span><span class="n">to_filename</span><span class="p">(</span><span class="s2">"sub-25_T2star.nii.gz"</span><span class="p">)</span>
+</code></pre>
+       </div>
+       <p>
+        ???
+       </p>
+       <p>
+        NiBabel allows Python to easily access neuroimaging data formats such as NIfTI, GIFTI and CIFTI2.
+       </p>
+       <p>
+        Although this might be a trivial task, the proliferation of neuroimaging software has led to some sort of Wild West of formats, and sometimes interoperation is not ensured.
+       </p>
+       <h2 id="in-the-snippet-we-can-see-how-we-can-manipulate-the-orientation-headers-of-a-nifti-volume-in-particular-a-rodent-image-with-incorrect-affine-information">
+        In the snippet, we can see how we can manipulate the orientation headers of a NIfTI volume, in particular a rodent image with incorrect affine information.
+        <a class="headerlink" href="#in-the-snippet-we-can-see-how-we-can-manipulate-the-orientation-headers-of-a-nifti-volume-in-particular-a-rodent-image-with-incorrect-affine-information" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        .pull-left[
+       </p>
+       <p align="center">
+        <img src="../card-nitransforms.svg" width="100%"/>
+       </p>
+       <p>
+        <br/>
+        <br/>
+       </p>
+       <p>
+        Transforms typically are the outcome of image registration methodologies
+       </p>
+       <p>
+        <br/>
+       </p>
+       <p>
+        The proliferation of software implementations of image registration methodologies has resulted in a spread of data structures and file formats used to preserve and communicate transforms.
+       </p>
+       <p>
+        (
+        <a href="https://doi.org/10.1109/ISBI45749.2020.9098466">
+         Esteban et al., 2020
+        </a>
+        )
+]
+       </p>
+       <p>
+        .pull-right[
+       </p>
+       <p align="center">
+        <img src="https://raw.githubusercontent.com/poldracklab/nitransforms/master/docs/_static/figure1-joss.png" width="90%"/>
+       </p>
+       <p>
+        ]
+       </p>
+       <p>
+        ???
+       </p>
+       <p>
+        NiTransforms is a super-interesting toy project where we are exercising our finest coding skills.
+It completes NiBabel in the effort of making spatial transforms calculated by neuroimaging software tools interoperable.
+       </p>
+       <p>
+        When it goes beyond the alpha state, it is expected to be merged into NiBabel.
+       </p>
+       <p>
+        At the moment, NiTransforms is already integrated in fMRIPrep +20.1
+to concatenate LTA (linear affine transforms) transforms obtained with FreeSurfer,
+ITK transforms obtained with ANTs, and motion parameters estimated with FSL.
+       </p>
+       <p>
+        Compatibility across formats is hard due to the many arbitrary decisions in establishing the mathematical framework of the transform and the intrinsic confusion of applying a transform.
+       </p>
+       <p>
+        While intuitively we understand applying a transform as "transforming the moving image so that I can represent it overlaid or fused with the reference image and both should look aligned", in reality, we only transform coordinates from the reference image into the moving image's space (step 1 on the right).
+       </p>
+       <p>
+        Once we know where the center of every voxel of the reference image falls in the moving image coordinate system, we read in the information (in other words, a value) from the moving image. Because the location will probably be off-grid, we interpolate such a value from the neighboring voxels (step 2).
+       </p>
+       <p>
+        Finally (step 3) we generate a new image object with the structure of the reference image and the data interpolated from the moving information. This new image object is the moving image "moved" on to the reference image space and thus, both look aligned.
+       </p>
+       <hr/>
+       <p>
+        .pull-left[
+       </p>
+       <p align="center">
+        <img src="../card-templateflow.svg" width="100%"/>
+       </p>
+       <ul>
+        <li>
+         The Archive (right) is a repository of templates and atlases
+        </li>
+        <li>
+         The Python Client (bottom) provides easy access (with lazy-loading) to the Archive
+        </li>
+       </ul>
+       <div class="highlight">
+        <pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">templateflow</span> <span class="kn">import</span> <span class="n">api</span> <span class="k">as</span> <span class="n">tflow</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">tflow</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+<span class="o">...</span>     <span class="s1">'MNI152NLin6Asym'</span><span class="p">,</span>
+<span class="o">...</span>     <span class="n">desc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="o">...</span>     <span class="n">resolution</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="o">...</span>     <span class="n">suffix</span><span class="o">=</span><span class="s1">'T1w'</span><span class="p">,</span>
+<span class="o">...</span>     <span class="n">extension</span><span class="o">=</span><span class="s1">'nii.gz'</span>
+<span class="o">...</span> <span class="p">)</span>
+<span class="n">PosixPath</span><span class="p">(</span><span class="s1">'/templateflow_home/tpl-MNI152NLin6Asym/tpl-MNI152NLin6Asym_res-01_T1w.nii.gz'</span><span class="p">)</span>
+</code></pre>
+       </div>
+       <p>
+        .large[www.templateflow.org]
+]
+       </p>
+       <p>
+        .pull-right[
+       </p>
+       <p align="center">
+        <img src="../torw2020/assets/templateflow-archive.png" width="90%"/>
+       </p>
+       <p>
+        ]
+       </p>
+       <p>
+        ???
+       </p>
+       <p>
+        One of the most ancient feature requests received from fMRIPrep early adopters was improving the flexibility of spatial normalization to standard templates other than fMRIPrep's default.
+       </p>
+       <p>
+        For instance, infant templates.
+       </p>
+       <p>
+        TemplateFlow offers an Archive of templates where they are stored, maintained and re-distributed;
+       </p>
+       <p>
+        and a Python client that helps accessing them.
+       </p>
+       <p>
+        On the right hand side, an screenshot of the TemplateFlow browser shows some of the templates currently available in the repository. The browser can be reached at www.templateflow.org.
+       </p>
+       <p>
+        The tool is based on PyBIDS, and the snippet will surely remind you of it.
+In this case the example shows how to obtain the T1w template corresponding to FSL's MNI space, at the highest resolution.
+       </p>
+       <p>
+        If the files requested are not in TemplateFlow's cache, they will be pulled down and kept for further utilization.
+       </p>
+       <hr/>
+       <h2 id="templateflow-archive">
+        TemplateFlow - Archive
+        <a class="headerlink" href="#templateflow-archive" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p align="center">
+        <img src="../torw2020/assets/templateflow-datatypes.png" width="75%"/>
+       </p>
+       <p>
+        .small[(Ciric et al. 2020, in prep)]
+       </p>
+       <p>
+        ???
+       </p>
+       <p>
+        The Archive allows a rich range of data and metadata to be stored with the template.
+       </p>
+       <p>
+        Datatypes in the repository cover:
+       </p>
+       <ul>
+        <li>
+         images containing population-average templates,
+        </li>
+        <li>
+         masks (for instance brain masks),
+        </li>
+        <li>
+         atlases (including parcellations and segmentations)
+        </li>
+        <li>
+         transform files between templates
+        </li>
+       </ul>
+       <p>
+        Metadata can be stored with the usual BIDS options.
+       </p>
+       <p>
+        Finally, templates allow having multiple cohorts, in a similar encoding to that of multi-session BIDS datasets.
+       </p>
+       <p>
+        Multiple cohorts are useful, for instance, in infant templates with averages at several gestational ages.
+       </p>
+       <hr/>
+       <p>
+        <img src="../card-niworkflows.svg" width="39%"/>
+       </p>
+       <p>
+        <br/>
+        <br/>
+       </p>
+       <p>
+        NiWorkflows is a miscellaneous mixture of tooling used by downstream
+        <em>
+         NiPreps
+        </em>
+        :
+       </p>
+       <p>
+        ???
+       </p>
+       <p>
+        NiWorkflows is, historically, the first component detached from fMRIPrep.
+       </p>
+       <p>
+        For that reason, its scope and vision has very fuzzy boundaries as compared to the other tools.
+       </p>
+       <p>
+        The most relevant utilities incorporated within NiWorkflows are:
+       </p>
+       <p>
+        --
+       </p>
+       <ul>
+        <li>
+         The reportlet aggregation and individual report generation system
+        </li>
+       </ul>
+       <p>
+        ???
+       </p>
+       <p>
+        First, the individual report system which aggregates the visual elements or the reports (which we call "reportlets") and generates the final HTML document.
+       </p>
+       <p>
+        Also, most of the engineering behind the generation of these reportlets and their integration within NiPype are part of NiWorkflows
+       </p>
+       <p>
+        --
+       </p>
+       <ul>
+        <li>
+         Custom extensions to NiPype interfaces
+        </li>
+       </ul>
+       <p>
+        ???
+       </p>
+       <p>
+        Beyond the extension of NiPype to generate a reportlet from any given interface, NiWorkflows is the test bed for many utilities that are then upstreamed to nipype.
+       </p>
+       <p>
+        Also, special interfaces with a limited scope that should not be included in nipype are maintained here.
+       </p>
+       <p>
+        --
+       </p>
+       <ul>
+        <li>
+         Workflows useful across applications
+        </li>
+       </ul>
+       <p>
+        ???
+       </p>
+       <p>
+        Finally, NiWorkflows indeed offers workflows that can be used by end-user NiPreps. For instance atlas-based brain extraction of anatomical images, based on ANTs.
+       </p>
+       <hr/>
+       <p>
+        <img src="../card-sdcflows.svg" width="39%"/>
+       </p>
+       <object data="../torw2020/assets/sub-100068_task-machinegame_run-6_desc-sdc_bold.svg" style="width: 75%;" type="image/svg+xml">
+       </object>
+       <p>
+        ???
+       </p>
+       <p>
+        Echo-planar imaging (EPI) are typically affected by distortions along the phase encoding axis, caused by the perturbation of the magnetic field at tissue interfaces.
+       </p>
+       <p>
+        Looking at the reportlet, we can see how in the "before" panel, the image is warped.
+       </p>
+       <p>
+        The distortion is most obvious in the coronal view (middle row) because this image has posterior-anterior phase encoding.
+       </p>
+       <p>
+        Focusing on the changes between "before" and "after" correction in this coronal view, we can see how the blue contours delineating the corpus callosum fit better the dark shade in the data after correction.
+       </p>
+       <hr/>
+       <h2 id="upcoming-new-utilities">
+        Upcoming new utilities
+        <a class="headerlink" href="#upcoming-new-utilities" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <h3 id="nibabies-fmriprep-babies">
+        NiBabies | fMRIPrep-babies
+        <a class="headerlink" href="#nibabies-fmriprep-babies" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <ul>
+        <li>
+         Mathias Goncalves
+        </li>
+       </ul>
+       <h3 id="nirodents-fmriprep-rodents">
+        NiRodents | fMRIPrep-rodents
+        <a class="headerlink" href="#nirodents-fmriprep-rodents" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <ul>
+        <li>
+         Eilidh MacNicol
+        </li>
+       </ul>
+       <p>
+        ???
+       </p>
+       <p>
+        So, what's coming up next?
+       </p>
+       <p>
+        NiBabies is some sort of NiWorkflows equivalent for the preprocessing of infant imaging. At the moment, only atlas-based brain extraction using ANTs (and adapted from NiWorkflows) is in active developments.
+       </p>
+       <p>
+        Next steps include brain tissue segmentation.
+       </p>
+       <p>
+        Similarly, NiRodents is the NiWorkflows parallel for the prepocessing of rodent preclinical imaging. Again, only atlas-based brain extraction adapted from NiWorkflows is being developed.
+       </p>
+       <hr/>
+       <h3 id="nipreps-is-a-framework-for-the-development-of-preprocessing-workflows">
+        <em>
+         NiPreps
+        </em>
+        is a framework for the development of preprocessing workflows
+        <a class="headerlink" href="#nipreps-is-a-framework-for-the-development-of-preprocessing-workflows" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <ul>
+        <li>
+         Principled design, with BIDS as an strategic component
+        </li>
+        <li>
+         Leveraging existing, widely used software
+        </li>
+        <li>
+         Using NiPype as a foundation
+        </li>
+       </ul>
+       <p>
+        ???
+       </p>
+       <p>
+        To wrap-up, I've presented NiPreps, a framework for developing preprocessing
+workflows inspired by fMRIPrep.
+       </p>
+       <p>
+        The framework is heavily principle and tags along BIDS as a foundational component
+       </p>
+       <p>
+        NiPreps should not reinvent any wheel, trying to reuse as much as possible of the widely used and tested existing software.
+       </p>
+       <p>
+        Nipype serves as a glue components to orchestrate workflows.
+       </p>
+       <p>
+        --
+       </p>
+       <h3 id="why-preprocessing">
+        Why preprocessing?
+        <a class="headerlink" href="#why-preprocessing" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <ul>
+        <li>
+         We propose to consider preprocessing as part of the image acquisition and reconstruction
+        </li>
+        <li>
+         When setting the boundaries that way, it seems sensible to pursue some standardization in the preprocessing:
+        </li>
+        <li>
+         Less experimental degrees of freedom for the researcher
+        </li>
+        <li>
+         Researchers can focus on the analysis
+        </li>
+        <li>
+         More homogeneous data at the output (e.g., for machine learning)
+        </li>
+        <li>
+         How:
+        </li>
+        <li>
+         Transparency is key to success: individual reports and documentation (open source is implicit).
+        </li>
+        <li>
+         Best engineering practices (e.g., containers and CI/CD)
+        </li>
+       </ul>
+       <p>
+        ???
+       </p>
+       <p>
+        But why just preprocessing, with a very strict scope?
+       </p>
+       <p>
+        We propose to think about preprocessing as part of the image acquisition and reconstruction process (in other words, scanning), rather than part of the analysis workflow.
+       </p>
+       <p>
+        This decoupling from analysis comes with several upshots:
+       </p>
+       <p>
+        First, there are less moving parts to play with for researchers in the attempt to fit their methods to the data (instead of fitting data with their methods).
+       </p>
+       <p>
+        Second, such division of labor allows the researcher to use their time in the analysis.
+       </p>
+       <p>
+        Finally, two preprocessed datasets from two different studies and scanning sites should be more homogeneous when processed with the same instruments, in comparison to processing them with idiosyncratic, lab-managed, preprocessing workflows.
+       </p>
+       <p>
+        However, for NiPreps to work we need to make sure the tools are transparent.
+       </p>
+       <p>
+        Not just with the individual reports and thorough documentation, also because of the community driven development. For instance, the peer-review process that goes around large incremental changes is fundamental to ensure the quality of the tool.
+       </p>
+       <p>
+        In addition, best engineering practices suggested in the BIDS-Apps paper, along with those we have been including with fMRIPrep, are necessary to ensure the quality of the final product.
+       </p>
+       <p>
+        --
+       </p>
+       <h3 id="challenges">
+        Challenges
+        <a class="headerlink" href="#challenges" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <ul>
+        <li>
+         Testing / Validation!
+        </li>
+       </ul>
+       <p>
+        ???
+       </p>
+       <p>
+        As an open problem, validating the results of the tool remains extremely challenging for the lack in gold standard datasets that can tell us the best possible outcome.
+       </p>
+       <hr/>
+       <h2 id="the-nmind-story">
+        The
+        <em>
+         NMiND
+        </em>
+        story
+        <a class="headerlink" href="#the-nmind-story" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        NMiND =
+        <em>
+         NeverMIND, this Neuroimaging Method Is Not Duplicated
+        </em>
+       </p>
+       <h3 id="pis-worried-about-methodological-duplicity">
+        PIs worried about methodological duplicity
+        <a class="headerlink" href="#pis-worried-about-methodological-duplicity" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <p>
+        M. Milham, D. Fair, T. Satterthwaite, S. Ghosh, R. Poldrack, etc.
+       </p>
+       <p>
+        --
+       </p>
+       <h3 id="nminds-workgroups">
+        NMiND's workgroups
+        <a class="headerlink" href="#nminds-workgroups" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <p>
+        <em>
+         nosology
+        </em>
+        group, coding standards &amp; patterns, sharing standards, testing standards, crediting contributors, funding strategy, benchmarking datasets.
+       </p>
+       <h3 id="nminds-nosology-goals">
+        NMiND's nosology goals
+        <a class="headerlink" href="#nminds-nosology-goals" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <ul>
+        <li>
+         Consensus glossary of terms
+        </li>
+        <li>
+         Landscape the portfolio of methodological solutions along several experimental and computational dimensions
+        </li>
+        <li>
+         Organize and document a taxonomy along those dimensions
+        </li>
+        <li>
+         Index existing software (from unit methods to workflows) in the taxonomy
+        </li>
+       </ul>
+       <p>
+        Please Join!
+       </p>
+       <hr/>
+       <p>
+        template: newsection
+layout: false
+       </p>
+       <p>
+        .middle.center[
+       </p>
+       <h1 id="thanks">
+        Thanks!
+        <a class="headerlink" href="#thanks" title="Permanent link">
+         ¶
+        </a>
+       </h1>
+       <h2 id="questions">
+        Questions?
+        <a class="headerlink" href="#questions" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        ]
+       </p>
+      </article>
+     </div>
+    </div>
+   </main>
+   <footer class="md-footer">
+    <div class="md-footer-meta md-typeset">
+     <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+       <div class="md-footer-copyright__highlight">
+        Copyright © 2020
+       </div>
+       Made with
+       <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+        Material for MkDocs
+       </a>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script src="../../javascripts/vendor.7e0ee788.min.js">
+  </script>
+  <script src="../../javascripts/bundle.c1ccee15.min.js">
+  </script>
+  <script id="__lang" type="application/json">
+   {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}
+  </script>
+  <script>
+   app = initialize({
+          base: "../../..",
+          features: ['tabs'],
+          search: Object.assign({
+            worker: "../../javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+  </script>
+ </body>
+</html>
