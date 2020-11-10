@@ -90,6 +90,18 @@ template: sidebar
 
 # Outlook
 
+### 1. Understand what preprocessing is - from fMRI
+
+### 2. The *fMRIPrep* experience
+
+### 3. The *dMRIPrep* experience
+
+### 4. Importance of the visual reports
+
+### 5. Introducing *NiPreps*
+
+### 6. Open forum: first steps and contributing
+
 ---
 
 ## The research workflow of functional MRI (nowadays)
@@ -1015,7 +1027,11 @@ template: newsection
 layout: false
 
 .middle.center[
-# [github.com/nipreps](https://github.com/nipreps/)
+
+# Where to start?
+
+## [www.nipreps.org](https://www.nipreps.org/)
+## [github.com/nipreps](https://github.com/nipreps/)
 ]
 
 ---
