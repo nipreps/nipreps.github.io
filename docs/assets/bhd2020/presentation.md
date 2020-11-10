@@ -6,7 +6,7 @@ layout: false
 count: false
 
 .middle.center[
-# Building communities around reproducible workflows
+# NiPreps | NeuroImaging PREProcessing toolS
 
 <br />
 <br />
@@ -14,7 +14,7 @@ count: false
 ### O. Esteban
 #### CHUV | Lausanne University Hospital
 
-###### [www.nipreps.org](https://www.nipreps.org)
+###### [www.nipreps.org/assets/bhd2020](https://www.nipreps.org/assets/bhd2020)
 ]
 
 ---
@@ -22,7 +22,7 @@ layout: false
 count: false
 
 .middle.center[
-# Building communities around reproducible workflows
+# NiPreps | NeuroImaging PREProcessing toolS
 
 <br />
 <br />
@@ -30,7 +30,7 @@ count: false
 ### O. Esteban
 #### CHUV | Lausanne University Hospital
 
-###### [www.nipreps.org](https://www.nipreps.org)
+###### [www.nipreps.org/assets/bhd2020](https://www.nipreps.org/assets/bhd2020)
 ]
 
 ???
@@ -42,9 +42,9 @@ layout: true
 class: section-separator
 
 .perma-sidebar[
-## Data Processing
-### (Day 2, 15h CET)
-# Workflows
+## BHD2020
+### (Day 2, 14h CET)
+# *NiPreps*
 
 <br />
 <br />
@@ -66,9 +66,9 @@ name: sidebar
 layout: true
 
 .perma-sidebar[
-## Data Processing
-### (Day 2, 15h CET)
-# Workflows
+## BHD2020
+### (Day 2, 14h CET)
+# *NiPreps*
 
 <br />
 <br />
@@ -88,6 +88,48 @@ layout: true
 ---
 template: sidebar
 
+# Outlook
+
+---
+
+## The research workflow of functional MRI (nowadays)
+<br />
+
+<div style="margin: 10px 100px 10px 300px">
+<p align="center">
+  <img src="../strother-2020.png" style="width: 100%" />
+</p>
+<p align="right">(source: next slide)</p>
+</div>
+
+---
+
+## The research workflow of functional MRI (2006)
+<br />
+
+<div style="margin: 10px 100px 10px 300px">
+<p align="center">
+  <img src="../strother-2006.png" style="width: 100%" />
+</p>
+<p align="right">(Strother, 2006; <a href="https://doi.org/10.1109/MEMB.2006.1607667">10.1109/MEMB.2006.1607667</a>)</p>
+</div>
+
+---
+
+## The research workflow of functional MRI (*a.B.*<sup>\*</sup>)
+<br />
+
+<div style="margin: 10px 100px 10px 300px">
+<p align="center">
+  <img src="../strother-2020-scanner.png" style="width: 100%" />
+</p>
+<p align="right">Adapted (<a href="https://doi.org/10.1109/MEMB.2006.1607667">Strother, 2006</a>)</p>
+</div>
+
+<sup>\*</sup>a.B. = *after BIDS* (Brain Imaging Data Structure; [Gorgolewski et al. (2016)](https://doi.org/10.1038/sdata.2016.44))
+
+---
+
 ## Neuroimaging is now mature
 * many excellent tools available (from specialized to foundational)
   * large toolboxes (AFNI, ANTs/ITK, FreeSurfer, FSL, Nilearn, SPM, etc.)
@@ -98,13 +140,16 @@ template: sidebar
 
 * LOTS of data acquired everyday
 
-## Workflows - game's on!
-* although many neuroimaging areas are still in search of methodological breakthroughs,
+## BIDS - A thrust of technology-driven development
+* A **uniform and complete interface** to data:
 
-* challenges have moved on to the workflows:
-  * workflows within traditional toolboxes - usually not flexible to adapt to new data
-  * BIDS and BIDS-Apps.
+  * **Uniform**: enables the workflow adapt to the data
+  * **Complete**: enables validation and minimizes human-intervention
 
+* Extensible reproducibility:
+
+  * [BIDS-Derivatives](https://bids-specification.readthedocs.io/en/latest/)
+  * [BIDS-Apps](https://bids-apps.neuroimaging.io/) ([Gorgolewski et al., 2017](https://doi.org/10.1371/journal.pcbi.1005209))
 
 ???
 
@@ -128,9 +173,9 @@ template: sidebar
 <img src="../narps.png" width="800px" alt="NARPS Paper" />
 </p>
 
-(Botvinik-Nezer et al., 2020)
+([Botvinik-Nezer et al., 2020](https://doi.org/10.1038/s41586-020-2314-9))
 
-Around 50% of teams used fMRIPrep'ed inputs.
+Around 50% of teams used *fMRIPrep*'ed inputs.
 
 ---
 
@@ -288,27 +333,129 @@ Therefore, it is better to keep things that way (although some minimal efforts t
 
 ---
 
+<div style="margin: 40px 100px 10px 320px">
+<p align="center">
+  <img alt="The fMRIPrep workflow" src="../fmriprep-workflow-final.svg" width="100%" />
+</p>
+<p align="right">
+(<a href="https://doi.org/10.1038/s41592-018-0235-4">Esteban et al., 2019</a>)
+</p>
+</div>
+
+---
+
 ## The *dMRIPrep* story
 
-After the success of *fMRIPrep*, some neuroimagers asked "*when a diffussion MRI fMRIPrep?*"
+After the success of *fMRIPrep*, Dr. A. Keshavan asked "[*when a dMRIPrep?*](https://neurostars.org/t/dmriprep-an-fmriprep-for-diffusion/2385)"
 
 ## NeuroStars.org
 (please note this down)
 
---
+
+---
+
+## The *dMRIPrep* story
+
+After the success of *fMRIPrep*, Dr. A. Keshavan asked "[*when a dMRIPrep?*](https://neurostars.org/t/dmriprep-an-fmriprep-for-diffusion/2385)"
+
+<p align="center">
+<img src="../veraart-2019.png" width="700px" alt="(Veraart, 2019)" />
+</p>
+[Image Processing: Possible Guidelines for the Standardization & Clinical Applications](https://www.ismrm.org/19/program_files/MIS15.htm)
+
+(Veraart, 2019)
+
+---
+
+<div style="margin: 40px 40px 10px 250px">
+<img src="https://raw.githubusercontent.com/nipreps/dmriprep/master/docs/resources/figure1.svg" width="100%" alt="dMRIPrep workflow" />
+</div>
 
 
-Same situation in the field of diffusion MRI:
+### Please join!
 
-### Image Processing: Possible Guidelines for the Standardization & Clinical Applications (J. Veraart)
+Joseph, M.; Pisner, D.; Richie-Halford, A.; Lerma-Usabiaga, G.; Keshavan, A.; Kent, JD.; Veraart, J.; Cieslak, M.; Poldrack, RA.; Rokem, A.; Esteban, O.
 
-(https://www.ismrm.org/19/program_files/MIS15.htm)
+---
 
---
+template: newsection
+layout: false
 
-# Please join!
+.middle.center[
+## Understanding what preprocessing is with visual reports
+]
 
-Joseph, M.; Pisner, D.; Richie-Halford, A.; Lerma-Usabiaga, G.; Keshavan, A.; Kent, JD.; Cieslak, M.; Poldrack, RA.; Rokem, A.; Esteban, O.
+---
+
+## The individual report
+
+<video controls="controls" width="70%"
+       name="Video Name" src="../fmriprep-report.mov"></video>
+
+???
+
+Let's walk through one example of report.
+Reports have several sections, starting with a summary
+indicating the particularities of this dataset
+and workflow choices made based on the input data.
+
+The anatomical section follows with several visualizations
+to assess the anatomical processing steps mentioned before,
+spatial normalization to template spaces (the flickering
+panel helps assess alignment) and finally surface reconstruction.
+
+Then, all functional runs are concatenated, and all show the same
+structure.
+After an initial summary of this particular run,
+the alignment to the same subject's anatomical image is presented,
+with contours of the white and pial surfaces as cues.
+Next panel shows the brain mask and ROIs utilized by the CompCor
+denoising.
+For each run we then find some visualizations to assess the
+generated confounding signals.
+
+After all functional runs are presented, the About section keeps
+information to aid reproducibility of results, such as the software's
+version, or the exact command line run.
+
+The boilerplate is found next, with a text version shown by default
+and tabs to convert to Markdown and LaTeX.
+
+Reports conclude with a list of encountered errors (if any).
+
+---
+
+## Reports are a crucial element to ensure transparency
+.pull-left[
+<p align="center">
+<img src="../wright-2019.png" width="400px" />
+</p>
+]
+
+.pull-right[
+
+.distribute[
+fMRIPrep generates one participant-wide report after execution.
+
+Reports describe the data as found, and the steps applied
+(providing .blue[visual support to look inside the box]):
+
+  1. show researchers their data;
+
+  2. show how *fMRIPrep* interpreted the data (describing the actual preprocessing steps);
+
+  3. quality control of results, facilitating early error detection.
+]
+]
+
+???
+
+Therefore, reports have become a fundamental feature of fMRIPrep
+because they not only allow assessing the quality of the processing,
+but also provide an insight about the logic supporting such processing.
+
+In other words, reports help respond to the what was done and the why was it done
+in addition to the how well it did.
 
 ---
 
@@ -864,29 +1011,12 @@ As an open problem, validating the results of the tool remains extremely challen
 
 ---
 
-## The *NMiND* story
+template: newsection
+layout: false
 
-NMiND = *NeverMIND, this Neuroimaging Method Is Not Duplicated*
-
-
-### PIs worried about methodological duplicity
-
-M. Milham, D. Fair, T. Satterthwaite, S. Ghosh, R. Poldrack, etc.
-
---
-
-### NMiND's workgroups
-
-*nosology* group, coding standards & patterns, sharing standards, testing standards, crediting contributors, funding strategy, benchmarking datasets.
-
-### NMiND's nosology goals
-
-* Consensus glossary of terms
-* Landscape the portfolio of methodological solutions along several experimental and computational dimensions
-* Organize and document a taxonomy along those dimensions
-* Index existing software (from unit methods to workflows) in the taxonomy
-
-Please Join!
+.middle.center[
+# [github.com/nipreps](https://github.com/nipreps/)
+]
 
 ---
 
