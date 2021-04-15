@@ -51,3 +51,6 @@ markdown_extensions:
 
 plugins:
   - toc-sidebar
+
+extra_css:
+  - stylesheets/extra.css

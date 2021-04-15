@@ -62,7 +62,7 @@ The *high-level description of the changes* will preferably contain:
 ## Example of our expectations
 
 Let's say a Derived Work modifies the `sdcflows.viz.utils` code-base.
-Some files may not have the attribution notice.
+The file may or may not have the attribution notice.
 At the time of writing, the header comment of [this file](https://github.com/nipreps/sdcflows/blob/50393a8584dd0abf5f8e16e6ba66c43e1126f844/sdcflows/viz/utils.py) is:
 
 !!! example "Header comment in the original Work"
@@ -98,42 +98,114 @@ Either way (whether the attribution notice is present or not), we suggest to upd
 
 !!! example "Suggested header comment in the Derived Work"
 
-    ``` {.python hl_lines="5 6 19 20 21 22 23 24 25 26 27 28 29 30 31"}
-    # <shebang and editor settings can be preserved or removed freely>
-    #
-    # <your attribution notice, either maintaining the Apache-2.0 license or changing the license>
-    #
-    # STATEMENT OF CHANGES: This file is derived from sources licensed under the Apache-2.0 terms,
-    # and this file has been changed.
-    # <recommended> The original file this work derives from is found at:
-    # https://github.com/nipreps/sdcflows/blob/50393a8584dd0abf5f8e16e6ba66c43e1126f844/sdcflows/viz/utils.py
-    # <alternative> The original file this work derives from is found within
-    # the version 2.0.2 distribution of the software.
-    #
-    # <recommended> [April 2021] CHANGES:
-    #    * BUGFIX: Outdated function call from the ``svgutils`` dependency that changed API as of version 0.3.2.
-    #    * ENH: Changed plotting dependency to the new `netplotbrain` package.
-    #    * DOC: Added docstrings to some functions that lacked them.
-    #
-    # ORIGINAL WORK'S ATTRIBUTION NOTICE:
-    #
-    #     Copyright 2021 The NiPreps Developers <nipreps@gmail.com>
-    #
-    #     Licensed under the Apache License, Version 2.0 (the "License");
-    #     you may not use this file except in compliance with the License.
-    #     You may obtain a copy of the License at
-    #
-    #         http://www.apache.org/licenses/LICENSE-2.0
-    #
-    #     Unless required by applicable law or agreed to in writing, software
-    #     distributed under the License is distributed on an "AS IS" BASIS,
-    #     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    #     See the License for the specific language governing permissions and
-    #     limitations under the License.
-    """Visualization tooling."""
-    ```
+    === "Required"
 
-Only the lines highlighted are explicitly required by the Apache-2.0 conditions.
+        ``` {.python hl_lines="5 6 19 20 21 22 23 24 25 26 27 28 29"}
+        # <shebang and editor settings can be preserved or removed freely>
+        #
+        # <your attribution notice, either maintaining the Apache-2.0 license or changing the license>
+        #
+        # STATEMENT OF CHANGES: This file is derived from sources licensed under the Apache-2.0 terms,
+        # and this file has been changed.
+        # The original file this work derives from is found at:
+        # https://github.com/nipreps/sdcflows/blob/50393a8584dd0abf5f8e16e6ba66c43e1126f844/sdcflows/viz/utils.py
+        #
+        # [April 2021] CHANGES:
+        #    * BUGFIX: Outdated function call from the ``svgutils`` dependency that changed API as of version 0.3.2.
+        #    * ENH: Changed plotting dependency to the new `netplotbrain` package.
+        #    * DOC: Added docstrings to some functions that lacked them.
+        #
+        # ORIGINAL WORK'S ATTRIBUTION NOTICE:
+        #
+        #     Copyright 2021 The NiPreps Developers <nipreps@gmail.com>
+        #
+        #     Licensed under the Apache License, Version 2.0 (the "License");
+        #     you may not use this file except in compliance with the License.
+        #     You may obtain a copy of the License at
+        #
+        #         http://www.apache.org/licenses/LICENSE-2.0
+        #
+        #     Unless required by applicable law or agreed to in writing, software
+        #     distributed under the License is distributed on an "AS IS" BASIS,
+        #     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        #     See the License for the specific language governing permissions and
+        #     limitations under the License.
+        """Visualization tooling."""
+        ```
+        The lines highlighted with yellow color are explicitly required by the Apache-2.0 conditions.
+
+    === "Recommended (commit)"
+
+        ``` {.python .recommended hl_lines="7 8 9 10 11 12 13 14 15 16"}
+        # <shebang and editor settings can be preserved or removed freely>
+        #
+        # <your attribution notice, either maintaining the Apache-2.0 license or changing the license>
+        #
+        # STATEMENT OF CHANGES: This file is derived from sources licensed under the Apache-2.0 terms,
+        # and this file has been changed.
+        # The original file this work derives from is found at:
+        # https://github.com/nipreps/sdcflows/blob/50393a8584dd0abf5f8e16e6ba66c43e1126f844/sdcflows/viz/utils.py
+        #
+        # [April 2021] CHANGES:
+        #    * BUGFIX: Outdated function call from the ``svgutils`` dependency that changed API as of version 0.3.2.
+        #    * ENH: Changed plotting dependency to the new `netplotbrain` package.
+        #    * DOC: Added docstrings to some functions that lacked them.
+        #
+        # ORIGINAL WORK'S ATTRIBUTION NOTICE:
+        #
+        #     Copyright 2021 The NiPreps Developers <nipreps@gmail.com>
+        #
+        #     Licensed under the Apache License, Version 2.0 (the "License");
+        #     you may not use this file except in compliance with the License.
+        #     You may obtain a copy of the License at
+        #
+        #         http://www.apache.org/licenses/LICENSE-2.0
+        #
+        #     Unless required by applicable law or agreed to in writing, software
+        #     distributed under the License is distributed on an "AS IS" BASIS,
+        #     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        #     See the License for the specific language governing permissions and
+        #     limitations under the License.
+        """Visualization tooling."""
+        ```
+        The lines highlighted with green color are recommended by the *NiPreps Developers*.
+
+    === "Recommended (version)"
+
+        ``` {.python .recommended hl_lines="7 8 9 10 11 12 13 14 15 16"}
+        # <shebang and editor settings can be preserved or removed freely>
+        #
+        # <your attribution notice, either maintaining the Apache-2.0 license or changing the license>
+        #
+        # STATEMENT OF CHANGES: This file is derived from sources licensed under the Apache-2.0 terms,
+        # and this file has been changed.
+        # The original file this work derives from is found within
+        # the version 2.0.2 distribution of the software.
+        #
+        # [April 2021] CHANGES:
+        #    * BUGFIX: Outdated function call from the ``svgutils`` dependency that changed API as of version 0.3.2.
+        #    * ENH: Changed plotting dependency to the new `netplotbrain` package.
+        #    * DOC: Added docstrings to some functions that lacked them.
+        #
+        # ORIGINAL WORK'S ATTRIBUTION NOTICE:
+        #
+        #     Copyright 2021 The NiPreps Developers <nipreps@gmail.com>
+        #
+        #     Licensed under the Apache License, Version 2.0 (the "License");
+        #     you may not use this file except in compliance with the License.
+        #     You may obtain a copy of the License at
+        #
+        #         http://www.apache.org/licenses/LICENSE-2.0
+        #
+        #     Unless required by applicable law or agreed to in writing, software
+        #     distributed under the License is distributed on an "AS IS" BASIS,
+        #     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        #     See the License for the specific language governing permissions and
+        #     limitations under the License.
+        """Visualization tooling."""
+        ```
+        The lines highlighted with green color are recommended by the *NiPreps Developers*.
+
 Although it is not mandated by the license letter, the spirit of the Apache-2.0 (and all other licenses stipulating the statement of changes, such as the CC-BY 4.0) suggests that a date of modification and an overview of outstanding changes are pertinent.
 We also suggest a link to the original code, including the commit-hash (that long string starting with `50393a` in the URL above) for the location of the exact origin of the file.
 Alternatively, Derived Works may point to a exact release identifier where the original file is part of the code-base distribution.
