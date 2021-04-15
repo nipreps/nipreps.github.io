@@ -155,10 +155,11 @@ That means that the text of a `NOTICE` file must be shown to the user.
 All *NiPreps* must insert a `NOTICE` file into their containerized distributions and print its contents out in the command line output, as well as in the visual reports.
 This `NOTICE` file for containers will be placed in the `/.docker/NOTICE` path of the repository, and this file must replace the `/NOTICE` file (if it exists) at image building time.
 
-!!! example "Example `NOTICE` file examples for *fMRIPrep*"
+!!! example "Example `NOTICE` file for *fMRIPrep*"
 
-    === `/NOTICE`
-        ```{.python}
+    === "Python distribution `/NOTICE`"
+
+        ```{.text}
         fMRIPrep
         Copyright 2021 The NiPreps Developers.
 
@@ -175,8 +176,9 @@ This `NOTICE` file for containers will be placed in the `/.docker/NOTICE` path o
         Informatics Research Network (www.nbirn.net).
         ```
 
-    === `/.docker/NOTICE`
-        ```{.python}
+    === "Container image distribution `/.docker/NOTICE`"
+
+        ```{.text}
         fMRIPrep Container Image distribution
         Copyright 2021 The NiPreps Developers.
 
