@@ -3,6 +3,10 @@
 All software packages and tools under the *NiPreps* umbrella must be licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0) by default, unless otherwise stated.
 The authors of new *NiPreps* packages may not abide by this general rule of thumb if necessary and/or sufficiently justified (e.g., the source code is actually derived from a product licensed under a copyleft license).
 
+Containerized Images bundling *NiPreps* components and their dependencies can be distributed under the [MIT License](https://choosealicense.com/licenses/mit/).
+In such a case, the attribution notice of the MIT license must be present in the header comment of the container image bootstraping file (for instance, the so-called `Dockerfile`).
+This different licensing must be also indicated in the `NOTICE` file of the corresponding *NiPreps* components bundled within the image.
+
 Data (distributed within the test data of packages or through the [`nipreps-data` GitHub organization](https://github.com/nipreps-data)) will preferably be distributed under the [Creative Commons Zero v1.0 Universal](https://choosealicense.com/licenses/cc0-1.0/).
 
 Under no circumstances any *NiPreps* software or data will be made publicly available unlicensed.
@@ -151,9 +155,10 @@ Generally, works using our *NiPreps* just need to follow the citation guidelines
 ## Licensing of Docker and Singularity images
 
 Container images redistribute copies of *NiPreps* alongside their third-party dependencies, all of them bundled in the image.
-That means that the text of a `NOTICE` file must be shown to the user.
+If the applicable license is Apache-2.0, then the text of a `NOTICE` file must be shown to the user.
 All *NiPreps* must insert a `NOTICE` file into their containerized distributions and print its contents out in the command line output, as well as in the visual reports.
 This `NOTICE` file for containers will be placed in the `/.docker/NOTICE` path of the repository, and this file must replace the `/NOTICE` file (if it exists) at image building time.
+Alternatively, and if the corresponding *NiPreps Developers* consider that the Apache-2.0 imposes too onerous requirements for the container image distribution, the source code of such images (e.g., `Dockerfile`) can be licensed under the MIT license.
 
 !!! example "Example `NOTICE` file for *fMRIPrep*"
 
@@ -257,6 +262,11 @@ This `NOTICE` file for containers will be placed in the `/.docker/NOTICE` path o
         ANTs <version-placeholder>, which is available under
         the BSD 3-clause license terms.
         Copyright 2009-2013 ConsortiumOfANTS.
+
+        sMRIPrep, a component of this bundle, contains code ultimately derived from
+        Mindboggle <version-placeholder>, which is available under
+        the Apache License 2.0.
+        Copyright 2016, Mindboggle team (http://mindboggle.info)
 
         fMRIPrep contains code ultimately derived from the epidewarp.fsl
         script (https://www.nmr.mgh.harvard.edu/~greve/fbirn/b0/epidewarp.fsl)
