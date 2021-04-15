@@ -4,27 +4,30 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="Augmenting neuroimaging acquisition devices to produce analysis-grade data" name="description"/>
-  <link href="https://www.nipreps.org/intro/nipreps/" rel="canonical"/>
   <meta content="The NiPreps developers" name="author"/>
-  <link href="../../assets/images/favicon.png" rel="shortcut icon"/>
-  <meta content="mkdocs-1.1.2, mkdocs-material-6.1.4" name="generator"/>
+  <link href="https://www.nipreps.org/intro/nipreps/" rel="canonical"/>
+  <link href="../../assets/images/favicon.png" rel="icon"/>
+  <meta content="mkdocs-1.1.2, mkdocs-material-7.1.1" name="generator"/>
   <title>
    Framework - NiPreps
   </title>
-  <link href="../../assets/stylesheets/main.358818c7.min.css" rel="stylesheet"/>
-  <link href="../../assets/stylesheets/palette.f0267088.min.css" rel="stylesheet"/>
+  <link href="../../assets/stylesheets/main.9299cb39.min.css" rel="stylesheet"/>
+  <link href="../../assets/stylesheets/palette.ef6f36e2.min.css" rel="stylesheet"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
   <style>
-   body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}
+   :root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}
   </style>
   <script>
-   window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-170131052-1","www.nipreps.org"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})
+   window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-170131052-1","www.nipreps.org"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})
   </script>
   <script async="" src="https://www.google-analytics.com/analytics.js">
   </script>
  </head>
  <body data-md-color-accent="none" data-md-color-primary="none" data-md-color-scheme="" dir="ltr">
+  <script>
+   function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}
+  </script>
   <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
   <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
   <label class="md-overlay" for="__drawer">
@@ -37,27 +40,31 @@
   <div data-md-component="announce">
   </div>
   <header class="md-header" data-md-component="header">
-   <nav aria-label="Header" class="md-header-nav md-grid">
-    <a aria-label="NiPreps" class="md-header-nav__button md-logo" href="https://www.nipreps.org" title="NiPreps">
+   <nav aria-label="Header" class="md-header__inner md-grid">
+    <a aria-label="NiPreps" class="md-header__button md-logo" data-md-component="logo" href="../.." title="NiPreps">
      <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z">
+      <path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z">
       </path>
      </svg>
     </a>
-    <label class="md-header-nav__button md-icon" for="__drawer">
+    <label class="md-header__button md-icon" for="__drawer">
      <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z">
       </path>
      </svg>
     </label>
-    <div class="md-header-nav__title" data-md-component="header-title">
-     <div class="md-header-nav__ellipsis">
-      <span class="md-header-nav__topic md-ellipsis">
-       NiPreps
-      </span>
-      <span class="md-header-nav__topic md-ellipsis">
-       Framework
-      </span>
+    <div class="md-header__title" data-md-component="header-title">
+     <div class="md-header__ellipsis">
+      <div class="md-header__topic">
+       <span class="md-ellipsis">
+        NiPreps
+       </span>
+      </div>
+      <div class="md-header__topic" data-md-component="header-topic">
+       <span class="md-ellipsis">
+        Framework
+       </span>
+      </div>
      </div>
     </div>
    </nav>
@@ -65,14 +72,14 @@
   <div class="md-container" data-md-component="container">
    <main class="md-main" data-md-component="main">
     <div class="md-main__inner md-grid">
-     <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+     <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
       <div class="md-sidebar__scrollwrap">
        <div class="md-sidebar__inner">
         <nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
          <label class="md-nav__title" for="__drawer">
-          <a aria-label="NiPreps" class="md-nav__button md-logo" href="https://www.nipreps.org" title="NiPreps">
+          <a aria-label="NiPreps" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="NiPreps">
            <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z">
+            <path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z">
             </path>
            </svg>
           </a>
@@ -85,14 +92,14 @@
            </a>
           </li>
           <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-           <input checked="" class="md-nav__toggle md-toggle" data-md-toggle="nav-2" id="nav-2" type="checkbox"/>
-           <label class="md-nav__link" for="nav-2">
+           <input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+           <label class="md-nav__link" for="__nav_2">
             NiPreps
             <span class="md-nav__icon md-icon">
             </span>
            </label>
            <nav aria-label="NiPreps" class="md-nav" data-md-level="1">
-            <label class="md-nav__title" for="nav-2">
+            <label class="md-nav__title" for="__nav_2">
              <span class="md-nav__icon md-icon">
              </span>
              NiPreps
@@ -114,7 +121,7 @@
                 </span>
                 Table of contents
                </label>
-               <ul class="md-nav__list" data-md-scrollfix="">
+               <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
                 <li class="md-nav__item">
                  <a class="md-nav__link" href="#building-on-fmripreps-success-story">
                   Building on fMRIPrep's success story
@@ -147,14 +154,14 @@
            </nav>
           </li>
           <li class="md-nav__item md-nav__item--nested">
-           <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" id="nav-3" type="checkbox"/>
-           <label class="md-nav__link" for="nav-3">
+           <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+           <label class="md-nav__link" for="__nav_3">
             BIDS-Apps
             <span class="md-nav__icon md-icon">
             </span>
            </label>
            <nav aria-label="BIDS-Apps" class="md-nav" data-md-level="1">
-            <label class="md-nav__title" for="nav-3">
+            <label class="md-nav__title" for="__nav_3">
              <span class="md-nav__icon md-icon">
              </span>
              BIDS-Apps
@@ -179,14 +186,14 @@
            </nav>
           </li>
           <li class="md-nav__item md-nav__item--nested">
-           <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" id="nav-4" type="checkbox"/>
-           <label class="md-nav__link" for="nav-4">
+           <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+           <label class="md-nav__link" for="__nav_4">
             Community
             <span class="md-nav__icon md-icon">
             </span>
            </label>
            <nav aria-label="Community" class="md-nav" data-md-level="1">
-            <label class="md-nav__title" for="nav-4">
+            <label class="md-nav__title" for="__nav_4">
              <span class="md-nav__icon md-icon">
              </span>
              Community
@@ -221,14 +228,14 @@
            </nav>
           </li>
           <li class="md-nav__item md-nav__item--nested">
-           <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" id="nav-5" type="checkbox"/>
-           <label class="md-nav__link" for="nav-5">
+           <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+           <label class="md-nav__link" for="__nav_5">
             Developers
             <span class="md-nav__icon md-icon">
             </span>
            </label>
            <nav aria-label="Developers" class="md-nav" data-md-level="1">
-            <label class="md-nav__title" for="nav-5">
+            <label class="md-nav__title" for="__nav_5">
              <span class="md-nav__icon md-icon">
              </span>
              Developers
@@ -252,7 +259,7 @@
        </div>
       </div>
      </div>
-     <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+     <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
       <div class="md-sidebar__scrollwrap">
        <div class="md-sidebar__inner">
         <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
@@ -261,7 +268,7 @@
           </span>
           Table of contents
          </label>
-         <ul class="md-nav__list" data-md-scrollfix="">
+         <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
           <li class="md-nav__item">
            <a class="md-nav__link" href="#building-on-fmripreps-success-story">
             Building on fMRIPrep's success story
@@ -292,7 +299,7 @@
        </div>
       </div>
      </div>
-     <div class="md-content">
+     <div class="md-content" data-md-component="content">
       <article class="md-content__inner md-typeset">
        <h1 id="framework">
         Framework
@@ -582,42 +589,40 @@ BIDS allows
     </div>
    </main>
    <footer class="md-footer">
-    <div class="md-footer-nav">
-     <nav aria-label="Footer" class="md-footer-nav__inner md-grid">
-      <a class="md-footer-nav__link md-footer-nav__link--prev" href="../.." rel="prev">
-       <div class="md-footer-nav__button md-icon">
-        <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z">
-         </path>
-        </svg>
+    <nav aria-label="Footer" class="md-footer__inner md-grid">
+     <a class="md-footer__link md-footer__link--prev" href="../.." rel="prev">
+      <div class="md-footer__button md-icon">
+       <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z">
+        </path>
+       </svg>
+      </div>
+      <div class="md-footer__title">
+       <div class="md-ellipsis">
+        <span class="md-footer__direction">
+         Previous
+        </span>
+        Home
        </div>
-       <div class="md-footer-nav__title">
-        <div class="md-ellipsis">
-         <span class="md-footer-nav__direction">
-          Previous
-         </span>
-         Home
-        </div>
+      </div>
+     </a>
+     <a class="md-footer__link md-footer__link--next" href="../../apps/framework/" rel="next">
+      <div class="md-footer__title">
+       <div class="md-ellipsis">
+        <span class="md-footer__direction">
+         Next
+        </span>
+        Introduction
        </div>
-      </a>
-      <a class="md-footer-nav__link md-footer-nav__link--next" href="../../apps/framework/" rel="next">
-       <div class="md-footer-nav__title">
-        <div class="md-ellipsis">
-         <span class="md-footer-nav__direction">
-          Next
-         </span>
-         Introduction
-        </div>
-       </div>
-       <div class="md-footer-nav__button md-icon">
-        <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z">
-         </path>
-        </svg>
-       </div>
-      </a>
-     </nav>
-    </div>
+      </div>
+      <div class="md-footer__button md-icon">
+       <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z">
+        </path>
+       </svg>
+      </div>
+     </a>
+    </nav>
     <div class="md-footer-meta md-typeset">
      <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
@@ -633,21 +638,14 @@ BIDS allows
     </div>
    </footer>
   </div>
-  <script src="../../assets/javascripts/vendor.7e0ee788.min.js">
+  <div class="md-dialog" data-md-component="dialog">
+   <div class="md-dialog__inner md-typeset">
+   </div>
+  </div>
+  <script id="__config" type="application/json">
+   {"base": "../..", "features": ["tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}
   </script>
-  <script src="../../assets/javascripts/bundle.b3a72adc.min.js">
-  </script>
-  <script id="__lang" type="application/json">
-   {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}
-  </script>
-  <script>
-   app = initialize({
-          base: "../..",
-          features: ['tabs'],
-          search: Object.assign({
-            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
-          }, typeof search !== "undefined" && search)
-        })
+  <script src="../../assets/javascripts/bundle.7353b375.min.js">
   </script>
  </body>
 </html>
