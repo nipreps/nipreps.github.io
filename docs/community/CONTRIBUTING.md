@@ -214,7 +214,7 @@ but those accepted fastest will follow a workflow similar to the following:
         You should name all your documentation branches with the prefix `doc/` or `docs/`
         as that will preempt triggering the full battery of continuous integration tests.
 
-1. **Make the changes you've discussed, following the [NiPreps coding style guide](#NiPreps-coding-style-guide).**<br />
+1. **Make the changes you've discussed, following the [NiPreps coding style guide](#nipreps-coding-style-guide).**<br />
   Try to keep the changes focused: it is generally easy to review changes that address one feature or bug at a time.
   It can also be helpful to test your changes locally,
   using a [NiPreps development environment][link_devel].
