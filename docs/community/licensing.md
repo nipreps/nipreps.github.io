@@ -36,7 +36,7 @@ Other than that, we wanted a permissive, non-copyleft license.
 
 At the bare minimum, you must meet the conditions of the license ([simplified version](https://choosealicense.com/licenses/apache-2.0/)) about preserving the license text and copyright/attribution notices as well as corresponding statements of changes.
 
-**How to state that a file has been changed in ad Derived Work.**
+**How to state that a file has been changed in a Derived Work.**
 We suggest the following steps, heavily influenced by [P. Ombredanne's recommendations at StackExchange](https://opensource.stackexchange.com/a/4420):
 
 1. In each source file, add a note to the header comment stating that the file has been modified, with an approximate date, and a high-level description of the changes.
