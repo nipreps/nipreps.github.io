@@ -36,14 +36,14 @@ theme:
 
 markdown_extensions:
   - admonition
-  - codehilite
-  - fenced_code
   - footnotes
   - toc:
       permalink: true
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.tabbed
+  - pymdownx.highlight
   - pymdownx.superfences
   - pymdownx.snippets
   - markdown_include.include:
