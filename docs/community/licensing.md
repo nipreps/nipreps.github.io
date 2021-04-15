@@ -100,7 +100,7 @@ Either way (whether the attribution notice is present or not), we suggest to upd
 
     === "Required"
 
-        ``` {.python hl_lines="5 6 19 20 21 22 23 24 25 26 27 28 29"}
+        ``` {.python hl_lines="5 6 17 18 19 20 21 22 23 24 25 26 27 28 29"}
         # <shebang and editor settings can be preserved or removed freely>
         #
         # <your attribution notice, either maintaining the Apache-2.0 license or changing the license>
