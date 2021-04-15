@@ -64,25 +64,25 @@ At the time of writing, the header comment of [this file](https://github.com/nip
 !!! example "Header comment in the original Work"
 
     === "With attribution notice"
-	    ```{.python}
-	    # emacs: -*- mode: python; py-indent-offset: 4; indent-tabs-mode: nil -*-
-	    # vi: set ft=python sts=4 ts=4 sw=4 et:
-	    #
-	    # Copyright 2021 The NiPreps Developers <nipreps@gmail.com>
-	    # 
-	    # Licensed under the Apache License, Version 2.0 (the "License");
-	    # you may not use this file except in compliance with the License.
-	    # You may obtain a copy of the License at
-	    # 
-	    #     http://www.apache.org/licenses/LICENSE-2.0
-	    # 
-	    # Unless required by applicable law or agreed to in writing, software
-	    # distributed under the License is distributed on an "AS IS" BASIS,
-	    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	    # See the License for the specific language governing permissions and
-	    # limitations under the License.
-	    """Visualization tooling."""
-	    ```
+        ```{.python}
+        # emacs: -*- mode: python; py-indent-offset: 4; indent-tabs-mode: nil -*-
+        # vi: set ft=python sts=4 ts=4 sw=4 et:
+        #
+        # Copyright 2021 The NiPreps Developers <nipreps@gmail.com>
+        #
+        # Licensed under the Apache License, Version 2.0 (the "License");
+        # you may not use this file except in compliance with the License.
+        # You may obtain a copy of the License at
+        #
+        #     http://www.apache.org/licenses/LICENSE-2.0
+        #
+        # Unless required by applicable law or agreed to in writing, software
+        # distributed under the License is distributed on an "AS IS" BASIS,
+        # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        # See the License for the specific language governing permissions and
+        # limitations under the License.
+        """Visualization tooling."""
+        ```
     === "Without attribution notice"
         ```{.python}
         # emacs: -*- mode: python; py-indent-offset: 4; indent-tabs-mode: nil -*-
@@ -114,13 +114,13 @@ Either way (whether the attribution notice is present or not), we suggest to upd
     # ORIGINAL WORK'S ATTRIBUTION NOTICE:
     #
     #     Copyright 2021 The NiPreps Developers <nipreps@gmail.com>
-    #     
+    #
     #     Licensed under the Apache License, Version 2.0 (the "License");
     #     you may not use this file except in compliance with the License.
     #     You may obtain a copy of the License at
-    #     
+    #
     #         http://www.apache.org/licenses/LICENSE-2.0
-    #     
+    #
     #     Unless required by applicable law or agreed to in writing, software
     #     distributed under the License is distributed on an "AS IS" BASIS,
     #     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -153,5 +153,108 @@ Generally, works using our *NiPreps* just need to follow the citation guidelines
 Container images redistribute copies of *NiPreps* alongside their third-party dependencies, all of them bundled in the image.
 That means that the text of a `NOTICE` file must be shown to the user.
 All *NiPreps* must insert a `NOTICE` file into their containerized distributions and print its contents out in the command line output, as well as in the visual reports.
-This `NOTICE` file for containers will be placed in the `/.docker/NOTICE` path of the repository.
-If the particular project already has a `NOTICE` file, the contents of `/.docker/NOTICE` must be appended to the `/NOTICE` file at image building time.
+This `NOTICE` file for containers will be placed in the `/.docker/NOTICE` path of the repository, and this file must replace the `/NOTICE` file (if it exists) at image building time.
+
+!!! example "Example `NOTICE` file examples for *fMRIPrep*"
+
+    === `/NOTICE`
+        ```{.python}
+        fMRIPrep
+        Copyright 2021 The NiPreps Developers.
+
+        This product includes software developed by
+        the NiPreps Community (https://nipreps.org/).
+
+        Portions of this software were developed at the Department of
+        Psychology at Stanford University, Stanford, CA, US.
+
+        This software contains code ultimately derived from the epidewarp.fsl
+        script (https://www.nmr.mgh.harvard.edu/~greve/fbirn/b0/epidewarp.fsl)
+        by Doug Greve, Dave Tuch, Tom Liu, and Bryon Mueller with generous
+        help from the FSL crew (www.fmrib.ox.ac.uk/fsl) and the Biomedical
+        Informatics Research Network (www.nbirn.net).
+        ```
+
+    === `/.docker/NOTICE`
+        ```{.python}
+        fMRIPrep Container Image distribution
+        Copyright 2021 The NiPreps Developers.
+
+        This product includes fMRIPrep and software developed by
+        the NiPreps Community (https://nipreps.org/).
+
+        Portions of this software were developed at the Department of
+        Psychology at Stanford University, Stanford, CA, US.
+
+        This product bundles AFNI <version-placeholder>, which is available under
+        the Gnu General Public License.
+        Major portions of AFNI were written at the Medical College of Wisconsin,
+        which owns the copyright to that code. For fuller details, see
+        http://afni.nimh.nih.gov/pub/dist/src/README.copyright.
+
+        This product bundles ANTs <version-placeholder>, which is available under
+        the BSD 3-clause license terms.
+        Copyright 2009-2013 ConsortiumOfANTS.
+
+        This product bundles BIDS-Validator <version-placeholder>, which is available
+        under the MIT License.
+        Copyright 2015 The Board of Trustees of the Leland Stanford Junior University.
+
+        This product bundles the Connectome Workbench <version-placeholder>, which
+        is available under the GPL-v2
+        (https://www.humanconnectome.org/software/connectome-workbench-license).
+
+        This product bundles FSL <version-placeholder>, which is available
+        under a custom license with commercial restrictions
+        (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Licence).
+        Copyright 2018, The University of Oxford.
+
+        This product bundles FreeSurfer <version-placeholder>, which is available
+        under a custom license and requires obtaining a license key
+        (https://surfer.nmr.mgh.harvard.edu/fswiki/FreeSurferSoftwareLicense).
+        Copyright 2011, The General Hospital Corporation, Boston MA, USA.
+
+        This product bundles code derived from ICA-AROMA, both (fork and original work)
+        are available under the Apache-2.0 license.
+        (https://github.com/oesteban/ICA-AROMA/blob/master/license.md)
+        Copyright 2021, Maarten Mennes
+
+        This product bundles Miniconda <version-placeholder>, which is available
+        under a BSD 3-clause license.
+        (c) 2017 Continuum Analytics, Inc. (dba Anaconda, Inc.).
+        https://www.anaconda.com. All Rights Reserved
+
+        This product bundles NeuroDebian, which adheres to the
+        Debian Free Software Guidelines (DFSG)
+        https://www.debian.org/social_contract#guidelines
+        and the terms of the Debian Social Contract version 1.1.
+
+        This product bundles tools by the NiPy community, such as NiBabel
+        (MIT License, https://github.com/nipy/nibabel/blob/master/COPYING),
+        and NiPype (Apache-2.0, https://github.com/nipy/nipype/blob/master/LICENSE).
+
+        This product bundles SVGO <version-placeholder>, which is available
+        under the MIT License.
+        Copyright (c) Kir Belevich
+
+        This product bundles Pandoc <version-placeholder>, which is available
+        under the GPL version 2 or later.
+        Copyright (C) 2006-2021 John MacFarlane <jgm at berkeley dot edu>
+
+        TemplateFlow, a component of this bundle, contains neuroimaging template
+        and atlas data under several permissive licenses.
+        Please refer to the metadata of the particular template used in your study to
+        determine the exact terms of the license and how to acknowledge attribution
+        of those works.
+
+        sMRIPrep, a component of this bundle, contains code ultimately derived from
+        ANTs <version-placeholder>, which is available under
+        the BSD 3-clause license terms.
+        Copyright 2009-2013 ConsortiumOfANTS.
+
+        fMRIPrep contains code ultimately derived from the epidewarp.fsl
+        script (https://www.nmr.mgh.harvard.edu/~greve/fbirn/b0/epidewarp.fsl)
+        by Doug Greve, Dave Tuch, Tom Liu, and Bryon Mueller with generous
+        help from the FSL crew (www.fmrib.ox.ac.uk/fsl) and the Biomedical
+        Informatics Research Network (www.nbirn.net).
+        ```
