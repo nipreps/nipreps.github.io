@@ -25,6 +25,7 @@ nav:
       - New features: community/features.md
       - Contributing: community/CONTRIBUTING.md
       - Code of Conduct: community/CODE_OF_CONDUCT.md
+      - Licensing: community/licensing.md
     - Developers:
       - Versions Matrix: devs/versions.md
       - Releases: devs/releases.md
@@ -36,6 +37,7 @@ theme:
 markdown_extensions:
   - admonition
   - codehilite
+  - fenced_code
   - footnotes
   - toc:
       permalink: true
