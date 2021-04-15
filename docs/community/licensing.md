@@ -233,13 +233,17 @@ This `NOTICE` file for containers will be placed in the `/.docker/NOTICE` path o
         (MIT License, https://github.com/nipy/nibabel/blob/master/COPYING),
         and NiPype (Apache-2.0, https://github.com/nipy/nipype/blob/master/LICENSE).
 
+        This product bundles Pandoc <version-placeholder>, which is available
+        under the GPL version 2 or later.
+        Copyright (C) 2006-2021 John MacFarlane <jgm at berkeley dot edu>
+
         This product bundles SVGO <version-placeholder>, which is available
         under the MIT License.
         Copyright (c) Kir Belevich
 
-        This product bundles Pandoc <version-placeholder>, which is available
-        under the GPL version 2 or later.
-        Copyright (C) 2006-2021 John MacFarlane <jgm at berkeley dot edu>
+        This product bundles tedana <version-placeholder>, which is available under
+        the GNU Lesser General Public License v2.1.
+        Copyright 2018, tedana developers.
 
         TemplateFlow, a component of this bundle, contains neuroimaging template
         and atlas data under several permissive licenses.
