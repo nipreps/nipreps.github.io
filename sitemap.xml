@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
      <loc>https://www.nipreps.org/</loc>
-     <lastmod>2021-04-15</lastmod>
+     <lastmod>2021-04-20</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.nipreps.org/intro/nipreps/</loc>
-     <lastmod>2021-04-15</lastmod>
+     <lastmod>2021-04-20</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.nipreps.org/apps/framework/</loc>
-     <lastmod>2021-04-15</lastmod>
+     <lastmod>2021-04-20</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.nipreps.org/apps/docker/</loc>
-     <lastmod>2021-04-15</lastmod>
+     <lastmod>2021-04-20</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.nipreps.org/apps/singularity/</loc>
-     <lastmod>2021-04-15</lastmod>
+     <lastmod>2021-04-20</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.nipreps.org/community/</loc>
-     <lastmod>2021-04-15</lastmod>
+     <lastmod>2021-04-20</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.nipreps.org/community/members/</loc>
-     <lastmod>2021-04-15</lastmod>
+     <lastmod>2021-04-20</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.nipreps.org/community/features/</loc>
-     <lastmod>2021-04-15</lastmod>
+     <lastmod>2021-04-20</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.nipreps.org/community/CONTRIBUTING/</loc>
-     <lastmod>2021-04-15</lastmod>
+     <lastmod>2021-04-20</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.nipreps.org/community/CODE_OF_CONDUCT/</loc>
-     <lastmod>2021-04-15</lastmod>
+     <lastmod>2021-04-20</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.nipreps.org/devs/versions/</loc>
-     <lastmod>2021-04-15</lastmod>
+     <lastmod>2021-04-20</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://www.nipreps.org/devs/releases/</loc>
-     <lastmod>2021-04-15</lastmod>
+     <lastmod>2021-04-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>
