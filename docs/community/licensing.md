@@ -1,5 +1,27 @@
 # Licensing and Derived Works
 
+The *NiPreps* community believes that software is an integral component of
+scientific practice, and that any scientific claim must be verifiable by
+following the chain of reasoning from observation to conclusion.
+To achieve this, software must be free to use, inspect, and critique.
+We also believe that you should be free to modify our software to improve it or
+adapt it to new use cases.
+
+As software development is a dynamic process, code modifications can quickly
+become confusing as the original and modified versions depart from each other.
+For the sake of transparency and verification, when you modify our code,
+we ask that you document both the version of the software that you started with
+and the changes you make.
+
+We believe these freedoms are best promoted by distributing our software under
+free/open source software licenses, and the license we feel best promotes these
+goals is the Apache License, Version 2.0.
+
+This page outlines our commitment to transparent development and our
+expectations for developers who adapt *NiPreps* code to use in other projects.
+
+## Licensing of NiPreps projects
+
 All software packages and tools under the *NiPreps* umbrella must be licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0) by default, unless otherwise stated.
 The authors of new *NiPreps* packages may not abide by this general rule of thumb if necessary and/or sufficiently justified (e.g., the source code is actually derived from a product licensed under a copyleft license).
 
