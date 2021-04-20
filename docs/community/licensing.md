@@ -15,7 +15,7 @@ and the changes you make.
 
 We believe these freedoms are best promoted by distributing our software under
 free/open source software licenses, and the license we feel best promotes these
-goals is the Apache License, Version 2.0.
+goals is the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
 
 This page outlines our commitment to transparent development and our
 expectations for developers who adapt *NiPreps* code to use in other projects.
@@ -40,9 +40,11 @@ If you find any component of *NiPreps* that is unlicensed, please make us aware 
 
 The Apache License was created by the Apache Software Foundation (ASF) as the license for its Apache HTTP Server.
 
-Just as the [MIT License](https://choosealicense.com/licenses/mit/), it’s a very permissive non-copyleft license that allows using the software for any purpose, distributing it, modifying it, and distributing derived works of it without concern for royalties. Its main differences, compared to the MIT License, are:
+Just as the [MIT License](https://choosealicense.com/licenses/mit/), it’s a very permissive non-copyleft license that allows using the software for any purpose, distributing it, modifying it, and distributing derived works of it without concern for royalties.
+Its main differences, compared to the MIT License, are:
 
-* Using the Apache License, the authors of the software grant patent licenses to any user or distributor of the code. This patent licenses apply to any patent that, being licenseable by any of the software author, would be infringed by the piece of code they have created.
+* Using the Apache License, the authors of the software grant patent licenses to any user or distributor of the code.
+  This patent licenses apply to any patent that, being licenseable by any of the software author, would be infringed by the piece of code they have created.
 * Apache License required that unmodified parts in derived works keep the License.
 * In every licensed file, any original copyright, patent, trademark or attribution notices must be preserved.
 * In every licensed file change, there must be a notification stating that changes have been made in the file.
