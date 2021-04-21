@@ -22,17 +22,37 @@ expectations for developers who adapt *NiPreps* code to use in other projects.
 
 ## Licensing of NiPreps projects
 
-All software packages and tools under the *NiPreps* umbrella must be licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0) by default, unless otherwise stated.
-The authors of new *NiPreps* packages may not abide by this general rule of thumb if necessary and/or sufficiently justified (e.g., the source code is actually derived from a product licensed under a copyleft license).
+All software packages and tools under the *NiPreps* umbrella must be licensed under the
+[Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0) by default, unless
+otherwise stated.
+The authors of new *NiPreps* packages may not abide by this general rule of thumb if
+necessary and/or sufficiently justified (e.g., the source code is actually derived from a
+product licensed under a copyleft license).
 
-Containerized Images bundling *NiPreps* components and their dependencies can be distributed under the [MIT License](https://choosealicense.com/licenses/mit/).
-In such a case, the attribution notice of the MIT license must be present in the header comment of the container image bootstraping file (for instance, the so-called `Dockerfile`).
-This different licensing must be also indicated in the `NOTICE` file of the corresponding *NiPreps* components bundled within the image.
+Containerized Images bundling *NiPreps* components and their dependencies can be
+distributed under a free and open-source license without copyleft, such as the
+[MIT License](https://choosealicense.com/licenses/mit/).
+In such a case, the attribution notice of the MIT license must be present in the
+header comment of the container image bootstraping file (for instance, the so-called
+`Dockerfile`).
+This different licensing must be also indicated in the `NOTICE` file of the corresponding
+*NiPreps* components bundled within the image.
 
-Data (distributed within the test data of packages or through the [`nipreps-data` GitHub organization](https://github.com/nipreps-data)) will preferably be distributed under the [Creative Commons Zero v1.0 Universal](https://choosealicense.com/licenses/cc0-1.0/).
+*Docker-wrappers* such as the `fmriprep-docker` package may be licensed under any
+free and open-source license without copyleft, such as the
+[MIT License](https://choosealicense.com/licenses/mit/).
+This different licensing must be also indicated in the `NOTICE` file of the corresponding
+*NiPreps* components bundled within the image.
 
-Under no circumstances any *NiPreps* software or data will be made publicly available unlicensed.
-If you find any component of *NiPreps* that is unlicensed, please make us aware at nipreps@gmail.com at your earliest convenience.
+Data (distributed within the test data of packages or through the
+[`nipreps-data` GitHub organization](https://github.com/nipreps-data))
+will preferably be distributed under the
+[Creative Commons Zero v1.0 Universal](https://choosealicense.com/licenses/cc0-1.0/).
+
+Under no circumstances any *NiPreps* software or data will be made publicly available
+unlicensed.
+If you find any component of *NiPreps* that is unlicensed, please make us aware at
+nipreps@gmail.com at your earliest convenience.
 
 ## The Apache License 2.0
 
