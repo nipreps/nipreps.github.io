@@ -25,6 +25,7 @@ nav:
       - New features: community/features.md
       - Contributing: community/CONTRIBUTING.md
       - Code of Conduct: community/CODE_OF_CONDUCT.md
+      - Licensing: community/licensing.md
     - Developers:
       - Versions Matrix: devs/versions.md
       - Releases: devs/releases.md
@@ -35,13 +36,14 @@ theme:
 
 markdown_extensions:
   - admonition
-  - codehilite
   - footnotes
   - toc:
       permalink: true
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.tabbed
+  - pymdownx.highlight
   - pymdownx.superfences
   - pymdownx.snippets
   - markdown_include.include:
@@ -49,3 +51,6 @@ markdown_extensions:
 
 plugins:
   - toc-sidebar
+
+extra_css:
+  - stylesheets/extra.css
