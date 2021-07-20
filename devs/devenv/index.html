@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="Augmenting neuroimaging acquisition devices to produce analysis-grade data" name="description"/>
+  <meta content="The NiPreps developers" name="author"/>
+  <link href="https://www.nipreps.org/devs/devenv/" rel="canonical"/>
+  <link href="../../assets/images/favicon.png" rel="icon"/>
+  <meta content="mkdocs-1.2.2, mkdocs-material-7.1.11" name="generator"/>
+  <title>
+   Developer Environment - NiPreps
+  </title>
+  <link href="../../assets/stylesheets/main.3754935a.min.css" rel="stylesheet"/>
+  <link href="../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+  <style>
+   :root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}
+  </style>
+  <link href="../../stylesheets/extra.css" rel="stylesheet"/>
+  <script>
+   window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-170131052-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})
+  </script>
+  <script async="" src="https://www.google-analytics.com/analytics.js">
+  </script>
+ </head>
+ <body data-md-color-accent="none" data-md-color-primary="none" data-md-color-scheme="" dir="ltr">
+  <script>
+   function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}
+  </script>
+  <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+  <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+  <label class="md-overlay" for="__drawer">
+  </label>
+  <div data-md-component="skip">
+   <a class="md-skip" href="#patching-a-working-copy-into-a-docker-container">
+    Skip to content
+   </a>
+  </div>
+  <div data-md-component="announce">
+  </div>
+  <header class="md-header" data-md-component="header">
+   <nav aria-label="Header" class="md-header__inner md-grid">
+    <a aria-label="NiPreps" class="md-header__button md-logo" data-md-component="logo" href="../.." title="NiPreps">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z">
+      </path>
+     </svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z">
+      </path>
+     </svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+     <div class="md-header__ellipsis">
+      <div class="md-header__topic">
+       <span class="md-ellipsis">
+        NiPreps
+       </span>
+      </div>
+      <div class="md-header__topic" data-md-component="header-topic">
+       <span class="md-ellipsis">
+        Developer Environment
+       </span>
+      </div>
+     </div>
+    </div>
+   </nav>
+  </header>
+  <div class="md-container" data-md-component="container">
+   <main class="md-main" data-md-component="main">
+    <div class="md-main__inner md-grid">
+     <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+         <label class="md-nav__title" for="__drawer">
+          <a aria-label="NiPreps" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="NiPreps">
+           <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z">
+            </path>
+           </svg>
+          </a>
+          NiPreps
+         </label>
+         <ul class="md-nav__list" data-md-scrollfix="">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../..">
+            Home
+           </a>
+          </li>
+          <li class="md-nav__item md-nav__item--nested">
+           <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+           <label class="md-nav__link" for="__nav_2">
+            NiPreps
+            <span class="md-nav__icon md-icon">
+            </span>
+           </label>
+           <nav aria-label="NiPreps" class="md-nav" data-md-level="1">
+            <label class="md-nav__title" for="__nav_2">
+             <span class="md-nav__icon md-icon">
+             </span>
+             NiPreps
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix="">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../intro/nipreps/">
+               Framework
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+          <li class="md-nav__item md-nav__item--nested">
+           <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+           <label class="md-nav__link" for="__nav_3">
+            BIDS-Apps
+            <span class="md-nav__icon md-icon">
+            </span>
+           </label>
+           <nav aria-label="BIDS-Apps" class="md-nav" data-md-level="1">
+            <label class="md-nav__title" for="__nav_3">
+             <span class="md-nav__icon md-icon">
+             </span>
+             BIDS-Apps
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix="">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../apps/framework/">
+               Introduction
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../apps/docker/">
+               Executing with Docker
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../apps/singularity/">
+               Executing with Singularity
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+          <li class="md-nav__item md-nav__item--nested">
+           <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+           <label class="md-nav__link" for="__nav_4">
+            Community
+            <span class="md-nav__icon md-icon">
+            </span>
+           </label>
+           <nav aria-label="Community" class="md-nav" data-md-level="1">
+            <label class="md-nav__title" for="__nav_4">
+             <span class="md-nav__icon md-icon">
+             </span>
+             Community
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix="">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../community/">
+               Welcome
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../community/members/">
+               Membership
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../community/features/">
+               New features
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../community/CONTRIBUTING/">
+               Contributing
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../community/CODE_OF_CONDUCT/">
+               Code of Conduct
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../community/licensing/">
+               Licensing
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+          <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+           <input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+           <label class="md-nav__link" for="__nav_5">
+            Developers
+            <span class="md-nav__icon md-icon">
+            </span>
+           </label>
+           <nav aria-label="Developers" class="md-nav" data-md-level="1">
+            <label class="md-nav__title" for="__nav_5">
+             <span class="md-nav__icon md-icon">
+             </span>
+             Developers
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix="">
+             <li class="md-nav__item md-nav__item--active">
+              <input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+              <label class="md-nav__link md-nav__link--active" for="__toc">
+               Developer Environment
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <a class="md-nav__link md-nav__link--active" href="./">
+               Developer Environment
+              </a>
+              <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+               <label class="md-nav__title" for="__toc">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Table of contents
+               </label>
+               <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#patching-a-working-copy-into-a-docker-container">
+                  Patching a working copy into a Docker container
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#adding-dependencies">
+                  Adding dependencies
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#rebuilding-docker-image">
+                  (Re)Building Docker image
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#code-server-development-environment-experimental">
+                  Code-Server Development Environment (Experimental)
+                 </a>
+                 <nav aria-label="Code-Server Development Environment (Experimental)" class="md-nav">
+                  <ul class="md-nav__list">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#code-server-development-environment-features">
+                     Code-Server Development Environment Features
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../versions/">
+               Versions Matrix
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../releases/">
+               Releases
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+         <label class="md-nav__title" for="__toc">
+          <span class="md-nav__icon md-icon">
+          </span>
+          Table of contents
+         </label>
+         <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#patching-a-working-copy-into-a-docker-container">
+            Patching a working copy into a Docker container
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#adding-dependencies">
+            Adding dependencies
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#rebuilding-docker-image">
+            (Re)Building Docker image
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#code-server-development-environment-experimental">
+            Code-Server Development Environment (Experimental)
+           </a>
+           <nav aria-label="Code-Server Development Environment (Experimental)" class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#code-server-development-environment-features">
+               Code-Server Development Environment Features
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-content" data-md-component="content">
+      <article class="md-content__inner md-typeset">
+       <h1>
+        Developer Environment
+       </h1>
+       <p>
+        This document explains how to prepare a new development environment and update an existing environment, as necessary, for the development of
+        <em>
+         NiPreps
+        </em>
+        ' components.
+Some components may deviate from these guidelines, in such a case, please follow the guidelines provided in their documentation.
+       </p>
+       <p>
+        If you plan to contribute back to the community, making your code available via pull-request, please make sure to have read and understood the
+        <a href="../../community/">
+         Community Documents and Contributor Guidelines
+        </a>
+        .
+If you plan to distribute derived code, please follow our
+        <a href="../../community/licensing/">
+         licensing guidelines
+        </a>
+        .
+       </p>
+       <p>
+        Development in Docker is encouraged, for the sake of consistency and portability.
+By default, work should be built off of
+        <a href="https://hub.docker.com/r/nipreps/fmriprep/">
+         <code>
+          nipreps/fmriprep:unstable
+         </code>
+        </a>
+        , which tracks the
+        <code>
+         master
+        </code>
+        branch, or
+        <code>
+         nipreps/fmriprep:latest
+        </code>
+        , which tracks the latest release version (see
+        <a href="../../apps/docker/">
+         BIDS-Apps execution guide
+        </a>
+        for the basic procedure for running).
+       </p>
+       <p>
+        It will be assumed the developer has a working repository in
+        <code>
+         $HOME/projects/fmriprep
+        </code>
+        , and examples are also given for
+        <a href="https://github.com/nipreps/niworkflows">
+         niworkflows
+        </a>
+        and
+        <em>
+         NiPype
+        </em>
+        .
+       </p>
+       <h2 id="patching-a-working-copy-into-a-docker-container">
+        Patching a working copy into a Docker container
+        <a class="headerlink" href="#patching-a-working-copy-into-a-docker-container" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        In order to test new code without rebuilding the Docker image, it is possible to mount working repositories as source directories within the container.
+The
+        <a href="../../apps/docker/#running-a-niprep-with-a-lightweight-wrapper">
+         Docker wrapper
+        </a>
+        script simplifies this for the most common repositories:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>    -f PATH, --patch-fmriprep PATH
+                          working fmriprep repository <span class="o">(</span>default: None<span class="o">)</span>
+    -n PATH, --patch-niworkflows PATH
+                          working niworkflows repository <span class="o">(</span>default: None<span class="o">)</span>
+    -p PATH, --patch-nipype PATH
+                          working nipype repository <span class="o">(</span>default: None<span class="o">)</span>
+</code></pre>
+       </div>
+       <p>
+        For instance, if your repositories are contained in
+        <code>
+         $HOME/projects
+        </code>
+        :
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>$ fmriprep-docker -f <span class="nv">$HOME</span>/projects/fmriprep/fmriprep <span class="se">\</span>
+                  -n <span class="nv">$HOME</span>/projects/niworkflows/niworkflows <span class="se">\</span>
+                  -p <span class="nv">$HOME</span>/projects/nipype/nipype <span class="se">\</span>
+                  -i nipreps/fmriprep:latest <span class="se">\</span>
+                  <span class="nv">$HOME</span>/fullds005 <span class="nv">$HOME</span>/dockerout participant
+</code></pre>
+       </div>
+       <p>
+        Note the
+        <code>
+         -i
+        </code>
+        flag allows you to specify an image.
+       </p>
+       <p>
+        When invoking
+        <code>
+         docker
+        </code>
+        directly, the mount options must be specified
+with the
+        <code>
+         -v
+        </code>
+        flag:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>-v <span class="nv">$HOME</span>/projects/fmriprep/fmriprep:/usr/local/miniconda/lib/python3.7/site-packages/fmriprep:ro
+-v <span class="nv">$HOME</span>/projects/niworkflows/niworkflows:/usr/local/miniconda/lib/python3.7/site-packages/niworkflows:ro
+-v <span class="nv">$HOME</span>/projects/nipype/nipype:/usr/local/miniconda/lib/python3.7/site-packages/nipype:ro
+</code></pre>
+       </div>
+       <p>
+        For example,
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>$ docker run --rm -v <span class="nv">$HOME</span>/ds005:/data:ro -v <span class="nv">$HOME</span>/dockerout:/out <span class="se">\</span>
+    -v <span class="nv">$HOME</span>/projects/fmriprep/fmriprep:/usr/local/miniconda/lib/python3.7/site-packages/fmriprep:ro <span class="se">\</span>
+    nipreps/fmriprep:latest /data /out/out participant <span class="se">\</span>
+    -w /out/work/
+</code></pre>
+       </div>
+       <p>
+        In order to work directly in the container, pass the
+        <code>
+         --shell
+        </code>
+        flag to
+        <code>
+         fmriprep-docker
+        </code>
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>$ fmriprep-docker --shell <span class="nv">$HOME</span>/ds005 <span class="nv">$HOME</span>/dockerout participant
+</code></pre>
+       </div>
+       <p>
+        This is the equivalent of using
+        <code>
+         --entrypoint=bash
+        </code>
+        and omitting the
+        <em>
+         fMRIPrep
+        </em>
+        arguments in a
+        <code>
+         docker
+        </code>
+        command:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>$ docker run --rm -v <span class="nv">$HOME</span>/ds005:/data:ro -v <span class="nv">$HOME</span>/dockerout:/out <span class="se">\</span>
+    -v <span class="nv">$HOME</span>/projects/fmriprep/fmriprep:/usr/local/miniconda/lib/python3.7/site-packages/fmriprep:ro --entrypoint<span class="o">=</span>bash <span class="se">\</span>
+    nipreps/fmriprep:latest
+</code></pre>
+       </div>
+       <p>
+        Patching containers can be achieved in Singularity analogous to
+        <code>
+         docker
+        </code>
+        using the
+        <code>
+         --bind
+        </code>
+        (
+        <code>
+         -B
+        </code>
+        ) option:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>$ singularity run <span class="se">\</span>
+    -B <span class="nv">$HOME</span>/projects/fmriprep/fmriprep:/usr/local/miniconda/lib/python3.7/site-packages/fmriprep <span class="se">\</span>
+    fmriprep.img <span class="se">\</span>
+    /scratch/dataset /scratch/out participant -w /out/work/
+</code></pre>
+       </div>
+       <h2 id="adding-dependencies">
+        Adding dependencies
+        <a class="headerlink" href="#adding-dependencies" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        New dependencies to be inserted into the Docker image will either be Python or non-Python dependencies.
+Python dependencies may be added in three places, depending on whether the package is large or non-release versions are required.
+The image
+        <a href="#rebuilding-docker-image">
+         must be rebuilt
+        </a>
+        after any dependency changes.
+       </p>
+       <p>
+        Python dependencies should generally be included in the appropriate dependency metadata of the
+        <code>
+         setup.cfg
+        </code>
+        file found at the root of each repository.
+If some the dependency must be a particular version (or set thereof), it is possible to use version filters in this
+        <code>
+         setup.cfg
+        </code>
+        file.
+       </p>
+       <p>
+        For large Python dependencies where there will be a benefit to pre-compiled binaries,
+        <a href="https://github.com/conda/conda">
+         conda
+        </a>
+        packages may also be added to the
+        <code>
+         conda install
+        </code>
+        line in the
+        <a href="https://github.com/nipreps/fmriprep/blob/29133e5e9f92aae4b23dd897f9733885a60be311/Dockerfile#L46">
+         Dockerfile
+        </a>
+        .
+       </p>
+       <p>
+        Non-Python dependencies must also be installed in the Dockerfile, via a
+        <code>
+         RUN
+        </code>
+        command.
+For example, installing an
+        <code>
+         apt
+        </code>
+        package may be done as follows:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><span class="k">RUN</span> apt-get update <span class="o">&amp;&amp;</span> <span class="se">\</span>
+    apt-get install -y &lt;PACKAGE&gt;
+</code></pre>
+       </div>
+       <h2 id="rebuilding-docker-image">
+        (Re)Building Docker image
+        <a class="headerlink" href="#rebuilding-docker-image" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        If it is necessary to (re)build the Docker image, a local image named
+        <code>
+         fmriprep
+        </code>
+        may be built from within the local repository.
+Let's assume it is located in
+        <code>
+         ~/projects/fmriprep
+        </code>
+        :
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>~/projects/fmriprep$ <span class="nv">VERSION</span><span class="o">=</span><span class="k">$(</span> python get_version.py <span class="k">)</span>
+~/projects/fmriprep$ docker build -t fmriprep --build-arg <span class="nv">VERSION</span><span class="o">=</span><span class="nv">$VERSION</span> .
+</code></pre>
+       </div>
+       <p>
+        The
+        <code>
+         VERSION
+        </code>
+        build argument is necessary to ensure that help text can be reliably generated.
+The
+        <code>
+         get_version.py
+        </code>
+        tool constructs the version string from the current repository state.
+       </p>
+       <p>
+        To work in this image, replace
+        <code>
+         nipreps/fmriprep:latest
+        </code>
+        with just
+        <code>
+         fmriprep
+        </code>
+        in any of the above commands.
+This image may be accessed by the
+        <a href="../../apps/docker/#running-a-niprep-with-a-lightweight-wrapper">
+         Docker wrapper
+        </a>
+        via the
+        <code>
+         -i
+        </code>
+        flag, e.g.:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>$ fmriprep-docker -i fmriprep --shell
+</code></pre>
+       </div>
+       <h2 id="code-server-development-environment-experimental">
+        Code-Server Development Environment (Experimental)
+        <a class="headerlink" href="#code-server-development-environment-experimental" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        To get the best of working with containers and having an interactive development environment, we have an experimental setup with
+        <a href="https://github.com/cdr/code-server">
+         code-server
+        </a>
+        .
+       </p>
+       <div class="admonition important">
+        <p class="admonition-title">
+         Important
+        </p>
+        <p>
+         We have
+         <a href="https://youtu.be/bkZ-NyUaTvg">
+          a video walking through the process
+         </a>
+         if you want a visual guide.
+        </p>
+       </div>
+       <p>
+        <strong>
+         1. Build the Docker image
+        </strong>
+        .
+We will use the
+        <code>
+         Dockerfile_devel
+        </code>
+        file to build our development docker image:
+        <div class="highlight">
+         <pre><span></span><code>$ <span class="nb">cd</span> <span class="nv">$HOME</span>/projects/fmriprep
+$ docker build -t fmriprep_devel -f Dockerfile_devel .
+</code></pre>
+        </div>
+       </p>
+       <p>
+        <strong>
+         2. Run the Docker image
+        </strong>
+        We can start a docker container using the image we built (
+        <code>
+         fmriprep_devel
+        </code>
+        ):
+        <div class="highlight">
+         <pre><span></span><code>$ docker run -it -p <span class="m">127</span>.0.0.1:8445:8080 -v <span class="si">${</span><span class="nv">PWD</span><span class="si">}</span>:/src/fmriprep fmriprep_devel:latest
+</code></pre>
+        </div>
+       </p>
+       <div class="admonition important">
+        <p class="admonition-title">
+         Windows Users
+        </p>
+        <p>
+         If you are using windows shell,
+         <code>
+          ${PWD}
+         </code>
+         may not be defined, instead use the absolute path to your repository.
+        </p>
+       </div>
+       <div class="admonition important">
+        <p class="admonition-title">
+         Docker-Toolbox
+        </p>
+        <p>
+         If you are using Docker-Toolbox, you will need to change your virtualbox settings using
+         <a href="https://github.com/jdkent/tutDockerRstudio#additional-setup-for-docker-toolbox">
+          these steps as a guide
+         </a>
+         . For step 6, instead of
+         <code>
+          Name = rstudio; Host Port = 8787; Guest Port = 8787
+         </code>
+         , have
+         <code>
+          Name = code-server; Host Port = 8443; Guest Port = 8080
+         </code>
+         . Then in the docker command above, change
+         <code>
+          127.0.0.1:8445:8080
+         </code>
+         to
+         <code>
+          192.168.99.100:8445:8080
+         </code>
+         .
+        </p>
+       </div>
+       <p>
+        If the container started correctly, you should see the following on your console:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>INFO  Server listening on http://localhost:8080
+INFO    - No authentication
+INFO    - Not serving HTTPS
+</code></pre>
+       </div>
+       <p>
+        Now you can switch to your favorite browser and go to:
+        <a href="http://127.0.0.1:8445">
+         127.0.0.1:8445
+        </a>
+        (or
+        <a href="http://192.168.99.100:8445">
+         192.168.99.100:8445
+        </a>
+        for Docker Toolbox).
+       </p>
+       <p>
+        <strong>
+         3. Copy
+         <code>
+          fmriprep.egg-info
+         </code>
+         into your
+         <code>
+          fmriprep/
+         </code>
+         project directory
+        </strong>
+        <code>
+         fmriprep.egg-info
+        </code>
+        makes the package exacutable inside the docker container.
+Open a terminal in vscode and type the following:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>$ cp -R /src/fmriprep.egg-info /src/fmriprep/
+</code></pre>
+       </div>
+       <h3 id="code-server-development-environment-features">
+        Code-Server Development Environment Features
+        <a class="headerlink" href="#code-server-development-environment-features" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <ul>
+        <li>
+         <p>
+          The editor is
+          <a href="https://code.visualstudio.com/docs">
+           vscode
+          </a>
+         </p>
+        </li>
+        <li>
+         <p>
+          There are several preconfigured debugging tests under the debugging icon in the activity bar
+         </p>
+        </li>
+        <li>
+         <p>
+          see
+          <a href="https://code.visualstudio.com/docs/python/debugging">
+           vscode debugging python
+          </a>
+          for details.
+         </p>
+        </li>
+        <li>
+         <p>
+          The
+          <code>
+           gitlens
+          </code>
+          and
+          <code>
+           python
+          </code>
+          extensions are preinstalled to improve the development experience in vscode.
+         </p>
+        </li>
+       </ul>
+      </article>
+     </div>
+    </div>
+   </main>
+   <footer class="md-footer">
+    <nav aria-label="Footer" class="md-footer__inner md-grid">
+     <a aria-label="Previous: Licensing" class="md-footer__link md-footer__link--prev" href="../../community/licensing/" rel="prev">
+      <div class="md-footer__button md-icon">
+       <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z">
+        </path>
+       </svg>
+      </div>
+      <div class="md-footer__title">
+       <div class="md-ellipsis">
+        <span class="md-footer__direction">
+         Previous
+        </span>
+        Licensing
+       </div>
+      </div>
+     </a>
+     <a aria-label="Next: Versions Matrix" class="md-footer__link md-footer__link--next" href="../versions/" rel="next">
+      <div class="md-footer__title">
+       <div class="md-ellipsis">
+        <span class="md-footer__direction">
+         Next
+        </span>
+        Versions Matrix
+       </div>
+      </div>
+      <div class="md-footer__button md-icon">
+       <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z">
+        </path>
+       </svg>
+      </div>
+     </a>
+    </nav>
+    <div class="md-footer-meta md-typeset">
+     <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+       <div class="md-footer-copyright__highlight">
+        Copyright © 2020
+       </div>
+       Made with
+       <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+        Material for MkDocs
+       </a>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <div class="md-dialog" data-md-component="dialog">
+   <div class="md-dialog__inner md-typeset">
+   </div>
+  </div>
+  <script id="__config" type="application/json">
+   {"base": "../..", "features": ["tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.477d984a.min.js", "version": null}
+  </script>
+  <script src="../../assets/javascripts/bundle.ddd52ceb.min.js">
+  </script>
+ </body>
+</html>
