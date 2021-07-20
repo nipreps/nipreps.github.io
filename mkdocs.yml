@@ -27,6 +27,7 @@ nav:
       - Code of Conduct: community/CODE_OF_CONDUCT.md
       - Licensing: community/licensing.md
     - Developers:
+      - Developer Environment: devs/devenv.md
       - Versions Matrix: devs/versions.md
       - Releases: devs/releases.md
 theme:
