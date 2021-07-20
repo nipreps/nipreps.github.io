@@ -7,12 +7,12 @@
   <meta content="The NiPreps developers" name="author"/>
   <link href="https://www.nipreps.org/apps/singularity/" rel="canonical"/>
   <link href="../../assets/images/favicon.png" rel="icon"/>
-  <meta content="mkdocs-1.1.2, mkdocs-material-7.1.4" name="generator"/>
+  <meta content="mkdocs-1.2.2, mkdocs-material-7.1.11" name="generator"/>
   <title>
    Executing with Singularity - NiPreps
   </title>
-  <link href="../../assets/stylesheets/main.bde7dde4.min.css" rel="stylesheet"/>
-  <link href="../../assets/stylesheets/palette.ef6f36e2.min.css" rel="stylesheet"/>
+  <link href="../../assets/stylesheets/main.3754935a.min.css" rel="stylesheet"/>
+  <link href="../../assets/stylesheets/palette.f1a3b89f.min.css" rel="stylesheet"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
   <style>
@@ -20,7 +20,7 @@
   </style>
   <link href="../../stylesheets/extra.css" rel="stylesheet"/>
   <script>
-   window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-170131052-1","www.nipreps.org"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})
+   window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-170131052-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})
   </script>
   <script async="" src="https://www.google-analytics.com/analytics.js">
   </script>
@@ -378,7 +378,7 @@ directly on the system. This is as simple as:
        </p>
        <div class="highlight">
         <pre><span></span><code>$ singularity build /my_images/fmriprep-&lt;version&gt;.simg <span class="se">\</span>
-                    docker://poldracklab/fmriprep:&lt;version&gt;
+                    docker://nipreps/fmriprep:&lt;version&gt;
 </code></pre>
        </div>
        <p>
@@ -410,7 +410,7 @@ connection and some time:
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v D:\host\path\where\to\output\singularity\image:/output \
     singularityware/docker2singularity \
-    poldracklab/fmriprep:&lt;version&gt;
+    nipreps/fmriprep:&lt;version&gt;
 </code></pre>
        </div>
        <p>
@@ -433,7 +433,7 @@ users the command translates as follows: :
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /absolute/path/to/output/folder:/output \
     singularityware/docker2singularity \
-    poldracklab/fmriprep:&lt;version&gt;
+    nipreps/fmriprep:&lt;version&gt;
 </code></pre>
        </div>
        <p>
@@ -448,7 +448,7 @@ users the command translates as follows: :
         :
        </p>
        <div class="highlight">
-        <pre><span></span><code>$ scp poldracklab_fmriprep*.img user@hcpserver.edu:/my_images
+        <pre><span></span><code>$ scp nipreps_fmriprep*.img user@hcpserver.edu:/my_images
 </code></pre>
        </div>
        <h2 id="running-a-singularity-image">
@@ -686,8 +686,8 @@ preferred to bind just one subdirectory of
           $HOME
          </code>
          directory of the host (see
-         <a href="https://github.com/poldracklab/fmriprep/issues/1778#issuecomment-538009563">
-          poldracklab/fmriprep#1778 (comment)
+         <a href="https://github.com/nipreps/fmriprep/issues/1778#issuecomment-538009563">
+          nipreps/fmriprep#1778 (comment)
          </a>
          ).
         </p>
@@ -881,8 +881,8 @@ endpoints), then you can try the following:
            SINGULARITYENV_http_proxy
           </code>
           (see
-          <a href="https://github.com/poldracklab/fmriprep/issues/1778#issuecomment-532297622">
-           poldracklab/fmriprep#1778 (comment)
+          <a href="https://github.com/nipreps/fmriprep/issues/1778#issuecomment-532297622">
+           nipreps/fmriprep#1778 (comment)
           </a>
           .
   For example:
@@ -1093,7 +1093,7 @@ generate one task per subject using a
 <span class="c1"># ------------------------------------------</span>
 
 <span class="nv">BIDS_DIR</span><span class="o">=</span><span class="s2">"</span><span class="nv">$STUDY</span><span class="s2">/data"</span>
-<span class="nv">DERIVS_DIR</span><span class="o">=</span><span class="s2">"derivatives/fmriprep-1.5.0"</span>
+<span class="nv">DERIVS_DIR</span><span class="o">=</span><span class="s2">"derivatives/fmriprep-20.2.2"</span>
 <span class="nv">LOCAL_FREESURFER_DIR</span><span class="o">=</span><span class="s2">"</span><span class="nv">$STUDY</span><span class="s2">/data/derivatives/freesurfer-6.0.1"</span>
 
 <span class="c1"># Prepare some writeable bind-mount points.</span>
@@ -1110,7 +1110,7 @@ mkdir -p <span class="si">${</span><span class="nv">BIDS_DIR</span><span class="
 
 <span class="c1"># Designate a templateflow bind-mount point</span>
 <span class="nb">export</span> <span class="nv">SINGULARITYENV_TEMPLATEFLOW_HOME</span><span class="o">=</span><span class="s2">"/templateflow"</span>
-<span class="nv">SINGULARITY_CMD</span><span class="o">=</span><span class="s2">"singularity run --cleanenv -B </span><span class="nv">$BIDS_DIR</span><span class="s2">:/data -B </span><span class="si">${</span><span class="nv">TEMPLATEFLOW_HOST_HOME</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">SINGULARITYENV_TEMPLATEFLOW_HOME</span><span class="si">}</span><span class="s2"> -B </span><span class="nv">$L_SCRATCH</span><span class="s2">:/work -B </span><span class="si">${</span><span class="nv">LOCAL_FREESURFER_DIR</span><span class="si">}</span><span class="s2">:/fsdir </span><span class="nv">$STUDY</span><span class="s2">/images/poldracklab_fmriprep_1.5.0.simg"</span>
+<span class="nv">SINGULARITY_CMD</span><span class="o">=</span><span class="s2">"singularity run --cleanenv -B </span><span class="nv">$BIDS_DIR</span><span class="s2">:/data -B </span><span class="si">${</span><span class="nv">TEMPLATEFLOW_HOST_HOME</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">SINGULARITYENV_TEMPLATEFLOW_HOME</span><span class="si">}</span><span class="s2"> -B </span><span class="nv">$L_SCRATCH</span><span class="s2">:/work -B </span><span class="si">${</span><span class="nv">LOCAL_FREESURFER_DIR</span><span class="si">}</span><span class="s2">:/fsdir </span><span class="nv">$STUDY</span><span class="s2">/images/fmriprep_20.2.2.simg"</span>
 
 <span class="c1"># Parse the participants.tsv file and extract one subject ID from the line corresponding to this SLURM task.</span>
 <span class="nv">subject</span><span class="o">=</span><span class="k">$(</span> sed -n -E <span class="s2">"</span><span class="k">$((</span><span class="si">${</span><span class="nv">SLURM_ARRAY_TASK_ID</span><span class="si">}</span> <span class="o">+</span> <span class="m">1</span><span class="k">))</span><span class="s2">s/sub-(\S*)\&gt;.*/\1/gp"</span> <span class="si">${</span><span class="nv">BIDS_DIR</span><span class="si">}</span>/participants.tsv <span class="k">)</span>
@@ -1164,7 +1164,7 @@ $ sbatch --array<span class="o">=</span><span class="m">1</span>-<span class="k"
    </main>
    <footer class="md-footer">
     <nav aria-label="Footer" class="md-footer__inner md-grid">
-     <a class="md-footer__link md-footer__link--prev" href="../docker/" rel="prev">
+     <a aria-label="Previous: Executing with Docker" class="md-footer__link md-footer__link--prev" href="../docker/" rel="prev">
       <div class="md-footer__button md-icon">
        <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z">
@@ -1180,7 +1180,7 @@ $ sbatch --array<span class="o">=</span><span class="m">1</span>-<span class="k"
        </div>
       </div>
      </a>
-     <a class="md-footer__link md-footer__link--next" href="../../community/" rel="next">
+     <a aria-label="Next: Welcome" class="md-footer__link md-footer__link--next" href="../../community/" rel="next">
       <div class="md-footer__title">
        <div class="md-ellipsis">
         <span class="md-footer__direction">
@@ -1217,9 +1217,9 @@ $ sbatch --array<span class="o">=</span><span class="m">1</span>-<span class="k"
    </div>
   </div>
   <script id="__config" type="application/json">
-   {"base": "../..", "features": ["tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.4fa0e4ee.min.js", "version": null}
+   {"base": "../..", "features": ["tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.477d984a.min.js", "version": null}
   </script>
-  <script src="../../assets/javascripts/bundle.1d3bfcf1.min.js">
+  <script src="../../assets/javascripts/bundle.ddd52ceb.min.js">
   </script>
  </body>
 </html>

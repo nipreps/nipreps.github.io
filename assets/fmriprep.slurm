@@ -14,7 +14,7 @@
 # ------------------------------------------
 
 BIDS_DIR="$STUDY/data"
-DERIVS_DIR="derivatives/fmriprep-1.5.0"
+DERIVS_DIR="derivatives/fmriprep-20.2.2"
 LOCAL_FREESURFER_DIR="$STUDY/data/derivatives/freesurfer-6.0.1"
 
 # Prepare some writeable bind-mount points.
@@ -31,7 +31,7 @@ export SINGULARITYENV_FS_LICENSE=$HOME/.freesurfer.txt
 
 # Designate a templateflow bind-mount point
 export SINGULARITYENV_TEMPLATEFLOW_HOME="/templateflow"
-SINGULARITY_CMD="singularity run --cleanenv -B $BIDS_DIR:/data -B ${TEMPLATEFLOW_HOST_HOME}:${SINGULARITYENV_TEMPLATEFLOW_HOME} -B $L_SCRATCH:/work -B ${LOCAL_FREESURFER_DIR}:/fsdir $STUDY/images/poldracklab_fmriprep_1.5.0.simg"
+SINGULARITY_CMD="singularity run --cleanenv -B $BIDS_DIR:/data -B ${TEMPLATEFLOW_HOST_HOME}:${SINGULARITYENV_TEMPLATEFLOW_HOME} -B $L_SCRATCH:/work -B ${LOCAL_FREESURFER_DIR}:/fsdir $STUDY/images/fmriprep_20.2.2.simg"
 
 # Parse the participants.tsv file and extract one subject ID from the line corresponding to this SLURM task.
 subject=$( sed -n -E "$((${SLURM_ARRAY_TASK_ID} + 1))s/sub-(\S*)\>.*/\1/gp" ${BIDS_DIR}/participants.tsv )
