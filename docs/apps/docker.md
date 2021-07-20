@@ -51,7 +51,7 @@ role="ref"}).-->
 Taking *fMRIPrep* to illustrate the usage, first you might want to make sure of the exact version of the tool to be used:
 
 ``` Shell
-$ docker pull poldracklab/fmriprep:<latest-version>
+$ docker pull nipreps/fmriprep:<latest-version>
 ```
 
 You can run *NiPreps* interacting directly with the Docker Engine via the `docker run` interface.
@@ -67,7 +67,7 @@ When you run `fmriprep-docker`, it will generate a Docker command line for you, 
 ``` Shell
 $ fmriprep-docker /path/to/data/dir /path/to/output/dir participant
 RUNNING: docker run --rm -it -v /path/to/data/dir:/data:ro \
-    -v /path/to_output/dir:/out poldracklab/fmriprep:1.0.0 \
+    -v /path/to_output/dir:/out nipreps/fmriprep:20.2.2 \
     /data /out participant
 ...
 ```
@@ -118,7 +118,7 @@ You may also invoke `docker` directly:
 $ docker run -ti --rm \
     -v path/to/data:/data:ro \
     -v path/to/output:/out \
-    poldracklab/fmriprep:<latest-version> \
+    nipreps/fmriprep:<latest-version> \
     /data /out/out \
     participant
 ```
@@ -130,7 +130,7 @@ $ docker run -ti --rm \
     -v $HOME/ds005:/data:ro \
     -v $HOME/ds005/derivatives:/out \
     -v $HOME/tmp/ds005-workdir:/work \
-    poldracklab/fmriprep:<latest-version> \
+    nipreps/fmriprep:<latest-version> \
     /data /out/fmriprep-<latest-version> \
     participant \
     -w /work
@@ -146,7 +146,7 @@ $ docker run -ti --rm \                      # These lines
     -v $HOME/ds005:/data:ro \                # are equivalent to
     -v $HOME/ds005/derivatives:/out \        # a call to the App's
     -v $HOME/tmp/ds005-workdir:/work \       # entry-point.
-    poldracklab/fmriprep:<latest-version> \  #
+    nipreps/fmriprep:<latest-version> \  #
     \
     /data /out/fmriprep-<latest-version> \   # These lines correspond
     participant \                            # to the particular BIDS

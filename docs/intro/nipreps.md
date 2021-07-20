@@ -28,10 +28,10 @@ The *NiPreps* framework (Figure 1) encompasses a wide array of software projects
 
 ## Projects
 
-  * [*fMRIPrep*][1] ([GitHub](https://github.com/poldracklab/fmriprep)): fMRI Preprocessing
+  * [*fMRIPrep*][1] ([GitHub](https://github.com/nipreps/fmriprep)): fMRI Preprocessing
   * [*dMRIPrep*][6] ([GitHub](https://github.com/nipreps/dmriprep)): dMRI Preprocessing
   * [*sMRIPrep*][7] ([GitHub](https://github.com/nipreps/smriprep)): Structural MRI Preprocessing
-  * [*MRIQC*][8] ([GitHub](https://github.com/poldracklab/mriqc)): MRI quality control
+  * [*MRIQC*][8] ([GitHub](https://github.com/nipreps/mriqc)): MRI quality control
   * [*SDCflows*][5] ([GitHub](https://github.com/nipreps/sdcflows)): Susceptibility-derived distortion correction (SDC) workflows
   * [*NiWorkflows*][4] ([GitHub](https://github.com/nipreps/niworkflows)): General/miscellaneous workflow utilities
   * [*TemplateFlow*][9]: A registry of neuroimaging templates and spatial mappings between them.

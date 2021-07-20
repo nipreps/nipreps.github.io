@@ -65,7 +65,7 @@ If an unreleased bug-fix seems likely to cause merge conflicts, it may be worth 
 1. NiWorkflows
 
 These do not follow the same versioning scheme as above, but we need them to follow a compatible scheme. In particular, we need to be able to fix bugs that are situated within these dependencies in a bug-fix release without violating the criteria laid out above.
-At the time of an *fMRIPrep* feature release, all of the above tools need to also split out a maintenance branch (if they have not already) for the minor version series that *fMRIPrep* depends on. As an example, when 20.0.0 was released, *fMRIPrep* had the following dependencies in [`setup.cfg`](https://github.com/poldracklab/fmriprep/blob/20.0.0/setup.cfg#L22-L36):
+At the time of an *fMRIPrep* feature release, all of the above tools need to also split out a maintenance branch (if they have not already) for the minor version series that *fMRIPrep* depends on. As an example, when 20.0.0 was released, *fMRIPrep* had the following dependencies in [`setup.cfg`](https://github.com/nipreps/fmriprep/blob/20.0.0/setup.cfg#L22-L36):
 
 ```
     niworkflows ~= 1.1.7
