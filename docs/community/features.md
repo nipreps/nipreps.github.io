@@ -1,7 +1,7 @@
 
 > The one bit that worries me is that *fMRIPrep* may become a Swiss army knife. I think instead it should just be a paring knife (small, efficient, and works for many things).
 >
-> -- <cite>Satra ([source](https://github.com/poldracklab/fmriprep/issues/1963#issuecomment-584455061))</cite>
+> -- <cite>Satra ([source](https://github.com/nipreps/fmriprep/issues/1963#issuecomment-584455061))</cite>
 
 When projects grow large, many forking paths created by newly implemented features start
 to open up.
@@ -14,7 +14,7 @@ Defining such a scope also aids the implementation of the ease-of-use principle:
 > in the acquisition, *NiPreps* should not add many additional knobs to those
 > for them to be considered a viable *augmentation* or extension of the scanner hw/sw.
 >
-> -- <cite>Oscar ([source](https://github.com/poldracklab/fmriprep/issues/1963#issuecomment-584455061))</cite>
+> -- <cite>Oscar ([source](https://github.com/nipreps/fmriprep/issues/1963#issuecomment-584455061))</cite>
 
 ## The problem of feature creep
 To avert [feature creep](https://en.wikipedia.org/wiki/Feature_creep) and
@@ -23,7 +23,7 @@ guidelines, with the hopes of keeping these tools in a healthy state.
 
 > I'm worried *fMRIPrep* is catching a case of featuritis
 >
-> -- <cite>Mathias ([source](https://github.com/poldracklab/fmriprep/issues/1985#issuecomment-588493059))</cite>
+> -- <cite>Mathias ([source](https://github.com/nipreps/fmriprep/issues/1985#issuecomment-588493059))</cite>
 
 These guidelines should also serve the community to transparently drive the process
 of including proposals into the road-map, set the ground for healthy conversation,
@@ -38,7 +38,7 @@ possible to rigorously follow them:
 > guarantee (or rule out) specific features when working with a small
 > development team.
 >
-> -- <cite>Elizabeth ([source](https://github.com/poldracklab/fmriprep/issues/1963#issuecomment-582453941))</cite>.
+> -- <cite>Elizabeth ([source](https://github.com/nipreps/fmriprep/issues/1963#issuecomment-582453941))</cite>.
 
 ## Proposing a new feature
 
@@ -52,7 +52,7 @@ particular *NiPrep* repository.
 If no previous discussion about the new idea is found,
 the next step is ensuring the new feature aligns with the vision and
 the scope of the target tool, as
-[Elizabeth points out](https://github.com/poldracklab/fmriprep/issues/1963#issuecomment-582453941).
+[Elizabeth points out](https://github.com/nipreps/fmriprep/issues/1963#issuecomment-582453941).
 Taking a look into the Development Road-map of the particular project
 (if it exists), may help finding an answer.
 
@@ -62,7 +62,7 @@ go ahead and post an issue requesting feedback on your proposal.
 Please make sure to clearly state why the new feature should be considered.
 
 ### Some questions will always be asked about a new feature
-[These questions by James](https://github.com/poldracklab/fmriprep/issues/1963#issuecomment-582220173)
+[These questions by James](https://github.com/nipreps/fmriprep/issues/1963#issuecomment-582220173)
 will certainly help build up the discourse in support of the new feature,
 as the *NiPreps* maintainers will consider them:
 
@@ -75,7 +75,7 @@ as the *NiPreps* maintainers will consider them:
     > Especially when the CLI is affected, and yet another option is added,
     > that makes the tool more complex to use.
     >
-    > -- <cite>Alejandro ([source](https://github.com/poldracklab/fmriprep/    issues/1963#issuecomment-582174814))</cite>.
+    > -- <cite>Alejandro ([source](https://github.com/nipreps/fmriprep/    issues/1963#issuecomment-582174814))</cite>.
 
   * Does the new feature substantially **increase the internal complexity**?
     Maintainers and developers will attempt to consolidate tools and lower the internal
@@ -97,7 +97,7 @@ as the *NiPreps* maintainers will consider them:
       * if so, can the procedure/value be determined algorithmically?
 
   * Does the feature **interact with other settings**?
-    For instance, [fmriprep#1962](https://github.com/poldracklab/fmriprep/pull/1962)
+    For instance, [fmriprep#1962](https://github.com/nipreps/fmriprep/pull/1962)
     interacts with the a/tCompCor implementation.
 
   * What is the **difficulty of implementing the procedure outside** of a *NiPrep*?

@@ -12,7 +12,7 @@ directly on the system. This is as simple as:
 
 ``` Shell
 $ singularity build /my_images/fmriprep-<version>.simg \
-                    docker://poldracklab/fmriprep:<version>
+                    docker://nipreps/fmriprep:<version>
 ```
 
 where `<version>` should be replaced with the desired version of
@@ -30,7 +30,7 @@ $ docker run --privileged -t --rm \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v D:\host\path\where\to\output\singularity\image:/output \
     singularityware/docker2singularity \
-    poldracklab/fmriprep:<version>
+    nipreps/fmriprep:<version>
 ```
 
 Where `<version>` should be replaced with the desired version of
@@ -44,14 +44,14 @@ $ docker run --privileged -t --rm \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /absolute/path/to/output/folder:/output \
     singularityware/docker2singularity \
-    poldracklab/fmriprep:<version>
+    nipreps/fmriprep:<version>
 ```
 
 Transfer the resulting Singularity image to the HPC, for example, using
 `scp` or `rsync`:
 
 ``` Shell
-$ scp poldracklab_fmriprep*.img user@hcpserver.edu:/my_images
+$ scp nipreps_fmriprep*.img user@hcpserver.edu:/my_images
 ```
 
 ## Running a Singularity Image
@@ -159,7 +159,7 @@ $ singularity run --cleanenv -B /work:/work fmriprep.simg \
     generally recommended to use binding scarcely and granting very limited
     access to the minimum necessary resources. In other words, it is
     preferred to bind just one subdirectory of `$HOME` than the full `$HOME`
-    directory of the host (see [poldracklab/fmriprep#1778 (comment)](https://github.com/poldracklab/fmriprep/issues/1778\#issuecomment-538009563)).
+    directory of the host (see [nipreps/fmriprep#1778 (comment)](https://github.com/nipreps/fmriprep/issues/1778\#issuecomment-538009563)).
 
 
 **Relevant aspects of the** `$HOME` **directory within the container**:
@@ -237,7 +237,7 @@ endpoints), then you can try the following:
 
 * `VerifiedHTTPSConnection ... Failed to establish a new connection: [Errno 110] Connection timed out`.
   If you encounter an error like this, probably you'll need to set up an
-  http proxy exporting `SINGULARITYENV_http_proxy` (see [poldracklab/fmriprep#1778 (comment)](https://github.com/poldracklab/fmriprep/issues/1778\#issuecomment-532297622).
+  http proxy exporting `SINGULARITYENV_http_proxy` (see [nipreps/fmriprep#1778 (comment)](https://github.com/nipreps/fmriprep/issues/1778\#issuecomment-532297622).
   For example:
 
     ```Shell

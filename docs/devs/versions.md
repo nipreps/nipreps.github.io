@@ -10,7 +10,7 @@ The versions matrix is intended to allow easy reference for the dependencies wit
 | 20.0.x | `~= 0.5.2` | `~= 1.2.0` | `~= 1.1.7` |
 | 1.5.3+ | `~= 0.4.0` | `~= 1.0.1` | `~= 1.0.2` |
 
-(Originally posted at [poldracklab/fmriprep#2054](https://github.com/poldracklab/fmriprep/issues/2054))
+(Originally posted at [nipreps/fmriprep#2054](https://github.com/nipreps/fmriprep/issues/2054))
 
 ## *dMRIPrep*
 
@@ -26,7 +26,7 @@ sMRIPrep requires niworkflows and generally must depend on one minor series of n
 | 0.6.x | `~= 1.2.0` | `~= 0.6` |
 | 0.5.x | `~= 1.1.5` | `~= 0.4.2` |
 
-(Originally posted at [poldracklab/smriprep#172](https://github.com/poldracklab/smriprep/issues/172))
+(Originally posted at [nipreps/smriprep#172](https://github.com/nipreps/smriprep/issues/172))
 
 
 ## *MRIQC*
