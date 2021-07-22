@@ -2,18 +2,18 @@
 As discussed in ([Esteban et al., 2019](https://doi.org/10.1038/s41592-018-0235-4) -- [preprint](https://doi.org/10.1101/306951)):
 
 > The rapid increase in the volume and diversity of data, as well as the evolution of available techniques for processing and analysis, presents an opportunity for considerable advancement of research in neuroscience.
-> The drawback resides in the need for progres-sively more complex analysis workflows that rely on decreasingly interpretable models of the data.
-> Such context encourages ‘black-box’ solutions that efficiently perform a valuable service but do not provide insights into how the tool has transformed the data into the expected outputs.
+> The drawback resides in the need for progressively more complex analysis workflows that rely on decreasingly interpretable models of the data.
+> Such context encourages ‘*black-box*’ solutions that efficiently perform a valuable service but do not provide insights into how the tool has transformed the data into the expected outputs.
 > Black boxes obscure important steps in the inductive process mediating between experimental measurements and reported findings.
 > This way of moving forward risks producing a future generation of cognitive neuroscientists who have become experts in sophisticated computational methods but have little to no working knowledge of how their data were transformed through processing.
 > Transparency is often identified as a remedy for these problems.
-> *fMRIPrep* ascribes to ‘glass-box’ principles, which are defined in opposition to the many different facets or levels at which black-box solutions are opaque.
+> *fMRIPrep* ascribes to ‘*glass-box*’ principles, which are defined in opposition to the many different facets or levels at which black-box solutions are opaque.
 > The visual reports that *fMRIPrep* generates are a crucial aspect of the glass-box approach.
-> Their qual-ity control checkpoints represent the logical flow of preprocessing, allowing scientists to critically inspect and better understand the underlying mechanisms of the workflow.
+> Their quality control checkpoints represent the logical flow of preprocessing, allowing scientists to critically inspect and better understand the underlying mechanisms of the workflow.
 > A second transparency element is the citation boilerplate that formalizes all details of the workflow and provides the versions of all involved tools along with references to the corresponding scientific literature.
 > A third asset for transparency is thorough documentation that delivers addi-tional details on each of the building blocks represented in the visual reports and described in the boilerplate.
 > Further, *fMRIPrep* has been open-source since its inception: users have access to all of the incremental additions to the tool through the history of the version-control system.
-> The use of GitHub (https://github.com/poldracklab/fmriprep) grants access to the discussions held during development, allowing one to see how and why the main design decisions were made.
+> The use of [GitHub](https://github.com/nipreps/fmriprep) grants access to the discussions held during development, allowing one to see how and why the main design decisions were made.
 > The modular design of *fMRIPrep* enhances its flexibility and improves transparency, as the main features of the software are more easily accessible to potential collaborators.
 > In combination with some coding style and contribution guidelines, this modularity has enabled multiple contributions by peers and the creation of a rapidly growing community that would be difficult to nurture behind closed doors.
 
