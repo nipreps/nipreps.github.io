@@ -15,6 +15,7 @@ nav:
     - Home: index.md
     - NiPreps:
       - Framework: intro/nipreps.md
+      - Transparency of workflows: intro/transparency.md
     - BIDS-Apps:
       - Introduction: apps/framework.md
       - Executing with Docker: apps/docker.md
