@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Educational session: Executing BIDS-Apps on large datasets and the *NiPreps* framework</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/assets/asciinema-player/asciinema-player.css" />
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Roboto+Mono:400,700,400italic);
+
+      .blur {
+          -webkit-filter: blur(5px) opacity(.3);
+          -moz-filter: blur(10px) opacity(.3);
+          -o-filter: blur(5px) opacity(.3);
+          -ms-filter: blur(5px) opacity(.3);
+          filter: blur(5px) opacity(.3);
+      }
+
+      html {
+        height: 100%;
+      }
+      body {
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        height: 100%;
+      }
+      h1, h2, h3 {
+        font-weight: 600;
+        margin-bottom: 0;
+      }
+
+      .middle {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        width:100%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+      }
+
+      .remark-slide-content { height: 100%; padding: 0; }
+      .remark-slide-content h1 { font-size: 3em; }
+      .remark-slide-content h2 { font-size: 2em; }
+      .remark-slide-content h3 { font-size: 1.6em; }
+      .footnote {
+        position: absolute;
+        bottom: 3em;
+        font-size: 0.7em;
+      }
+      li p { line-height: 1.25em; }
+      /*.remark-slide-content>ul { margin-left: 250px; }*/
+      /*.remark-slide-content li { margin-left: 1em; }*/
+
+      .red { color: #fa0000; }
+      .blue { color: #0000fa; }
+      .green { color: #698b69; }
+      .large { font-size: 2em; }
+      a, a > code {
+        color: rgb(249, 38, 114);
+        text-decoration: none;
+      }
+      code {
+        background: #e7e8e2;
+        border-radius: 3px;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Roboto Mono'; }
+      .large .remark-code, .large .remark-inline-code { font-size: 0.8em; }
+      .remark-code-line-highlighted     { background-color: #373832; }
+      .pull-left {
+        float: left;
+        width: 39%;
+      }
+      .pull-right {
+        float: right;
+        width: 39%;
+        height: 75%;
+      }
+      .pull-right ~ p {
+        clear: both;
+      }
+      #slideshow .slide .content code {
+        font-size: 0.8em;
+      }
+      #slideshow .slide .content pre code {
+        font-size: 0.9em;
+        padding: 15px;
+      }
+      .section-separator .middle {
+        margin-left: 210px;
+        width: 80%;
+      }
+
+      .perma-sidebar {
+        float: left;
+        background-color: #009933;
+        color: #f4f4f4;
+        width: 40px;
+        height: 100%;
+        padding: 0;
+        margin: 0 2em 0 0;
+        text-align: center;
+      }
+      .perma-sidebar p {
+        text-align: left;
+        font-size: 80%;
+        height: 35px;
+        width: 670px;
+        margin: 320px 0 0 -315px;
+      }
+      .perma-sidebar h2:last-of-type, .perma-sidebar h3:last-child {
+        color: #d2c295;
+      }
+
+/*      .sidebar-slug {
+          bottom: 12px;
+          left: 0;
+          position: absolute;
+          width: 210px;
+          text-align: center;
+      }
+      .sidebar-slug img {
+          width: 180px;
+      }*/
+
+      .svg-reportlet { width: 75%; }
+
+      /* Slide-specific styling */
+      #slide-inverse .footnote {
+        bottom: 12px;
+        left: 20px;
+      }
+      #slide-how .slides {
+        font-size: 0.9em;
+        position: absolute;
+        top:  151px;
+        right: 140px;
+      }
+      #slide-how .slides h3 {
+        margin-top: 0.2em;
+      }
+      #slide-how .slides .first, #slide-how .slides .second {
+        padding: 1px 20px;
+        height: 90px;
+        width: 120px;
+        -moz-box-shadow: 0 0 10px #777;
+        -webkit-box-shadow: 0 0 10px #777;
+        box-shadow: 0 0 10px #777;
+      }
+      #slide-how .slides .first {
+        background: #fff;
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        z-index: 1;
+      }
+      #slide-how .slides .second {
+        position: relative;
+        background: #fff;
+        z-index: 0;
+      }
+
+      /* Two-column layout */
+      .left-column {
+        width: 23%;
+        height: 82%;
+        float: left;
+      }
+        .left-column h2:last-of-type, .left-column h3:last-child {
+          color: #000;
+        }
+      .right-column {
+        width: 55%;
+        float: right;
+        padding-top: 1em;
+      }
+      /* Two-column layout (40% left) */
+      .left-column2 {
+        width: 35%;
+        height: 85%;
+        float: left;
+      }
+        .left-column h2:last-of-type, .left-column h3:last-child {
+          color: #000;
+        }
+      .right-column2 {
+        width: 43%;
+        float: right;
+        padding-top: 1em;
+      }
+      /* Two-column layout (60% left) */
+      .left-column3 {
+        width: 43%;
+        height: 85%;
+        float: left;
+      }
+        .left-column h2:last-of-type, .left-column h3:last-child {
+          color: #000;
+        }
+      .right-column3 {
+        width: 35%;
+        float: right;
+        padding-top: 1em;
+      }
+      /* Two-column layout (even split) */
+      .left-column-mid {
+        width: 45%;
+        float: left;
+      }
+      .right-column-mid {
+        width: 45%;
+        float: right;
+      }
+      /* Two-column layout (flipped) */
+      .left-column-inv {
+        color: #777;
+        width: 75%;
+        height: 92%;
+        float: left;
+      }
+        .left-column h2:last-of-type, .left-column h3:last-child {
+          color: #000;
+        }
+      .right-column-inv {
+        width: 20%;
+        float: right;
+        padding-top: 1em;
+      }
+      .caption {
+          font-size: 0.7em;
+      }
+      .slide-slug {
+          bottom: 12px;
+          opacity: .5;
+          position: absolute;
+          left: 4em;
+      }
+
+      .small code {
+        font-size: 9pt;
+      }
+
+      .larger {
+        font-size: 20pt;
+      }
+
+      .large {
+        font-size: 24pt;
+      }
+
+      .boxed-content {
+        float: left;
+        display: block;
+        width: 89%;
+        height: 70%;
+      }
+/*
+      .distribute {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+      }*/
+
+      .distribute {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        height: 80%;
+        width: 100%;
+      }
+
+      .cut-right {
+        margin-right: 100px;
+      }
+
+      .rotate{
+        -webkit-transform: rotate(-90deg);
+        -moz-transform: rotate(-90deg);
+        -o-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+      }
+    </style>
+  </head>
+  <body>
+<script src="/assets/asciinema-player/asciinema-player.min.js"></script>
+<textarea id="source">
+
+name: title
+layout: true
+class: center
+---
+layout: false
+count: false
+
+.middle.center[
+# Executing BIDS-Apps on large datasets and the *NiPreps* framework
+
+<br />
+<br />
+distribute
+### Oscar Esteban
+#### CHUV | Lausanne University Hospital
+
+###### [www.nipreps.org/assets/OHBM2022](https://www.nipreps.org/assets/OHBM2022)
+]
+
+---
+layout: false
+count: false
+
+.middle.center[
+# Executing BIDS-Apps on large datasets and the *NiPreps* framework
+
+<br />
+<br />
+
+### Oscar Esteban
+#### CHUV | Lausanne University Hospital
+
+###### [www.nipreps.org/assets/OHBM2022](https://www.nipreps.org/assets/OHBM2022)
+]
+
+---
+name: newsection
+layout: true
+
+.perma-sidebar[
+<p class="rotate">
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0; height: 20px; padding-top: 6px;" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  <span style="padding-left: 10px; font-weight: 600;">Executing BIDS-Apps on large datasets and the <em>NiPreps</em> framework</span>
+</p>
+]
+
+---
+
+# Outline
+
+.boxed-content[
+.distribute.large[
+* Managing large datasets - Datalad 101
+
+* BIDS, and why BIDS?
+
+* BIDS-Apps
+
+* The case of fMRIPrep
+
+* The NeuroImaging PREProcessing toolS (NiPreps)
+]
+]
+
+---
+
+# Datalad 101
+
+.boxed-content[
+.distribute.large[
+* Datalad (amongst many features) allows versioning of data
+
+* Datalad is based on Git and git-annex
+
+* It is critical to maintain large datasets with versioning
+
+* Enables access to lots of open datasets
+
+* More: [datalad.org](https://datalad.org)
+
+]
+]
+
+---
+
+# BIDS - [bids.neuroimaging.io](https://bids.neuroimaging.io)
+
+<p align="center">
+<img src="../bids-dicom-conversion.png" width="70%" />
+</p>
+
+Specification: [bids-specification.readthedocs.io](https://bids-specification.readthedocs.io)
+
+---
+
+# Example dataset: AOMIC-PIOP2
+
+<p align="center">
+<a href="https://openneuro.org/datasets/ds002790/versions/2.0.0">
+<img src="../aomic-openneuro.png" width="70%" /><br /><br />
+https://openneuro.org/datasets/ds002790/versions/2.0.0
+</a>
+</p>
+
+---
+
+# Example dataset: AOMIC-PIOP2
+
+<p align="center">
+<a href="https://openneuro.org/datasets/ds002790/versions/2.0.0">
+<img src="../aomic-openneuro-bids-valid.png" width="90%" /><br /><br />
+https://openneuro.org/datasets/ds002790/versions/2.0.0
+</a>
+</p>
+
+---
+
+# Example dataset: AOMIC-PIOP2
+
+<p align="center">
+<a href="https://openneuro.org/datasets/ds002790/versions/2.0.0">
+<img src="../aomic-openneuro-files.png" width="45%" /><br /><br />
+https://openneuro.org/datasets/ds002790/versions/2.0.0
+</a>
+</p>
+
+---
+
+# Example dataset: AOMIC-PIOP2
+
+<div class="asciicast" id="496624"></div>
+
+---
+
+# AOMIC-PIOP2 (`datalad get`)
+
+<div class="asciicast" id="496610"></div>
+
+---
+
+# BIDS-Apps
+
+.boxed-content[
+.distribute.large[
+* Uniform I/O
+    * Read in BIDS
+    * Write out BIDS-Derivatives
+    * Command-line interface specification:
+      ```Shell
+      bids-app-name /data/ds002790 /data/ds002790/derivatives/bids-app_1.0.0 participant
+      ```
+
+* Containerization: Docker & Singularity
+
+* Index of apps: https://bids-apps.neuroimaging.io/apps/
+]
+]
+
+---
+
+# BIDS-Apps: subject-wise parallelization
+
+<p align="center">
+<a href="https://doi.org/10.1371/journal.pcbi.1005209">
+<img src="../journal.pcbi.1005209.g002.png" width="90%" /><br /><br />
+(Gorgolewski et al., 2017)
+</a>
+</p>
+
+---
+
+<p align="center">
+<a href="https://doi.org/10.1038/s41592-018-0235-4">
+<img src="../fmriprep-workflow-final.svg" width="73%" /><br />
+</a>
+<em>fMRIPrep</em> (<a href="https://doi.org/10.1038/s41592-018-0235-4">Esteban et al., 2019</a>)
+</p>
+
+---
+
+# Executing with Docker
+
+.boxed-content[
+.distribute.large[
+* Docker tips & guidelines: https://nipreps.org/apps/docker
+
+* Running the example dataset:
+  ```Shell
+  $ docker run -ti --rm \
+        -v /data/datasets/ds002790:/data:ro \
+        -v /data/derivatives/ds002790:/derivatives \
+        nipreps/fmriprep:21.0.2 \
+        /data /derivatives/fmriprep-21.0.2 \
+        participant
+  ```
+]
+]
+
+---
+
+# Important considerations
+
+.boxed-content[
+.middle[
+* Interim results (“work directory”):
+  * Preserve them if you will need to re-run the data (**caching**)
+  * Make it a fast filesystem, if possible (e.g., `/tmp/` on an SSD system)
+  * It will require a lot of space (10 GB per subject and task) - which sets a conflict with the previous item.
+* Docker / Singularity:
+  * FreeSurfer license file - **mount into containers!**
+  * (docker only) write as user to preempt outputs have root ownership
+* Memory and parallelization:
+  * The more parallel, the more memory consumption
+  * Recommendation: run single-subject processes (BIDS-Apps)
+      * <span class="red">WATCH OUT FOR RACE CONDITIONS!</span>
+  * Find a good balance between ``--omp-nthreads`` and ``--nprocs``
+* Inputs:
+  * BIDS Validation: dataset MUST be valid
+  * Tip for large databases: use ``--bids-database-dir``
+  * If using datalad, data should have been pulled down with datalad get
+
+]
+]
+
+---
+
+# Executing with Docker
+
+.large[
+```Shell
+$ docker run -ti --rm \
+    -v /data/datasets/ds002790:/data:ro \
+    -v /data/derivatives/ds002790:/derivatives \
+    -v $HOME/.cache/pybids:/cache/bids \
+    -v $HOME/tmp/fmriprep:/work \
+    -u $( id -u ):$( id -g ) \
+    nipreps/fmriprep:21.0.2 \
+    /data /derivatives/fmriprep-21.0.2 \
+    participant \
+    --participant-label 0021 \
+    --omp-nthreads 8 --nprocs 16 \
+    --work /work/sub-0021 -vv --skip-bids-validation \
+    --bids-database-dir /cache/bids/ds002790
+```
+]
+
+---
+
+# Running *fMRIPrep* with Docker
+
+<div class="asciicast" id="496635"></div>
+
+---
+
+## The individual report
+<p align="center">
+<video controls="controls" width="70%"
+       name="Video Name" src="../fmriprep-report.mov"></video>
+</p>
+
+---
+
+# Run-to-run reproducibility
+
+.boxed-content[
+.distribute.large[
+*(... or the lack thereof)*
+
+* *fMRIPrep* does not guarantee full run reproducibility with `--omp-nthreads` larger than 1
+    * Which means, **disabling within-node paralellization**.
+
+* *fMRIPrep* writes out a config file
+    * stores **seeds** for all random number generators it has access to
+]
+]
+
+---
+
+# "Analysis-grade" data
+
+.larger[
+The *NeuroImaging PREProcessing toolS* (*[NiPreps](https://nipreps.org).org*) augment scanners to produce *analysis-grade* data (= **directly consumable by analyses**)
+]
+
+<br />
+.pull-left[
+
+***Analysis-grade* data** is an analogy to the concept of "*sushi-grade (or [sashimi-grade](https://en.wikipedia.org/wiki/Sashimi)) fish*" in that both are:
+
+.large[**minimally preprocessed**,]
+
+and
+
+.large[**safe to consume** directly.]
+]
+
+.pull-right[
+<img align="right" style='margin-right: 50px' src="https://1.bp.blogspot.com/-Osh4H4WXka0/WlMJmVgkZTI/AAAAAAAAEMY/GynUzSomJ-EBiyqv2m-maiOyKSM7SOmNACLcBGAs/s400/yellowfin%2Btuna%2Bsteaks%2Bnutrition.jpg" />
+]
+
+---
+
+<p align="center">
+<img src="../nipreps-chart.png" width="63%" /><br />
+<em>NiPreps</em> (<a href="https://doi.org/10.31219/osf.io/ujxp6">Esteban et al., 2020</a>)
+</p>
+
+---
+
+template: title
+layout: false
+.middle[
+<p align="center">
+<img src="https://github.com/oesteban/fmriprep/raw/f4c7a9804be26c912b24ef4dccba54bdd72fa1fd/docs/_static/fmriprep-21.0.0.svg" width="95%" />
+</p>
+]
+
+---
+
+template: newsection
+layout: false
+
+# *TemplateFlow* | Archive
+
+<p align="center">
+<img src="../torw2020/assets/templateflow-datatypes.png" width="78%" /><br />
+(<a href="https://doi.org/10.1101/2021.02.10.430678">Ciric et al., 2022</a>)
+</p>
+
+---
+
+# *TemplateFlow* | Client
+
+<div class="asciicast" id="501873"></div>
+
+---
+
+.boxed-content[
+.distribute[
+### *NiPreps* is a framework for the development of preprocessing workflows
+
+* Principled design, with BIDS as a strategic component
+* Leveraging existing, widely used software
+* Using NiPype as a foundation
+
+### Why preprocessing?
+
+* We propose to consider preprocessing as part of the image acquisition and reconstruction
+* When setting the boundaries that way, it seems sensible to pursue some standardization in the preprocessing:
+  * Less experimental degrees of freedom for the researcher
+  * Researchers can focus on the analysis
+  * More homogeneous data at the output (e.g., for machine learning)
+* How:
+  * Transparency is key to success: individual reports and documentation (open source is implicit).
+  * Best engineering practices (e.g., containers and CI/CD)
+
+### Challenges
+
+* Testing / Validation!
+]
+]
+
+---
+
+# Conclusion
+
+<p align="center">
+<img src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41596-020-0327-3/MediaObjects/41596_2020_327_Fig1_HTML.png?as=png" width="90%" /><br />
+(<a href="https://doi.org/10.1038/s41596-020-0327-3">Esteban et al., 2020</a>)
+</p>
+
+---
+
+.boxed-content[
+.middle.center[
+# Thanks!
+
+### Questions?
+]
+]
+</textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script>
+      var slideshow = remark.create({
+          highlightStyle: 'monokai',
+          highlightLanguage: 'remark',
+          highlightLines: true,
+          countIncrementalSlides: false,
+          highlightSpans: true,
+          ratio: '16:9'
+      });
+
+      // Now retrieve all IDs of asciinema casts
+      const allcasts = new Map();
+
+      slideshow.on('afterShowSlide', function (slide) {
+        // Slide is the slide being navigated
+        var slideNumber = slide.getSlideIndex();
+        var element = document.getElementsByClassName("remark-visible")[0].getElementsByClassName('asciicast')
+        if (element.length == 0 ) {
+          return;
+        }
+
+        if (allcasts.has(slideNumber)) {
+          allcasts.get(slideNumber).play();
+          return;
+        }
+
+        var castid = element[0].attributes["id"].value;
+        allcasts.set(slideNumber, AsciinemaPlayer.create(
+            'https://asciinema.org/a/' + castid + '.cast',
+            document.getElementById(castid),
+            { autoPlay: true, speed: 2, idle_time_limit: 8, rows: 17 }
+        ));
+      });
+
+      slideshow.on('beforeHideSlide', function (slide) {
+        // Slide is the slide being navigated
+        var slideNumber = slide.getSlideIndex();
+        if (allcasts.has(slideNumber)) {
+          allcasts.get(slideNumber).pause();
+        }
+      });
+
+    </script>
+  </body>
+</html>
