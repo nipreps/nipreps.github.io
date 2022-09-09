@@ -1,517 +1,754 @@
-<!DOCTYPE html>
-<html class="no-js" lang="en">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width,initial-scale=1" name="viewport"/>
-  <meta content="Augmenting neuroimaging acquisition devices to produce analysis-grade data" name="description"/>
-  <meta content="The NiPreps developers" name="author"/>
-  <link href="https://www.nipreps.org/intro/transparency/" rel="canonical"/>
-  <link href="../../assets/images/favicon.png" rel="icon"/>
-  <meta content="mkdocs-1.3.0, mkdocs-material-8.3.6" name="generator"/>
-  <title>
-   Transparency of workflows - NiPreps
-  </title>
-  <link href="../../assets/stylesheets/main.4a0965b7.min.css" rel="stylesheet"/>
-  <link href="../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
-  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
-  <style>
-   :root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}
-  </style>
-  <link href="../../stylesheets/extra.css" rel="stylesheet"/>
-  <script>
-   __md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}
-  </script>
- </head>
- <body data-md-color-accent="none" data-md-color-primary="none" data-md-color-scheme="" dir="ltr">
-  <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
-  <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
-  <label class="md-overlay" for="__drawer">
-  </label>
-  <div data-md-component="skip">
-   <a class="md-skip" href="#visual-reports-beyond-quality-control">
-    Skip to content
-   </a>
-  </div>
-  <div data-md-component="announce">
-  </div>
-  <header class="md-header" data-md-component="header">
-   <nav aria-label="Header" class="md-header__inner md-grid">
-    <a aria-label="NiPreps" class="md-header__button md-logo" data-md-component="logo" href="../.." title="NiPreps">
-     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z">
-      </path>
-     </svg>
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Augmenting neuroimaging acquisition devices to produce analysis-grade data">
+      
+      
+        <meta name="author" content="The NiPreps developers">
+      
+      
+        <link rel="canonical" href="https://www.nipreps.org/intro/transparency/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.3">
+    
+    
+      
+        <title>Transparency of workflows - NiPreps</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6b80c2a2.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#visual-reports-beyond-quality-control" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="NiPreps" class="md-header__button md-logo" aria-label="NiPreps" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z">
-      </path>
-     </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
-     <div class="md-header__ellipsis">
-      <div class="md-header__topic">
-       <span class="md-ellipsis">
-        NiPreps
-       </span>
-      </div>
-      <div class="md-header__topic" data-md-component="header-topic">
-       <span class="md-ellipsis">
-        Transparency of workflows
-       </span>
-      </div>
-     </div>
-    </div>
-   </nav>
-  </header>
-  <div class="md-container" data-md-component="container">
-   <main class="md-main" data-md-component="main">
-    <div class="md-main__inner md-grid">
-     <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
-      <div class="md-sidebar__scrollwrap">
-       <div class="md-sidebar__inner">
-        <nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
-         <label class="md-nav__title" for="__drawer">
-          <a aria-label="NiPreps" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="NiPreps">
-           <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z">
-            </path>
-           </svg>
-          </a>
-          NiPreps
-         </label>
-         <ul class="md-nav__list" data-md-scrollfix="">
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="../..">
-            Home
-           </a>
-          </li>
-          <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-           <input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
-           <label class="md-nav__link" for="__nav_2">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
             NiPreps
-            <span class="md-nav__icon md-icon">
-            </span>
-           </label>
-           <nav aria-label="NiPreps" class="md-nav" data-md-level="1">
-            <label class="md-nav__title" for="__nav_2">
-             <span class="md-nav__icon md-icon">
-             </span>
-             NiPreps
-            </label>
-            <ul class="md-nav__list" data-md-scrollfix="">
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../nipreps/">
-               Framework
-              </a>
-             </li>
-             <li class="md-nav__item md-nav__item--active">
-              <input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
-              <label class="md-nav__link md-nav__link--active" for="__toc">
-               Transparency of workflows
-               <span class="md-nav__icon md-icon">
-               </span>
-              </label>
-              <a class="md-nav__link md-nav__link--active" href="./">
-               Transparency of workflows
-              </a>
-              <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-               <label class="md-nav__title" for="__toc">
-                <span class="md-nav__icon md-icon">
-                </span>
-                Table of contents
-               </label>
-               <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="#visual-reports-beyond-quality-control">
-                  Visual reports beyond quality control
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="#citation-boilerplates">
-                  Citation boilerplates
-                 </a>
-                </li>
-               </ul>
-              </nav>
-             </li>
-            </ul>
-           </nav>
-          </li>
-          <li class="md-nav__item md-nav__item--nested">
-           <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
-           <label class="md-nav__link" for="__nav_3">
-            BIDS-Apps
-            <span class="md-nav__icon md-icon">
-            </span>
-           </label>
-           <nav aria-label="BIDS-Apps" class="md-nav" data-md-level="1">
-            <label class="md-nav__title" for="__nav_3">
-             <span class="md-nav__icon md-icon">
-             </span>
-             BIDS-Apps
-            </label>
-            <ul class="md-nav__list" data-md-scrollfix="">
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../apps/framework/">
-               Introduction
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../apps/docker/">
-               Executing with Docker
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../apps/singularity/">
-               Executing with Singularity
-              </a>
-             </li>
-            </ul>
-           </nav>
-          </li>
-          <li class="md-nav__item md-nav__item--nested">
-           <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
-           <label class="md-nav__link" for="__nav_4">
-            Community
-            <span class="md-nav__icon md-icon">
-            </span>
-           </label>
-           <nav aria-label="Community" class="md-nav" data-md-level="1">
-            <label class="md-nav__title" for="__nav_4">
-             <span class="md-nav__icon md-icon">
-             </span>
-             Community
-            </label>
-            <ul class="md-nav__list" data-md-scrollfix="">
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../community/">
-               Welcome
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../community/members/">
-               Membership
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../community/features/">
-               New features
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../community/CONTRIBUTING/">
-               Contributing
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../community/CODE_OF_CONDUCT/">
-               Code of Conduct
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../community/licensing/">
-               Licensing
-              </a>
-             </li>
-            </ul>
-           </nav>
-          </li>
-          <li class="md-nav__item md-nav__item--nested">
-           <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
-           <label class="md-nav__link" for="__nav_5">
-            Developers
-            <span class="md-nav__icon md-icon">
-            </span>
-           </label>
-           <nav aria-label="Developers" class="md-nav" data-md-level="1">
-            <label class="md-nav__title" for="__nav_5">
-             <span class="md-nav__icon md-icon">
-             </span>
-             Developers
-            </label>
-            <ul class="md-nav__list" data-md-scrollfix="">
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../devs/devenv/">
-               Developer Environment
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../devs/versions/">
-               Versions Matrix
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../devs/releases/">
-               Releases
-              </a>
-             </li>
-            </ul>
-           </nav>
-          </li>
-         </ul>
-        </nav>
-       </div>
-      </div>
-     </div>
-     <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
-      <div class="md-sidebar__scrollwrap">
-       <div class="md-sidebar__inner">
-        <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-         <label class="md-nav__title" for="__toc">
-          <span class="md-nav__icon md-icon">
           </span>
-          Table of contents
-         </label>
-         <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="#visual-reports-beyond-quality-control">
-            Visual reports beyond quality control
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="#citation-boilerplates">
-            Citation boilerplates
-           </a>
-          </li>
-         </ul>
-        </nav>
-       </div>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Transparency of workflows
+            
+          </span>
+        </div>
       </div>
-     </div>
-     <div class="md-content" data-md-component="content">
-      <article class="md-content__inner md-typeset">
-       <h1>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="NiPreps" class="md-nav__button md-logo" aria-label="NiPreps" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    NiPreps
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          NiPreps
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="NiPreps" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          NiPreps
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nipreps/" class="md-nav__link">
+        Framework
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Transparency of workflows
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Transparency of workflows
-       </h1>
-       <p>
-        <em>
-         NiPreps
-        </em>
-        adopt
-        <em>
-         fMRIPrep
-        </em>
-        's foundations, and particularly resonate with the transparency principles.
-As discussed in (
-        <a href="https://doi.org/10.1038/s41592-018-0235-4">
-         Esteban et al., 2019
-        </a>
-        --
-        <a href="https://doi.org/10.1101/306951">
-         preprint
-        </a>
-        ):
-       </p>
-       <blockquote>
-        <p>
-         The rapid increase in the volume and diversity of data, as well as the evolution of available techniques for processing and analysis, presents an opportunity for considerable advancement of research in neuroscience.
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#visual-reports-beyond-quality-control" class="md-nav__link">
+    Visual reports beyond quality control
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#citation-boilerplates" class="md-nav__link">
+    Citation boilerplates
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          BIDS-Apps
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="BIDS-Apps" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          BIDS-Apps
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apps/framework/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apps/docker/" class="md-nav__link">
+        Executing with Docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apps/singularity/" class="md-nav__link">
+        Executing with Singularity
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Community
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Community" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Community
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/" class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/members/" class="md-nav__link">
+        Membership
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/features/" class="md-nav__link">
+        New features
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/CONTRIBUTING/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/CODE_OF_CONDUCT/" class="md-nav__link">
+        Code of Conduct
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/licensing/" class="md-nav__link">
+        Licensing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Developers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Developers" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Developers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devs/devenv/" class="md-nav__link">
+        Developer Environment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devs/versions/" class="md-nav__link">
+        Versions Matrix
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devs/releases/" class="md-nav__link">
+        Releases
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#visual-reports-beyond-quality-control" class="md-nav__link">
+    Visual reports beyond quality control
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#citation-boilerplates" class="md-nav__link">
+    Citation boilerplates
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+  <h1>Transparency of workflows</h1>
+
+<p><em>NiPreps</em> adopt <em>fMRIPrep</em>'s foundations, and particularly resonate with the transparency principles.
+As discussed in (<a href="https://doi.org/10.1038/s41592-018-0235-4">Esteban et al., 2019</a> -- <a href="https://doi.org/10.1101/306951">preprint</a>):</p>
+<blockquote>
+<p>The rapid increase in the volume and diversity of data, as well as the evolution of available techniques for processing and analysis, presents an opportunity for considerable advancement of research in neuroscience.
 The drawback resides in the need for progressively more complex analysis workflows that rely on decreasingly interpretable models of the data.
-Such context encourages ‘
-         <em>
-          black-box
-         </em>
-         ’ solutions that efficiently perform a valuable service but do not provide insights into how the tool has transformed the data into the expected outputs.
+Such context encourages ‘<em>black-box</em>’ solutions that efficiently perform a valuable service but do not provide insights into how the tool has transformed the data into the expected outputs.
 Black boxes obscure important steps in the inductive process mediating between experimental measurements and reported findings.
 This way of moving forward risks producing a future generation of cognitive neuroscientists who have become experts in sophisticated computational methods but have little to no working knowledge of how their data were transformed through processing.
 Transparency is often identified as a remedy for these problems.
-         <em>
-          fMRIPrep
-         </em>
-         ascribes to ‘
-         <em>
-          glass-box
-         </em>
-         ’ principles, which are defined in opposition to the many different facets or levels at which black-box solutions are opaque.
-The visual reports that
-         <em>
-          fMRIPrep
-         </em>
-         generates are a crucial aspect of the glass-box approach.
+<em>fMRIPrep</em> ascribes to ‘<em>glass-box</em>’ principles, which are defined in opposition to the many different facets or levels at which black-box solutions are opaque.
+The visual reports that <em>fMRIPrep</em> generates are a crucial aspect of the glass-box approach.
 Their quality control checkpoints represent the logical flow of preprocessing, allowing scientists to critically inspect and better understand the underlying mechanisms of the workflow.
 A second transparency element is the citation boilerplate that formalizes all details of the workflow and provides the versions of all involved tools along with references to the corresponding scientific literature.
 A third asset for transparency is thorough documentation that delivers additional details on each of the building blocks represented in the visual reports and described in the boilerplate.
-Further,
-         <em>
-          fMRIPrep
-         </em>
-         has been open-source since its inception: users have access to all of the incremental additions to the tool through the history of the version-control system.
-The use of
-         <a href="https://github.com/nipreps/fmriprep">
-          GitHub
-         </a>
-         grants access to the discussions held during development, allowing one to see how and why the main design decisions were made.
-The modular design of
-         <em>
-          fMRIPrep
-         </em>
-         enhances its flexibility and improves transparency, as the main features of the software are more easily accessible to potential collaborators.
-In combination with some coding style and contribution guidelines, this modularity has enabled multiple contributions by peers and the creation of a rapidly growing community that would be difficult to nurture behind closed doors.
-        </p>
-       </blockquote>
-       <h2 id="visual-reports-beyond-quality-control">
-        Visual reports beyond quality control
-        <a class="headerlink" href="#visual-reports-beyond-quality-control" title="Permanent link">
-         ¶
-        </a>
-       </h2>
-       <p>
-        One foundational component of the
-        <em>
-         NiPreps
-        </em>
-        framework is the
-        <em>
-         Visual Report System
-        </em>
-        .
-        <strong>
-         End-user applications
-        </strong>
-        such as
-        <em>
-         fMRIPrep
-        </em>
-        or
-        <em>
-         dMRIPrep
-        </em>
-        generate individual reports after their preprocessing.
-Those visual reports have two fundamental purposes:
-       </p>
-       <ul>
-        <li>
-         <strong>
-          assessing the quality of the generated outputs
-         </strong>
-         , permitting the user to take quality control actions to eliminate biases originated from inadequate processing; and
-        </li>
-        <li>
-         <strong>
-          understanding the workflow
-         </strong>
-         , by sequentially presenting the main steps of processing, the user can access the why the tool in particular took these steps ando more geneally why standard preprocessing involves that step.
-        </li>
-       </ul>
-       <h2 id="citation-boilerplates">
-        Citation boilerplates
-        <a class="headerlink" href="#citation-boilerplates" title="Permanent link">
-         ¶
-        </a>
-       </h2>
-       <p>
-        <em>
-         NiPreps
-        </em>
-        leverage the wealth of existing neuroimaging software that is available to researchers.
-To give back for standing on the shoulders of giants,
-        <em>
-         NiPreps
-        </em>
-        aim at the most thorough reporting possible crediting all the pieces of the prior knowledge they leverage.
-With the execution of some particular
-        <em>
-         NiPreps
-        </em>
-        , the application runs some introspection code to formalize the computational graph the particular workflow executed and iterates over all the nodes to extract the relevant articles and communications that should be cited, as well as all software tools and their versions involved.
-Similarly, ancillary materials such as neuroimaging templates and atlases are reported and cited.
-       </p>
-       <p>
-        All these references and citations are finally collated in a natural language description of the workflow.
+Further, <em>fMRIPrep</em> has been open-source since its inception: users have access to all of the incremental additions to the tool through the history of the version-control system.
+The use of <a href="https://github.com/nipreps/fmriprep">GitHub</a> grants access to the discussions held during development, allowing one to see how and why the main design decisions were made.
+The modular design of <em>fMRIPrep</em> enhances its flexibility and improves transparency, as the main features of the software are more easily accessible to potential collaborators.
+In combination with some coding style and contribution guidelines, this modularity has enabled multiple contributions by peers and the creation of a rapidly growing community that would be difficult to nurture behind closed doors.</p>
+</blockquote>
+<h2 id="visual-reports-beyond-quality-control">Visual reports beyond quality control<a class="headerlink" href="#visual-reports-beyond-quality-control" title="Permanent link">&para;</a></h2>
+<p>One foundational component of the <em>NiPreps</em> framework is the <em>Visual Report System</em>.
+<strong>End-user applications</strong> such as <em>fMRIPrep</em> or <em>dMRIPrep</em> generate individual reports after their preprocessing.
+Those visual reports have two fundamental purposes:</p>
+<ul>
+<li><strong>assessing the quality of the generated outputs</strong>, permitting the user to take quality control actions to eliminate biases originated from inadequate processing; and</li>
+<li><strong>understanding the workflow</strong>, by sequentially presenting the main steps of processing, the user can access the why the tool in particular took these steps ando more geneally why standard preprocessing involves that step.</li>
+</ul>
+<h2 id="citation-boilerplates">Citation boilerplates<a class="headerlink" href="#citation-boilerplates" title="Permanent link">&para;</a></h2>
+<p><em>NiPreps</em> leverage the wealth of existing neuroimaging software that is available to researchers.
+To give back for standing on the shoulders of giants, <em>NiPreps</em> aim at the most thorough reporting possible crediting all the pieces of the prior knowledge they leverage.
+With the execution of some particular <em>NiPreps</em>, the application runs some introspection code to formalize the computational graph the particular workflow executed and iterates over all the nodes to extract the relevant articles and communications that should be cited, as well as all software tools and their versions involved.
+Similarly, ancillary materials such as neuroimaging templates and atlases are reported and cited.</p>
+<p>All these references and citations are finally collated in a natural language description of the workflow.
 This description is therefore generated automatically, and contains all the details that are necessary to replicate the processing, as well as the abovementioned references.
-The text is appended to the visual report, and provided in three formats (markdown, latex and html/plain-text) with an index of citations, so that the user is only required to "copy-and-paste" into the Methods section of their papers.
-       </p>
-       <div class="admonition important">
-        <p class="admonition-title">
-         Note for reviewers and editors
-        </p>
-        <p>
-         The boilerplate text generated by some
-         <em>
-          NiPreps
-         </em>
-         is intended to allow for clear, consistent description of the preprocessing steps used, in order to improve the reproducibility of studies.
-We fully intend for it to be copied verbatim, and have released it under the
-         <a href="https://creativecommons.org/publicdomain/zero/1.0/">
-          CC0 license
-         </a>
-         , dedicating it to the public domain in jurisdictions that recognize the concept, and assert that we will take no action to enforce copyright in jurisdictions where we cannot disclaim it.
-        </p>
-        <p>
-         We firmly believe that requiring authors to modify this passage will serve
-         <strong>
-          no legitimate scientific or literary purpose
-         </strong>
-         and can, in fact, serve only to reduce the replicability of the analysis being described by making the preprocessing steps less clear.
-        </p>
-        <p>
-         We recognize that there may be automated plagiarism detection software that will flag the boilerplate text.
-We would be happy to discuss potential solutions for annotating boilerplate sections of documents to indicate automatic generation, and can update our software to make this annotation simpler for authors.
-        </p>
-       </div>
-      </article>
-     </div>
-    </div>
-   </main>
-   <footer class="md-footer">
-    <nav aria-label="Footer" class="md-footer__inner md-grid">
-     <a aria-label="Previous: Framework" class="md-footer__link md-footer__link--prev" href="../nipreps/" rel="prev">
-      <div class="md-footer__button md-icon">
-       <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z">
-        </path>
-       </svg>
-      </div>
-      <div class="md-footer__title">
-       <div class="md-ellipsis">
-        <span class="md-footer__direction">
-         Previous
-        </span>
-        Framework
-       </div>
-      </div>
-     </a>
-     <a aria-label="Next: Introduction" class="md-footer__link md-footer__link--next" href="../../apps/framework/" rel="next">
-      <div class="md-footer__title">
-       <div class="md-ellipsis">
-        <span class="md-footer__direction">
-         Next
-        </span>
-        Introduction
-       </div>
-      </div>
-      <div class="md-footer__button md-icon">
-       <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z">
-        </path>
-       </svg>
-      </div>
-     </a>
+The text is appended to the visual report, and provided in three formats (markdown, latex and html/plain-text) with an index of citations, so that the user is only required to "copy-and-paste" into the Methods section of their papers.</p>
+<div class="admonition important">
+<p class="admonition-title">Note for reviewers and editors</p>
+<p>The boilerplate text generated by some <em>NiPreps</em> is intended to allow for clear, consistent description of the preprocessing steps used, in order to improve the reproducibility of studies.
+We fully intend for it to be copied verbatim, and have released it under the <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 license</a>, dedicating it to the public domain in jurisdictions that recognize the concept, and assert that we will take no action to enforce copyright in jurisdictions where we cannot disclaim it.</p>
+<p>We firmly believe that requiring authors to modify this passage will serve <strong>no legitimate scientific or literary purpose</strong> and can, in fact, serve only to reduce the replicability of the analysis being described by making the preprocessing steps less clear.</p>
+<p>We recognize that there may be automated plagiarism detection software that will flag the boilerplate text.
+We would be happy to discuss potential solutions for annotating boilerplate sections of documents to indicate automatic generation, and can update our software to make this annotation simpler for authors.</p>
+</div>
+
+
+
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../nipreps/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Framework" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Framework
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../apps/framework/" class="md-footer__link md-footer__link--next" aria-label="Next: Introduction" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Introduction
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
     </nav>
-    <div class="md-footer-meta md-typeset">
-     <div class="md-footer-meta__inner md-grid">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
-       <div class="md-copyright__highlight">
-        Copyright © 2020
-       </div>
-       Made with
-       <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
-        Material for MkDocs
-       </a>
-      </div>
-     </div>
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2020
     </div>
-   </footer>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
   </div>
-  <div class="md-dialog" data-md-component="dialog">
-   <div class="md-dialog__inner md-typeset">
-   </div>
-  </div>
-  <script id="__config" type="application/json">
-   {"base": "../..", "features": ["tabs"], "search": "../../assets/javascripts/workers/search.85cb4492.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}
-  </script>
-  <script src="../../assets/javascripts/bundle.a877e258.min.js">
-  </script>
- </body>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["tabs"], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.2ab50757.min.js"></script>
+      
+    
+  </body>
 </html>

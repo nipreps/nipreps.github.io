@@ -1,369 +1,678 @@
-<!DOCTYPE html>
-<html class="no-js" lang="en">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width,initial-scale=1" name="viewport"/>
-  <meta content="Augmenting neuroimaging acquisition devices to produce analysis-grade data" name="description"/>
-  <meta content="The NiPreps developers" name="author"/>
-  <link href="https://www.nipreps.org/apps/docker/" rel="canonical"/>
-  <link href="../../assets/images/favicon.png" rel="icon"/>
-  <meta content="mkdocs-1.3.0, mkdocs-material-8.3.6" name="generator"/>
-  <title>
-   Executing with Docker - NiPreps
-  </title>
-  <link href="../../assets/stylesheets/main.4a0965b7.min.css" rel="stylesheet"/>
-  <link href="../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
-  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
-  <style>
-   :root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}
-  </style>
-  <link href="../../stylesheets/extra.css" rel="stylesheet"/>
-  <script>
-   __md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}
-  </script>
- </head>
- <body data-md-color-accent="none" data-md-color-primary="none" data-md-color-scheme="" dir="ltr">
-  <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
-  <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
-  <label class="md-overlay" for="__drawer">
-  </label>
-  <div data-md-component="skip">
-   <a class="md-skip" href="#before-you-start-install-docker">
-    Skip to content
-   </a>
-  </div>
-  <div data-md-component="announce">
-  </div>
-  <header class="md-header" data-md-component="header">
-   <nav aria-label="Header" class="md-header__inner md-grid">
-    <a aria-label="NiPreps" class="md-header__button md-logo" data-md-component="logo" href="../.." title="NiPreps">
-     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z">
-      </path>
-     </svg>
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Augmenting neuroimaging acquisition devices to produce analysis-grade data">
+      
+      
+        <meta name="author" content="The NiPreps developers">
+      
+      
+        <link rel="canonical" href="https://www.nipreps.org/apps/docker/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.3">
+    
+    
+      
+        <title>Executing with Docker - NiPreps</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6b80c2a2.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#before-you-start-install-docker" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="NiPreps" class="md-header__button md-logo" aria-label="NiPreps" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z">
-      </path>
-     </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
-     <div class="md-header__ellipsis">
-      <div class="md-header__topic">
-       <span class="md-ellipsis">
-        NiPreps
-       </span>
-      </div>
-      <div class="md-header__topic" data-md-component="header-topic">
-       <span class="md-ellipsis">
-        Executing with Docker
-       </span>
-      </div>
-     </div>
-    </div>
-   </nav>
-  </header>
-  <div class="md-container" data-md-component="container">
-   <main class="md-main" data-md-component="main">
-    <div class="md-main__inner md-grid">
-     <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
-      <div class="md-sidebar__scrollwrap">
-       <div class="md-sidebar__inner">
-        <nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
-         <label class="md-nav__title" for="__drawer">
-          <a aria-label="NiPreps" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="NiPreps">
-           <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z">
-            </path>
-           </svg>
-          </a>
-          NiPreps
-         </label>
-         <ul class="md-nav__list" data-md-scrollfix="">
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="../..">
-            Home
-           </a>
-          </li>
-          <li class="md-nav__item md-nav__item--nested">
-           <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
-           <label class="md-nav__link" for="__nav_2">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
             NiPreps
-            <span class="md-nav__icon md-icon">
-            </span>
-           </label>
-           <nav aria-label="NiPreps" class="md-nav" data-md-level="1">
-            <label class="md-nav__title" for="__nav_2">
-             <span class="md-nav__icon md-icon">
-             </span>
-             NiPreps
-            </label>
-            <ul class="md-nav__list" data-md-scrollfix="">
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../intro/nipreps/">
-               Framework
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../intro/transparency/">
-               Transparency of workflows
-              </a>
-             </li>
-            </ul>
-           </nav>
-          </li>
-          <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-           <input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
-           <label class="md-nav__link" for="__nav_3">
-            BIDS-Apps
-            <span class="md-nav__icon md-icon">
-            </span>
-           </label>
-           <nav aria-label="BIDS-Apps" class="md-nav" data-md-level="1">
-            <label class="md-nav__title" for="__nav_3">
-             <span class="md-nav__icon md-icon">
-             </span>
-             BIDS-Apps
-            </label>
-            <ul class="md-nav__list" data-md-scrollfix="">
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../framework/">
-               Introduction
-              </a>
-             </li>
-             <li class="md-nav__item md-nav__item--active">
-              <input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
-              <label class="md-nav__link md-nav__link--active" for="__toc">
-               Executing with Docker
-               <span class="md-nav__icon md-icon">
-               </span>
-              </label>
-              <a class="md-nav__link md-nav__link--active" href="./">
-               Executing with Docker
-              </a>
-              <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-               <label class="md-nav__title" for="__toc">
-                <span class="md-nav__icon md-icon">
-                </span>
-                Table of contents
-               </label>
-               <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="#before-you-start-install-docker">
-                  Before you start: install Docker
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="#docker-images">
-                  Docker images
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="#running-a-niprep-with-a-lightweight-wrapper">
-                  Running a NiPrep with a lightweight wrapper
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="#running-a-niprep-directly-interacting-with-the-docker-engine">
-                  Running a NiPrep directly interacting with the Docker Engine
-                 </a>
-                </li>
-               </ul>
-              </nav>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../singularity/">
-               Executing with Singularity
-              </a>
-             </li>
-            </ul>
-           </nav>
-          </li>
-          <li class="md-nav__item md-nav__item--nested">
-           <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
-           <label class="md-nav__link" for="__nav_4">
-            Community
-            <span class="md-nav__icon md-icon">
-            </span>
-           </label>
-           <nav aria-label="Community" class="md-nav" data-md-level="1">
-            <label class="md-nav__title" for="__nav_4">
-             <span class="md-nav__icon md-icon">
-             </span>
-             Community
-            </label>
-            <ul class="md-nav__list" data-md-scrollfix="">
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../community/">
-               Welcome
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../community/members/">
-               Membership
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../community/features/">
-               New features
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../community/CONTRIBUTING/">
-               Contributing
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../community/CODE_OF_CONDUCT/">
-               Code of Conduct
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../community/licensing/">
-               Licensing
-              </a>
-             </li>
-            </ul>
-           </nav>
-          </li>
-          <li class="md-nav__item md-nav__item--nested">
-           <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
-           <label class="md-nav__link" for="__nav_5">
-            Developers
-            <span class="md-nav__icon md-icon">
-            </span>
-           </label>
-           <nav aria-label="Developers" class="md-nav" data-md-level="1">
-            <label class="md-nav__title" for="__nav_5">
-             <span class="md-nav__icon md-icon">
-             </span>
-             Developers
-            </label>
-            <ul class="md-nav__list" data-md-scrollfix="">
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../devs/devenv/">
-               Developer Environment
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../devs/versions/">
-               Versions Matrix
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../devs/releases/">
-               Releases
-              </a>
-             </li>
-            </ul>
-           </nav>
-          </li>
-         </ul>
-        </nav>
-       </div>
-      </div>
-     </div>
-     <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
-      <div class="md-sidebar__scrollwrap">
-       <div class="md-sidebar__inner">
-        <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-         <label class="md-nav__title" for="__toc">
-          <span class="md-nav__icon md-icon">
           </span>
-          Table of contents
-         </label>
-         <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="#before-you-start-install-docker">
-            Before you start: install Docker
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="#docker-images">
-            Docker images
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="#running-a-niprep-with-a-lightweight-wrapper">
-            Running a NiPrep with a lightweight wrapper
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="#running-a-niprep-directly-interacting-with-the-docker-engine">
-            Running a NiPrep directly interacting with the Docker Engine
-           </a>
-          </li>
-         </ul>
-        </nav>
-       </div>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Executing with Docker
+            
+          </span>
+        </div>
       </div>
-     </div>
-     <div class="md-content" data-md-component="content">
-      <article class="md-content__inner md-typeset">
-       <h1>
-        Executing with Docker
-       </h1>
-       <div class="admonition important">
-        <p class="admonition-title">
-         Summary
-        </p>
-        <p>
-         Here, we describe how to run
-         <em>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="NiPreps" class="md-nav__button md-logo" aria-label="NiPreps" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    NiPreps
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
           NiPreps
-         </em>
-         with Docker containers.
-To illustrate the process, we will show the execution of
-         <em>
-          fMRIPrep
-         </em>
-         , but these guidelines extend to any other end-user
-         <em>
-          NiPrep
-         </em>
-         .
-        </p>
-       </div>
-       <h2 id="before-you-start-install-docker">
-        Before you start: install Docker
-        <a class="headerlink" href="#before-you-start-install-docker" title="Permanent link">
-         ¶
-        </a>
-       </h2>
-       <p>
-        Probably, the most popular framework to execute containers is Docker.
-If you are to run a
-        <em>
-         NiPrep
-        </em>
-        on your PC/laptop, this is the
-        <strong>
-         RECOMMENDED
-        </strong>
-        way of execution.
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="NiPreps" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          NiPreps
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/nipreps/" class="md-nav__link">
+        Framework
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/transparency/" class="md-nav__link">
+        Transparency of workflows
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          BIDS-Apps
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="BIDS-Apps" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          BIDS-Apps
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../framework/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Executing with Docker
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Executing with Docker
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#before-you-start-install-docker" class="md-nav__link">
+    Before you start: install Docker
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-images" class="md-nav__link">
+    Docker images
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-a-niprep-with-a-lightweight-wrapper" class="md-nav__link">
+    Running a NiPrep with a lightweight wrapper
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-a-niprep-directly-interacting-with-the-docker-engine" class="md-nav__link">
+    Running a NiPrep directly interacting with the Docker Engine
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../singularity/" class="md-nav__link">
+        Executing with Singularity
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Community
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Community" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Community
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/" class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/members/" class="md-nav__link">
+        Membership
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/features/" class="md-nav__link">
+        New features
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/CONTRIBUTING/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/CODE_OF_CONDUCT/" class="md-nav__link">
+        Code of Conduct
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/licensing/" class="md-nav__link">
+        Licensing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Developers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Developers" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Developers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devs/devenv/" class="md-nav__link">
+        Developer Environment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devs/versions/" class="md-nav__link">
+        Versions Matrix
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devs/releases/" class="md-nav__link">
+        Releases
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#before-you-start-install-docker" class="md-nav__link">
+    Before you start: install Docker
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-images" class="md-nav__link">
+    Docker images
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-a-niprep-with-a-lightweight-wrapper" class="md-nav__link">
+    Running a NiPrep with a lightweight wrapper
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-a-niprep-directly-interacting-with-the-docker-engine" class="md-nav__link">
+    Running a NiPrep directly interacting with the Docker Engine
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+  <h1>Executing with Docker</h1>
+
+<div class="admonition important">
+<p class="admonition-title">Summary</p>
+<p>Here, we describe how to run <em>NiPreps</em> with Docker containers.
+To illustrate the process, we will show the execution of <em>fMRIPrep</em>, but these guidelines extend to any other end-user <em>NiPrep</em>.</p>
+</div>
+<h2 id="before-you-start-install-docker">Before you start: install Docker<a class="headerlink" href="#before-you-start-install-docker" title="Permanent link">&para;</a></h2>
+<p>Probably, the most popular framework to execute containers is Docker.
+If you are to run a <em>NiPrep</em> on your PC/laptop, this is the <strong>RECOMMENDED</strong> way of execution.
 Please make sure you follow the Docker installation instructions.
-You can check your Docker Runtime installation running their
-        <code>
-         hello-world
-        </code>
-        image:
-       </p>
-       <div class="highlight">
-        <pre><span></span><code>$ docker run --rm hello-world
-</code></pre>
-       </div>
-       <p>
-        If you have a functional installation, then you should obtain the following output:
-       </p>
-       <div class="highlight">
-        <pre><span></span><code>Hello from Docker!
+You can check your Docker Runtime installation running their <code>hello-world</code> image:</p>
+<div class="highlight"><pre><span></span><code>$ docker run --rm hello-world
+</code></pre></div>
+<p>If you have a functional installation, then you should obtain the following output:</p>
+<div class="highlight"><pre><span></span><code>Hello from Docker!
 This message shows that your installation appears to be working correctly.
 
 To generate this message, Docker took the following steps:
  <span class="m">1</span>. The Docker client contacted the Docker daemon.
- <span class="m">2</span>. The Docker daemon pulled the <span class="s2">"hello-world"</span> image from the Docker Hub.
+ <span class="m">2</span>. The Docker daemon pulled the <span class="s2">&quot;hello-world&quot;</span> image from the Docker Hub.
     <span class="o">(</span>amd64<span class="o">)</span>
  <span class="m">3</span>. The Docker daemon created a new container from that image which runs the
     executable that produces the output you are currently reading.
@@ -378,238 +687,73 @@ Share images, automate workflows, and more with a free Docker ID:
 
 For more examples and ideas, visit:
  https://docs.docker.com/get-started/
-</code></pre>
-       </div>
-       <p>
-        After checking your Docker Engine is capable of running Docker images, you are ready to pull your first
-        <em>
-         NiPreps
-        </em>
-        container image.
-       </p>
-       <h2 id="docker-images">
-        Docker images
-        <a class="headerlink" href="#docker-images" title="Permanent link">
-         ¶
-        </a>
-       </h2>
-       <p>
-        For every new version of the particular
-        <em>
-         NiPrep
-        </em>
-        app that is released, a corresponding Docker image is generated.
-The Docker image
-        <em>
-         becomes
-        </em>
-        a container when the execution engine loads the image and adds an extra layer that makes it
-        <em>
-         runnable
-        </em>
-        . In order to run
-        <em>
-         NiPreps
-        </em>
-        Docker images, the Docker Runtime must be installed.
-       </p>
-       <!-- (see `installation_docker`{.interpreted-text
+</code></pre></div>
+<p>After checking your Docker Engine is capable of running Docker images, you are ready to pull your first <em>NiPreps</em> container image.</p>
+<h2 id="docker-images">Docker images<a class="headerlink" href="#docker-images" title="Permanent link">&para;</a></h2>
+<p>For every new version of the particular <em>NiPrep</em> app that is released, a corresponding Docker image is generated.
+The Docker image <em>becomes</em> a container when the execution engine loads the image and adds an extra layer that makes it <em>runnable</em>. In order to run <em>NiPreps</em> Docker images, the Docker Runtime must be installed.</p>
+<!-- (see `installation_docker`{.interpreted-text
 role="ref"}).-->
-       <p>
-        Taking
-        <em>
-         fMRIPrep
-        </em>
-        to illustrate the usage, first you might want to make sure of the exact version of the tool to be used:
-       </p>
-       <div class="highlight">
-        <pre><span></span><code>$ docker pull nipreps/fmriprep:&lt;latest-version&gt;
-</code></pre>
-       </div>
-       <p>
-        You can run
-        <em>
-         NiPreps
-        </em>
-        interacting directly with the Docker Engine via the
-        <code>
-         docker run
-        </code>
-        interface.
-       </p>
-       <h2 id="running-a-niprep-with-a-lightweight-wrapper">
-        Running a
-        <em>
-         NiPrep
-        </em>
-        with a lightweight wrapper
-        <a class="headerlink" href="#running-a-niprep-with-a-lightweight-wrapper" title="Permanent link">
-         ¶
-        </a>
-       </h2>
-       <p>
-        Some
-        <em>
-         NiPreps
-        </em>
-        include a lightweight wrapper script for convenience.
-That is the case of
-        <em>
-         fMRIPrep
-        </em>
-        and its
-        <code>
-         fmriprep-docker
-        </code>
-        wrapper.
-Before starting, make sure you
-        <a href="https://fmriprep.readthedocs.io/en/latest/installation.html#the-fmriprep-docker-wrapper">
-         have the wrapper installed
-        </a>
-        .
-When you run
-        <code>
-         fmriprep-docker
-        </code>
-        , it will generate a Docker command line for you, print it out for reporting purposes, and then execute it without further action needed, e.g.:
-       </p>
-       <div class="highlight">
-        <pre><span></span><code>$ fmriprep-docker /path/to/data/dir /path/to/output/dir participant
+
+<p>Taking <em>fMRIPrep</em> to illustrate the usage, first you might want to make sure of the exact version of the tool to be used:</p>
+<div class="highlight"><pre><span></span><code>$ docker pull nipreps/fmriprep:&lt;latest-version&gt;
+</code></pre></div>
+<p>You can run <em>NiPreps</em> interacting directly with the Docker Engine via the <code>docker run</code> interface.</p>
+<h2 id="running-a-niprep-with-a-lightweight-wrapper">Running a <em>NiPrep</em> with a lightweight wrapper<a class="headerlink" href="#running-a-niprep-with-a-lightweight-wrapper" title="Permanent link">&para;</a></h2>
+<p>Some <em>NiPreps</em> include a lightweight wrapper script for convenience.
+That is the case of <em>fMRIPrep</em> and its <code>fmriprep-docker</code> wrapper.
+Before starting, make sure you <a href="https://fmriprep.readthedocs.io/en/latest/installation.html#the-fmriprep-docker-wrapper">have the wrapper installed</a>.
+When you run <code>fmriprep-docker</code>, it will generate a Docker command line for you, print it out for reporting purposes, and then execute it without further action needed, e.g.:</p>
+<div class="highlight"><pre><span></span><code>$ fmriprep-docker /path/to/data/dir /path/to/output/dir participant
 RUNNING: docker run --rm -it -v /path/to/data/dir:/data:ro <span class="se">\</span>
     -v /path/to_output/dir:/out nipreps/fmriprep:20.2.2 <span class="se">\</span>
     /data /out participant
 ...
-</code></pre>
-       </div>
-       <p>
-        <code>
-         fmriprep-docker
-        </code>
-        implements
-        <a href="../framework/#a-unified-command-line-interface">
-         the unified command-line interface of BIDS Apps
-        </a>
-        , and automatically translates directories into Docker mount points for you.
-       </p>
-       <p>
-        We have published a
-        <a href="http://reproducibility.stanford.edu/fmriprep-tutorial-running-the-docker-image/">
-         step-by-step tutorial
-        </a>
-        illustrating how to run
-        <code>
-         fmriprep-docker
-        </code>
-        .
+</code></pre></div>
+<p><code>fmriprep-docker</code> implements <a href="../framework/#a-unified-command-line-interface">the unified command-line interface of BIDS Apps</a>, and automatically translates directories into Docker mount points for you.</p>
+<p>We have published a <a href="http://reproducibility.stanford.edu/fmriprep-tutorial-running-the-docker-image/">step-by-step tutorial</a> illustrating how to run <code>fmriprep-docker</code>.
 This tutorial also provides valuable troubleshooting insights and advice on what to do after
-        <em>
-         fMRIPrep
-        </em>
-        has run.
-       </p>
-       <h2 id="running-a-niprep-directly-interacting-with-the-docker-engine">
-        Running a
-        <em>
-         NiPrep
-        </em>
-        directly interacting with the Docker Engine
-        <a class="headerlink" href="#running-a-niprep-directly-interacting-with-the-docker-engine" title="Permanent link">
-         ¶
-        </a>
-       </h2>
-       <p>
-        If you need a finer control over the container execution, or you feel comfortable with the Docker Engine, avoiding the extra software layer of the wrapper might be a good decision.
-       </p>
-       <p>
-        <strong>
-         Accessing filesystems in the host within the container
-        </strong>
-        :
+<em>fMRIPrep</em> has run.</p>
+<h2 id="running-a-niprep-directly-interacting-with-the-docker-engine">Running a <em>NiPrep</em> directly interacting with the Docker Engine<a class="headerlink" href="#running-a-niprep-directly-interacting-with-the-docker-engine" title="Permanent link">&para;</a></h2>
+<p>If you need a finer control over the container execution, or you feel comfortable with the Docker Engine, avoiding the extra software layer of the wrapper might be a good decision.</p>
+<p><strong>Accessing filesystems in the host within the container</strong>:
 Containers are confined in a sandbox, so they can't access the host in any ways
 unless you explicitly prescribe acceptable accesses to the host. The
 Docker Engine provides mounting filesystems into the container with the
-        <code>
-         -v
-        </code>
-        argument and the following syntax:
-        <code>
-         -v some/path/in/host:/absolute/path/within/container:ro
-        </code>
-        , where the
-trailing
-        <code>
-         :ro
-        </code>
-        specifies that the mount is read-only. The mount
+<code>-v</code> argument and the following syntax:
+<code>-v some/path/in/host:/absolute/path/within/container:ro</code>, where the
+trailing <code>:ro</code> specifies that the mount is read-only. The mount
 permissions modifiers can be omitted, which means the mount will have
 read-write permissions. In general, you'll want to at least provide two
 mount-points: one set in read-only mode for the input data and one
 read/write to store the outputs. Potentially, you'll want to provide
 one or two more mount-points: one for the working directory, in case you
 need to debug some issue or reuse pre-cached results; and a
-        <a href="https://www.templateflow.org">
-         TemplateFlow
-        </a>
-        folder to preempt the
-download of your favorite templates in every run.
-       </p>
-       <p>
-        <strong>
-         Running containers as a user
-        </strong>
-        :
+<a href="https://www.templateflow.org">TemplateFlow</a> folder to preempt the
+download of your favorite templates in every run.</p>
+<p><strong>Running containers as a user</strong>:
 By default, Docker will run the
-container as
-        <strong>
-         root
-        </strong>
-        . Some share systems my limit this feature and only
+container as <strong>root</strong>. Some share systems my limit this feature and only
 allow running containers as a user. When the container is run as
-        <strong>
-         root
-        </strong>
-        , files written out to filesystems mounted from the host will
-have the user id
-        <code>
-         1000
-        </code>
-        by default. In other words, you'll need to be
+<strong>root</strong>, files written out to filesystems mounted from the host will
+have the user id <code>1000</code> by default. In other words, you'll need to be
 able to run as root in the host to change permissions or manage these
 files. Alternatively, running as a user allows preempting these
-permissions issues. It is possible to run as a user with the
-        <code>
-         -u
-        </code>
-        argument. In general, we will want to use the same user ID as the
+permissions issues. It is possible to run as a user with the <code>-u</code>
+argument. In general, we will want to use the same user ID as the
 running user in the host to ensure the ownership of files written during
 the container execution. Therefore, you will generally run the container
-with
-        <code>
-         -u $( id -u )
-        </code>
-        .
-       </p>
-       <p>
-        You may also invoke
-        <code>
-         docker
-        </code>
-        directly:
-       </p>
-       <div class="highlight">
-        <pre><span></span><code>$ docker run -ti --rm <span class="se">\</span>
+with <code>-u $( id -u )</code>.</p>
+<p>You may also invoke <code>docker</code> directly:</p>
+<div class="highlight"><pre><span></span><code>$ docker run -ti --rm <span class="se">\</span>
     -v path/to/data:/data:ro <span class="se">\</span>
     -v path/to/output:/out <span class="se">\</span>
     nipreps/fmriprep:&lt;latest-version&gt; <span class="se">\</span>
     /data /out/out <span class="se">\</span>
     participant
-</code></pre>
-       </div>
-       <p>
-        For example: :
-       </p>
-       <div class="highlight">
-        <pre><span></span><code>$ docker run -ti --rm \
+</code></pre></div>
+<p>For example: :</p>
+<div class="highlight"><pre><span></span><code>$ docker run -ti --rm \
     -v $HOME/ds005:/data:ro \
     -v $HOME/ds005/derivatives:/out \
     -v $HOME/tmp/ds005-workdir:/work \
@@ -617,99 +761,101 @@ with
     /data /out/fmriprep-&lt;latest-version&gt; \
     participant \
     -w /work
-</code></pre>
-       </div>
-       <p>
-        Once the Docker Engine arguments are written, the remainder of the
-command line follows the
-        <a href="https://fmriprep.readthedocs.io/en/latest/usage.html">
-         usage
-        </a>
-        .
+</code></pre></div>
+<p>Once the Docker Engine arguments are written, the remainder of the
+command line follows the <a href="https://fmriprep.readthedocs.io/en/latest/usage.html">usage</a>.
 In other words, the first section of the command line is all equivalent to the
-        <code>
-         fmriprep
-        </code>
-        executable in a
-        <em>
-         bare-metal
-        </em>
-        installation: :
-       </p>
-       <div class="highlight">
-        <pre><span></span><code>$ docker run -ti --rm <span class="se">\ </span>                     <span class="c1"># These lines</span>
+<code>fmriprep</code> executable in a <em>bare-metal</em> installation: :</p>
+<div class="highlight"><pre><span></span><code>$ docker run -ti --rm <span class="se">\ </span>                     <span class="c1"># These lines</span>
     -v <span class="nv">$HOME</span>/ds005:/data:ro <span class="se">\ </span>               <span class="c1"># are equivalent to</span>
-    -v <span class="nv">$HOME</span>/ds005/derivatives:/out <span class="se">\ </span>       <span class="c1"># a call to the App's</span>
+    -v <span class="nv">$HOME</span>/ds005/derivatives:/out <span class="se">\ </span>       <span class="c1"># a call to the App&#39;s</span>
     -v <span class="nv">$HOME</span>/tmp/ds005-workdir:/work <span class="se">\ </span>      <span class="c1"># entry-point.</span>
     nipreps/fmriprep:&lt;latest-version&gt; <span class="se">\ </span> <span class="c1">#</span>
     <span class="se">\</span>
     /data /out/fmriprep-&lt;latest-version&gt; <span class="se">\ </span>  <span class="c1"># These lines correspond</span>
     participant <span class="se">\ </span>                           <span class="c1"># to the particular BIDS</span>
     -w /work                                 <span class="c1"># App arguments.</span>
-</code></pre>
-       </div>
-      </article>
-     </div>
-    </div>
-   </main>
-   <footer class="md-footer">
-    <nav aria-label="Footer" class="md-footer__inner md-grid">
-     <a aria-label="Previous: Introduction" class="md-footer__link md-footer__link--prev" href="../framework/" rel="prev">
-      <div class="md-footer__button md-icon">
-       <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z">
-        </path>
-       </svg>
-      </div>
-      <div class="md-footer__title">
-       <div class="md-ellipsis">
-        <span class="md-footer__direction">
-         Previous
-        </span>
-        Introduction
-       </div>
-      </div>
-     </a>
-     <a aria-label="Next: Executing with Singularity" class="md-footer__link md-footer__link--next" href="../singularity/" rel="next">
-      <div class="md-footer__title">
-       <div class="md-ellipsis">
-        <span class="md-footer__direction">
-         Next
-        </span>
-        Executing with Singularity
-       </div>
-      </div>
-      <div class="md-footer__button md-icon">
-       <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z">
-        </path>
-       </svg>
-      </div>
-     </a>
+</code></pre></div>
+
+
+
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../framework/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Introduction
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../singularity/" class="md-footer__link md-footer__link--next" aria-label="Next: Executing with Singularity" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Executing with Singularity
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
     </nav>
-    <div class="md-footer-meta md-typeset">
-     <div class="md-footer-meta__inner md-grid">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
-       <div class="md-copyright__highlight">
-        Copyright © 2020
-       </div>
-       Made with
-       <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
-        Material for MkDocs
-       </a>
-      </div>
-     </div>
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2020
     </div>
-   </footer>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
   </div>
-  <div class="md-dialog" data-md-component="dialog">
-   <div class="md-dialog__inner md-typeset">
-   </div>
-  </div>
-  <script id="__config" type="application/json">
-   {"base": "../..", "features": ["tabs"], "search": "../../assets/javascripts/workers/search.85cb4492.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}
-  </script>
-  <script src="../../assets/javascripts/bundle.a877e258.min.js">
-  </script>
- </body>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["tabs"], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.2ab50757.min.js"></script>
+      
+    
+  </body>
 </html>

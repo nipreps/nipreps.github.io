@@ -1,576 +1,800 @@
-<!DOCTYPE html>
-<html class="no-js" lang="en">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width,initial-scale=1" name="viewport"/>
-  <meta content="Augmenting neuroimaging acquisition devices to produce analysis-grade data" name="description"/>
-  <meta content="The NiPreps developers" name="author"/>
-  <link href="https://www.nipreps.org/devs/releases/" rel="canonical"/>
-  <link href="../../assets/images/favicon.png" rel="icon"/>
-  <meta content="mkdocs-1.3.0, mkdocs-material-8.3.6" name="generator"/>
-  <title>
-   Releases - NiPreps
-  </title>
-  <link href="../../assets/stylesheets/main.4a0965b7.min.css" rel="stylesheet"/>
-  <link href="../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
-  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
-  <style>
-   :root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}
-  </style>
-  <link href="../../stylesheets/extra.css" rel="stylesheet"/>
-  <script>
-   __md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}
-  </script>
- </head>
- <body data-md-color-accent="none" data-md-color-primary="none" data-md-color-scheme="" dir="ltr">
-  <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
-  <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
-  <label class="md-overlay" for="__drawer">
-  </label>
-  <div data-md-component="skip">
-   <a class="md-skip" href="#principles">
-    Skip to content
-   </a>
-  </div>
-  <div data-md-component="announce">
-  </div>
-  <header class="md-header" data-md-component="header">
-   <nav aria-label="Header" class="md-header__inner md-grid">
-    <a aria-label="NiPreps" class="md-header__button md-logo" data-md-component="logo" href="../.." title="NiPreps">
-     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z">
-      </path>
-     </svg>
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Augmenting neuroimaging acquisition devices to produce analysis-grade data">
+      
+      
+        <meta name="author" content="The NiPreps developers">
+      
+      
+        <link rel="canonical" href="https://www.nipreps.org/devs/releases/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.3">
+    
+    
+      
+        <title>Releases - NiPreps</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6b80c2a2.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#principles" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="NiPreps" class="md-header__button md-logo" aria-label="NiPreps" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z">
-      </path>
-     </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
-     <div class="md-header__ellipsis">
-      <div class="md-header__topic">
-       <span class="md-ellipsis">
-        NiPreps
-       </span>
-      </div>
-      <div class="md-header__topic" data-md-component="header-topic">
-       <span class="md-ellipsis">
-        Releases
-       </span>
-      </div>
-     </div>
-    </div>
-   </nav>
-  </header>
-  <div class="md-container" data-md-component="container">
-   <main class="md-main" data-md-component="main">
-    <div class="md-main__inner md-grid">
-     <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
-      <div class="md-sidebar__scrollwrap">
-       <div class="md-sidebar__inner">
-        <nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
-         <label class="md-nav__title" for="__drawer">
-          <a aria-label="NiPreps" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="NiPreps">
-           <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z">
-            </path>
-           </svg>
-          </a>
-          NiPreps
-         </label>
-         <ul class="md-nav__list" data-md-scrollfix="">
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="../..">
-            Home
-           </a>
-          </li>
-          <li class="md-nav__item md-nav__item--nested">
-           <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
-           <label class="md-nav__link" for="__nav_2">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
             NiPreps
-            <span class="md-nav__icon md-icon">
-            </span>
-           </label>
-           <nav aria-label="NiPreps" class="md-nav" data-md-level="1">
-            <label class="md-nav__title" for="__nav_2">
-             <span class="md-nav__icon md-icon">
-             </span>
-             NiPreps
-            </label>
-            <ul class="md-nav__list" data-md-scrollfix="">
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../intro/nipreps/">
-               Framework
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../intro/transparency/">
-               Transparency of workflows
-              </a>
-             </li>
-            </ul>
-           </nav>
-          </li>
-          <li class="md-nav__item md-nav__item--nested">
-           <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
-           <label class="md-nav__link" for="__nav_3">
-            BIDS-Apps
-            <span class="md-nav__icon md-icon">
-            </span>
-           </label>
-           <nav aria-label="BIDS-Apps" class="md-nav" data-md-level="1">
-            <label class="md-nav__title" for="__nav_3">
-             <span class="md-nav__icon md-icon">
-             </span>
-             BIDS-Apps
-            </label>
-            <ul class="md-nav__list" data-md-scrollfix="">
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../apps/framework/">
-               Introduction
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../apps/docker/">
-               Executing with Docker
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../apps/singularity/">
-               Executing with Singularity
-              </a>
-             </li>
-            </ul>
-           </nav>
-          </li>
-          <li class="md-nav__item md-nav__item--nested">
-           <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
-           <label class="md-nav__link" for="__nav_4">
-            Community
-            <span class="md-nav__icon md-icon">
-            </span>
-           </label>
-           <nav aria-label="Community" class="md-nav" data-md-level="1">
-            <label class="md-nav__title" for="__nav_4">
-             <span class="md-nav__icon md-icon">
-             </span>
-             Community
-            </label>
-            <ul class="md-nav__list" data-md-scrollfix="">
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../community/">
-               Welcome
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../community/members/">
-               Membership
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../community/features/">
-               New features
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../community/CONTRIBUTING/">
-               Contributing
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../community/CODE_OF_CONDUCT/">
-               Code of Conduct
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../../community/licensing/">
-               Licensing
-              </a>
-             </li>
-            </ul>
-           </nav>
-          </li>
-          <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-           <input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
-           <label class="md-nav__link" for="__nav_5">
-            Developers
-            <span class="md-nav__icon md-icon">
-            </span>
-           </label>
-           <nav aria-label="Developers" class="md-nav" data-md-level="1">
-            <label class="md-nav__title" for="__nav_5">
-             <span class="md-nav__icon md-icon">
-             </span>
-             Developers
-            </label>
-            <ul class="md-nav__list" data-md-scrollfix="">
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../devenv/">
-               Developer Environment
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="../versions/">
-               Versions Matrix
-              </a>
-             </li>
-             <li class="md-nav__item md-nav__item--active">
-              <input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
-              <label class="md-nav__link md-nav__link--active" for="__toc">
-               Releases
-               <span class="md-nav__icon md-icon">
-               </span>
-              </label>
-              <a class="md-nav__link md-nav__link--active" href="./">
-               Releases
-              </a>
-              <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-               <label class="md-nav__title" for="__toc">
-                <span class="md-nav__icon md-icon">
-                </span>
-                Table of contents
-               </label>
-               <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="#principles">
-                  Principles
-                 </a>
-                 <nav aria-label="Principles" class="md-nav">
-                  <ul class="md-nav__list">
-                   <li class="md-nav__item">
-                    <a class="md-nav__link" href="#feature-releases">
-                     Feature releases
-                    </a>
-                   </li>
-                   <li class="md-nav__item">
-                    <a class="md-nav__link" href="#bug-fix-releases">
-                     Bug-fix releases
-                    </a>
-                   </li>
-                  </ul>
-                 </nav>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="#mechanics">
-                  Mechanics
-                 </a>
-                 <nav aria-label="Mechanics" class="md-nav">
-                  <ul class="md-nav__list">
-                   <li class="md-nav__item">
-                    <a class="md-nav__link" href="#branch-synchronization">
-                     Branch synchronization
-                    </a>
-                   </li>
-                   <li class="md-nav__item">
-                    <a class="md-nav__link" href="#dependencies">
-                     Dependencies
-                    </a>
-                   </li>
-                  </ul>
-                 </nav>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="#support-windows">
-                  Support Windows
-                 </a>
-                 <nav aria-label="Support Windows" class="md-nav">
-                  <ul class="md-nav__list">
-                   <li class="md-nav__item">
-                    <a class="md-nav__link" href="#minor-release-series">
-                     Minor release series
-                    </a>
-                   </li>
-                   <li class="md-nav__item">
-                    <a class="md-nav__link" href="#long-term-support-series">
-                     Long-term support series
-                    </a>
-                   </li>
-                  </ul>
-                 </nav>
-                </li>
-               </ul>
-              </nav>
-             </li>
-            </ul>
-           </nav>
-          </li>
-         </ul>
-        </nav>
-       </div>
-      </div>
-     </div>
-     <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
-      <div class="md-sidebar__scrollwrap">
-       <div class="md-sidebar__inner">
-        <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-         <label class="md-nav__title" for="__toc">
-          <span class="md-nav__icon md-icon">
           </span>
-          Table of contents
-         </label>
-         <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="#principles">
-            Principles
-           </a>
-           <nav aria-label="Principles" class="md-nav">
-            <ul class="md-nav__list">
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="#feature-releases">
-               Feature releases
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="#bug-fix-releases">
-               Bug-fix releases
-              </a>
-             </li>
-            </ul>
-           </nav>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="#mechanics">
-            Mechanics
-           </a>
-           <nav aria-label="Mechanics" class="md-nav">
-            <ul class="md-nav__list">
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="#branch-synchronization">
-               Branch synchronization
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="#dependencies">
-               Dependencies
-              </a>
-             </li>
-            </ul>
-           </nav>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="#support-windows">
-            Support Windows
-           </a>
-           <nav aria-label="Support Windows" class="md-nav">
-            <ul class="md-nav__list">
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="#minor-release-series">
-               Minor release series
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="#long-term-support-series">
-               Long-term support series
-              </a>
-             </li>
-            </ul>
-           </nav>
-          </li>
-         </ul>
-        </nav>
-       </div>
-      </div>
-     </div>
-     <div class="md-content" data-md-component="content">
-      <article class="md-content__inner md-typeset">
-       <h1>
-        Releases
-       </h1>
-       <p>
-        As of January 2020,
-        <em>
-         fMRIPrep
-        </em>
-        has adopted a
-        <a href="https://calver.org">
-         Calendar Versioning
-        </a>
-        scheme, and with it we are attempting to apply more coherent semantic rules to our releases.
-       </p>
-       <div class="admonition warning">
-        <p class="admonition-title">
-         Note
-        </p>
-        <p>
-         This document is a draft for internal and external comment. Any commitments expressed here are proposals, and should not be relied upon at this time.
-This conversation started as a
-         <a href="https://docs.google.com/document/d/1hapyg61FRKZ2DqikVYKvckwQqnbobFQnnZoZi_WCDfo/edit?usp=sharing">
-          Google Doc
-         </a>
-         .
-        </p>
-       </div>
-       <h2 id="principles">
-        Principles
-        <a class="headerlink" href="#principles" title="Permanent link">
-         ¶
-        </a>
-       </h2>
-       <p>
-        The basic release form is
-        <code>
-         YY.MINOR.PATCH
-        </code>
-        , so the first minor release of 2020 is 20.0.0, and the first minor release of 2021 will be 21.0.0, whatever the final minor release of 2020 is. A series of releases share a
-        <code>
-         YY.MINOR.
-        </code>
-        prefix, which we refer to as the
-        <code>
-         YY.MINOR.x
-        </code>
-        series. For example, the 20.0.x series contains version 20.0.0, 20.0.1, and any other releases needed.
-       </p>
-       <h3 id="feature-releases">
-        Feature releases
-        <a class="headerlink" href="#feature-releases" title="Permanent link">
-         ¶
-        </a>
-       </h3>
-       <p>
-        Minor releases are considered
-        <em>
-         feature
-        </em>
-        releases. Because there is no concept of a "major" release (just a calendar year rollover), most changes to the code base will result in a new feature release. Changes targeting a new feature release should target the master branch. Feature releases may be released as often as is deemed appropriate.
-       </p>
-       <h3 id="bug-fix-releases">
-        Bug-fix releases
-        <a class="headerlink" href="#bug-fix-releases" title="Permanent link">
-         ¶
-        </a>
-       </h3>
-       <p>
-        Patch releases are considered bug-fix releases. Each minor release triggers the creation of a new
-        <code>
-         maint/&lt;YY&gt;.&lt;MINOR&gt;.x
-        </code>
-        branch, and changes targeting a bug-fix release should target this branch. A "minor release series" is the initial feature release and the bug-fix releases that share the minor release prefix. Bug-fix releases may be released on minimal notice to other developers.
-       </p>
-       <p>
-        These releases must satisfy four conditions:
-       </p>
-       <ol>
-        <li>
-         <strong>
-          Resolving one or more bugs.
-         </strong>
-         These mostly include failures of
-         <em>
-          fMRIPrep
-         </em>
-         to complete or producing invalid derivatives (e.g., a NIfTI file of all zeroes).
-        </li>
-        <li>
-         <strong>
-          Derivatives compatibility.
-         </strong>
-         If a subject may be successfully run on 20.0.n, then the imaging derivatives should be identical if rerun with 20.0.(n+1), modulo rounding errors and the effects of nondeterministic algorithms. The changes between successful runs of 20.0.n and 20.0.(n+1) should not be larger than the changes between two successful runs of 20.0.n. Cosmetic changes to reports are acceptable, while differing fields of view or data types in a NIfTI file would not be.
-        </li>
-        <li>
-         <strong>
-          API compatibility.
-         </strong>
-         Workflow-generating functions, workflow input- and outputnode fields must not change. As an end-user application, this may seem overly strict, but the odds of introducing a bug are much higher in these cases.
-        </li>
-        <li>
-         <strong>
-          User interface compatibility.
-         </strong>
-         Substantial changes to
-         <em>
-          fMRIPrep
-         </em>
-         command line must not happen (e.g., the addition of a new, relevant flag).
-        </li>
-       </ol>
-       <p>
-        Note that not all bugs can be fixed in a way that satisfies all three of these criteria without significant effort. A developer may determine that the bug will be fixed in the next feature release.
-       </p>
-       <p>
-        Additional acceptable changes within a minor release series:
-       </p>
-       <ol>
-        <li>
-         <strong>
-          Improved tests.
-         </strong>
-         These often come along with bug fixes, but they can be free-standing improvements to the code base.
-        </li>
-        <li>
-         <strong>
-          Improved documentation.
-         </strong>
-         Unless the documentation is of a feature that will not be present in a bug-fix release, this is always welcome.
-        </li>
-        <li>
-         <strong>
-          Updates to the Dockerfile
-         </strong>
-         that improve operation for Docker and/or Singularity users, but do not risk behavior change. A good example is including more templates to reduce the need for network requests. An example of an update to the Dockerfile that forces a minor release increment is a change in the pinned version of any of the dependencies or the base container image.
-        </li>
-        <li>
-         <strong>
-          Improvements to the
-          <em>
-           lightweight wrappers
-          </em>
-          .
-         </strong>
-         As long as a command-line invocation that worked for the previous version continues to work and produce the same Docker command, there's little chance of harm.
-        </li>
-       </ol>
-       <h2 id="mechanics">
-        Mechanics
-        <a class="headerlink" href="#mechanics" title="Permanent link">
-         ¶
-        </a>
-       </h2>
-       <h3 id="branch-synchronization">
-        Branch synchronization
-        <a class="headerlink" href="#branch-synchronization" title="Permanent link">
-         ¶
-        </a>
-       </h3>
-       <p>
-        A maintenance branch should generally follow directly from the tag of the feature release.
-        <div class="highlight">
-         <pre><span></span><code>git checkout -b maint/20.0.x 20.0.0
-git push upstream maint/20.0.x
-</code></pre>
         </div>
-       </p>
-       <p>
-        It is expected that
-        <code>
-         maint/20.0.x
-        </code>
-        will diverge from
-        <code>
-         master
-        </code>
-        , as new features will be merged into
-        <code>
-         master
-        </code>
-        , and bug-fixes into
-        <code>
-         maint/20.0.x
-        </code>
-        . At a minimum, each new bug-fix release should be merged into
-        <code>
-         master
-        </code>
-        . After a
-        <code>
-         20.0.1
-        </code>
-        release:
-        <div class="highlight">
-         <pre><span></span><code>git checkout master
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Releases
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="NiPreps" class="md-nav__button md-logo" aria-label="NiPreps" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    NiPreps
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          NiPreps
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="NiPreps" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          NiPreps
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/nipreps/" class="md-nav__link">
+        Framework
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/transparency/" class="md-nav__link">
+        Transparency of workflows
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          BIDS-Apps
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="BIDS-Apps" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          BIDS-Apps
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apps/framework/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apps/docker/" class="md-nav__link">
+        Executing with Docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apps/singularity/" class="md-nav__link">
+        Executing with Singularity
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Community
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Community" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Community
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/" class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/members/" class="md-nav__link">
+        Membership
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/features/" class="md-nav__link">
+        New features
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/CONTRIBUTING/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/CODE_OF_CONDUCT/" class="md-nav__link">
+        Code of Conduct
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/licensing/" class="md-nav__link">
+        Licensing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Developers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Developers" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Developers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devenv/" class="md-nav__link">
+        Developer Environment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../versions/" class="md-nav__link">
+        Versions Matrix
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Releases
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Releases
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#principles" class="md-nav__link">
+    Principles
+  </a>
+  
+    <nav class="md-nav" aria-label="Principles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#feature-releases" class="md-nav__link">
+    Feature releases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bug-fix-releases" class="md-nav__link">
+    Bug-fix releases
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mechanics" class="md-nav__link">
+    Mechanics
+  </a>
+  
+    <nav class="md-nav" aria-label="Mechanics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#branch-synchronization" class="md-nav__link">
+    Branch synchronization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    Dependencies
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#support-windows" class="md-nav__link">
+    Support Windows
+  </a>
+  
+    <nav class="md-nav" aria-label="Support Windows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#minor-release-series" class="md-nav__link">
+    Minor release series
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#long-term-support-series" class="md-nav__link">
+    Long-term support series
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#principles" class="md-nav__link">
+    Principles
+  </a>
+  
+    <nav class="md-nav" aria-label="Principles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#feature-releases" class="md-nav__link">
+    Feature releases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bug-fix-releases" class="md-nav__link">
+    Bug-fix releases
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mechanics" class="md-nav__link">
+    Mechanics
+  </a>
+  
+    <nav class="md-nav" aria-label="Mechanics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#branch-synchronization" class="md-nav__link">
+    Branch synchronization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    Dependencies
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#support-windows" class="md-nav__link">
+    Support Windows
+  </a>
+  
+    <nav class="md-nav" aria-label="Support Windows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#minor-release-series" class="md-nav__link">
+    Minor release series
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#long-term-support-series" class="md-nav__link">
+    Long-term support series
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+  <h1>Releases</h1>
+
+<p>As of January 2020, <em>fMRIPrep</em> has adopted a <a href="https://calver.org">Calendar Versioning</a> scheme, and with it we are attempting to apply more coherent semantic rules to our releases.</p>
+<div class="admonition warning">
+<p class="admonition-title">Note</p>
+<p>This document is a draft for internal and external comment. Any commitments expressed here are proposals, and should not be relied upon at this time.
+This conversation started as a <a href="https://docs.google.com/document/d/1hapyg61FRKZ2DqikVYKvckwQqnbobFQnnZoZi_WCDfo/edit?usp=sharing">Google Doc</a>.</p>
+</div>
+<h2 id="principles">Principles<a class="headerlink" href="#principles" title="Permanent link">&para;</a></h2>
+<p>The basic release form is <code>YY.MINOR.PATCH</code>, so the first minor release of 2020 is 20.0.0, and the first minor release of 2021 will be 21.0.0, whatever the final minor release of 2020 is. A series of releases share a <code>YY.MINOR.</code> prefix, which we refer to as the <code>YY.MINOR.x</code> series. For example, the 20.0.x series contains version 20.0.0, 20.0.1, and any other releases needed.</p>
+<h3 id="feature-releases">Feature releases<a class="headerlink" href="#feature-releases" title="Permanent link">&para;</a></h3>
+<p>Minor releases are considered <em>feature</em> releases. Because there is no concept of a "major" release (just a calendar year rollover), most changes to the code base will result in a new feature release. Changes targeting a new feature release should target the master branch. Feature releases may be released as often as is deemed appropriate.</p>
+<h3 id="bug-fix-releases">Bug-fix releases<a class="headerlink" href="#bug-fix-releases" title="Permanent link">&para;</a></h3>
+<p>Patch releases are considered bug-fix releases. Each minor release triggers the creation of a new <code>maint/&lt;YY&gt;.&lt;MINOR&gt;.x</code> branch, and changes targeting a bug-fix release should target this branch. A "minor release series" is the initial feature release and the bug-fix releases that share the minor release prefix. Bug-fix releases may be released on minimal notice to other developers.</p>
+<p>These releases must satisfy four conditions:</p>
+<ol>
+<li><strong>Resolving one or more bugs.</strong> These mostly include failures of <em>fMRIPrep</em> to complete or producing invalid derivatives (e.g., a NIfTI file of all zeroes).</li>
+<li><strong>Derivatives compatibility.</strong> If a subject may be successfully run on 20.0.n, then the imaging derivatives should be identical if rerun with 20.0.(n+1), modulo rounding errors and the effects of nondeterministic algorithms. The changes between successful runs of 20.0.n and 20.0.(n+1) should not be larger than the changes between two successful runs of 20.0.n. Cosmetic changes to reports are acceptable, while differing fields of view or data types in a NIfTI file would not be.</li>
+<li><strong>API compatibility.</strong> Workflow-generating functions, workflow input- and outputnode fields must not change. As an end-user application, this may seem overly strict, but the odds of introducing a bug are much higher in these cases.</li>
+<li><strong>User interface compatibility.</strong> Substantial changes to <em>fMRIPrep</em> command line must not happen (e.g., the addition of a new, relevant flag).</li>
+</ol>
+<p>Note that not all bugs can be fixed in a way that satisfies all three of these criteria without significant effort. A developer may determine that the bug will be fixed in the next feature release.</p>
+<p>Additional acceptable changes within a minor release series:</p>
+<ol>
+<li><strong>Improved tests.</strong> These often come along with bug fixes, but they can be free-standing improvements to the code base.</li>
+<li><strong>Improved documentation.</strong> Unless the documentation is of a feature that will not be present in a bug-fix release, this is always welcome.</li>
+<li><strong>Updates to the Dockerfile</strong> that improve operation for Docker and/or Singularity users, but do not risk behavior change. A good example is including more templates to reduce the need for network requests. An example of an update to the Dockerfile that forces a minor release increment is a change in the pinned version of any of the dependencies or the base container image.</li>
+<li><strong>Improvements to the <em>lightweight wrappers</em>.</strong> As long as a command-line invocation that worked for the previous version continues to work and produce the same Docker command, there's little chance of harm.</li>
+</ol>
+<h2 id="mechanics">Mechanics<a class="headerlink" href="#mechanics" title="Permanent link">&para;</a></h2>
+<h3 id="branch-synchronization">Branch synchronization<a class="headerlink" href="#branch-synchronization" title="Permanent link">&para;</a></h3>
+<p>A maintenance branch should generally follow directly from the tag of the feature release.
+<div class="highlight"><pre><span></span><code>git checkout -b maint/20.0.x 20.0.0
+git push upstream maint/20.0.x
+</code></pre></div></p>
+<p>It is expected that <code>maint/20.0.x</code> will diverge from <code>master</code>, as new features will be merged into <code>master</code>, and bug-fixes into <code>maint/20.0.x</code>. At a minimum, each new bug-fix release should be merged into <code>master</code>. After a <code>20.0.1</code> release:
+<div class="highlight"><pre><span></span><code>git checkout master
 git fetch upstream
 git reset --hard upstream/master
 git merge --no-commit 20.0.1
@@ -582,266 +806,123 @@ git add .
 git diff --cached upstream/master
 git commit
 git push upstream master
-</code></pre>
-        </div>
-       </p>
-       <p>
-        If an unreleased bug-fix seems likely to cause merge conflicts, it may be worth doing the above more frequently.
-       </p>
-       <h3 id="dependencies">
-        Dependencies
-        <a class="headerlink" href="#dependencies" title="Permanent link">
-         ¶
-        </a>
-       </h3>
-       <p>
-        <em>
-         fMRIPrep
-        </em>
-        has a number of dependencies that we control at this point:
-       </p>
-       <ol>
-        <li>
-         sMRIPrep
-        </li>
-        <li>
-         SDCflows
-        </li>
-        <li>
-         NiWorkflows
-        </li>
-       </ol>
-       <p>
-        These do not follow the same versioning scheme as above, but we need them to follow a compatible scheme. In particular, we need to be able to fix bugs that are situated within these dependencies in a bug-fix release without violating the criteria laid out above.
-At the time of an
-        <em>
-         fMRIPrep
-        </em>
-        feature release, all of the above tools need to also split out a maintenance branch (if they have not already) for the minor version series that
-        <em>
-         fMRIPrep
-        </em>
-        depends on. As an example, when 20.0.0 was released,
-        <em>
-         fMRIPrep
-        </em>
-        had the following dependencies in
-        <a href="https://github.com/nipreps/fmriprep/blob/20.0.0/setup.cfg#L22-L36">
-         <code>
-          setup.cfg
-         </code>
-        </a>
-        :
-       </p>
-       <p>
-        <div class="highlight">
-         <pre><span></span><code>    niworkflows ~= 1.1.7
+</code></pre></div></p>
+<p>If an unreleased bug-fix seems likely to cause merge conflicts, it may be worth doing the above more frequently.</p>
+<h3 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h3>
+<p><em>fMRIPrep</em> has a number of dependencies that we control at this point:</p>
+<ol>
+<li>sMRIPrep</li>
+<li>SDCflows</li>
+<li>NiWorkflows</li>
+</ol>
+<p>These do not follow the same versioning scheme as above, but we need them to follow a compatible scheme. In particular, we need to be able to fix bugs that are situated within these dependencies in a bug-fix release without violating the criteria laid out above.
+At the time of an <em>fMRIPrep</em> feature release, all of the above tools need to also split out a maintenance branch (if they have not already) for the minor version series that <em>fMRIPrep</em> depends on. As an example, when 20.0.0 was released, <em>fMRIPrep</em> had the following dependencies in <a href="https://github.com/nipreps/fmriprep/blob/20.0.0/setup.cfg#L22-L36"><code>setup.cfg</code></a>:</p>
+<p><div class="highlight"><pre><span></span><code>    niworkflows ~= 1.1.7
     sdcflows ~= 1.2.0
     smriprep ~= 0.5.2
-</code></pre>
+</code></pre></div>
+<code>~=</code> is the <a href="https://www.python.org/dev/peps/pep-0440/#compatible-release">compatible release specifier</a> described in PEP 440. <code>~= 1.1.7</code> is equivalent to <code>&gt;= 1.1.7, == 1.1.*</code>. This means that the current version of <em>fMRIPrep</em> is expected to work with niworkflows 1.1.7+ but not 1.2+.
+Thus, niworkflows needs to have a maint/1.1.x branch, sdcflows a <code>maint/1.2.x</code> and smriprep <code>maint/0.5.x</code>. Any changes to these tools that might violate API or derivative compatibility, must go into master, and must not be released into the current minor series of these tools.
+Note that <em>fMRIPrep</em> 20.0.0 does not depend on <code>niworkflows ~= 1.1.0</code>.
+Multiple feature releases of <em>fMRIPrep</em> may depend on the same minor release series of a dependency. There is no requirement to hike the dependency. However, if a dependency has started a new minor release series, a feature release of <em>fMRIPrep</em> is a good opportunity to bump the dependency.</p>
+<p>We maintain a <a href="../versions/">Versions Matrix</a> to document and keep track of these dependencies.</p>
+<h2 id="support-windows">Support Windows<a class="headerlink" href="#support-windows" title="Permanent link">&para;</a></h2>
+<h3 id="minor-release-series">Minor release series<a class="headerlink" href="#minor-release-series" title="Permanent link">&para;</a></h3>
+<p>A minor release series will continue to accept qualifying bug fixes <strong>at least</strong> until the next minor release. A minimum duration may be considered, or a fixed number of minor release series might be simultaneously supported.</p>
+<p>An unmaintained series is a valid target for bug fixes after the support window, but the expected effort level of the contributor and maintainers will be higher and lower, respectively.</p>
+<h3 id="long-term-support-series">Long-term support series<a class="headerlink" href="#long-term-support-series" title="Permanent link">&para;</a></h3>
+<p>A long-term support (LTS) series is a minor release series that an LTS manager commits to maintaining for a specific duration, no less than one year. LTS series are under the same constraints as a minor release series in terms of what changes can be accepted.</p>
+<p>The <em>fMRIPrep</em> developers commit to maintaining one LTS series at all times, at intervals of approximately one year. Community members may volunteer to assume maintainership after the initial period, or to maintain another minor release series as LTS.</p>
+<p>Support windows of greater than a year have a much higher potential to run into issues with upstream dependencies going outside of their support windows. As much as possible, an <em>fMRIPrep</em> minor release should seek to move to the versions of upstream dependencies that will ensure the longest support before being considered for LTS.</p>
+<p>Additional tasks required of an LTS manager:</p>
+<ul>
+<li>
+<p>Tracking possible breaking changes and broken URLs in upstream projects outside of the nipreps ecosystem.</p>
+<ul>
+<li>Neurodebian dependencies (AFNI, FSL, Convert3D, Connectome WB)</li>
+<li>FreeSurfer</li>
+<li>ANTs</li>
+<li>NodeJS - BIDS-validator, SVGO</li>
+<li>Pandoc</li>
+<li>ICA-AROMA</li>
+<li>Miniconda</li>
+<li>Python minor series end-of-life</li>
+<li>numpy, scipy, pandas, nipype, nibabel, matplotlib</li>
+</ul>
+</li>
+<li>
+<p>Backporting fixes from other maintained series.</p>
+<ul>
+<li>If a bug is identified as existing within the LTS series and can be fixed without breaking API or derivative compatibility.</li>
+</ul>
+</li>
+</ul>
+<p>As many dependencies as possible should be pinned to specific versions relevant to the environment they are installed in. Packages (Debian <code>.deb</code> files, conda packages, Python wheels) should be archived in case of a loss of the external packages.</p>
+
+
+
+
+              
+            </article>
+            
+          </div>
         </div>
-        <code>
-         ~=
-        </code>
-        is the
-        <a href="https://www.python.org/dev/peps/pep-0440/#compatible-release">
-         compatible release specifier
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../versions/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Versions Matrix" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Versions Matrix
+            </div>
+          </div>
         </a>
-        described in PEP 440.
-        <code>
-         ~= 1.1.7
-        </code>
-        is equivalent to
-        <code>
-         &gt;= 1.1.7, == 1.1.*
-        </code>
-        . This means that the current version of
-        <em>
-         fMRIPrep
-        </em>
-        is expected to work with niworkflows 1.1.7+ but not 1.2+.
-Thus, niworkflows needs to have a maint/1.1.x branch, sdcflows a
-        <code>
-         maint/1.2.x
-        </code>
-        and smriprep
-        <code>
-         maint/0.5.x
-        </code>
-        . Any changes to these tools that might violate API or derivative compatibility, must go into master, and must not be released into the current minor series of these tools.
-Note that
-        <em>
-         fMRIPrep
-        </em>
-        20.0.0 does not depend on
-        <code>
-         niworkflows ~= 1.1.0
-        </code>
-        .
-Multiple feature releases of
-        <em>
-         fMRIPrep
-        </em>
-        may depend on the same minor release series of a dependency. There is no requirement to hike the dependency. However, if a dependency has started a new minor release series, a feature release of
-        <em>
-         fMRIPrep
-        </em>
-        is a good opportunity to bump the dependency.
-       </p>
-       <p>
-        We maintain a
-        <a href="../versions/">
-         Versions Matrix
-        </a>
-        to document and keep track of these dependencies.
-       </p>
-       <h2 id="support-windows">
-        Support Windows
-        <a class="headerlink" href="#support-windows" title="Permanent link">
-         ¶
-        </a>
-       </h2>
-       <h3 id="minor-release-series">
-        Minor release series
-        <a class="headerlink" href="#minor-release-series" title="Permanent link">
-         ¶
-        </a>
-       </h3>
-       <p>
-        A minor release series will continue to accept qualifying bug fixes
-        <strong>
-         at least
-        </strong>
-        until the next minor release. A minimum duration may be considered, or a fixed number of minor release series might be simultaneously supported.
-       </p>
-       <p>
-        An unmaintained series is a valid target for bug fixes after the support window, but the expected effort level of the contributor and maintainers will be higher and lower, respectively.
-       </p>
-       <h3 id="long-term-support-series">
-        Long-term support series
-        <a class="headerlink" href="#long-term-support-series" title="Permanent link">
-         ¶
-        </a>
-       </h3>
-       <p>
-        A long-term support (LTS) series is a minor release series that an LTS manager commits to maintaining for a specific duration, no less than one year. LTS series are under the same constraints as a minor release series in terms of what changes can be accepted.
-       </p>
-       <p>
-        The
-        <em>
-         fMRIPrep
-        </em>
-        developers commit to maintaining one LTS series at all times, at intervals of approximately one year. Community members may volunteer to assume maintainership after the initial period, or to maintain another minor release series as LTS.
-       </p>
-       <p>
-        Support windows of greater than a year have a much higher potential to run into issues with upstream dependencies going outside of their support windows. As much as possible, an
-        <em>
-         fMRIPrep
-        </em>
-        minor release should seek to move to the versions of upstream dependencies that will ensure the longest support before being considered for LTS.
-       </p>
-       <p>
-        Additional tasks required of an LTS manager:
-       </p>
-       <ul>
-        <li>
-         <p>
-          Tracking possible breaking changes and broken URLs in upstream projects outside of the nipreps ecosystem.
-         </p>
-         <ul>
-          <li>
-           Neurodebian dependencies (AFNI, FSL, Convert3D, Connectome WB)
-          </li>
-          <li>
-           FreeSurfer
-          </li>
-          <li>
-           ANTs
-          </li>
-          <li>
-           NodeJS - BIDS-validator, SVGO
-          </li>
-          <li>
-           Pandoc
-          </li>
-          <li>
-           ICA-AROMA
-          </li>
-          <li>
-           Miniconda
-          </li>
-          <li>
-           Python minor series end-of-life
-          </li>
-          <li>
-           numpy, scipy, pandas, nipype, nibabel, matplotlib
-          </li>
-         </ul>
-        </li>
-        <li>
-         <p>
-          Backporting fixes from other maintained series.
-         </p>
-         <ul>
-          <li>
-           If a bug is identified as existing within the LTS series and can be fixed without breaking API or derivative compatibility.
-          </li>
-         </ul>
-        </li>
-       </ul>
-       <p>
-        As many dependencies as possible should be pinned to specific versions relevant to the environment they are installed in. Packages (Debian
-        <code>
-         .deb
-        </code>
-        files, conda packages, Python wheels) should be archived in case of a loss of the external packages.
-       </p>
-      </article>
-     </div>
-    </div>
-   </main>
-   <footer class="md-footer">
-    <nav aria-label="Footer" class="md-footer__inner md-grid">
-     <a aria-label="Previous: Versions Matrix" class="md-footer__link md-footer__link--prev" href="../versions/" rel="prev">
-      <div class="md-footer__button md-icon">
-       <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z">
-        </path>
-       </svg>
-      </div>
-      <div class="md-footer__title">
-       <div class="md-ellipsis">
-        <span class="md-footer__direction">
-         Previous
-        </span>
-        Versions Matrix
-       </div>
-      </div>
-     </a>
+      
+      
     </nav>
-    <div class="md-footer-meta md-typeset">
-     <div class="md-footer-meta__inner md-grid">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
-       <div class="md-copyright__highlight">
-        Copyright © 2020
-       </div>
-       Made with
-       <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
-        Material for MkDocs
-       </a>
-      </div>
-     </div>
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2020
     </div>
-   </footer>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
   </div>
-  <div class="md-dialog" data-md-component="dialog">
-   <div class="md-dialog__inner md-typeset">
-   </div>
-  </div>
-  <script id="__config" type="application/json">
-   {"base": "../..", "features": ["tabs"], "search": "../../assets/javascripts/workers/search.85cb4492.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}
-  </script>
-  <script src="../../assets/javascripts/bundle.a877e258.min.js">
-  </script>
- </body>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["tabs"], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.2ab50757.min.js"></script>
+      
+    
+  </body>
 </html>
