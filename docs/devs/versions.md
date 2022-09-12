@@ -5,6 +5,7 @@ The versions matrix is intended to allow easy reference for the dependencies wit
 
 | *fMRIPrep* series | *sMRIPrep* series | *SDCflows* series | *NiWorkflows* series |
 |----|----|----|----|
+| 22.0.x | `~= 0.9.2` | `~= 2.1.1` | `~= 1.6.3` |
 | 21.0.x | `~= 0.8.0` | `~= 2.0.0` | `~= 1.4.0` |
 | 20.2.x | `~= 0.7.0` | `~= 1.3.1` | `~= 1.3.0` |
 | 20.1.x | `~= 0.6.1` | `~= 1.3.1` | `~= 1.2.3` |
