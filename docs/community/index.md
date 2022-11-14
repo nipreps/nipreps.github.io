@@ -40,7 +40,7 @@ The redundancy of expert eyes looking at our code has only helped make it better
 
 A total of {{total_number_of_members}} neuroimagers have already joined us.
 Becoming a member will give you access to additional forums for discussion, 
-suscribing notifications for events and meetings, etc.
+subscribing notifications for events and meetings, etc.
 You can request you are added to the organization by
 [creating a new issue here](https://github.com/nipreps/.github/issues/new/choose).
 
