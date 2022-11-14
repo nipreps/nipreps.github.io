@@ -36,5 +36,7 @@ to efficiently evaluate the validity of new features (even to exercise a minuscu
 of the domain of inputs).
 The redundancy of expert eyes looking at our code has only helped make it better.
 
-[Neurostars.org]: https://neurostars.org
+## Members
 
+
+[Neurostars.org]: https://neurostars.org
