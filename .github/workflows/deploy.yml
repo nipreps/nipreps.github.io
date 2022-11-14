@@ -33,7 +33,7 @@ jobs:
         git ls-files -z | xargs -0 git rm -f
     - name: Generate members grid
       env:
-        GITHUB_TOKEN: ${{ github.token }}
+        GITHUB_TOKEN: ${{ secrets.NIPREPSBOT_QUERY_ORG }}
       run: |
         cd mkdocs/
         python scripts/generate_members_grid.py
