@@ -34,6 +34,7 @@ jobs:
     - name: Build
       run: |
         cd mkdocs/
+        python scripts/generate_members_grid.py
         mkdocs build -d ../www/
 
     - name: Deploy
