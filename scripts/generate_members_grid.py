@@ -24,6 +24,7 @@
 
 import os
 import requests
+from pathlib import Path
 
 
 def main(argv=None):
@@ -48,7 +49,18 @@ def main(argv=None):
         for item in response.json()
     ]
 
-    print("\n".join(members))
+    target_file = Path(__file__).parent.parent / "docs" / "community" / "index.md"
+
+    lines = target_file.read_text().splitlines()
+    insert_line = len(lines)
+
+    for line in reversed(lines):
+        if line.strip().startswith("## Members"):
+            break
+        insert_line -= 1
+
+    lines = lines[:insert_line] + members + lines[insert_line:]
+    target_file.write_text("\n".join(lines))
 
 
 if __name__ == "__main__":
