@@ -55,12 +55,14 @@ def main(argv=None):
     insert_line = len(lines)
 
     for line in reversed(lines):
-        if line.strip().startswith("## Members"):
+        if line.strip().startswith("![[[members_grid]]]"):
             break
         insert_line -= 1
 
-    lines = lines[:insert_line] + members + lines[insert_line:]
-    target_file.write_text("\n".join(lines))
+    lines = lines[:insert_line - 1] + members + lines[insert_line:]
+    target_file.write_text(
+        "\n".join(lines).replace("{{total_number_of_members}}", f"{len(members)}")
+    )
 
 
 if __name__ == "__main__":
