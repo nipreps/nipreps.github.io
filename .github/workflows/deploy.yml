@@ -31,10 +31,15 @@ jobs:
       run: |
         cd www/
         git ls-files -z | xargs -0 git rm -f
-    - name: Build
+    - name: Generate members grid
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
       run: |
         cd mkdocs/
         python scripts/generate_members_grid.py
+    - name: Build
+      run: |
+        cd mkdocs/
         mkdocs build -d ../www/
 
     - name: Deploy

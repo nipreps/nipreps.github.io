@@ -45,7 +45,7 @@ def main(argv=None):
         raise RuntimeError(f"Response failed ({response.code})")
     
     members = [
-        f'<img class=".avatar" src="{item["avatar_url"]}" />'
+        f'<a href="{item["html_url"]}" target="_blank"><img class="avatar" src="{item["avatar_url"]}" /></a>'
         for item in response.json()
     ]
 
