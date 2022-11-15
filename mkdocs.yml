@@ -16,10 +16,6 @@ nav:
     - NiPreps:
       - Framework: intro/nipreps.md
       - Transparency of workflows: intro/transparency.md
-    - BIDS-Apps:
-      - Introduction: apps/framework.md
-      - Executing with Docker: apps/docker.md
-      - Executing with Singularity: apps/singularity.md
     - Community:
       - Welcome: community/index.md
       - Membership: community/members.md
@@ -27,7 +23,13 @@ nav:
       - Contributing: community/CONTRIBUTING.md
       - Code of Conduct: community/CODE_OF_CONDUCT.md
       - Licensing: community/licensing.md
-    - Developers:
+    - Documentation (users):
+      - BIDS-Apps:
+        - Introduction: apps/framework.md
+        - Executing with Docker: apps/docker.md
+        - Executing with Singularity: apps/singularity.md
+      - Presentations: users/talks.md
+    - Documentation (devs):
       - Developer Environment: devs/devenv.md
       - Versions Matrix: devs/versions.md
       - Releases: devs/releases.md
