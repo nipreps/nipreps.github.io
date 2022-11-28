@@ -24,7 +24,8 @@ sMRIPrep requires niworkflows and generally must depend on one minor series of n
 
 | *sMRIPrep* series | *NiWorkflows* series | *TemplateFlow* series |
 |----|----|----|
-| 0.8.x | `~= 1.4.0` | `>= 0.7.1` |
+| 0.9.x | `~= 1.6.0` | `>= 0.6` |
+| 0.8.x | `~= 1.4.0` | `>= 0.6` |
 | 0.7.x | `~= 1.3.0` | `~= 0.6` |
 | 0.6.x | `~= 1.2.0` | `~= 0.6` |
 | 0.5.x | `~= 1.1.5` | `~= 0.4.2` |
