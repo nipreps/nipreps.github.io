@@ -72,7 +72,7 @@ The normalization report shows how successfully your T1w image(s) were resampled
 ### Surface reconstruction
 
 If you used the `--fs-no-reconall` flag to skip surface-based preprocessing, this section of the report will not exist.
-The FreeSurfer [fischl2012] [1] subject reconstruction report shows the white matter (blue outline) and pial (red outline) surfaces overlaid on the T1w image.
+The FreeSurfer [fischl2012][1] subject reconstruction report shows the white matter (blue outline) and pial (red outline) surfaces overlaid on the T1w image.
 * Good:
     * The white-gray boundary outlined (blue link) matches the underlying image.
     * White matter and pial surface boundary outlines do not cross or overlap each other.
@@ -81,6 +81,8 @@ The FreeSurfer [fischl2012] [1] subject reconstruction report shows the white ma
     * The white-gray boundary outline (blue line) does not correspond well to the boundary observed in the underlying image.
     * White matter and pial surface boundaries cross or overlap each other.
     * Pial surface (red outline) extends past the actual pial boundary (see images [here](https://surfer.nmr.mgh.harvard.edu/fswiki/FsTutorial/PialEdits_tktools) for an example ; this can be a result of bad skull-stripping).
+    * QC assessment of FreeSurfer outcomes is comprehensively covered elsewhere (e.g., White et al. 2018 [white2018][2]; Klapwijk et al. 2019 [klapwijk2019][3]), and fMRI studies using vertex-wise (surface) analyses should rigorously assess these surfaces. 
+    * In a voxel-wise analysis, data should be excluded only when the reconstructed surfaces are extremely inaccurate, which typically only happens in the presence of artifacts easily captured previously by [MRIQC](https://mriqc.readthedocs.io/en/latest/).
 
 * Common pitfalls in interpretation:
     * Note that cerebellum and brainstem are excluded from the surface reconstruction in fMRIPrep; it is thus normal that the outlines do not include these areas.
@@ -189,6 +191,11 @@ What you’re looking at:
 
 This section tells you whether fMRIPrep encountered any problems during the preprocessing. Note that “errors” refers only to problems in running fMRIPrep, and NOT problems with the quality of the resulting images. This section won’t flag participants in which fMRIPrep was able to successfully run to completion but yielded poor results, or in which the input data was of lower-than-desirable quality.
 
-## Things that aren’t an issue:
+## Things that aren’t an issue
 * “Missing” [not visualized] slices
     * In the report visualizations that display a panel of slices, sometimes it will appear as though there is a slice missing - for example, nothing is shown for x = -12. This is a problem with the visualization and does NOT indicate the slice is missing from the actual data. You can try reloading the report, or opening it with Chrome if you’re using another browser, as well as using your preferred NIFTI viewer to check the data. 
+
+## References
+[1] : Fischl, Bruce. 2012. “FreeSurfer.” NeuroImage 62 (2): 774–81. <https://doi.org/10.1016/j.neuroimage.2012.01.021>.
+[2] : White, Tonya, Philip R. Jansen, Ryan L. Muetzel, Gustavo Sudre, Hanan El Marroun, Henning Tiemeier, Anqi Qiu, Philip Shaw, Andrew M. Michael, and Frank C. Verhulst. 2018. “Automated Quality Assessment of Structural Magnetic Resonance Images in Children: Comparison with Visual Inspection and Surface-Based Reconstruction.” Human Brain Mapping 39 (3): 1218–31. <https://doi.org/10.1002/hbm.23911>.
+[3] : Klapwijk, Eduard T., Ferdi van de Kamp, Mara van der Meulen, Sabine Peters, and Lara M. Wierenga. 2019. “Qoala-T: A Supervised-Learning Tool for Quality Control of FreeSurfer Segmented MRI Data.” NeuroImage 189 (April): 116–29. <https://doi.org/10.1016/j.neuroimage.2019.01.014>.
