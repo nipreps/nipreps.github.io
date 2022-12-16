@@ -96,14 +96,16 @@ The FreeSurfer [fischl2012][1] subject reconstruction report shows the white mat
 * Other potential issues are missing images or implausible values.
     * Functional data can vary based on available data, metadata, user selections.
         * What does “Heuristics - BBR may fall back to volume-based coregistration” mean?
-        In fMRIPrep’s workflow, if boundary-based registration fails (meaning that `bbr` distorts the affine registration more than 15mm), fMRIPrep reverts to using the initial affine transform from Freesurfer’s `mri_coreg` tool instead of using the bbr refinement of the initial transform ([relevant code](https://github.com/poldracklab/fmriprep/pull/694/files#diff-939042e0a10e509ce5708c3e112376ffR29)) 
-        “Note on orientation: qform matrix overwritten/ this data has been copied from sform/sform matrix set” warnings
+
+            In fMRIPrep’s workflow, if boundary-based registration fails (meaning that `bbr` distorts the affine registration more than 15mm), fMRIPrep reverts to using the initial affine transform from Freesurfer’s `mri_coreg` tool instead of using the bbr refinement of the initial transform ([relevant code](https://github.com/nipreps/fmriprep/pull/694/files#diff-939042e0a10e509ce5708c3e112376ffR29)) 
+
+    * “Note on orientation: qform matrix overwritten/ this data has been copied from sform/sform matrix set” warnings
+
         `qform` and `sform` refer to metadata fields in the NIfTI file header, prescribing a coordinate system for the image. 
         This message warns you that information in the header was altered during the preprocessing.
         This is an advisory message and does not necessarily indicate issues in data quality or registration.
         A common scenario is that the sform code was 0, so fMRIPrep copied the code from qform in order to keep the affine matrices aligned, ensuring that the images will be treated as having the same orientation later down the pipeline.
-        See Chris Markewicz’s Neurostars posts [here](https://neurostars.org/t/note-on-orientation-qform-and-sform-warning/4379/4) and [here](https://neurostars.org/t/note-on-orientation-sform-matrix-set/5939) for a longer explanation of when/why fMRIPrep produces these warnings.
-        You can read more about how `qform` and `sform` work at the following links: [Recommended usage of qform and sform](https://nifti.nimh.nih.gov/nifti-1/documentation/nifti1fields/nifti1fields_pages/qsform_brief_usage) and [Nifti Qform and Sform](http://gru.stanford.edu/doku.php/mrTools/coordinateTransforms). 
+        See Chris Markewicz’s Neurostars posts [here](https://neurostars.org/t/note-on-orientation-qform-and-sform-warning/4379/4) and [here](https://neurostars.org/t/note-on-orientation-sform-matrix-set/5939) for a longer explanation of when/why fMRIPrep produces these warnings. You can read more about how `qform` and `sform` work at the following links: [Recommended usage of qform and sform](https://nifti.nimh.nih.gov/nifti-1/documentation/nifti1fields/nifti1fields_pages/qsform_brief_usage) and [Nifti Qform and Sform](http://gru.stanford.edu/doku.php/mrTools/coordinateTransforms). 
 
 ### Susceptibility distortion correction
 
