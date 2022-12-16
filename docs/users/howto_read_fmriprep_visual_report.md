@@ -54,10 +54,13 @@ The brain mask report shows the quality of intensity non-uniformity (INU) correc
 The normalization report shows how successfully your T1w image(s) were resampled into standard space, for each of the template spaces used.
 * Good:
     * Your T1w image and the template image line up well when you toggle between the images (hover mouse over the panel):
+        * In order of importance, the following structures should be correctly aligned : 1. ventricles, 2. subcortical regions, 3. corpus callosum, 4. cerebellum, 5. cortical gray matter.
         * The standard templates provided with fMRIPrep (such as `MNI152NLin2009cAsym`) are averaged across multiple subjects, so the template image will look blurrier than the T1w image. Because of this averaging, it is normal for sulci to be less pronounced and gyri to be wider on the template than the T1w image.
 
 * Bad:
     * Stretching or distortion in the participant’s T1w image, indicating failed normalization.
+        * A misalignment of the ventricles, the subcortical regions, or the corpus callosum should lead to immediate exclusion. You can however be more lenient with the misalignment of cortical GM because volumetric (image) registration may not resolve substantial inter-individual differences (e.g., a sulcus missing in an individual’s brain but typically present in the population of the template).
+        
     * If skull-stripping was not successful, you might see some places where there are non-brain voxels outside of the contours of the brain. 
 
 
