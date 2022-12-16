@@ -26,30 +26,39 @@ The reports first present results of anatomical preprocessing.
 ### Brain mask and brain tissue segmentation of the T1w
 
 The brain mask report shows the quality of intensity non-uniformity (INU) correction, skull stripping, and tissue segmentation.
-* Good:
-    * The brain mask (red) covers the whole brain and only the brain - not the dura or anything else outside the brain. It should closely follow the contour of the brain.
-    * The outlines of the gray matter (magenta) and white matter (blue) segmentation are correctly drawn. The blue line should follow the boundary between gray and white matter, while the magenta line should outline ventricles.
 
-* Bad:
-    *  Intensity non-uniformity artifacts (looks like the “original image” panel in the figure below):
+* INU correction
+    * Good:
+        * The intensity of the image is uniform throughout the brain
+    * Bad:
+        * Intensity non-uniformity artifacts (looks like the “original image” panel in the figure below):
  
         ![inu](../assets/fmriprep_visual_report/inu.png) 
         *from Vovk, U., Pernus, F., & Likar, B. (2007). A review of methods for correction of intensity inhomogeneity in MRI. IEEE transactions on medical imaging, 26(3), 405-421.*
- 
- 
-    * Skull-stripping failed leading to an inaccurate brain mask
-        * The brain mask cuts off part of the brain and/or contains holes surrounding signal drop-out regions.
-        * The brain mask includes parts that are clearly NOT brain.
-            * For example, fMRIPrep might have misclassified part of the dura, epidural space, or skull as belonging inside the brain mask; as a result the brain mask presents “bumps” surrounding high-intensity areas of signal outside of the cortex. 
 
-        * Having an accurate brain mask makes the downstream preprocessing of an fMRI scan faster (excluding voxels of non-interest) and more accurate (less bias from voxels of non-interest). Consequently, it is important to discard subjects for which the brain mask is not well defined.
-    
-    * The gray matter (magenta)/white matter (blue) outlines don’t match where those tissue classes are distributed in the underlying image, so either the blue line does not follow the boundary between gray and white matter or the magenta line does not outline ventricles.
-    * Inclusion of tissues other than the tissue of interest in the contour delineations should lead to exclusion of the scan.
-    * T1w scans showcasing a low signal-to-noise ratio because of thermal noise will present scattered misclassified voxels within piecewise-smooth regions (generally more identifiable in the WM and inside the ventricles). 
-        * These scans should be excluded except for images where these voxels are only present at subcortical structures (e.g., thalamus) or nearby tissue boundaries. In the latter case, the misclassification results from partial volume effects (i.e., indeed, such voxels contain varying fractions of two or more tissues). The figure below illustrates the difference between individual dots caused by noise versus partial volume effects.
-        ![noise-in-segmentation](../assets/fmriprep_visual_report/noise-in-segmentation.svg) 
-        *Fig. 2. Error in brain tissue segmentation of T1w images. (A) The presence of noise compromises the segmentation leading to single voxels being excluded from the ventricle mask. The subject has thus been excluded from further analysis. (B) A series of spots are visible at the boundary between WM and GM. Those spots are due to partial volume effect and thus is a flaw of the fMRIPrep segmentation implementation not of the image quality.*
+* Skull stripping
+    * Good:
+        * The brain mask (red) covers the whole brain and only the brain - not the dura or anything else outside the brain. It should closely follow the contour of the brain.
+
+    * Bad:
+        * Skull-stripping failed leading to an inaccurate brain mask
+            * The brain mask cuts off part of the brain and/or contains holes surrounding signal drop-out regions.
+            * The brain mask includes parts that are clearly NOT brain.
+                * For example, fMRIPrep might have misclassified part of the dura, epidural space, or skull as belonging inside the brain mask; as a result the brain mask presents “bumps” surrounding high-intensity areas of signal outside of the cortex. 
+
+            * Having an accurate brain mask makes the downstream preprocessing of an fMRI scan faster (excluding voxels of non-interest) and more accurate (less bias from voxels of non-interest). Consequently, it is important to discard subjects for which the brain mask is not well defined.
+
+* Tissue segmentation
+    * Good:
+        * The outlines of the gray matter (magenta) and white matter (blue) segmentation are correctly drawn. The blue line should follow the boundary between gray and white matter, while the magenta line should outline ventricles.
+
+    * Bad:
+        * The gray matter (magenta)/white matter (blue) outlines don’t match where those tissue classes are distributed in the underlying image, so either the blue line does not follow the boundary between gray and white matter or the magenta line does not outline ventricles.
+        * Inclusion of tissues other than the tissue of interest in the contour delineations should lead to exclusion of the scan.
+        * T1w scans showcasing a low signal-to-noise ratio because of thermal noise will present scattered misclassified voxels within piecewise-smooth regions (generally more identifiable in the WM and inside the ventricles). 
+            * These scans should be excluded except for images where these voxels are only present at subcortical structures (e.g., thalamus) or nearby tissue boundaries. In the latter case, the misclassification results from partial volume effects (i.e., indeed, such voxels contain varying fractions of two or more tissues). The figure below illustrates the difference between individual dots caused by noise versus partial volume effects.
+            ![noise-in-segmentation](../assets/fmriprep_visual_report/noise-in-segmentation.svg) 
+            *Fig. 2. Error in brain tissue segmentation of T1w images. (A) The presence of noise compromises the segmentation leading to single voxels being excluded from the ventricle mask. The subject has thus been excluded from further analysis. (B) A series of spots are visible at the boundary between WM and GM. Those spots are due to partial volume effect and thus is a flaw of the fMRIPrep segmentation implementation not of the image quality.*
 
 * Common pitfalls in interpretation:
     * At the inter-hemispheric space, masks (and in particular the brain mask, despite its smooth edges) may intersect the visualization plane several times, giving the impression that the mask is cutting off brain regions. However, this is more of a visual effect on the cutting plane.
@@ -106,39 +115,35 @@ The FreeSurfer [fischl2012][1] subject reconstruction report shows the white mat
         This is an advisory message and does not necessarily indicate issues in data quality or registration.
         A common scenario is that the sform code was 0, so fMRIPrep copied the code from qform in order to keep the affine matrices aligned, ensuring that the images will be treated as having the same orientation later down the pipeline.
         See Chris Markewicz’s Neurostars posts [here](https://neurostars.org/t/note-on-orientation-qform-and-sform-warning/4379/4) and [here](https://neurostars.org/t/note-on-orientation-sform-matrix-set/5939) for a longer explanation of when/why fMRIPrep produces these warnings. You can read more about how `qform` and `sform` work at the following links: [Recommended usage of qform and sform](https://nifti.nimh.nih.gov/nifti-1/documentation/nifti1fields/nifti1fields_pages/qsform_brief_usage) and [Nifti Qform and Sform](http://gru.stanford.edu/doku.php/mrTools/coordinateTransforms). 
-
-### Susceptibility distortion correction
-
-* `--use-syn-sdc`
-* `--force-syn`
-* `--ignore fieldmaps`
-
-The functional images can have some warping or distortion due to inhomogeneities in the magnetic field. (fMRIPrep has several options to try to estimate the displacement map)[https://fmriprep.readthedocs.io/en/stable/sdc.html], based either on command-line arguments or automatic selection based on the available data). 
-This section of the report shows the participant’s functional images before and after distortion correction, with the GM/WM boundary from the anatomical images overlaid as reference.
-* Good:
-    * The distortion-corrected (or “after”) image shows improved alignment between the brain and the GM/WM boundary, compared to the “before” image.
-    * The shape of the brain in the distortion-corrected image is not .
-
-* Bad:
-    * Alignment between the brain and the GM/WM boundary is worse in the “after” compared to the “before” image.
-    * The brain in the “after” image looks more distorted, stretched, smeared or otherwise misshapen, indicating that distortion correction was not successful. 
  
 ### Alignment of functional and anatomical data
 
-The text tells you which method fMRIPrep used to align the functional and anatomical data - for example, by running `bbregis
-ter`. The images show the registered BOLD reference with the white and pial surfaces overlaid (red and blue lines)
-* Good:
-    * The BOLD and T1w images are aligned; image boundaries and anatomical landmarks (for example, ventricles; corpus callosum) appear to be in the same place when toggling between the images.
-    * White and pial surface outlines (red and blue lines) appear to correspond well to the tissue boundaries in the functional images. 
+The alignment report shows the quality of co-registration and susceptibility distortion correction.
 
-* Bad:
-    * Functional and anatomical images are not aligned and clearly differ in their spatial location or orientation.
-    * White and pial surface boundaries (red and blue lines) overlays correspond poorly to the tissue boundaries in the underlying images.
-    * Some drop out in inferior brain regions (such as the OFC or medial temporal lobe) in functional images is somewhat inevitable. Depending on the type of analysis you’re doing and what you’re interested in, this may be more/less of an issue for you. If you see a lot of signal drop out, you will probably want to check the mask generated by fMRIPrep to see how that drop-out impacts the location and quantity of missing voxels in your mask.
+* Co-registration
+    * The text tells you which method fMRIPrep used to align the functional and anatomical data - for example, by running `bbregister`. The images show the registered BOLD reference with the white and pial surfaces overlaid (red and blue lines)
+    * Good:
+        * The BOLD and T1w images are aligned; image boundaries and anatomical landmarks (for example, ventricles; corpus callosum) appear to be in the same place when toggling between the images.
+        * White and pial surface outlines (red and blue lines) appear to correspond well to the tissue boundaries in the functional images. 
 
-* Note that the BOLD images displayed in the report may have what appears to be an “artifact” in the data, as shown below. This is because the reports use a faster but less precise type of interpolation (Nearest Neighbor interpolation) for display. In actuality, fMRIPrep uses Lanczos interpolation for resampling, so these apparent “artifacts” are not present in the actual data (you can confirm this by checking the preprocessed BOLD NIFTI file and its registration to the T1w image in your preferred software). 
+    * Bad:
+        * Functional and anatomical images are not aligned and clearly differ in their spatial location or orientation.
+        * White and pial surface boundaries (red and blue lines) overlays correspond poorly to the tissue boundaries in the underlying images.
 
-    ![segmentation](../assets/fmriprep_visual_report/segmentation.png)
+* Susceptibility distortion correction
+    * The functional images can have some warping or distortion due to inhomogeneities in the $B_0$ magnetic field. For more details on what causes susceptibility distortion, refer to [the educational notebook of SDCFlows](https://github.com/nipreps/sdcflows/blob/master/docs/notebooks/SDC%20-%20Theory%20and%20physics.ipynb). Susceptibility distortion artifacts manifest in two different ways on the functional and structural images: as signal drop-out, that is, a region where the signal vanishes, or as brain distortions. Signal drop-outs often appear close to brain-air interfaces; these include ventromedial prefrontal cortex, the anterior part of the prefrontal cortex, and the region next to the ear cavities. 
+    * Good:
+        * No signal drop out or brain distortion affects your region of interest.
+        * The pial surface  outlines (blue lines) appear to correspond well to the tissue boundaries in the functional images.
+    * Bad:
+        * If the susceptibility distortion correction is unsuccessfull, residual susceptibility distortion artifacts can be observed. If the latter overlaps with regions of interest, the scan should be excluded.
+        * Note however that some drop out in inferior brain regions (such as the OFC or medial temporal lobe) in functional images is somewhat inevitable. Depending on the type of analysis you’re doing and what you’re interested in, this may be more/less of an issue for you. If you see a lot of signal drop out, you will probably want to check the brain mask generated by fMRIPrep to see how that drop-out impacts the location and quantity of missing voxels in your brain mask.
+        
+
+* Common pitfalls in interpretation:
+    * Note that the BOLD images displayed in the report may have what appears to be an “artifact” in the data, as shown below. This is because the reports use a faster but less precise type of interpolation (Nearest Neighbor interpolation) for display. In actuality, fMRIPrep uses Lanczos interpolation for resampling, so these apparent “artifacts” are not present in the actual data (you can confirm this by checking the preprocessed BOLD NIFTI file and its registration to the T1w image in your preferred software). 
+
+        ![apparent-artifact-interpolation](../assets/fmriprep_visual_report/apparent-artifact-interpolation.png)
 
 ### Brain mask and temporal/anatomical CompCor ROIs
 
