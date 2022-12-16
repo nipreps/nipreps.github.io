@@ -40,14 +40,19 @@ The brain mask report shows the quality of intensity non-uniformity (INU) correc
     * Skull-stripping failed leading to an inaccurate brain mask
         * The brain mask cuts off part of the brain and/or contains holes surrounding signal drop-out regions.
         * The brain mask includes parts that are clearly NOT brain.
+            * For example, fMRIPrep might have misclassified part of the dura, epidural space, or skull as belonging inside the brain mask; as a result the brain mask presents “bumps” surrounding high-intensity areas of signal outside of the cortex. 
 
-            * For example, fMRIPrep might have misclassified part of the dura, epidural space, or skull as belonging inside the brain mask.
+        * Having an accurate brain mask makes the downstream preprocessing of an fMRI scan faster (excluding voxels of non-interest) and more accurate (less bias from voxels of non-interest). Consequently, it is important to discard subjects for which the brain mask is not well defined.
     
-    * The gray matter (magenta)/white matter (blue) outlines don’t match where those tissue classes are distributed in the underlying image.
+    * The gray matter (magenta)/white matter (blue) outlines don’t match where those tissue classes are distributed in the underlying image, so either the blue line does not follow the boundary between gray and white matter or the magenta line does not outline ventricles.
+    * Inclusion of tissues other than the tissue of interest in the contour delineations should lead to exclusion of the scan.
+    * T1w scans showcasing a low signal-to-noise ratio because of thermal noise will present scattered misclassified voxels within piecewise-smooth regions (generally more identifiable in the WM and inside the ventricles). 
+        * These scans should be excluded except for images where these voxels are only present at subcortical structures (e.g., thalamus) or nearby tissue boundaries. In the latter case, the misclassification results from partial volume effects (i.e., indeed, such voxels contain varying fractions of two or more tissues). The figure below illustrates the difference between individual dots caused by noise versus partial volume effects.
+        ![noise-in-segmentation](../assets/fmriprep_visual_report/noise-in-segmentation.svg) 
+        *Fig. 2. Error in brain tissue segmentation of T1w images. (A) The presence of noise compromises the segmentation leading to single voxels being excluded from the ventricle mask. The subject has thus been excluded from further analysis. (B) A series of spots are visible at the boundary between WM and GM. Those spots are due to partial volume effect and thus is a flaw of the fMRIPrep segmentation implementation not of the image quality.*
 
 * Common pitfalls in interpretation:
     * At the inter-hemispheric space, masks (and in particular the brain mask, despite its smooth edges) may intersect the visualization plane several times, giving the impression that the mask is cutting off brain regions. However, this is more of a visual effect on the cutting plane.
-
 
 ### Spatial normalization of the anatomical T1w reference
 
@@ -60,7 +65,7 @@ The normalization report shows how successfully your T1w image(s) were resampled
 * Bad:
     * Stretching or distortion in the participant’s T1w image, indicating failed normalization.
         * A misalignment of the ventricles, the subcortical regions, or the corpus callosum should lead to immediate exclusion. You can however be more lenient with the misalignment of cortical GM because volumetric (image) registration may not resolve substantial inter-individual differences (e.g., a sulcus missing in an individual’s brain but typically present in the population of the template).
-        
+
     * If skull-stripping was not successful, you might see some places where there are non-brain voxels outside of the contours of the brain. 
 
 
