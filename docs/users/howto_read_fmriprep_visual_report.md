@@ -25,7 +25,7 @@ The reports first present results of anatomical preprocessing.
 
 ### Brain mask and brain tissue segmentation of the T1w
 
-The brain mask report shows the quality of intensity non-uniformity (INU) correction, skull stripping, and tissue segmentation.
+This report displays the brain mask and the brain tissue segmentation computed from the T1w image. It shows the quality of intensity non-uniformity (INU) correction, skull stripping, and tissue segmentation.
 
 * INU correction
     * Good:
@@ -50,18 +50,19 @@ The brain mask report shows the quality of intensity non-uniformity (INU) correc
 
 * Tissue segmentation
     * Good:
-        * The outlines of the gray matter (magenta) and white matter (blue) segmentation are correctly drawn. The blue line should follow the boundary between gray and white matter, while the magenta line should outline ventricles.
+        * The outlines of the gray matter (GM; magenta) and white matter (WM; blue) segmentation are correctly drawn. The blue line should follow the boundary between GM and WM, while the magenta line should outline ventricles.
 
     * Bad:
-        * The gray matter (magenta)/white matter (blue) outlines don’t match where those tissue classes are distributed in the underlying image, so either the blue line does not follow the boundary between gray and white matter or the magenta line does not outline ventricles.
+        * The GM (magenta)/WM (blue) outlines don’t match where those tissue classes are distributed in the underlying image, so either the blue line does not follow the boundary between GM and WM or the magenta line does not outline ventricles.
         * Inclusion of tissues other than the tissue of interest in the contour delineations should lead to exclusion of the scan.
         * T1w scans showcasing a low signal-to-noise ratio because of thermal noise will present scattered misclassified voxels within piecewise-smooth regions (generally more identifiable in the WM and inside the ventricles). 
             * These scans should be excluded except for images where these voxels are only present at subcortical structures (e.g., thalamus) or nearby tissue boundaries. In the latter case, the misclassification results from partial volume effects (i.e., indeed, such voxels contain varying fractions of two or more tissues). The figure below illustrates the difference between individual dots caused by noise versus partial volume effects.
             ![noise-in-segmentation](../assets/fmriprep_visual_report/noise-in-segmentation.svg) 
-            *Fig. 2. Error in brain tissue segmentation of T1w images. (A) The presence of noise compromises the segmentation leading to single voxels being excluded from the ventricle mask. The subject has thus been excluded from further analysis. (B) A series of spots are visible at the boundary between WM and GM. Those spots are due to partial volume effect and thus is a flaw of the fMRIPrep segmentation implementation not of the image quality.*
+            *Fig. 2. Error in brain tissue segmentation of T1w images. (A) The presence of noise compromises the segmentation leading to single voxels being excluded from the ventricle mask. The subject has thus been excluded from further analysis. (B) A series of spots are visible at the boundary between GM and WM. Those spots are due to partial volume effect and thus is a flaw of the fMRIPrep segmentation implementation not of the image quality.*
 
 * Common pitfalls in interpretation:
     * At the inter-hemispheric space, masks (and in particular the brain mask, despite its smooth edges) may intersect the visualization plane several times, giving the impression that the mask is cutting off brain regions. However, this is more of a visual effect on the cutting plane.
+    * Note that the brain mask plotted in the “brain mask and (anatomical/temporal) CompCor ROIs” panel under the functional section is computed from the BOLD image and thus is not identical to the brain mask mentioned in this paragraph. Hence, they follow different exclusion criteria.
 
 ### Spatial normalization of the anatomical T1w reference
 
@@ -77,25 +78,24 @@ The normalization report shows how successfully your T1w image(s) were resampled
 
     * If skull-stripping was not successful, you might see some places where there are non-brain voxels outside of the contours of the brain. 
 
-
 ### Surface reconstruction
 
 If you used the `--fs-no-reconall` flag to skip surface-based preprocessing, this section of the report will not exist.
-The FreeSurfer [fischl2012][1] subject reconstruction report shows the white matter (blue outline) and pial (red outline) surfaces overlaid on the T1w image.
+The FreeSurfer [fischl2012][1] subject reconstruction report shows the WM (blue outline) and pial (red outline) surfaces overlaid on the T1w image.
 * Good:
     * The white-gray boundary outlined (blue link) matches the underlying image.
-    * White matter and pial surface boundary outlines do not cross or overlap each other.
+    * WM and pial surface boundary outlines do not cross or overlap each other.
 
 * Bad:
     * The white-gray boundary outline (blue line) does not correspond well to the boundary observed in the underlying image.
-    * White matter and pial surface boundaries cross or overlap each other.
+    * WM and pial surface boundaries cross or overlap each other.
     * Pial surface (red outline) extends past the actual pial boundary (see images [here](https://surfer.nmr.mgh.harvard.edu/fswiki/FsTutorial/PialEdits_tktools) for an example ; this can be a result of bad skull-stripping).
     * QC assessment of FreeSurfer outcomes is comprehensively covered elsewhere (e.g., White et al. 2018 [white2018][2]; Klapwijk et al. 2019 [klapwijk2019][3]), and fMRI studies using vertex-wise (surface) analyses should rigorously assess these surfaces. 
     * In a voxel-wise analysis, data should be excluded only when the reconstructed surfaces are extremely inaccurate, which typically only happens in the presence of artifacts easily captured previously by [MRIQC](https://mriqc.readthedocs.io/en/latest/).
 
 * Common pitfalls in interpretation:
     * Note that cerebellum and brainstem are excluded from the surface reconstruction in fMRIPrep; it is thus normal that the outlines do not include these areas.
- 
+
 ## **Functional**
 
 ### Textual summary
@@ -147,12 +147,24 @@ The alignment report shows the quality of co-registration and susceptibility dis
 
 ### Brain mask and temporal/anatomical CompCor ROIs
 
-BOLD brain mask with the aCompCor and tCompCor masks
-The aCompCor mask (magenta outline) is a conservative CSF and white-matter mask for extracting physiological and movement confounds. 
-The tCompCor mask (blue outline) contains the top 5% most variable voxels within a heavily-eroded brain-mask.
+This report shows the brain mask calculated on the BOLD signal (red contour), along with the regions of interest (ROIs) used by CompCor [behzadi2017][4] for the estimation of physiological and movement confounding components. The user can then choose those components as nuisance regressors in analysis. 
+
+The anatomical CompCor ROI (magenta contour) is a mask combining cerebrospinal fluid (CSF) and WM, where voxels containing a minimal partial volume of GM have been removed. It represents a mask of region of no interest.
+
+The temporal CompCor ROI (blue contour) contains the top 2% most variable voxels within the brain mask.
+
+The brain edge (or crown) ROI (green contour) picks signals outside but close to the brain, which are decomposed into 24 principal components.
+
 * Good:
+    * The brain mask correctly surrounds the brain boundary, not leaving out brain area. Note that holes in the brain mask such as on the figure below, is not problematic as it should not disrupt co-registration.
+    ![hole-bold-brainmask](../assets/fmriprep_visual_report/hold-bold-brainmask.png)
 
 * Bad:
+    * The brain mask computed from the BOLD image mainly influences confounds estimation, but also co-registration, although the latter is primarily driven by the WM mask. As such the brain mask must not leave out any brain area, but it can be a bit loose around the brain. If the mask intersects with brain-originating signal, the nuisance regressors should not be used.
+    * If the study plan prescribes using CompCor or brain-edge regressors, it is critical to exclude BOLD runs where any of these masks substantially overlap regions of interest.
+    * The shape and the large overlap of the tCompCor with region of interest can also indicate the presence of an artifact that was missed in the other visualizations (see figure below). In this case, the scan should be excluded. 
+    ![suspicious-compcor](../assets/fmriprep_visual_report/suspicious-compcor.png)  
+
 
 ### Variance explained by t/a CompCor components
 
@@ -206,3 +218,4 @@ This section tells you whether fMRIPrep encountered any problems during the prep
 [1] : Fischl, Bruce. 2012. “FreeSurfer.” NeuroImage 62 (2): 774–81. <https://doi.org/10.1016/j.neuroimage.2012.01.021>.
 [2] : White, Tonya, Philip R. Jansen, Ryan L. Muetzel, Gustavo Sudre, Hanan El Marroun, Henning Tiemeier, Anqi Qiu, Philip Shaw, Andrew M. Michael, and Frank C. Verhulst. 2018. “Automated Quality Assessment of Structural Magnetic Resonance Images in Children: Comparison with Visual Inspection and Surface-Based Reconstruction.” Human Brain Mapping 39 (3): 1218–31. <https://doi.org/10.1002/hbm.23911>.
 [3] : Klapwijk, Eduard T., Ferdi van de Kamp, Mara van der Meulen, Sabine Peters, and Lara M. Wierenga. 2019. “Qoala-T: A Supervised-Learning Tool for Quality Control of FreeSurfer Segmented MRI Data.” NeuroImage 189 (April): 116–29. <https://doi.org/10.1016/j.neuroimage.2019.01.014>.
+[4] : Behzadi, Yashar, Khaled Restom, Joy Liau, and Thomas T. Liu. 2007. “A Component Based Noise Correction Method (CompCor) for BOLD and Perfusion Based FMRI.” NeuroImage 37 (1): 90–101. <https://doi.org/10.1016/j.neuroimage.2007.04.042>.
