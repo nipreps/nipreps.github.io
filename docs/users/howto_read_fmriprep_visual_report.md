@@ -162,7 +162,7 @@ The brain edge (or crown) ROI (green contour) picks signals outside but close to
 * Bad:
     * The brain mask computed from the BOLD image mainly influences confounds estimation, but also co-registration, although the latter is primarily driven by the WM mask. As such the brain mask must not leave out any brain area, but it can be a bit loose around the brain. If the mask intersects with brain-originating signal, the nuisance regressors should not be used.
     * If the study plan prescribes using CompCor or brain-edge regressors, it is critical to exclude BOLD runs where any of these masks substantially overlap regions of interest.
-    * The shape and the large overlap of the tCompCor with region of interest can also indicate the presence of an artifact that was missed in the other visualizations (see figure below). In this case, the scan should be excluded. 
+    * The shape and the large overlap of the tCompCor with region of interest can also indicate the presence of an artifact that was missed in the other visualizations (e.g see figure below). In this case, the scan should be excluded. 
     ![suspicious-compcor](../assets/fmriprep_visual_report/suspicious-compcor.png)  
 
 
@@ -186,9 +186,21 @@ Note on how variance and scaling affects this display? (in other words, spikes a
 
 ### Correlations among nuisance regressors
 
-This may also be addressed in more depth by the confounds and regressors documentation (link to page)
-Can be used to diagnose partial volume effects
-PVE indicated by high correlations of a confound time series (or several) with the global signal
+This report presents a plot of correlations among confound regressors. The left-hand panel shows the matrix of correlations among selected confound time series as a heat-map. The right-hand panel displays the correlation of selected confound time series with the mean global signal computed across the whole brain; the regressors shown are those with greatest correlation with the global signal. These plots can be used to guide selection of a confound model or to assess the extent to which tissue-specific regressors correlate with global signal.; e.g if two regressors are highly correlated, it is recommended to include in the confound model only one of the two.
+
+* Selection of a confound model
+    * Good:
+        * Carefully choose a serie of regressors that are not highly correlated to include in the confound model.
+        * Or proceed with feature orthogonalization before confound regression.
+    * Bad: 
+        * Include in the confound model two regressors that are highly correlated.
+    * Common pitfall in interpreptation:
+        * The CompCor components extracted from the same mask and the cosine bases are inherently orthogonal, implying a zero correlation by construction.
+
+* Assessement of partial volume effect [NEEDS COMPLETION]
+    * Good:
+    * Bad:
+        * High correlation of confound time series with the global signal is an indicator of high partial volume effect.
 
 ### ICA-AROMA
 What you’re looking at:
