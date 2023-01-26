@@ -168,7 +168,10 @@ The brain edge (or crown) ROI (green contour) picks signals outside but close to
 
 ### Variance explained by t/a CompCor components
 
-Explained in more depth by <https://fmriprep.readthedocs.io/en/stable/outputs.html#confounds-and-carpet-plot-on-the-visual-reports> but may be useful to duplicate some of this information here?
+The figure displays the cumulative variance explained by components for each of four CompCor decompositions (left to right: anatomical CSF mask, anatomical white matter mask, anatomical combined mask, temporal). Dotted lines indicate the minimum number of components necessary to explain 50%, 70%, and 90% of the variance in the nuisance mask. By default, only the components that explain the top 50% of the variance are saved. The number of components that must be included in the model in order to explain some fraction of variance in the decomposition mask can be used as a feature selection criterion for confound regression.
+
+* Good:
+* Bad:
  
 ### BOLD summary
 
