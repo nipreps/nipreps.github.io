@@ -169,9 +169,6 @@ The brain edge (or crown) ROI (green contour) picks signals outside but close to
 ### Variance explained by t/a CompCor components
 
 The figure displays the cumulative variance explained by components for each of four CompCor decompositions (left to right: anatomical CSF mask, anatomical white matter mask, anatomical combined mask, temporal). Dotted lines indicate the minimum number of components necessary to explain 50%, 70%, and 90% of the variance in the nuisance mask. By default, only the components that explain the top 50% of the variance are saved. The number of components that must be included in the model in order to explain some fraction of variance in the decomposition mask can be used as a feature selection criterion for confound regression.
-
-* Good:
-* Bad:
  
 ### BOLD summary
 
@@ -206,11 +203,12 @@ What you’re looking at:
 * Link to documentation on confounds: <https://fmriprep.readthedocs.io/en/stable/outputs.html#confounds>
 
 ## About
+This section is a textual summary, containing the version of fMRIPrep, which command was run and the dates when the data were preprocessed. It is good to check that all of this information is as expected.
  
 ## Methods
- 
-## Errors
+This section provides a boilerplate describing in detail the preprocessing of the images. We kindly ask to report results preprocessed with fMRIPrep using that boilerplate. The latter is available in three languages (HTML, Markdown and Latex) to faciliate integration in manuscripts.
 
+## Errors
 This section tells you whether fMRIPrep encountered any problems during the preprocessing. Note that “errors” refers only to problems in running fMRIPrep, and NOT problems with the quality of the resulting images. This section won’t flag participants in which fMRIPrep was able to successfully run to completion but yielded poor results, or in which the input data was of lower-than-desirable quality.
 
 ## Things that aren’t an issue
