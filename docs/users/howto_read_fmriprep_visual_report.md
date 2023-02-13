@@ -1,12 +1,12 @@
 # How To Read fMRIPrep visual Report
 
 fMRIPrep generates HTML visual reports that allow you to check the results of the preprocessing steps that were applied to the data. 
-Note: this is not a replacement for running quality control of your images before running fMRIPrep (FAQ link: https://fmriprep.readthedocs.io/en/stable/faq.html) 
+Note: this is not a replacement for running quality control of your images before running fMRIPrep (FAQ link: https://fmriprep.readthedocs.io/en/stable/faq.html). 
 Below is a guide to interpreting the information contained in the visual reports, organized by subsection of the report.
 
 If you have examples of “bad” preprocessing results that you’re willing to share, please [submit them somewhere?] with a short description of the problem (for example, “bad skull stripping”).
 
-When you open a report, it may be helpful to first jump to the [Errors subsection](LINK) to see whether fMRIPrep encountered any errors during preprocessing. Note that “errors” refers only to problems in running fMRIPrep, and NOT problems with the quality of the resulting images. This section won’t flag participants in which fMRIPrep was able to successfully run to completion but yielded poor results. 
+When you open a report, it may be helpful to first jump to the Errors subsection to see whether fMRIPrep encountered any errors during preprocessing. Note that “errors” refers only to problems in running fMRIPrep, and NOT problems with the quality of the resulting images. This section won’t flag participants in which fMRIPrep was able to successfully run to completion but yielded poor results. 
 
 ## **Summary**
 
@@ -31,10 +31,10 @@ This report displays the brain mask and the brain tissue segmentation computed f
     * Good:
         * The intensity of the image is uniform throughout the brain
     * Bad:
-        * Intensity non-uniformity artifacts (looks like the “original image” panel in the figure below):
+        * Intensity non-uniformity artifacts (looks like the “original image” panel in Figure 1):
  
         ![inu](../assets/fmriprep_visual_report/inu.png) 
-        *from Vovk, U., Pernus, F., & Likar, B. (2007). A review of methods for correction of intensity inhomogeneity in MRI. IEEE transactions on medical imaging, 26(3), 405-421.*
+        *Figure 1. from Vovk, U., Pernus, F., & Likar, B. (2007). A review of methods for correction of intensity inhomogeneity in MRI. IEEE transactions on medical imaging, 26(3), 405-421.*
 
 * Skull stripping
     * Good:
@@ -58,7 +58,7 @@ This report displays the brain mask and the brain tissue segmentation computed f
         * T1w scans showcasing a low signal-to-noise ratio because of thermal noise will present scattered misclassified voxels within piecewise-smooth regions (generally more identifiable in the WM and inside the ventricles). 
             * These scans should be excluded except for images where these voxels are only present at subcortical structures (e.g., thalamus) or nearby tissue boundaries. In the latter case, the misclassification results from partial volume effects (i.e., indeed, such voxels contain varying fractions of two or more tissues). The figure below illustrates the difference between individual dots caused by noise versus partial volume effects.
             ![noise-in-segmentation](../assets/fmriprep_visual_report/noise-in-segmentation.svg) 
-            *Fig. 2. Error in brain tissue segmentation of T1w images. (A) The presence of noise compromises the segmentation leading to single voxels being excluded from the ventricle mask. The subject has thus been excluded from further analysis. (B) A series of spots are visible at the boundary between GM and WM. Those spots are due to partial volume effect and thus is a flaw of the fMRIPrep segmentation implementation not of the image quality.*
+            *Figure 2. Error in brain tissue segmentation of T1w images. (A) The presence of noise compromises the segmentation leading to single voxels being excluded from the ventricle mask. The subject has thus been excluded from further analysis. (B) A series of spots are visible at the boundary between GM and WM. Those spots are due to partial volume effect and thus is a flaw of the fMRIPrep segmentation implementation not of the image quality.*
 
 * Common pitfalls in interpretation:
     * At the inter-hemispheric space, masks (and in particular the brain mask, despite its smooth edges) may intersect the visualization plane several times, giving the impression that the mask is cutting off brain regions. However, this is more of a visual effect on the cutting plane.
@@ -139,11 +139,11 @@ The alignment report shows the quality of co-registration and susceptibility dis
         * If the susceptibility distortion correction is unsuccessfull, residual susceptibility distortion artifacts can be observed. If the latter overlaps with regions of interest, the scan should be excluded.
         * Note however that some drop out in inferior brain regions (such as the OFC or medial temporal lobe) in functional images is somewhat inevitable. Depending on the type of analysis you’re doing and what you’re interested in, this may be more/less of an issue for you. If you see a lot of signal drop out, you will probably want to check the brain mask generated by fMRIPrep to see how that drop-out impacts the location and quantity of missing voxels in your brain mask.
         
-
 * Common pitfalls in interpretation:
     * Note that the BOLD images displayed in the report may have what appears to be an “artifact” in the data, as shown below. This is because the reports use a faster but less precise type of interpolation (Nearest Neighbor interpolation) for display. In actuality, fMRIPrep uses Lanczos interpolation for resampling, so these apparent “artifacts” are not present in the actual data (you can confirm this by checking the preprocessed BOLD NIFTI file and its registration to the T1w image in your preferred software). 
 
         ![apparent-artifact-interpolation](../assets/fmriprep_visual_report/apparent-artifact-interpolation.png)
+        *Figure 3. The use of a fast interpolation for display can lead to artifact-like structure that are not present in the actual data.*
 
 ### Brain mask and temporal/anatomical CompCor ROIs
 
@@ -156,14 +156,16 @@ The temporal CompCor ROI (blue contour) contains the top 2% most variable voxels
 The brain edge (or crown) ROI (green contour) picks signals outside but close to the brain, which are decomposed into 24 principal components.
 
 * Good:
-    * The brain mask correctly surrounds the brain boundary, not leaving out brain area. Note that holes in the brain mask such as on the figure below, is not problematic as it should not disrupt co-registration.
+    * The brain mask correctly surrounds the brain boundary, not leaving out brain area. Note that holes in the brain mask such as on Figure 4, is not problematic as it should not disrupt co-registration.
     ![hole-bold-brainmask](../assets/fmriprep_visual_report/hold-bold-brainmask.png)
+    *Figure 4. Such holes in the brain mask is not problematic as it should not disrupt co-registration.*
 
 * Bad:
     * The brain mask computed from the BOLD image mainly influences confounds estimation, but also co-registration, although the latter is primarily driven by the WM mask. As such the brain mask must not leave out any brain area, but it can be a bit loose around the brain. If the mask intersects with brain-originating signal, the nuisance regressors should not be used.
     * If the study plan prescribes using CompCor or brain-edge regressors, it is critical to exclude BOLD runs where any of these masks substantially overlap regions of interest.
-    * The shape and the large overlap of the tCompCor with region of interest can also indicate the presence of an artifact that was missed in the other visualizations (e.g see figure below). In this case, the scan should be excluded. 
-    ![suspicious-compcor](../assets/fmriprep_visual_report/suspicious-compcor.png)  
+    * The shape and the large overlap of the tCompCor with region of interest can also indicate the presence of an artifact that was missed in the other visualizations (e.g see Figure 5). In this case, the scan should be excluded. 
+    ![suspicious-compcor](../assets/fmriprep_visual_report/suspicious-compcor.png)
+    *Figure 5. The shape and the large overlap of the tCompCor with region of interest indicates the presence of an artifact that was missed in the other visualizations.*  
 
 ### Variance explained by t/a CompCor components
 
@@ -184,14 +186,14 @@ The BOLD summary report shows several characteristic statistics along with a car
 
 * Bad:
     * Strongly structured crown region in the carpet plot is a sign that artifacts are compromising the fMRI scan [provins2022][7]. Several types of carpet plot modulations can be differentiated and are illustrated in the figure below.
-        * Motion outbursts, visible as peaks in the FD trace, are often paired with prolonged dark deflections derived from spin-history effects (see subfigure A). 
-        * Periodic modulations on the carpet plot indicate regular and slow motion, e.g., caused by respiration, which may also compromise the signal of interest (see subfigure B). 
-        * Coil failures may be identifiable as a sudden change in overall signal intensity on the carpet plot not paired that is not paired with motion peaks and generally sustained through the end of the scan (see subfigure C). 
-        * A strong polarized structure revealed by the clustering of carpet plot rows suggests that artifacts mitigate the signal of interest. Indeed, sorting the rows (i.e., the time series) of each segment of the carpet plot such that voxels with similar BOLD dynamics appear close to one another reveals non-global structure in the signal, which is obscured when voxels are ordered randomly [aquino2020][8].
+        * Motion outbursts, visible as peaks in the FD trace, are often paired with prolonged dark deflections derived from spin-history effects (see Figure 6A). 
+        * Periodic modulations on the carpet plot indicate regular and slow motion, e.g., caused by respiration, which may also compromise the signal of interest (see Figure 6B). 
+        * Coil failures may be identifiable as a sudden change in overall signal intensity on the carpet plot not paired that is not paired with motion peaks and generally sustained through the end of the scan (see Figure 6C). 
+        * A strong polarized structure revealed by the clustering of carpet plot rows suggests that artifacts mitigate the signal of interest (see Figure 6D). Indeed, sorting the rows (i.e., the time series) of each segment of the carpet plot such that voxels with similar BOLD dynamics appear close to one another reveals non-global structure in the signal, which is obscured when voxels are ordered randomly [aquino2020][8].
         * Finding temporal patterns similar in gray matter areas and simultaneously in regions of no interest (for instance, CSF or the crown) indicates the presence of artifacts, typically derived from head motion. If the planned analysis specifies noise regression techniques based on information from these regions of no interest (which is standard and recommended [ciric2017][9]), the risk of removing signals with neural origins is high, and affected scans should be excluded. 
 
     ![carpetplot_artifacts](../assets/fmriprep_visual_report/carpetplot_artifacts.png)
-
+    *Figure 6. Assessment of time series with the carpet plot. The crown region of the carpet plot comprises voxels outside the brain. As such, structure in the crown can be interpreted as artifactual, and thus corresponds to an exclusion criteria. (A) Motion outbursts, visible as peaks in the framewise displacement (FD) trace, are often paired with prolonged dark deflections. (B) Periodic modulations are indicative of regular, slow motion, e.g., caused by respiration. (C) An abrupt change in overall signal intensity that is not paired with motion peaks can be attributed to coil failure. (D) A strong polarized structure revealed by the clustering of carpet plot rows also suggests that artifacts mitigate the signal of interest.*
     
  * Common pitfalls in interpretation
     * The variance and the scaling of the trace plots affect a lot their display and interpretation (in other words, spikes are relative to other datapoints in the timeseries). Therefore, always pay attention to the trace metrics like its maximum and mean, before deriving any conclusion.
@@ -223,14 +225,17 @@ If fMRIPrep is run with the --use-aroma argument is generates an independent com
     * Refer to <https://fmriprep.readthedocs.io/en/stable/outputs.html#confounds> for more details on how to denoise your data using ICA-AROMA confounds.
 
 * Bad:
-    * Spin-history effects in ICA-AROMA : One recurring artifactual family of components emerges when motion interacts with interleaved acquisition giving rise to the so-called spin-history effects. The spin-history effects appear as parallel stripes covering the whole brain in one direction (see figure below). They are a consequence of the repetition time not being much larger than the T1 relaxation time in typical fMRI designs. This implies that the spins will not completely relax when the next acquisition starts <https://imaging.mrc-cbu.cam.ac.uk/imaging/CommonArtefacts>. In addition, specific movements (e.g., rotation around one imaging axis, such as nodding) will exacerbate spin-history effects as slices will cut through the brain at different locations between consecutive BOLD time points. These two considerations combined mean that motion will produce spins with different excitation histories, and thus, the signal intensity will differ. Components showcasing parallel stripes concurring with slices in extreme poles of the brain or even across the whole brain are likely to capture these effects.
+    * Spin-history effects in ICA-AROMA : One recurring artifactual family of components emerges when motion interacts with interleaved acquisition giving rise to the so-called spin-history effects. The spin-history effects appear as parallel stripes covering the whole brain in one direction (see Figure 7). They are a consequence of the repetition time not being much larger than the T1 relaxation time in typical fMRI designs. This implies that the spins will not completely relax when the next acquisition starts <https://imaging.mrc-cbu.cam.ac.uk/imaging/CommonArtefacts>. In addition, specific movements (e.g., rotation around one imaging axis, such as nodding) will exacerbate spin-history effects as slices will cut through the brain at different locations between consecutive BOLD time points. These two considerations combined mean that motion will produce spins with different excitation histories, and thus, the signal intensity will differ. Components showcasing parallel stripes concurring with slices in extreme poles of the brain or even across the whole brain are likely to capture these effects.
     ![ica_spin_history_effect](../assets/fmriprep_visual_report/ica_spin_history_effect.png)
+    *Figure 7. Spin-history effect in ICA-AROMA*
 
     * Slice-timing artifacts in ICA-AROMA: A stripping pattern is visible and it matches alternative slices <https://neurostars.org/t/potential-issue-in-ica-aroma-report/4231/6>.
     ![ica_slice_timing](../assets/fmriprep_visual_report/ica_slice_timing.png)
+    *Figure 8. Slice-timing artifact in ICA-AROMA*
 
     * Multi-band artifacts in ICA-AROMA: The multi-band artifact also appears as a stripping pattern, however their spacing do not match alternative slices <https://neurostars.org/t/potential-issue-in-ica-aroma-report/4231>. What you see resembles one band being acquired.
-        ![ica_multiband](../assets/fmriprep_visual_report/ica_multiband.png)
+    ![ica_multiband](../assets/fmriprep_visual_report/ica_multiband.png)
+    *Figure 9. Multi-band artifact in ICA-AROMA*
 
 * Common pitfall in interpretation:
     * Note that AROMA has not been trained on multiband data, so it is possible that some of the components showing multiband artifacts are classified as signal.
