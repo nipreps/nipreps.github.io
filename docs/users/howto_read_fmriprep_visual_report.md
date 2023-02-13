@@ -165,24 +165,36 @@ The brain edge (or crown) ROI (green contour) picks signals outside but close to
     * The shape and the large overlap of the tCompCor with region of interest can also indicate the presence of an artifact that was missed in the other visualizations (e.g see figure below). In this case, the scan should be excluded. 
     ![suspicious-compcor](../assets/fmriprep_visual_report/suspicious-compcor.png)  
 
-
 ### Variance explained by t/a CompCor components
 
 The figure displays the cumulative variance explained by components for each of four CompCor decompositions (left to right: anatomical CSF mask, anatomical white matter mask, anatomical combined mask, temporal). Dotted lines indicate the minimum number of components necessary to explain 50%, 70%, and 90% of the variance in the nuisance mask. By default, only the components that explain the top 50% of the variance are saved. The number of components that must be included in the model in order to explain some fraction of variance in the decomposition mask can be used as a feature selection criterion for confound regression.
  
 ### BOLD summary
 
-The BOLD summary report shows several characteristic statistics along with a carpetplot (Power, 2016), giving a view of the temporal characteristics of the preprocessed BOLD series.
-* Good:
-* Bad:
-Note on how variance and scaling affects this display? (in other words, spikes are relative to other datapoints in the timeseries)
+The BOLD summary report shows several characteristic statistics along with a carpet plot [power2017][5], giving a view of the temporal characteristics of the preprocessed BOLD series. The carpet plot is a tool to visualize changes in voxel intensities throughout an fMRI scan. It works by plotting voxel time series in close spatial proximity so that the eye notes temporal coincidence. One particular innovation of this carpet plot implementation is that it contains the "crown" area corresponding to voxels located on a closed band around the brain's outer edge [patriat2015][6]. As those voxels are outside the brain, we do not expect any signal there, meaning that the presence of signal can be interpreted as produced by an artifact.
 * Definitions: 
-    * GS
-    * GSCSF
-    * GSWM
-    * DVARS
-        * *standardized DVARS!* <https://neurostars.org/t/fmriprep-standardised-dvars/5271> 
-    * FD
+    * GS - global signal calculated in the whole-brain show the mean BOLD signal in the corresponding mask.
+    * GSCSF - global signal calculated within cerebrospinal fluid (CSF)
+    * GSWM - global signal calculated within white matter (WM)
+    * DVARS - [*standardized DVARS!*](https://neurostars.org/t/fmriprep-standardised-dvars/5271) for each time point
+    * FD - framewise-displacement measures for each time point
+
+* Good:
+    * The carpet plot is homogeneous, particularly in the edge.
+
+* Bad:
+    * Strongly structured crown region in the carpet plot is a sign that artifacts are compromising the fMRI scan [provins2022][7]. Several types of carpet plot modulations can be differentiated and are illustrated in the figure below.
+        * Motion outbursts, visible as peaks in the FD trace, are often paired with prolonged dark deflections derived from spin-history effects (see subfigure A). 
+        * Periodic modulations on the carpet plot indicate regular and slow motion, e.g., caused by respiration, which may also compromise the signal of interest (see subfigure B). 
+        * Coil failures may be identifiable as a sudden change in overall signal intensity on the carpet plot not paired that is not paired with motion peaks and generally sustained through the end of the scan (see subfigure C). 
+        * A strong polarized structure revealed by the clustering of carpet plot rows suggests that artifacts mitigate the signal of interest. Indeed, sorting the rows (i.e., the time series) of each segment of the carpet plot such that voxels with similar BOLD dynamics appear close to one another reveals non-global structure in the signal, which is obscured when voxels are ordered randomly [aquino2020][8].
+        * Finding temporal patterns similar in gray matter areas and simultaneously in regions of no interest (for instance, CSF or the crown) indicates the presence of artifacts, typically derived from head motion. If the planned analysis specifies noise regression techniques based on information from these regions of no interest (which is standard and recommended [ciric2017][9]), the risk of removing signals with neural origins is high, and affected scans should be excluded. 
+
+    ![carpetplot_artifacts](../assets/fmriprep_visual_report/carpetplot_artifacts.png)
+
+    
+ * Common pitfalls in interpretation
+    * The variance and the scaling of the trace plots affect a lot their display and interpretation (in other words, spikes are relative to other datapoints in the timeseries). Therefore, always pay attention to the trace metrics like its maximum and mean, before deriving any conclusion.
 
 ### Correlations among nuisance regressors
 
@@ -190,7 +202,7 @@ This report presents a plot of correlations among confound regressors. The left-
 
 * Selection of a confound model
     * Good:
-        * Carefully choose a serie of regressors that are not highly correlated to include in the confound model.
+        * Carefully choose a serie of regressors that are not highly correlated to include in the confound model. Refer to <https://fmriprep.org/en/stable/outputs.html#confounds> for more information on how to choose the nuisance regressors.
         * Or proceed with feature orthogonalization before confound regression.
     * Bad: 
         * Include in the confound model two regressors that are highly correlated.
@@ -235,3 +247,9 @@ If you are interested in knowing more about quality control, we wrote [a paper e
 [2] : White, Tonya, Philip R. Jansen, Ryan L. Muetzel, Gustavo Sudre, Hanan El Marroun, Henning Tiemeier, Anqi Qiu, Philip Shaw, Andrew M. Michael, and Frank C. Verhulst. 2018. “Automated Quality Assessment of Structural Magnetic Resonance Images in Children: Comparison with Visual Inspection and Surface-Based Reconstruction.” Human Brain Mapping 39 (3): 1218–31. <https://doi.org/10.1002/hbm.23911>.
 [3] : Klapwijk, Eduard T., Ferdi van de Kamp, Mara van der Meulen, Sabine Peters, and Lara M. Wierenga. 2019. “Qoala-T: A Supervised-Learning Tool for Quality Control of FreeSurfer Segmented MRI Data.” NeuroImage 189 (April): 116–29. <https://doi.org/10.1016/j.neuroimage.2019.01.014>.
 [4] : Behzadi, Yashar, Khaled Restom, Joy Liau, and Thomas T. Liu. 2007. “A Component Based Noise Correction Method (CompCor) for BOLD and Perfusion Based FMRI.” NeuroImage 37 (1): 90–101. <https://doi.org/10.1016/j.neuroimage.2007.04.042>.
+[5] : Power, Jonathan D. 2017. “A Simple but Useful Way to Assess FMRI Scan Qualities.” NeuroImage 154 (July): 150–58. https://doi.org/10.1016/j.neuroimage.2016.08.009.
+[6] : Patriat R, Molloy E, Birn R, Guitchev T, Popov A. Using Edge Voxel Information to Improve Motion Regression for rs-fMRI Connectivity Studies. Brain Connect. 2015;5(9):582-595. doi:10.1089/brain.2014.0321
+[7] : Provins, Céline, Christopher J. Markiewicz, Rastko Ciric, Mathias Goncalves, César Caballero-Gaudes, Russell Poldrack, Patric Hagmann, and Oscar Esteban. 2022. “Quality Control and Nuisance Regression of FMRI, Looking out Where Signal Should Not Be Found.” Proc. Intl. Soc. Mag. Reson. Med. 31, (ISMRM), pp. 2683. https://doi.org/10.31219/osf.io/hz52v.
+[8] : Aquino KM, Fulcher BD, Parkes L, Sabaroedin K, Fornito A. Identifying and removing widespread signal deflections from fMRI data: Rethinking the global signal regression problem. NeuroImage. 2020;212:116614. doi:10.1016/j.neuroimage.2020.116614
+[9] : Ciric, Rastko, Daniel H. Wolf, Jonathan D. Power, David R. Roalf, Graham L. Baum, Kosha Ruparel, Russell T. Shinohara, et al. 2017. “Benchmarking of Participant-Level Confound Regression Strategies for the Control of Motion Artifact in Studies of Functional Connectivity.” NeuroImage, 154: 174–87. https://doi.org/10.1016/j.neuroimage.2017.03.020.
+
