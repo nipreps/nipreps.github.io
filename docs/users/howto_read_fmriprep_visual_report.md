@@ -215,16 +215,25 @@ This report presents a plot of correlations among confound regressors. The left-
         * High correlation of confound time series with the global signal is an indicator of high partial volume effect.
 
 ### ICA-AROMA
-What you’re looking at:
-* Glass brain
-* Map with time on the top and frequency on the bottom
-* 1) the spatial map, 2) the time course, and 3) the power spectrum of the time c
-* Artifact components (red) should have more high-frequency noise whereas signal components (green) should have their peak in the   lower-frequency range
-* Artifacts you might see:
-    * Multi-band artifacts in ICA-AROMA: <https://neurostars.org/t/potential-issue-in-ica-aroma-report/4231>
-        * Note on ICA-AROMA and multiband data 
-* Slice-timing artifacts in ICA-AROMA: <https://neurostars.org/t/potential-issue-in-ica-aroma-report/4231/6> 
-* Link to documentation on confounds: <https://fmriprep.readthedocs.io/en/stable/outputs.html#confounds>
+
+If fMRIPrep is run with the --use-aroma argument is generates an independent component decomposition using FSL MELODIC [beckmann2004][10]. Such techniques have been thoroughly described elsewhere [griffanti2017][11], but in short AROMA is an ICA based procedure to identify confounding time series related to head-motion [prium2015][12]. Each component is mapped on a glass brain next to an indication of its frequency spectrum and its corresponding weight over time. 
+
+* Good:
+    * Artifact components (red) should have more high-frequency noise whereas signal components (green) should have their peak in the lower-frequency range.
+    * Refer to <https://fmriprep.readthedocs.io/en/stable/outputs.html#confounds> for more details on how to denoise your data using ICA-AROMA confounds.
+
+* Bad:
+    * Spin-history effects in ICA-AROMA : One recurring artifactual family of components emerges when motion interacts with interleaved acquisition giving rise to the so-called spin-history effects. The spin-history effects appear as parallel stripes covering the whole brain in one direction (see figure below). They are a consequence of the repetition time not being much larger than the T1 relaxation time in typical fMRI designs. This implies that the spins will not completely relax when the next acquisition starts <https://imaging.mrc-cbu.cam.ac.uk/imaging/CommonArtefacts>. In addition, specific movements (e.g., rotation around one imaging axis, such as nodding) will exacerbate spin-history effects as slices will cut through the brain at different locations between consecutive BOLD time points. These two considerations combined mean that motion will produce spins with different excitation histories, and thus, the signal intensity will differ. Components showcasing parallel stripes concurring with slices in extreme poles of the brain or even across the whole brain are likely to capture these effects.
+    ![ica_spin_history_effect](../assets/fmriprep_visual_report/ica_spin_history_effect.png)
+
+    * Slice-timing artifacts in ICA-AROMA: A stripping pattern is visible and it matches alternative slices <https://neurostars.org/t/potential-issue-in-ica-aroma-report/4231/6>.
+    ![ica_slice_timing](../assets/fmriprep_visual_report/ica_slice_timing.png)
+
+    * Multi-band artifacts in ICA-AROMA: The multi-band artifact also appears as a stripping pattern, however their spacing do not match alternative slices <https://neurostars.org/t/potential-issue-in-ica-aroma-report/4231>. What you see resembles one band being acquired.
+        ![ica_multiband](../assets/fmriprep_visual_report/ica_multiband.png)
+
+* Common pitfall in interpretation:
+    * Note that AROMA has not been trained on multiband data, so it is possible that some of the components showing multiband artifacts are classified as signal.
 
 ## About
 This section is a textual summary, containing the version of fMRIPrep, which command was run and the dates when the data were preprocessed. It is good to check that all of this information is as expected.
@@ -252,4 +261,6 @@ If you are interested in knowing more about quality control, we wrote [a paper e
 [7] : Provins, Céline, Christopher J. Markiewicz, Rastko Ciric, Mathias Goncalves, César Caballero-Gaudes, Russell Poldrack, Patric Hagmann, and Oscar Esteban. 2022. “Quality Control and Nuisance Regression of FMRI, Looking out Where Signal Should Not Be Found.” Proc. Intl. Soc. Mag. Reson. Med. 31, (ISMRM), pp. 2683. https://doi.org/10.31219/osf.io/hz52v.
 [8] : Aquino KM, Fulcher BD, Parkes L, Sabaroedin K, Fornito A. Identifying and removing widespread signal deflections from fMRI data: Rethinking the global signal regression problem. NeuroImage. 2020;212:116614. doi:10.1016/j.neuroimage.2020.116614
 [9] : Ciric, Rastko, Daniel H. Wolf, Jonathan D. Power, David R. Roalf, Graham L. Baum, Kosha Ruparel, Russell T. Shinohara, et al. 2017. “Benchmarking of Participant-Level Confound Regression Strategies for the Control of Motion Artifact in Studies of Functional Connectivity.” NeuroImage, 154: 174–87. https://doi.org/10.1016/j.neuroimage.2017.03.020.
-
+[10] : Beckmann, Christian F., and Stephen M. Smith. 2004. “Probabilistic Independent Component Analysis for Functional Magnetic Resonance Imaging.” IEEE Transactions on Medical Imaging 23 (2): 137–52. https://doi.org/10.1109/TMI.2003.822821.
+[11] : Griffanti, Ludovica, Gwenaëlle Douaud, Janine Bijsterbosch, Stefania Evangelisti, Fidel Alfaro-Almagro, Matthew F. Glasser, Eugene P. Duff, et al. 2017. “Hand Classification of FMRI ICA Noise Components.” NeuroImage 154 (July): 188–205. https://doi.org/10.1016/j.neuroimage.2016.12.036.
+[12] : Pruim RHR, Mennes M, van Rooij D, Llera A, Buitelaar JK, Beckmann CF. ICA-AROMA: A robust ICA-based strategy for removing motion artifacts from fMRI data. Neuroimage. 2015 May 15;112:267–77. doi:10.1016/j.neuroimage.2015.02.064.
