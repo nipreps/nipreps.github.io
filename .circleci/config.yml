@@ -33,9 +33,9 @@ jobs:
             mkdocs build --site-dir _site_preview
       - store_artifacts:
           path: _site_preview
- workflows:
-  build:
-    when: << pipeline.parameters.GHA_Action >>
-    jobs:
-      - build
+workflows:
+build:
+  when: << pipeline.parameters.GHA_Action >>
+  jobs:
+    - build
 
