@@ -1,18 +1,6 @@
 version: 2.1
 
-parameters:
-  GHA_Actor:
-    type: string
-    default: ""
-  GHA_Action:
-    type: string
-    default: ""
-  GHA_Event:
-    type: string
-    default: ""
-  GHA_Meta:
-    type: string
-    default: ""
+
     
 jobs:
   build:
@@ -33,9 +21,5 @@ jobs:
             mkdocs build --site-dir _site_preview
       - store_artifacts:
           path: _site_preview
-workflows:
-  build:
-    when: << pipeline.parameters.GHA_Action >>
-    jobs:
-      - build
+
 
