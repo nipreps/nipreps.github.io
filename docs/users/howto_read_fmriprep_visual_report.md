@@ -171,8 +171,10 @@ The brain edge (or crown) ROI (green contour) picks signals outside but close to
 
 The figure displays the cumulative variance explained by components for each of four CompCor decompositions (left to right: anatomical CSF mask, anatomical white matter mask, anatomical combined mask, temporal). Dotted lines indicate the minimum number of components necessary to explain 50%, 70%, and 90% of the variance in the nuisance mask.The number of components that must be included in the model in order to explain some fraction of variance in the decomposition mask can be used as a feature selection criterion for confound regression.
 
+ * Better:
     * High variance explained: A high variance explained by t/aCompCor components indicates that the selected regions of interest are capturing a significant portion of the motion and physiological noise in the data, which can improve the quality of subsequent analyses. In the fMRIPrep reports, by default only the components that explain the top 50% of the variance are saved. 
 
+* Worse:
     * Low variance explained: A low variance explained by t/aCompCor components may indicate that the selected regions of interest are not capturing enough of the motion and physiological noise in the data, which can lead to reduced sensitivity and specificity in subsequent analyses.
 
 The benchmark for % variance explained and/or optimal number of CompCor components to include in the analysis can vary, depending on the specific dataset and analysis goals. In general, the goal is to select enough components to capture the majority of the motion and physiological noise in the data, while avoiding overfitting the model to noise or task-related signal.
@@ -188,19 +190,19 @@ The BOLD summary report shows several characteristic statistics along with a car
     * FD - framewise-displacement measures for each time point
 
 * Better:
-    * The carpet plot is homogeneous, particularly in the edge.
+    * The carpet plot is homogeneous, particularly in the brain edge.
 
 * Worse:
-    * Strongly structured crown region in the carpet plot is a sign that artifacts are compromising the fMRI scan [provins2022][7]. Several types of carpet plot modulations can be differentiated and are illustrated in the figure below.
+    * Strongly structured brain edge region in the carpet plot is a sign that artifacts are compromising the fMRI scan [provins2022][7]. Several types of carpet plot modulations can be differentiated and are illustrated in the figure below.
         * Motion outbursts, visible as peaks in the FD trace, are often paired with prolonged dark deflections derived from spin-history effects (see Figure 6A). 
         * Periodic modulations on the carpet plot indicate regular and slow motion, e.g., caused by respiration, which may also compromise the signal of interest (see Figure 6B). 
         * Coil failures may be identifiable as a sudden change in overall signal intensity on the carpet plot not paired that is not paired with motion peaks and generally sustained through the end of the scan (see Figure 6C). 
         * A strong polarized structure revealed by the clustering of carpet plot rows suggests that artifacts mitigate the signal of interest (see Figure 6D). Indeed, sorting the rows (i.e., the time series) of each segment of the carpet plot such that voxels with similar BOLD dynamics appear close to one another reveals non-global structure in the signal, which is obscured when voxels are ordered randomly [aquino2020][8].
-        * Finding temporal patterns similar in gray matter areas and simultaneously in regions of no interest (for instance, CSF or the crown) indicates the presence of artifacts, typically derived from head motion. If the planned analysis specifies noise regression techniques based on information from these regions of no interest (which is standard and recommended [ciric2017][9]), the risk of removing signals with neural origins is high, and affected scans should be excluded. For example, in standard task-based fMRI, stimulus presentation might evoke both participant movement and neural responses (_stimulus-correlated motion_).
+        * Finding temporal patterns similar in gray matter areas and simultaneously in regions of no interest (for instance, CSF or the brain edge) indicates the presence of artifacts, typically derived from head motion. If the planned analysis specifies noise regression techniques based on information from these regions of no interest (which is standard and recommended [ciric2017][9]), the risk of removing signals with neural origins is high, and affected scans should be excluded. For example, in standard task-based fMRI, stimulus presentation might evoke both participant movement and neural responses (_stimulus-correlated motion_).
         
 
     ![carpetplot_artifacts](../assets/fmriprep_visual_report/carpetplot_artifacts.png)
-    *Figure 6. Assessment of time series with the carpet plot. The crown region of the carpet plot comprises voxels outside the brain. As such, structure in the crown can be interpreted as artifactual, and thus corresponds to an exclusion criteria. (A) Motion outbursts, visible as peaks in the framewise displacement (FD) trace, are often paired with prolonged dark deflections. (B) Periodic modulations are indicative of regular, slow motion, e.g., caused by respiration. (C) An abrupt change in overall signal intensity that is not paired with motion peaks can be attributed to coil failure. (D) A strong polarized structure revealed by the clustering of carpet plot rows also suggests that artifacts mitigate the signal of interest.*
+    *Figure 6. Assessment of time series with the carpet plot. The brain edge region of the carpet plot comprises voxels outside the brain. As such, structure in the brain edge can be interpreted as artifactual, and thus corresponds to an exclusion criteria. (A) Motion outbursts, visible as peaks in the framewise displacement (FD) trace, are often paired with prolonged dark deflections. (B) Periodic modulations are indicative of regular, slow motion, e.g., caused by respiration. (C) An abrupt change in overall signal intensity that is not paired with motion peaks can be attributed to coil failure. (D) A strong polarized structure revealed by the clustering of carpet plot rows also suggests that artifacts mitigate the signal of interest.*
     
  * Common pitfalls in interpretation
     * The variance and the scaling of the trace plots affect a lot their display and interpretation (in other words, spikes are relative to other datapoints in the timeseries). Therefore, always pay attention to the trace metrics like its maximum and mean, before deriving any conclusion or visually comparing the trace plots between two participants.
@@ -245,19 +247,19 @@ If fMRIPrep is run with the --use-aroma argument is generates an independent com
     ![ica_slice_timing](../assets/fmriprep_visual_report/ica_slice_timing.png)
     *Figure 8. Slice-timing artifact in ICA-AROMA*
 
-### Note on multiband/multi-echo fMRI data
+#### Note on multiband/multi-echo fMRI data
 
 Multiband/multiecho fMRI acquisitions can be used to improve the temporal and spatial resolution of fMRI data, but they can also introduce several types of artifacts, such as slice crosstalk, aliasing, and signal dropout. ICA-AROMA was not trained on multiband/multi-echo data, so it is possible that it may not perform as accurately as it does for single-band data. For an ICA-based denoising approach specifically for multi-echo fMRI, see [TEDANA](https://tedana.readthedocs.io/en/stable/).
 
-    * Multi-band artifacts in ICA-AROMA: The multi-band artifact also appears as a stripping pattern, however their spacing do not match alternative slices <https://neurostars.org/t/potential-issue-in-ica-aroma-report/4231>. What you see resembles one band being acquired.
-    ![ica_multiband](../assets/fmriprep_visual_report/ica_multiband.png)
-    *Figure 9. Multi-band artifact in ICA-AROMA*
-    
-    * Aliasing artifacts may be visible as duplicate components in the ICA-AROMA plots. Aliasing artifacts can occur in multiband fMRI data when the phase-encoding direction is not sampled densely enough, resulting in aliasing of signal from adjacent slices (these artifacts may also appear elsewhere, as ghosting or blurring of the brain image).
-    
-    * Signal dropout (due to susceptibility effects) may be visible in the ICA-AROMA plots as components with very low or absent time courses.
-    
-    * Slice crosstalk artifacts may be visible as components with time courses that resemble signal from adjacent slices. Slice crosstalk can occur in multiband fMRI data due to the inter-slice signal leakage, and can appear as spurious signals in the neighboring slices. 
+* Multi-band artifacts in ICA-AROMA: The multi-band artifact also appears as a stripping pattern, however their spacing do not match alternative slices <https://neurostars.org/t/potential-issue-in-ica-aroma-report/4231>. What you see resembles one band being acquired.
+![ica_multiband](../assets/fmriprep_visual_report/ica_multiband.png)
+*Figure 9. Multi-band artifact in ICA-AROMA*
+
+* Aliasing artifacts may be visible as duplicate components in the ICA-AROMA plots. Aliasing artifacts can occur in multiband fMRI data when the phase-encoding direction is not sampled densely enough, resulting in aliasing of signal from adjacent slices (these artifacts may also appear elsewhere, as ghosting or blurring of the brain image).
+
+* Signal dropout (due to susceptibility effects) may be visible in the ICA-AROMA plots as components with very low or absent time courses.
+
+* Slice crosstalk artifacts may be visible as components with time courses that resemble signal from adjacent slices. Slice crosstalk can occur in multiband fMRI data due to the inter-slice signal leakage, and can appear as spurious signals in the neighboring slices.
 
 ## About
 This section is a textual summary, containing the version of fMRIPrep, which command was run and the dates when the data were preprocessed. It is good to check that all of this information is as expected.
@@ -273,20 +275,30 @@ This section tells you whether fMRIPrep encountered any problems during the prep
     * In the report visualizations that display a panel of slices, sometimes it will appear as though there is a slice missing - for example, nothing is shown for x = -12. This is a problem with the visualization and does NOT indicate the slice is missing from the actual data. You can try reloading the report, or opening it with Chrome if you’re using another browser, as well as using your preferred NIFTI viewer to check the data. 
 
 ## Further material
-If you are interested in knowing more about quality control, we wrote [a paper entitled "Quality control in functional MRI studies with MRIQC and fMRIPrep"](https://doi.org/10.3389/fnimg.2022.1073734) that describes how the visual inspection of fMRIPrep's report lies within the broader scope of quality control. In that paper, we demonstrate in details a protocol to perform quality control of unprocessed and minimally preprocessed BOLD fMRI images based on the visual assessment of MRIQC and fMRIPrep reports respectively. We additionally apply the protocol on a composite dataset drawn from open fMRI studies and illustrate exclusion criteria with examples.
+If you are interested in knowing more about quality control, we wrote [a paper entitled "Quality control in functional MRI studies with MRIQC and fMRIPrep"](https://doi.org/10.3389/fnimg.2022.1073734) that describes how the visual inspection of fMRIPrep's report lies within the broader scope of quality control of fMRI data. In that paper, we demonstrate in details a protocol to perform quality control of unprocessed and minimally preprocessed BOLD fMRI images based on the visual assessment of MRIQC and fMRIPrep reports respectively. We additionally apply the protocol on a composite dataset drawn from open fMRI studies and illustrate exclusion criteria with examples.
 
 ## References
 [1] : Fischl, Bruce. 2012. “FreeSurfer.” NeuroImage 62 (2): 774–81. <https://doi.org/10.1016/j.neuroimage.2012.01.021>.
+
 [2] : White, Tonya, Philip R. Jansen, Ryan L. Muetzel, Gustavo Sudre, Hanan El Marroun, Henning Tiemeier, Anqi Qiu, Philip Shaw, Andrew M. Michael, and Frank C. Verhulst. 2018. “Automated Quality Assessment of Structural Magnetic Resonance Images in Children: Comparison with Visual Inspection and Surface-Based Reconstruction.” Human Brain Mapping 39 (3): 1218–31. <https://doi.org/10.1002/hbm.23911>.
+
 [3] : Klapwijk, Eduard T., Ferdi van de Kamp, Mara van der Meulen, Sabine Peters, and Lara M. Wierenga. 2019. “Qoala-T: A Supervised-Learning Tool for Quality Control of FreeSurfer Segmented MRI Data.” NeuroImage 189 (April): 116–29. <https://doi.org/10.1016/j.neuroimage.2019.01.014>.
+
 [4] : Behzadi, Yashar, Khaled Restom, Joy Liau, and Thomas T. Liu. 2007. “A Component Based Noise Correction Method (CompCor) for BOLD and Perfusion Based FMRI.” NeuroImage 37 (1): 90–101. <https://doi.org/10.1016/j.neuroimage.2007.04.042>.
-[5] : Power, Jonathan D. 2017. “A Simple but Useful Way to Assess FMRI Scan Qualities.” NeuroImage 154 (July): 150–58. https://doi.org/10.1016/j.neuroimage.2016.08.009.
-[6] : Patriat R, Molloy E, Birn R, Guitchev T, Popov A. Using Edge Voxel Information to Improve Motion Regression for rs-fMRI Connectivity Studies. Brain Connect. 2015;5(9):582-595. doi:10.1089/brain.2014.0321
-[7] : Provins, Céline, Christopher J. Markiewicz, Rastko Ciric, Mathias Goncalves, César Caballero-Gaudes, Russell Poldrack, Patric Hagmann, and Oscar Esteban. 2022. “Quality Control and Nuisance Regression of FMRI, Looking out Where Signal Should Not Be Found.” Proc. Intl. Soc. Mag. Reson. Med. 31, (ISMRM), pp. 2683. https://doi.org/10.31219/osf.io/hz52v.
-[8] : Aquino KM, Fulcher BD, Parkes L, Sabaroedin K, Fornito A. Identifying and removing widespread signal deflections from fMRI data: Rethinking the global signal regression problem. NeuroImage. 2020;212:116614. doi:10.1016/j.neuroimage.2020.116614
-[9] : Ciric, Rastko, Daniel H. Wolf, Jonathan D. Power, David R. Roalf, Graham L. Baum, Kosha Ruparel, Russell T. Shinohara, et al. 2017. “Benchmarking of Participant-Level Confound Regression Strategies for the Control of Motion Artifact in Studies of Functional Connectivity.” NeuroImage, 154: 174–87. https://doi.org/10.1016/j.neuroimage.2017.03.020.
-[10] : Beckmann, Christian F., and Stephen M. Smith. 2004. “Probabilistic Independent Component Analysis for Functional Magnetic Resonance Imaging.” IEEE Transactions on Medical Imaging 23 (2): 137–52. https://doi.org/10.1109/TMI.2003.822821.
-[11] : Griffanti, Ludovica, Gwenaëlle Douaud, Janine Bijsterbosch, Stefania Evangelisti, Fidel Alfaro-Almagro, Matthew F. Glasser, Eugene P. Duff, et al. 2017. “Hand Classification of FMRI ICA Noise Components.” NeuroImage 154 (July): 188–205. https://doi.org/10.1016/j.neuroimage.2016.12.036.
-[12] : Pruim RHR, Mennes M, van Rooij D, Llera A, Buitelaar JK, Beckmann CF. ICA-AROMA: A robust ICA-based strategy for removing motion artifacts from fMRI data. Neuroimage. 2015 May 15;112:267–77. doi:10.1016/j.neuroimage.2015.02.064.
-[13] : Liu TT, Nalci A, Falahpour M. 2017. The global signal in fMRI: Nuisance or Information? Neuroimage: 150:213-29. doi:10.1016/j.neuroimage.2017.02.036.
-[14] : Dukart J, Bertolino A. When structure affects function–the need for partial volume effect correction in functional and resting state magnetic resonance imaging studies. PloS one:9(12);e114227. doi:10.1371/journal.pone.0114227
+
+[5] : Power, Jonathan D. 2017. “A Simple but Useful Way to Assess FMRI Scan Qualities.” NeuroImage 154 (July): 150–58. <https://doi.org/10.1016/j.neuroimage.2016.08.009>.
+[7] : Provins, Céline, Christopher J. Markiewicz, Rastko Ciric, Mathias Goncalves, César Caballero-Gaudes, Russell Poldrack, Patric Hagmann, and Oscar Esteban. 2022. “Quality Control and Nuisance Regression of FMRI, Looking out Where Signal Should Not Be Found.” Proc. Intl. Soc. Mag. Reson. Med. 31, (ISMRM), pp. 2683. <https://doi.org/10.31219/osf.io/hz52v>.
+
+[8] : Aquino KM, Fulcher BD, Parkes L, Sabaroedin K, Fornito A. Identifying and removing widespread signal deflections from fMRI data: Rethinking the global signal regression problem. NeuroImage. 2020;212:116614. <https://doi.org/10.1016/j.neuroimage.2020.116614>.
+
+[9] : Ciric, Rastko, Daniel H. Wolf, Jonathan D. Power, David R. Roalf, Graham L. Baum, Kosha Ruparel, Russell T. Shinohara, et al. 2017. “Benchmarking of Participant-Level Confound Regression Strategies for the Control of Motion Artifact in Studies of Functional Connectivity.” NeuroImage, 154: 174–87. <https://doi.org/10.1016/j.neuroimage.2017.03.020>.
+
+[10] : Beckmann, Christian F., and Stephen M. Smith. 2004. “Probabilistic Independent Component Analysis for Functional Magnetic Resonance Imaging.” IEEE Transactions on Medical Imaging 23 (2): 137–52. <https://doi.org/10.1109/TMI.2003.822821>.
+
+[11] : Griffanti, Ludovica, Gwenaëlle Douaud, Janine Bijsterbosch, Stefania Evangelisti, Fidel Alfaro-Almagro, Matthew F. Glasser, Eugene P. Duff, et al. 2017. “Hand Classification of FMRI ICA Noise Components.” NeuroImage 154 (July): 188–205. <https://doi.org/10.1016/j.neuroimage.2016.12.036>.
+
+[12] : Pruim RHR, Mennes M, van Rooij D, Llera A, Buitelaar JK, Beckmann CF. ICA-AROMA: A robust ICA-based strategy for removing motion artifacts from fMRI data. Neuroimage. 2015 May 15;112:267–77. <https://doi.org/10.1016/j.neuroimage.2015.02.064>.
+
+[13] : Liu TT, Nalci A, Falahpour M. 2017. The global signal in fMRI: Nuisance or Information? Neuroimage: 150:213-29. <https://doi.org/10.1016/j.neuroimage.2017.02.036>.
+
+[14] : Dukart J, Bertolino A. When structure affects function–the need for partial volume effect correction in functional and resting state magnetic resonance imaging studies. PloS one:9(12);e114227. <https://doi.org/10.1371/journal.pone.0114227>
