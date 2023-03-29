@@ -22,4 +22,19 @@ jobs:
       - store_artifacts:
           path: _site_preview
 
-
+workflows:
+  version: 2
+  commit:
+    jobs:
+      - build
+  nightly:
+    triggers:
+      - schedule:
+          cron: "0 13 * * 6"
+          filters:
+            branches:
+              only:
+                - mkdocs
+               
+    jobs:
+      - build
