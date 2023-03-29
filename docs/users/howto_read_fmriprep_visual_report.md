@@ -28,19 +28,19 @@ The reports first present results of anatomical preprocessing.
 This report displays the brain mask and the brain tissue segmentation computed from the T1w image. It shows the quality of intensity non-uniformity (INU) correction, skull stripping, and tissue segmentation.
 
 * INU correction
-    * Good:
+    * Better:
         * The intensity of the image is uniform throughout the brain
-    * Bad:
+    * Worse:
         * Intensity non-uniformity artifacts (looks like the “original image” panel in Figure 1):
  
         ![inu](../assets/fmriprep_visual_report/inu.png) 
         *Figure 1. from Vovk, U., Pernus, F., & Likar, B. (2007). A review of methods for correction of intensity inhomogeneity in MRI. IEEE transactions on medical imaging, 26(3), 405-421.*
 
 * Skull stripping
-    * Good:
+    * Better:
         * The brain mask (red) covers the whole brain and only the brain - not the dura or anything else outside the brain. It should closely follow the contour of the brain.
 
-    * Bad:
+    * Worse:
         * Skull-stripping failed leading to an inaccurate brain mask
             * The brain mask cuts off part of the brain and/or contains holes surrounding signal drop-out regions.
             * The brain mask includes parts that are clearly NOT brain.
@@ -49,10 +49,10 @@ This report displays the brain mask and the brain tissue segmentation computed f
             * Having an accurate brain mask makes the downstream preprocessing of an fMRI scan faster (excluding voxels of non-interest) and more accurate (less bias from voxels of non-interest). Consequently, it is important to discard subjects for which the brain mask is not well defined.
 
 * Tissue segmentation
-    * Good:
+    * Better:
         * The outlines of the gray matter (GM; magenta) and white matter (WM; blue) segmentation are correctly drawn. The blue line should follow the boundary between GM and WM, while the magenta line should outline ventricles.
 
-    * Bad:
+    * Worse:
         * The GM (magenta)/WM (blue) outlines don’t match where those tissue classes are distributed in the underlying image, so either the blue line does not follow the boundary between GM and WM or the magenta line does not outline ventricles.
         * Inclusion of tissues other than the tissue of interest in the contour delineations should lead to exclusion of the scan.
         * T1w scans showcasing a low signal-to-noise ratio because of thermal noise will present scattered misclassified voxels within piecewise-smooth regions (generally more identifiable in the WM and inside the ventricles). 
@@ -67,12 +67,12 @@ This report displays the brain mask and the brain tissue segmentation computed f
 ### Spatial normalization of the anatomical T1w reference
 
 The normalization report shows how successfully your T1w image(s) were resampled into standard space, for each of the template spaces used.
-* Good:
+* Better:
     * Your T1w image and the template image line up well when you toggle between the images (hover mouse over the panel):
         * In order of importance, the following structures should be correctly aligned : 1. ventricles, 2. subcortical regions, 3. corpus callosum, 4. cerebellum, 5. cortical gray matter.
         * The standard templates provided with fMRIPrep (such as `MNI152NLin2009cAsym`) are averaged across multiple subjects, so the template image will look blurrier than the T1w image. Because of this averaging, it is normal for sulci to be less pronounced and gyri to be wider on the template than the T1w image.
 
-* Bad:
+* Worse:
     * Stretching or distortion in the participant’s T1w image, indicating failed normalization.
         * A misalignment of the ventricles, the subcortical regions, or the corpus callosum should lead to immediate exclusion. You can however be more lenient with the misalignment of cortical GM because volumetric (image) registration may not resolve substantial inter-individual differences (e.g., a sulcus missing in an individual’s brain but typically present in the population of the template).
 
@@ -82,11 +82,11 @@ The normalization report shows how successfully your T1w image(s) were resampled
 
 If you used the `--fs-no-reconall` flag to skip surface-based preprocessing, this section of the report will not exist.
 The FreeSurfer [fischl2012][1] subject reconstruction report shows the WM (blue outline) and pial (red outline) surfaces overlaid on the T1w image.
-* Good:
+* Better:
     * The white-gray boundary outlined (blue link) matches the underlying image.
     * WM and pial surface boundary outlines do not cross or overlap each other.
 
-* Bad:
+* Worse:
     * The white-gray boundary outline (blue line) does not correspond well to the boundary observed in the underlying image.
     * WM and pial surface boundaries cross or overlap each other.
     * Pial surface (red outline) extends past the actual pial boundary (see images [here](https://surfer.nmr.mgh.harvard.edu/fswiki/FsTutorial/PialEdits_tktools) for an example ; this can be a result of bad skull-stripping).
@@ -122,20 +122,20 @@ The alignment report shows the quality of co-registration and susceptibility dis
 
 * Co-registration
     * The text tells you which method fMRIPrep used to align the functional and anatomical data - for example, by running `bbregister`. The images show the registered BOLD reference with the white and pial surfaces overlaid (red and blue lines)
-    * Good:
+    * Better:
         * The BOLD and T1w images are aligned; image boundaries and anatomical landmarks (for example, ventricles; corpus callosum) appear to be in the same place when toggling between the images.
         * White and pial surface outlines (red and blue lines) appear to correspond well to the tissue boundaries in the functional images. 
 
-    * Bad:
+    * Worse:
         * Functional and anatomical images are not aligned and clearly differ in their spatial location or orientation.
         * White and pial surface boundaries (red and blue lines) overlays correspond poorly to the tissue boundaries in the underlying images.
 
 * Susceptibility distortion correction
     * The functional images can have some warping or distortion due to inhomogeneities in the $B_0$ magnetic field. For more details on what causes susceptibility distortion, refer to [the educational notebook of SDCFlows](https://github.com/nipreps/sdcflows/blob/master/docs/notebooks/SDC%20-%20Theory%20and%20physics.ipynb). Susceptibility distortion artifacts manifest in two different ways on the functional and structural images: as signal drop-out, that is, a region where the signal vanishes, or as brain distortions. Signal drop-outs often appear close to brain-air interfaces; these include ventromedial prefrontal cortex, the anterior part of the prefrontal cortex, and the region next to the ear cavities. 
-    * Good:
+    * Better:
         * No signal drop out or brain distortion affects your region of interest.
         * The pial surface  outlines (blue lines) appear to correspond well to the tissue boundaries in the functional images.
-    * Bad:
+    * Worse:
         * If the susceptibility distortion correction is unsuccessfull, residual susceptibility distortion artifacts can be observed. If the latter overlaps with regions of interest, the scan should be excluded.
         * Note however that some drop out in inferior brain regions (such as the OFC or medial temporal lobe) in functional images is somewhat inevitable. Depending on the type of analysis you’re doing and what you’re interested in, this may be more/less of an issue for you. If you see a lot of signal drop out, you will probably want to check the brain mask generated by fMRIPrep to see how that drop-out impacts the location and quantity of missing voxels in your brain mask.
         
@@ -155,12 +155,12 @@ The temporal CompCor ROI (blue contour) contains the top 2% most variable voxels
 
 The brain edge (or crown) ROI (green contour) picks signals outside but close to the brain, which are decomposed into 24 principal components.
 
-* Good:
+* Better:
     * The brain mask correctly surrounds the brain boundary, not leaving out brain area. Note that holes in the brain mask such as on Figure 4, is not problematic as it should not disrupt co-registration.
     ![hole-bold-brainmask](../assets/fmriprep_visual_report/hold-bold-brainmask.png)
     *Figure 4. Such holes in the brain mask is not problematic as it should not disrupt co-registration.*
 
-* Bad:
+* Worse:
     * The brain mask computed from the BOLD image mainly influences confounds estimation, but also co-registration, although the latter is primarily driven by the WM mask. As such the brain mask must not leave out any brain area, but it can be a bit loose around the brain. If the mask intersects with brain-originating signal, the nuisance regressors should not be used.
     * If the study plan prescribes using CompCor or brain-edge regressors, it is critical to exclude BOLD runs where any of these masks substantially overlap regions of interest.
     * The shape and the large overlap of the tCompCor with region of interest can also indicate the presence of an artifact that was missed in the other visualizations (e.g see Figure 5). In this case, the scan should be excluded. 
@@ -187,10 +187,10 @@ The BOLD summary report shows several characteristic statistics along with a car
     * DVARS - [*standardized DVARS!*](https://neurostars.org/t/fmriprep-standardised-dvars/5271) for each time point. DVARS is the average change in mean intensity between each pair of fMRI volumes in a series and can also be interpreted as the first derivative of the mean intensity. Higher values indicate more dramatic changes (e.g., due to motion or spiking).
     * FD - framewise-displacement measures for each time point
 
-* Good:
+* Better:
     * The carpet plot is homogeneous, particularly in the edge.
 
-* Bad:
+* Worse:
     * Strongly structured crown region in the carpet plot is a sign that artifacts are compromising the fMRI scan [provins2022][7]. Several types of carpet plot modulations can be differentiated and are illustrated in the figure below.
         * Motion outbursts, visible as peaks in the FD trace, are often paired with prolonged dark deflections derived from spin-history effects (see Figure 6A). 
         * Periodic modulations on the carpet plot indicate regular and slow motion, e.g., caused by respiration, which may also compromise the signal of interest (see Figure 6B). 
@@ -210,10 +210,10 @@ The BOLD summary report shows several characteristic statistics along with a car
 This report presents a plot of correlations among confound regressors. The left-hand panel shows the matrix of correlations among selected confound time series as a heat-map. The right-hand panel displays the correlation of selected confound time series with the mean global signal computed across the whole brain; the regressors shown are those with greatest correlation with the global signal. These plots can be used to guide selection of a confound model or to assess the extent to which tissue-specific regressors correlate with global signal.; e.g if two regressors are highly correlated, it is recommended to include in the confound model only one of the two.
 
 * Selection of a confound model
-    * Good:
+    * Better:
         * Carefully choose a serie of regressors that are not highly correlated to include in the confound model. Refer to <https://fmriprep.org/en/stable/outputs.html#confounds> for more information on how to choose the nuisance regressors.
         * Or proceed with feature orthogonalization before confound regression.
-    * Bad: 
+    * Worse: 
         * Include in the confound model two regressors that are highly correlated.
     * Common pitfall in interpreptation:
         * The CompCor components extracted from the same mask and the cosine bases are inherently orthogonal, implying a zero correlation by construction.
@@ -222,21 +222,21 @@ This report presents a plot of correlations among confound regressors. The left-
     * Partial volume effects refers to the mixing of signals from different tissue types within a single voxel in fMRI data, so that the MR signal reflects fractional contributions from multiple tissue types. This can lead to inaccurate estimates of neural activity. (However, note that other sources, such as motion or physiological noise, can also contribute to high correlations among the regressors).
      * High partial volume effects in one group vs. another may reflect underlying anatomical differences in the groups. For example, older adults with Alzheimers have greater grey matter volume loss and ventricle enlargement, so may be more affected by PVE than their healthy controls [dukart][14].
 
-    * Good: 
+    * Better: 
         * There is no specific threshold for the correlation coefficient that indicates the absence (or presence) of partial volume effects (PVE) in fMRI data. The strength of the correlation between nuisance regressors may depend on several factors, including the tissue properties of the brain region being examined, the voxel size, the signal-to-noise ratio of the data, and the specific nuisance regressors used in the analysis. 
     
-    * Bad:
+    * Worse:
          * Generally, a high correlation coefficient among nuisance regressors -- especially spatial/anatomical regressors -- may indicate the presence of PVE if it is accompanied by other evidence, such as spatial co-localization of the voxels with high correlation coefficients with regions known to be susceptible to PVE such as the gray/white matter boundary. 
 
 ### ICA-AROMA
 
 If fMRIPrep is run with the --use-aroma argument is generates an independent component decomposition using FSL MELODIC [beckmann2004][10]. Such techniques have been thoroughly described elsewhere [griffanti2017][11], but in short AROMA is an ICA based procedure to identify confounding time series related to head-motion [prium2015][12]. Each component is mapped on a glass brain next to an indication of its frequency spectrum and its corresponding weight over time. 
 
-* Good:
+* Better:
     * Artifact components (red) should have more high-frequency noise whereas signal components (green) should have their peak in the lower-frequency range.
     * Refer to <https://fmriprep.readthedocs.io/en/stable/outputs.html#confounds> for more details on how to denoise your data using ICA-AROMA confounds.
 
-* Bad:
+* Worse:
     * Spin-history effects in ICA-AROMA : One recurring artifactual family of components emerges when motion interacts with interleaved acquisition giving rise to the so-called spin-history effects. The spin-history effects appear as parallel stripes covering the whole brain in one direction (see Figure 7). They are a consequence of the repetition time not being much larger than the T1 relaxation time in typical fMRI designs. This implies that the spins will not completely relax when the next acquisition starts <https://imaging.mrc-cbu.cam.ac.uk/imaging/CommonArtefacts>. In addition, specific movements (e.g., rotation around one imaging axis, such as nodding) will exacerbate spin-history effects as slices will cut through the brain at different locations between consecutive BOLD time points. These two considerations combined mean that motion will produce spins with different excitation histories, and thus, the signal intensity will differ. Components showcasing parallel stripes concurring with slices in extreme poles of the brain or even across the whole brain are likely to capture these effects.
     ![ica_spin_history_effect](../assets/fmriprep_visual_report/ica_spin_history_effect.png)
     *Figure 7. Spin-history effect in ICA-AROMA*
