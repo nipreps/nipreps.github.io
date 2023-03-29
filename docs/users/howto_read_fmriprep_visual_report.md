@@ -181,10 +181,10 @@ The benchmark for % variance explained and/or optimal number of CompCor componen
 
 The BOLD summary report shows several characteristic statistics along with a carpet plot [power2017][5], giving a view of the temporal characteristics of the preprocessed BOLD series. The carpet plot is a tool to visualize changes in voxel intensities throughout an fMRI scan. It works by plotting voxel time series in close spatial proximity so that the eye notes temporal coincidence. One particular innovation of this carpet plot implementation is that it contains the "crown" area corresponding to voxels located on a closed band around the brain's outer edge [patriat2015][6]. As those voxels are outside the brain, we do not expect any signal there, meaning that the presence of signal can be interpreted as produced by an artifact.
 * Definitions: 
-    * GS - global signal, or the mean of the voxel time series within the whole-brain mask. In additional to the BOLD signal of interest, GS fluctuations can reflect non-neuronal contributions to the voxel time series, e.g., by motion, the MRI system (e.g., low frequency drift), physiology (respiration, cardiac rate), and/or participant state-related factors (e.g., vigilance or fatigue) [Liu2017][13].
+    * GS - global signal, or the mean of the voxel time series within the whole-brain mask. In addition to the BOLD signal of interest, GS fluctuations can reflect non-neuronal contributions to the voxel time series, e.g., by motion, the MRI system (e.g., low frequency drift), physiology (respiration, cardiac rate), and/or participant state-related factors (e.g., vigilance or fatigue) [Liu2017][13].
     * GSCSF - global signal calculated within cerebrospinal fluid (CSF)
     * GSWM - global signal calculated within white matter (WM)
-    * DVARS - [*standardized DVARS!*](https://neurostars.org/t/fmriprep-standardised-dvars/5271) for each time point. DVARS is the average change in mean intensity between each pair of fMRI volumes in a series. Higher values indicate more dramatic changes (e.g., due to motion or spiking).
+    * DVARS - [*standardized DVARS!*](https://neurostars.org/t/fmriprep-standardised-dvars/5271) for each time point. DVARS is the average change in mean intensity between each pair of fMRI volumes in a series and can also be interpreted as the first derivative of the mean intensity. Higher values indicate more dramatic changes (e.g., due to motion or spiking).
     * FD - framewise-displacement measures for each time point
 
 * Good:
@@ -247,7 +247,7 @@ If fMRIPrep is run with the --use-aroma argument is generates an independent com
 
 ### Note on multiband/multi-echo fMRI data
 
-Multiband/multiecho fMRI acquisitions can be used to improve the temporal and spatial resolution of fMRI data, but they can also introduce several types of artifacts, such as slice crosstalk, aliasing, and signal dropout. ICA-AROMA was not been trained on multiband/multi-echo data, so it is possible that it may not perform as accurately as it does for single-band data. For an ICA-based denoising approach specifically for multi-echo fMRI, see [TEDANA](https://tedana.readthedocs.io/en/stable/).
+Multiband/multiecho fMRI acquisitions can be used to improve the temporal and spatial resolution of fMRI data, but they can also introduce several types of artifacts, such as slice crosstalk, aliasing, and signal dropout. ICA-AROMA was not trained on multiband/multi-echo data, so it is possible that it may not perform as accurately as it does for single-band data. For an ICA-based denoising approach specifically for multi-echo fMRI, see [TEDANA](https://tedana.readthedocs.io/en/stable/).
 
     * Multi-band artifacts in ICA-AROMA: The multi-band artifact also appears as a stripping pattern, however their spacing do not match alternative slices <https://neurostars.org/t/potential-issue-in-ica-aroma-report/4231>. What you see resembles one band being acquired.
     ![ica_multiband](../assets/fmriprep_visual_report/ica_multiband.png)
