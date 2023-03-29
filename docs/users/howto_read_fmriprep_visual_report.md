@@ -169,16 +169,22 @@ The brain edge (or crown) ROI (green contour) picks signals outside but close to
 
 ### Variance explained by t/a CompCor components
 
-The figure displays the cumulative variance explained by components for each of four CompCor decompositions (left to right: anatomical CSF mask, anatomical white matter mask, anatomical combined mask, temporal). Dotted lines indicate the minimum number of components necessary to explain 50%, 70%, and 90% of the variance in the nuisance mask. By default, only the components that explain the top 50% of the variance are saved. The number of components that must be included in the model in order to explain some fraction of variance in the decomposition mask can be used as a feature selection criterion for confound regression.
+The figure displays the cumulative variance explained by components for each of four CompCor decompositions (left to right: anatomical CSF mask, anatomical white matter mask, anatomical combined mask, temporal). Dotted lines indicate the minimum number of components necessary to explain 50%, 70%, and 90% of the variance in the nuisance mask.The number of components that must be included in the model in order to explain some fraction of variance in the decomposition mask can be used as a feature selection criterion for confound regression.
+
+    * High variance explained: A high variance explained by t/aCompCor components indicates that the selected regions of interest are capturing a significant portion of the motion and physiological noise in the data, which can improve the quality of subsequent analyses. In the fMRIPrep reports, by default only the components that explain the top 50% of the variance are saved. 
+
+    * Low variance explained: A low variance explained by t/aCompCor components may indicate that the selected regions of interest are not capturing enough of the motion and physiological noise in the data, which can lead to reduced sensitivity and specificity in subsequent analyses.
+
+The benchmark for % variance explained and/or optimal number of CompCor components to include in the analysis can vary, depending on the specific dataset and analysis goals. In general, the goal is to select enough components to capture the majority of the motion and physiological noise in the data, while avoiding overfitting the model to noise or task-related signal.
  
 ### BOLD summary
 
 The BOLD summary report shows several characteristic statistics along with a carpet plot [power2017][5], giving a view of the temporal characteristics of the preprocessed BOLD series. The carpet plot is a tool to visualize changes in voxel intensities throughout an fMRI scan. It works by plotting voxel time series in close spatial proximity so that the eye notes temporal coincidence. One particular innovation of this carpet plot implementation is that it contains the "crown" area corresponding to voxels located on a closed band around the brain's outer edge [patriat2015][6]. As those voxels are outside the brain, we do not expect any signal there, meaning that the presence of signal can be interpreted as produced by an artifact.
 * Definitions: 
-    * GS - global signal calculated in the whole-brain show the mean BOLD signal in the corresponding mask.
+    * GS - global signal, or the mean of the voxel time series within the whole-brain mask. In addition to the BOLD signal of interest, GS fluctuations can reflect non-neuronal contributions to the voxel time series, e.g., by motion, the MRI system (e.g., low frequency drift), physiology (respiration, cardiac rate), and/or participant state-related factors (e.g., vigilance or fatigue) [Liu2017][13].
     * GSCSF - global signal calculated within cerebrospinal fluid (CSF)
     * GSWM - global signal calculated within white matter (WM)
-    * DVARS - [*standardized DVARS!*](https://neurostars.org/t/fmriprep-standardised-dvars/5271) for each time point
+    * DVARS - [*standardized DVARS!*](https://neurostars.org/t/fmriprep-standardised-dvars/5271) for each time point. DVARS is the average change in mean intensity between each pair of fMRI volumes in a series and can also be interpreted as the first derivative of the mean intensity. Higher values indicate more dramatic changes (e.g., due to motion or spiking).
     * FD - framewise-displacement measures for each time point
 
 * Good:
@@ -190,13 +196,14 @@ The BOLD summary report shows several characteristic statistics along with a car
         * Periodic modulations on the carpet plot indicate regular and slow motion, e.g., caused by respiration, which may also compromise the signal of interest (see Figure 6B). 
         * Coil failures may be identifiable as a sudden change in overall signal intensity on the carpet plot not paired that is not paired with motion peaks and generally sustained through the end of the scan (see Figure 6C). 
         * A strong polarized structure revealed by the clustering of carpet plot rows suggests that artifacts mitigate the signal of interest (see Figure 6D). Indeed, sorting the rows (i.e., the time series) of each segment of the carpet plot such that voxels with similar BOLD dynamics appear close to one another reveals non-global structure in the signal, which is obscured when voxels are ordered randomly [aquino2020][8].
-        * Finding temporal patterns similar in gray matter areas and simultaneously in regions of no interest (for instance, CSF or the crown) indicates the presence of artifacts, typically derived from head motion. If the planned analysis specifies noise regression techniques based on information from these regions of no interest (which is standard and recommended [ciric2017][9]), the risk of removing signals with neural origins is high, and affected scans should be excluded. 
+        * Finding temporal patterns similar in gray matter areas and simultaneously in regions of no interest (for instance, CSF or the crown) indicates the presence of artifacts, typically derived from head motion. If the planned analysis specifies noise regression techniques based on information from these regions of no interest (which is standard and recommended [ciric2017][9]), the risk of removing signals with neural origins is high, and affected scans should be excluded. For example, in standard task-based fMRI, stimulus presentation might evoke both participant movement and neural responses (_stimulus-correlated motion_).
+        
 
     ![carpetplot_artifacts](../assets/fmriprep_visual_report/carpetplot_artifacts.png)
     *Figure 6. Assessment of time series with the carpet plot. The crown region of the carpet plot comprises voxels outside the brain. As such, structure in the crown can be interpreted as artifactual, and thus corresponds to an exclusion criteria. (A) Motion outbursts, visible as peaks in the framewise displacement (FD) trace, are often paired with prolonged dark deflections. (B) Periodic modulations are indicative of regular, slow motion, e.g., caused by respiration. (C) An abrupt change in overall signal intensity that is not paired with motion peaks can be attributed to coil failure. (D) A strong polarized structure revealed by the clustering of carpet plot rows also suggests that artifacts mitigate the signal of interest.*
     
  * Common pitfalls in interpretation
-    * The variance and the scaling of the trace plots affect a lot their display and interpretation (in other words, spikes are relative to other datapoints in the timeseries). Therefore, always pay attention to the trace metrics like its maximum and mean, before deriving any conclusion.
+    * The variance and the scaling of the trace plots affect a lot their display and interpretation (in other words, spikes are relative to other datapoints in the timeseries). Therefore, always pay attention to the trace metrics like its maximum and mean, before deriving any conclusion or visually comparing the trace plots between two participants.
 
 ### Correlations among nuisance regressors
 
@@ -211,10 +218,15 @@ This report presents a plot of correlations among confound regressors. The left-
     * Common pitfall in interpreptation:
         * The CompCor components extracted from the same mask and the cosine bases are inherently orthogonal, implying a zero correlation by construction.
 
-* Assessement of partial volume effect [NEEDS COMPLETION]
-    * Good:
+* Assessment of partial volume effect [NEEDS COMPLETION]
+    * Partial volume effects refers to the mixing of signals from different tissue types within a single voxel in fMRI data, so that the MR signal reflects fractional contributions from multiple tissue types. This can lead to inaccurate estimates of neural activity. (However, note that other sources, such as motion or physiological noise, can also contribute to high correlations among the regressors).
+     * High partial volume effects in one group vs. another may reflect underlying anatomical differences in the groups. For example, older adults with Alzheimers have greater grey matter volume loss and ventricle enlargement, so may be more affected by PVE than their healthy controls [dukart][14].
+
+    * Good: 
+        * There is no specific threshold for the correlation coefficient that indicates the absence (or presence) of partial volume effects (PVE) in fMRI data. The strength of the correlation between nuisance regressors may depend on several factors, including the tissue properties of the brain region being examined, the voxel size, the signal-to-noise ratio of the data, and the specific nuisance regressors used in the analysis. 
+    
     * Bad:
-        * High correlation of confound time series with the global signal is an indicator of high partial volume effect.
+         * Generally, a high correlation coefficient among nuisance regressors -- especially spatial/anatomical regressors -- may indicate the presence of PVE if it is accompanied by other evidence, such as spatial co-localization of the voxels with high correlation coefficients with regions known to be susceptible to PVE such as the gray/white matter boundary. 
 
 ### ICA-AROMA
 
@@ -233,12 +245,19 @@ If fMRIPrep is run with the --use-aroma argument is generates an independent com
     ![ica_slice_timing](../assets/fmriprep_visual_report/ica_slice_timing.png)
     *Figure 8. Slice-timing artifact in ICA-AROMA*
 
+### Note on multiband/multi-echo fMRI data
+
+Multiband/multiecho fMRI acquisitions can be used to improve the temporal and spatial resolution of fMRI data, but they can also introduce several types of artifacts, such as slice crosstalk, aliasing, and signal dropout. ICA-AROMA was not trained on multiband/multi-echo data, so it is possible that it may not perform as accurately as it does for single-band data. For an ICA-based denoising approach specifically for multi-echo fMRI, see [TEDANA](https://tedana.readthedocs.io/en/stable/).
+
     * Multi-band artifacts in ICA-AROMA: The multi-band artifact also appears as a stripping pattern, however their spacing do not match alternative slices <https://neurostars.org/t/potential-issue-in-ica-aroma-report/4231>. What you see resembles one band being acquired.
     ![ica_multiband](../assets/fmriprep_visual_report/ica_multiband.png)
     *Figure 9. Multi-band artifact in ICA-AROMA*
-
-* Common pitfall in interpretation:
-    * Note that AROMA has not been trained on multiband data, so it is possible that some of the components showing multiband artifacts are classified as signal.
+    
+    * Aliasing artifacts may be visible as duplicate components in the ICA-AROMA plots. Aliasing artifacts can occur in multiband fMRI data when the phase-encoding direction is not sampled densely enough, resulting in aliasing of signal from adjacent slices (these artifacts may also appear elsewhere, as ghosting or blurring of the brain image).
+    
+    * Signal dropout (due to susceptibility effects) may be visible in the ICA-AROMA plots as components with very low or absent time courses.
+    
+    * Slice crosstalk artifacts may be visible as components with time courses that resemble signal from adjacent slices. Slice crosstalk can occur in multiband fMRI data due to the inter-slice signal leakage, and can appear as spurious signals in the neighboring slices. 
 
 ## About
 This section is a textual summary, containing the version of fMRIPrep, which command was run and the dates when the data were preprocessed. It is good to check that all of this information is as expected.
@@ -269,3 +288,5 @@ If you are interested in knowing more about quality control, we wrote [a paper e
 [10] : Beckmann, Christian F., and Stephen M. Smith. 2004. “Probabilistic Independent Component Analysis for Functional Magnetic Resonance Imaging.” IEEE Transactions on Medical Imaging 23 (2): 137–52. https://doi.org/10.1109/TMI.2003.822821.
 [11] : Griffanti, Ludovica, Gwenaëlle Douaud, Janine Bijsterbosch, Stefania Evangelisti, Fidel Alfaro-Almagro, Matthew F. Glasser, Eugene P. Duff, et al. 2017. “Hand Classification of FMRI ICA Noise Components.” NeuroImage 154 (July): 188–205. https://doi.org/10.1016/j.neuroimage.2016.12.036.
 [12] : Pruim RHR, Mennes M, van Rooij D, Llera A, Buitelaar JK, Beckmann CF. ICA-AROMA: A robust ICA-based strategy for removing motion artifacts from fMRI data. Neuroimage. 2015 May 15;112:267–77. doi:10.1016/j.neuroimage.2015.02.064.
+[13] : Liu TT, Nalci A, Falahpour M. 2017. The global signal in fMRI: Nuisance or Information? Neuroimage: 150:213-29. doi:10.1016/j.neuroimage.2017.02.036.
+[14] : Dukart J, Bertolino A. When structure affects function–the need for partial volume effect correction in functional and resting state magnetic resonance imaging studies. PloS one:9(12);e114227. doi:10.1371/journal.pone.0114227
