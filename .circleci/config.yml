@@ -25,12 +25,5 @@ workflows:
     jobs:
       - build
   nightly:
-    triggers:
-      - schedule:
-          cron: "30 15 * * *"
-          filters:
-            branches:
-              only:
-                - mkdocs          
     jobs:
       - build
