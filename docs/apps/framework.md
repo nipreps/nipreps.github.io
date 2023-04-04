@@ -81,7 +81,7 @@ For instance, *MRIQC* generates group-level reports with the following command-l
 $ mriqc /data/bids_root /data/bids_root/derivatives/ group
 ```
 
-## What are *BIDS Derivatives*?
+## What are *BIDS Derivatives*? 
 
 *NiPreps* generate *derivatives* of the original data, and they fulfill the BIDS specification for the results of Apps that are created for subsequent consumption by other BIDS-Apps.
 These derivatives must follow the BIDS Derivatives specification ([draft](https://bids-specification.readthedocs.io/en/derivatives/)).
