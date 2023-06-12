@@ -5,6 +5,8 @@ The versions matrix is intended to allow easy reference for the dependencies wit
 
 | *fMRIPrep* series | *sMRIPrep* series | *SDCflows* series | *NiWorkflows* series |
 |----|----|----|----|
+| 23.1.x | `~= 0.12.0` | `~= 2.5.0` | `~= 1.8.0` |
+| 23.0.x | `~= 0.11.0` | `~= 2.4.0` | `~= 1.7.6` |
 | 22.1.x | `~= 0.10.0` | `~= 2.2.1` | `~= 1.7.0` |
 | 22.0.x | `~= 0.9.2` | `~= 2.1.1` | `~= 1.6.3` |
 | 21.0.x | `~= 0.8.0` | `~= 2.0.0` | `~= 1.4.0` |
@@ -25,6 +27,7 @@ sMRIPrep requires niworkflows and generally must depend on one minor series of n
 
 | *sMRIPrep* series | *NiWorkflows* series | *TemplateFlow* series |
 |----|----|----|
+| 0.12.x | `~=1.8.0` | ... |
 | 0.10.x | `~= 1.7.0` | `>= 0.6` |
 | 0.9.x | `~= 1.6.0` | `>= 0.6` |
 | 0.8.x | `~= 1.4.0` | `>= 0.6` |
