@@ -7,18 +7,21 @@ permalink: /news.html
 ---
 
 # News and Announcements
-## NiPreps ISMRM 2023 Satellite Hackathon 
+## Register for the NiPreps hackathon with the OHBM'23 Brainhack!
 
-Registration for the NiPreps / ISMRM 2023 Satellite Hackathon is now open!
+**We are thrilled to announce that the NiPreps Hackathon's second edition will be part of the upcoming OHBM'23 Brainhack** (July 19-21, Maison Notman House, Montreal, Canada).
 
-To register, please fill out the Google Form provided at the following link:
-ISMRM 2023 Hackathon Registration: [Registration](https://docs.google.com/forms/d/e/1FAIpQLSf6dD1iLfRV4xKx6yfvXN1JsHyajFzU90w15Rq0p_X2qhcH5A/viewform?usp=sf_link)
+**Registration**
+To join us for this incredible event and work on NiPreps-related projects, please fill in our [registration form](https://docs.google.com/forms/d/e/1FAIpQLSf3XFXr4lx5dLP7dR_Pr8G2DErmfxM406zJee5ljHHtg9nT3Q/viewform?usp=sf_link).
 
-Please note that registration is required to participate in the hackathon, and space is limited, so we encourage you to register early to secure your spot.
-The hackathon will take place on the day after the conference in Toronto at the Krembil Centre for Neuroinformatics. Participants will have the chance to collaborate with experts in the field, learn new skills, and work on innovative solutions to data analysis challenges.
+Please remember to also register on the [official webpage of the OHBM Brainhack.](https://ohbm.github.io/hackathon2023/) You will find all the necessary information, event schedule, and location details on Brainhack's website.
 
-Stay tuned for more information about the hackathon, including specific topics to be addressed and any additional materials you may need to bring with you.
-We look forward to seeing you all at ISMRM 2023 and at the hackathon the following day!
+**Approach and projects**
+We will advance (online) some projects as much as possible before the BrainHack. We are putting together a list of potential projects at https://github.com/orgs/nipreps/projects/8. Please feel free to let us know your ideas and voice your questions. Projects can start at any moment (even at the venue in Montreal) to have the flexibility to accommodate all ideas.
+
+Those projects with preliminary work will have project leaders who will organize meetings, coordinate a roadmap and help carry out the necessary tasks.
+
+See you in Montreal!
 
 ## NiPreps Roundups <span style="color: grey; font-size: 72%; position: relative; right: -10px;"> Feb 22, 2023</span>
 
