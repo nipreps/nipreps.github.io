@@ -9,3 +9,12 @@ We refer to data *directly consumable by analyses* as ***analysis-grade data*** 
 
 <br />
 ![overview](assets/nipreps-chart.png)
+
+## Building on the success story of *fMRIPrep*
+
+*NiPreps* were conceived as a generalization of *fMRIPrep* across new modalities, populations, cohorts, and species.
+*fMRIPrep* is widely adopted, as our telemetry with Sentry (and now, *in-house* with [migas](https://github.com/nipreps/migas-py)) shows:
+
+| ![fmriprep usage](assets/20230815_weekly.png) |
+|:--:|
+| *fMRIPrep* is executed an average of 9,500 times every week, of which, around 7,000 times it finishes successfully (72.9% success rate). The average number of executions started includes debug and *dry* runs where researchers do not intend actually process data. Therefore, the *effective* (that is, discarding test runs) success ratio of *fMRIPrep* is likely higher. |
