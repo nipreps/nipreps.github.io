@@ -7,7 +7,7 @@
 
 ## QC protocols and Standard Operating Procedures
 
-- [SOPs-cookiecutter, a template repository for version-controlled SOPs](https//github.com/nipreps/sops-cookiecutter). The exemplar template is rendered [here](../../mriqc-sops)
+- [SOPs-cookiecutter, a template repository for version-controlled SOPs](https//github.com/nipreps/sops-cookiecutter). The example template is rendered [here](/sops-cookiecutter/)
 
 ## Presentation
 - [Educational Talk at OHBM 2023 - Quality Control in fMRI studies with MRIQC and fMRIPrep](../../assets/OHBM2023/QCTalkOHBM23CelineProvins.pdf)
