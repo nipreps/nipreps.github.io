@@ -19,7 +19,7 @@ Reports are structured in subsections focusing on different facets of the input 
 We suggest using such an organization to interpret the information in the visual reports, as it permits a sequential understanding of the overall processing workflow.
 Not only should individual reports facilitate the assessment of the performance of processing steps, our intent is that they also serve as a *learning scaffold* to understand *fMRIPrep*'s design decisions in particular and preprocessing more generally. 
 
-If you have examples of "bad" preprocessing results that you’re willing to share, please drop us an email at nipreps@gmail.com, with a short description of the problem (for example, "bad skull stripping").
+If you have examples of "bad" preprocessing results that you're willing to share, please drop us an email at nipreps@gmail.com, with a short description of the problem (for example, "bad skull stripping").
 
 Reports can be visualized with web browsers, and we recommend Google Chrome or Firefox for a better experience.
 When you open a report, it may be helpful to first jump to the Errors subsection to see whether *fMRIPrep* encountered any errors during preprocessing.
@@ -49,7 +49,7 @@ This report displays the brain mask and the brain tissue segmentation computed f
     * Better:
         * The intensity of the image is uniform throughout the brain
     * Worse:
-        * Intensity non-uniformity artifacts (looks like the “original image” panel in Figure 1):
+        * Intensity non-uniformity artifacts (looks like the "original image" panel in Figure 1):
  
         ![inu](../assets/fmriprep_visual_report/inu.png) 
         *Figure 1. from Vovk, U., Pernus, F., & Likar, B. (2007). A review of methods for correction of intensity inhomogeneity in MRI. IEEE transactions on medical imaging, 26(3), 405-421.*
@@ -71,7 +71,7 @@ This report displays the brain mask and the brain tissue segmentation computed f
         * The outlines of the gray matter (GM; magenta) and white matter (WM; blue) segmentation are correctly drawn. The blue line should follow the boundary between GM and WM, while the magenta line should outline ventricles.
 
     * Worse:
-        * The GM (magenta)/WM (blue) outlines don’t match where those tissue classes are distributed in the underlying image, so either the blue line does not follow the boundary between GM and WM or the magenta line does not outline ventricles.
+        * The GM (magenta)/WM (blue) outlines don't match where those tissue classes are distributed in the underlying image, so either the blue line does not follow the boundary between GM and WM or the magenta line does not outline ventricles.
         * Inclusion of tissues other than the tissue of interest in the contour delineations should lead to exclusion of the scan.
         * T1w scans showcasing a low signal-to-noise ratio because of thermal noise will present scattered misclassified voxels within piecewise-smooth regions (generally more identifiable in the WM and inside the ventricles). 
             * These scans should be excluded except for images where these voxels are only present at subcortical structures (e.g., thalamus) or nearby tissue boundaries. In the latter case, the misclassification results from partial volume effects (i.e., indeed, such voxels contain varying fractions of two or more tissues). The figure below illustrates the difference between individual dots caused by noise versus partial volume effects.
@@ -80,7 +80,7 @@ This report displays the brain mask and the brain tissue segmentation computed f
 
 * Common pitfalls in interpretation:
     * At the inter-hemispheric space, masks (and in particular the brain mask, despite its smooth edges) may intersect the visualization plane several times, giving the impression that the mask is cutting off brain regions. However, this is more of a visual effect on the cutting plane.
-    * Note that the brain mask plotted in the “brain mask and (anatomical/temporal) CompCor ROIs” panel under the functional section is computed from the BOLD image and thus is not identical to the brain mask mentioned in this paragraph. Hence, they follow different exclusion criteria.
+    * Note that the brain mask plotted in the "brain mask and (anatomical/temporal) CompCor ROIs" panel under the functional section is computed from the BOLD image and thus is not identical to the brain mask mentioned in this paragraph. Hence, they follow different exclusion criteria.
 
 ### Spatial normalization of the anatomical T1w reference
 
@@ -124,7 +124,7 @@ The FreeSurfer [fischl2012][1] subject reconstruction report shows the WM (blue 
     * Functional data can vary based on available data, metadata, user selections.
         * What does “Heuristics - BBR may fall back to volume-based coregistration” mean?
 
-            In fMRIPrep’s workflow, if boundary-based registration fails (meaning that `bbr` distorts the affine registration more than 15mm), fMRIPrep reverts to using the initial affine transform from Freesurfer’s `mri_coreg` tool instead of using the bbr refinement of the initial transform ([relevant code](https://github.com/nipreps/fmriprep/pull/694/files#diff-939042e0a10e509ce5708c3e112376ffR29)) 
+            In fMRIPrep's workflow, if boundary-based registration fails (meaning that `bbr` distorts the affine registration more than 15mm), fMRIPrep reverts to using the initial affine transform from Freesurfer’s `mri_coreg` tool instead of using the bbr refinement of the initial transform ([relevant code](https://github.com/nipreps/fmriprep/pull/694/files#diff-939042e0a10e509ce5708c3e112376ffR29)) 
 
     * “Note on orientation: qform matrix overwritten/ this data has been copied from sform/sform matrix set” warnings
 
@@ -132,7 +132,7 @@ The FreeSurfer [fischl2012][1] subject reconstruction report shows the WM (blue 
         This message warns you that information in the header was altered during the preprocessing.
         This is an advisory message and does not necessarily indicate issues in data quality or registration.
         A common scenario is that the sform code was 0, so fMRIPrep copied the code from qform in order to keep the affine matrices aligned, ensuring that the images will be treated as having the same orientation later down the pipeline.
-        See Chris Markewicz’s Neurostars posts [here](https://neurostars.org/t/note-on-orientation-qform-and-sform-warning/4379/4) and [here](https://neurostars.org/t/note-on-orientation-sform-matrix-set/5939) for a longer explanation of when/why fMRIPrep produces these warnings. You can read more about how `qform` and `sform` work at the following links: [Recommended usage of qform and sform](https://nifti.nimh.nih.gov/nifti-1/documentation/nifti1fields/nifti1fields_pages/qsform_brief_usage) and [Nifti Qform and Sform](http://gru.stanford.edu/doku.php/mrTools/coordinateTransforms). 
+        See Chris Markewicz's Neurostars posts [here](https://neurostars.org/t/note-on-orientation-qform-and-sform-warning/4379/4) and [here](https://neurostars.org/t/note-on-orientation-sform-matrix-set/5939) for a longer explanation of when/why fMRIPrep produces these warnings. You can read more about how `qform` and `sform` work at the following links: [Recommended usage of qform and sform](https://nifti.nimh.nih.gov/nifti-1/documentation/nifti1fields/nifti1fields_pages/qsform_brief_usage) and [Nifti Qform and Sform](http://gru.stanford.edu/doku.php/mrTools/coordinateTransforms). 
  
 ### Alignment of functional and anatomical data
 
@@ -246,24 +246,7 @@ This report presents a plot of correlations among confound regressors. The left-
         * There is no specific threshold for the correlation coefficient that indicates the absence (or presence) of partial volume effects (PVE) in fMRI data. The strength of the correlation between nuisance regressors may depend on several factors, including the tissue properties of the brain region being examined, the voxel size, the signal-to-noise ratio of the data, and the specific nuisance regressors used in the analysis. 
     
     * Worse:
-         * Generally, a high correlation coefficient among nuisance regressors -- especially spatial/anatomical regressors -- may indicate the presence of PVE if it is accompanied by other evidence, such as spatial co-localization of the voxels with high correlation coefficients with regions known to be susceptible to PVE such as the gray/white matter boundary. 
-
-### ICA-AROMA
-
-If fMRIPrep is run with the --use-aroma argument is generates an independent component decomposition using FSL MELODIC [beckmann2004][10]. Such techniques have been thoroughly described elsewhere [griffanti2017][11], but in short AROMA is an ICA based procedure to identify confounding time series related to head-motion [prium2015][12]. Each component is mapped on a glass brain next to an indication of its frequency spectrum and its corresponding weight over time. 
-
-* Better:
-    * Artifact components (red) should have more high-frequency noise whereas signal components (green) should have their peak in the lower-frequency range.
-    * Refer to <https://fmriprep.readthedocs.io/en/stable/outputs.html#confounds> for more details on how to denoise your data using ICA-AROMA confounds.
-
-* Worse:
-    * Spin-history effects in ICA-AROMA : One recurring artifactual family of components emerges when motion interacts with interleaved acquisition giving rise to the so-called spin-history effects. The spin-history effects appear as parallel stripes covering the whole brain in one direction (see Figure 7). They are a consequence of the repetition time not being much larger than the T1 relaxation time in typical fMRI designs. This implies that the spins will not completely relax when the next acquisition starts <https://imaging.mrc-cbu.cam.ac.uk/imaging/CommonArtefacts>. In addition, specific movements (e.g., rotation around one imaging axis, such as nodding) will exacerbate spin-history effects as slices will cut through the brain at different locations between consecutive BOLD time points. These two considerations combined mean that motion will produce spins with different excitation histories, and thus, the signal intensity will differ. Components showcasing parallel stripes concurring with slices in extreme poles of the brain or even across the whole brain are likely to capture these effects.
-    ![ica_spin_history_effect](../assets/fmriprep_visual_report/ica_spin_history_effect.png)
-    *Figure 7. Spin-history effect in ICA-AROMA*
-
-    * Slice-timing artifacts in ICA-AROMA: A stripping pattern is visible and it matches alternative slices <https://neurostars.org/t/potential-issue-in-ica-aroma-report/4231/6>.
-    ![ica_slice_timing](../assets/fmriprep_visual_report/ica_slice_timing.png)
-    *Figure 8. Slice-timing artifact in ICA-AROMA*
+         * Generally, a high correlation coefficient among nuisance regressors -- especially spatial/anatomical regressors -- may indicate the presence of PVE if it is accompanied by other evidence, such as spatial co-localization of the voxels with high correlation coefficients with regions known to be susceptible to PVE such as the gray/white matter boundary.
 
 #### Note on multiband/multi-echo fMRI data
 
@@ -286,34 +269,34 @@ This section is a textual summary, containing the version of fMRIPrep, which com
 This section provides a boilerplate describing in detail the preprocessing of the images. We kindly ask to report results preprocessed with fMRIPrep using that boilerplate. The latter is available in three languages (HTML, Markdown and Latex) to faciliate integration in manuscripts.
 
 ## Errors
-This section tells you whether fMRIPrep encountered any problems during the preprocessing. Note that “errors” refers only to problems in running fMRIPrep, and NOT problems with the quality of the resulting images. This section won’t flag participants in which fMRIPrep was able to successfully run to completion but yielded poor results, or in which the input data was of lower-than-desirable quality.
+This section tells you whether fMRIPrep encountered any problems during the preprocessing. Note that "errors" refers only to problems in running fMRIPrep, and NOT problems with the quality of the resulting images. This section won’t flag participants in which fMRIPrep was able to successfully run to completion but yielded poor results, or in which the input data was of lower-than-desirable quality.
 
-## Things that aren’t an issue
-* “Missing” [not visualized] slices
+## Things that are not an issue
+* "Missing" [not visualized] slices
     * In the report visualizations that display a panel of slices, sometimes it will appear as though there is a slice missing - for example, nothing is shown for x = -12. This is a problem with the visualization and does NOT indicate the slice is missing from the actual data. You can try reloading the report, or opening it with Chrome if you’re using another browser, as well as using your preferred NIFTI viewer to check the data. 
 
 ## Further material
 If you are interested in knowing more about quality control, we wrote [a paper entitled "Quality control in functional MRI studies with MRIQC and fMRIPrep"](https://doi.org/10.3389/fnimg.2022.1073734) that describes how the visual inspection of fMRIPrep's report lies within the broader scope of quality control of fMRI data. In that paper, we demonstrate in details a protocol to perform quality control of unprocessed and minimally preprocessed BOLD fMRI images based on the visual assessment of MRIQC and fMRIPrep reports respectively. We additionally apply the protocol on a composite dataset drawn from open fMRI studies and illustrate exclusion criteria with examples.
 
 ## References
-[1] : Fischl, Bruce. 2012. “FreeSurfer.” NeuroImage 62 (2): 774–81. <https://doi.org/10.1016/j.neuroimage.2012.01.021>.
+[1] : Fischl, Bruce. 2012. "FreeSurfer." NeuroImage 62 (2): 774–81. <https://doi.org/10.1016/j.neuroimage.2012.01.021>.
 
-[2] : White, Tonya, Philip R. Jansen, Ryan L. Muetzel, Gustavo Sudre, Hanan El Marroun, Henning Tiemeier, Anqi Qiu, Philip Shaw, Andrew M. Michael, and Frank C. Verhulst. 2018. “Automated Quality Assessment of Structural Magnetic Resonance Images in Children: Comparison with Visual Inspection and Surface-Based Reconstruction.” Human Brain Mapping 39 (3): 1218–31. <https://doi.org/10.1002/hbm.23911>.
+[2] : White, Tonya, Philip R. Jansen, Ryan L. Muetzel, Gustavo Sudre, Hanan El Marroun, Henning Tiemeier, Anqi Qiu, Philip Shaw, Andrew M. Michael, and Frank C. Verhulst. 2018. "Automated Quality Assessment of Structural Magnetic Resonance Images in Children: Comparison with Visual Inspection and Surface-Based Reconstruction." Human Brain Mapping 39 (3): 1218–31. <https://doi.org/10.1002/hbm.23911>.
 
-[3] : Klapwijk, Eduard T., Ferdi van de Kamp, Mara van der Meulen, Sabine Peters, and Lara M. Wierenga. 2019. “Qoala-T: A Supervised-Learning Tool for Quality Control of FreeSurfer Segmented MRI Data.” NeuroImage 189 (April): 116–29. <https://doi.org/10.1016/j.neuroimage.2019.01.014>.
+[3] : Klapwijk, Eduard T., Ferdi van de Kamp, Mara van der Meulen, Sabine Peters, and Lara M. Wierenga. 2019. "Qoala-T: A Supervised-Learning Tool for Quality Control of FreeSurfer Segmented MRI Data." NeuroImage 189 (April): 116–29. <https://doi.org/10.1016/j.neuroimage.2019.01.014>.
 
-[4] : Behzadi, Yashar, Khaled Restom, Joy Liau, and Thomas T. Liu. 2007. “A Component Based Noise Correction Method (CompCor) for BOLD and Perfusion Based FMRI.” NeuroImage 37 (1): 90–101. <https://doi.org/10.1016/j.neuroimage.2007.04.042>.
+[4] : Behzadi, Yashar, Khaled Restom, Joy Liau, and Thomas T. Liu. 2007. "A Component Based Noise Correction Method (CompCor) for BOLD and Perfusion Based FMRI." NeuroImage 37 (1): 90–101. <https://doi.org/10.1016/j.neuroimage.2007.04.042>.
 
 [5] : Power, Jonathan D. 2017. “A Simple but Useful Way to Assess FMRI Scan Qualities.” NeuroImage 154 (July): 150–58. <https://doi.org/10.1016/j.neuroimage.2016.08.009>.
-[7] : Provins, Céline, Christopher J. Markiewicz, Rastko Ciric, Mathias Goncalves, César Caballero-Gaudes, Russell Poldrack, Patric Hagmann, and Oscar Esteban. 2022. “Quality Control and Nuisance Regression of FMRI, Looking out Where Signal Should Not Be Found.” Proc. Intl. Soc. Mag. Reson. Med. 31, (ISMRM), pp. 2683. <https://doi.org/10.31219/osf.io/hz52v>.
+[7] : Provins, Céline, Christopher J. Markiewicz, Rastko Ciric, Mathias Goncalves, César Caballero-Gaudes, Russell Poldrack, Patric Hagmann, and Oscar Esteban. 2022. "Quality Control and Nuisance Regression of FMRI, Looking out Where Signal Should Not Be Found." Proc. Intl. Soc. Mag. Reson. Med. 31, (ISMRM), pp. 2683. <https://doi.org/10.31219/osf.io/hz52v>.
 
 [8] : Aquino KM, Fulcher BD, Parkes L, Sabaroedin K, Fornito A. Identifying and removing widespread signal deflections from fMRI data: Rethinking the global signal regression problem. NeuroImage. 2020;212:116614. <https://doi.org/10.1016/j.neuroimage.2020.116614>.
 
-[9] : Ciric, Rastko, Daniel H. Wolf, Jonathan D. Power, David R. Roalf, Graham L. Baum, Kosha Ruparel, Russell T. Shinohara, et al. 2017. “Benchmarking of Participant-Level Confound Regression Strategies for the Control of Motion Artifact in Studies of Functional Connectivity.” NeuroImage, 154: 174–87. <https://doi.org/10.1016/j.neuroimage.2017.03.020>.
+[9] : Ciric, Rastko, Daniel H. Wolf, Jonathan D. Power, David R. Roalf, Graham L. Baum, Kosha Ruparel, Russell T. Shinohara, et al. 2017. "Benchmarking of Participant-Level Confound Regression Strategies for the Control of Motion Artifact in Studies of Functional Connectivity." NeuroImage, 154: 174–87. <https://doi.org/10.1016/j.neuroimage.2017.03.020>.
 
-[10] : Beckmann, Christian F., and Stephen M. Smith. 2004. “Probabilistic Independent Component Analysis for Functional Magnetic Resonance Imaging.” IEEE Transactions on Medical Imaging 23 (2): 137–52. <https://doi.org/10.1109/TMI.2003.822821>.
+[10] : Beckmann, Christian F., and Stephen M. Smith. 2004. "Probabilistic Independent Component Analysis for Functional Magnetic Resonance Imaging." IEEE Transactions on Medical Imaging 23 (2): 137–52. <https://doi.org/10.1109/TMI.2003.822821>.
 
-[11] : Griffanti, Ludovica, Gwenaëlle Douaud, Janine Bijsterbosch, Stefania Evangelisti, Fidel Alfaro-Almagro, Matthew F. Glasser, Eugene P. Duff, et al. 2017. “Hand Classification of FMRI ICA Noise Components.” NeuroImage 154 (July): 188–205. <https://doi.org/10.1016/j.neuroimage.2016.12.036>.
+[11] : Griffanti, Ludovica, Gwenaëlle Douaud, Janine Bijsterbosch, Stefania Evangelisti, Fidel Alfaro-Almagro, Matthew F. Glasser, Eugene P. Duff, et al. 2017. "Hand Classification of FMRI ICA Noise Components." NeuroImage 154 (July): 188–205. <https://doi.org/10.1016/j.neuroimage.2016.12.036>.
 
 [12] : Pruim RHR, Mennes M, van Rooij D, Llera A, Buitelaar JK, Beckmann CF. ICA-AROMA: A robust ICA-based strategy for removing motion artifacts from fMRI data. Neuroimage. 2015 May 15;112:267–77. <https://doi.org/10.1016/j.neuroimage.2015.02.064>.
 
