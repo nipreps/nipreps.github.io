@@ -38,78 +38,72 @@ The reports first present results of anatomical preprocessing.
 
 ### Anatomical conformation
 
-* Check for obvious failures, such as missing images or implausible values for voxel size, orientation, or dimensions.
-    * For example: you're expecting two input T1w images but it says "Input T1w images: 1"
+Check for obvious failures, such as missing images or implausible values for voxel size, orientation, or dimensions.For example: you're expecting two input T1w images but it says "Input T1w images: 1"
 
 ### Brain mask and brain tissue segmentation of the T1w
 
 This report displays the brain mask and the brain tissue segmentation computed from the T1w image. It shows the quality of intensity non-uniformity (INU) correction, skull stripping, and tissue segmentation.
 
-* INU correction
-    * Better:
-        * The intensity of the image is uniform throughout the brain
-    * Worse:
-        * Intensity non-uniformity artifacts (looks like the "original image" panel in Figure 1):
- 
-        ![inu](../assets/fmriprep_visual_report/inu.png) 
-        *Figure 1. from Vovk, U., Pernus, F., & Likar, B. (2007). A review of methods for correction of intensity inhomogeneity in MRI. IEEE transactions on medical imaging, 26(3), 405-421.*
+#### INU correction
+**Better**: The intensity of the image is uniform throughout the brain
 
-* Skull stripping
-    * Better:
-        * The brain mask (red) covers the whole brain and only the brain - not the dura or anything else outside the brain. It should closely follow the contour of the brain.
+**Worse**: Intensity non-uniformity artifacts (looks like the "original image" panel in Figure 1):
 
-    * Worse:
-        * Skull-stripping failed leading to an inaccurate brain mask
-            * The brain mask cuts off part of the brain and/or contains holes surrounding signal drop-out regions.
-            * The brain mask includes parts that are clearly NOT brain.
-                * For example, fMRIPrep might have misclassified part of the dura, epidural space, or skull as belonging inside the brain mask; as a result the brain mask presents “bumps” surrounding high-intensity areas of signal outside of the cortex. 
+![inu](../assets/fmriprep_visual_report/inu.png) 
 
-            * Having an accurate brain mask makes the downstream preprocessing of an fMRI scan faster (excluding voxels of non-interest) and more accurate (less bias from voxels of non-interest). Consequently, it is important to discard subjects for which the brain mask is not well defined.
+*Figure 1. from Vovk, U., Pernus, F., & Likar, B. (2007). A review of methods for correction of intensity inhomogeneity in MRI. IEEE transactions on medical imaging, 26(3), 405-421.*
 
-* Tissue segmentation
-    * Better:
-        * The outlines of the gray matter (GM; magenta) and white matter (WM; blue) segmentation are correctly drawn. The blue line should follow the boundary between GM and WM, while the magenta line should outline ventricles.
+#### Skull stripping
+**Better**: The brain mask (red) covers the whole brain and only the brain - not the dura or anything else outside the brain. It should closely follow the contour of the brain.
 
-    * Worse:
-        * The GM (magenta)/WM (blue) outlines don't match where those tissue classes are distributed in the underlying image, so either the blue line does not follow the boundary between GM and WM or the magenta line does not outline ventricles.
-        * Inclusion of tissues other than the tissue of interest in the contour delineations should lead to exclusion of the scan.
-        * T1w scans showcasing a low signal-to-noise ratio because of thermal noise will present scattered misclassified voxels within piecewise-smooth regions (generally more identifiable in the WM and inside the ventricles). 
-            * These scans should be excluded except for images where these voxels are only present at subcortical structures (e.g., thalamus) or nearby tissue boundaries. In the latter case, the misclassification results from partial volume effects (i.e., indeed, such voxels contain varying fractions of two or more tissues). The figure below illustrates the difference between individual dots caused by noise versus partial volume effects.
-            ![noise-in-segmentation](../assets/fmriprep_visual_report/noise-in-segmentation.svg) 
-            *Figure 2. Error in brain tissue segmentation of T1w images. (A) The presence of noise compromises the segmentation leading to single voxels being excluded from the ventricle mask. The subject has thus been excluded from further analysis. (B) A series of spots are visible at the boundary between GM and WM. Those spots are due to partial volume effect and thus is a flaw of the fMRIPrep segmentation implementation not of the image quality.*
+**Worse**: Skull-stripping failed leading to an inaccurate brain mask
+* The brain mask cuts off part of the brain and/or contains holes surrounding signal drop-out regions.
+* The brain mask includes parts that are clearly NOT brain. For example, fMRIPrep might have misclassified part of the dura, epidural space, or skull as belonging inside the brain mask; as a result the brain mask presents “bumps” surrounding high-intensity areas of signal outside of the cortex. 
 
-* Common pitfalls in interpretation:
-    * At the inter-hemispheric space, masks (and in particular the brain mask, despite its smooth edges) may intersect the visualization plane several times, giving the impression that the mask is cutting off brain regions. However, this is more of a visual effect on the cutting plane.
-    * Note that the brain mask plotted in the "brain mask and (anatomical/temporal) CompCor ROIs" panel under the functional section is computed from the BOLD image and thus is not identical to the brain mask mentioned in this paragraph. Hence, they follow different exclusion criteria.
+**Note**: Having an accurate brain mask makes the downstream preprocessing of an fMRI scan faster (excluding voxels of non-interest) and more accurate (less bias from voxels of non-interest). Consequently, it is important to discard subjects for which the brain mask is not well defined.
+
+#### Tissue segmentation
+**Better**: The outlines of the gray matter (GM; magenta) and white matter (WM; blue) segmentation are correctly drawn. The blue line should follow the boundary between GM and WM, while the magenta line should outline ventricles.
+
+**Worse**:
+* The GM (magenta)/WM (blue) outlines don't match where those tissue classes are distributed in the underlying image, so either the blue line does not follow the boundary between GM and WM or the magenta line does not outline ventricles.
+* Inclusion of tissues other than the tissue of interest in the contour delineations should lead to exclusion of the scan.
+* T1w scans showcasing a low signal-to-noise ratio because of thermal noise will present scattered misclassified voxels within piecewise-smooth regions (generally more identifiable in the WM and inside the ventricles). 
+    * These scans should be excluded except for images where these voxels are only present at subcortical structures (e.g., thalamus) or nearby tissue boundaries. In the latter case, the misclassification results from partial volume effects (i.e., indeed, such voxels contain varying fractions of two or more tissues). The figure below illustrates the difference between individual dots caused by noise versus partial volume effects.
+    ![noise-in-segmentation](../assets/fmriprep_visual_report/noise-in-segmentation.svg) 
+    *Figure 2. Error in brain tissue segmentation of T1w images. (A) The presence of noise compromises the segmentation leading to single voxels being excluded from the ventricle mask. The subject has thus been excluded from further analysis. (B) A series of spots are visible at the boundary between GM and WM. Those spots are due to partial volume effect and thus is a flaw of the fMRIPrep segmentation implementation not of the image quality.*
+
+**Common pitfalls in interpretation**:
+* At the inter-hemispheric space, masks (and in particular the brain mask, despite its smooth edges) may intersect the visualization plane several times, giving the impression that the mask is cutting off brain regions. However, this is more of a visual effect on the cutting plane.
+* Note that the brain mask plotted in the "brain mask and (anatomical/temporal) CompCor ROIs" panel under the functional section is computed from the BOLD image and thus is not identical to the brain mask mentioned in this paragraph. Hence, they follow different exclusion criteria.
 
 ### Spatial normalization of the anatomical T1w reference
 
 The normalization report shows how successfully your T1w image(s) were resampled into standard space, for each of the template spaces used.
-* Better:
-    * Your T1w image and the template image line up well when you toggle between the images (hover mouse over the panel):
-        * In order of importance, the following structures should be correctly aligned : 1. ventricles, 2. subcortical regions, 3. corpus callosum, 4. cerebellum, 5. cortical gray matter.
-        * The standard templates provided with fMRIPrep (such as `MNI152NLin2009cAsym`) are averaged across multiple subjects, so the template image will look blurrier than the T1w image. Because of this averaging, it is normal for sulci to be less pronounced and gyri to be wider on the template than the T1w image.
+**Better**: Your T1w image and the template image line up well when you toggle between the images (hover mouse over the panel):
+* In order of importance, the following structures should be correctly aligned : 1. ventricles, 2. subcortical regions, 3. corpus callosum, 4. cerebellum, 5. cortical gray matter.
+* The standard templates provided with fMRIPrep (such as `MNI152NLin2009cAsym`) are averaged across multiple subjects, so the template image will look blurrier than the T1w image. Because of this averaging, it is normal for sulci to be less pronounced and gyri to be wider on the template than the T1w image.
 
-* Worse:
-    * Stretching or distortion in the participant’s T1w image, indicating failed normalization.
-        * A misalignment of the ventricles, the subcortical regions, or the corpus callosum should lead to immediate exclusion. You can however be more lenient with the misalignment of cortical GM because volumetric (image) registration may not resolve substantial inter-individual differences (e.g., a sulcus missing in an individual’s brain but typically present in the population of the template).
+**Worse**:
+* Stretching or distortion in the participant’s T1w image, indicating failed normalization.
+    * A misalignment of the ventricles, the subcortical regions, or the corpus callosum should lead to immediate exclusion. You can however be more lenient with the misalignment of cortical GM because volumetric (image) registration may not resolve substantial inter-individual differences (e.g., a sulcus missing in an individual’s brain but typically present in the population of the template).
 
-    * If skull-stripping was not successful, you might see some places where there are non-brain voxels outside of the contours of the brain. 
+* If skull-stripping was not successful, you might see some places where there are non-brain voxels outside of the contours of the brain. 
 
 ### Surface reconstruction
 
 If you used the `--fs-no-reconall` flag to skip surface-based preprocessing, this section of the report will not exist.
 The FreeSurfer [fischl2012][1] subject reconstruction report shows the WM (blue outline) and pial (red outline) surfaces overlaid on the T1w image.
-* Better:
-    * The white-gray boundary outlined (blue link) matches the underlying image.
-    * WM and pial surface boundary outlines do not cross or overlap each other.
+**Better**:
+* The white-gray boundary outlined (blue link) matches the underlying image.
+* WM and pial surface boundary outlines do not cross or overlap each other.
 
-* Worse:
-    * The white-gray boundary outline (blue line) does not correspond well to the boundary observed in the underlying image.
-    * WM and pial surface boundaries cross or overlap each other.
-    * Pial surface (red outline) extends past the actual pial boundary (see images [here](https://surfer.nmr.mgh.harvard.edu/fswiki/FsTutorial/PialEdits_tktools) for an example ; this can be a result of bad skull-stripping).
-    * QC assessment of FreeSurfer outcomes is comprehensively covered elsewhere (e.g., White et al. 2018 [white2018][2]; Klapwijk et al. 2019 [klapwijk2019][3]), and fMRI studies using vertex-wise (surface) analyses should rigorously assess these surfaces. 
-    * In a voxel-wise analysis, data should be excluded only when the reconstructed surfaces are extremely inaccurate, which typically only happens in the presence of artifacts easily captured previously by [MRIQC](https://mriqc.readthedocs.io/en/latest/).
+**Worse**:
+* The white-gray boundary outline (blue line) does not correspond well to the boundary observed in the underlying image.
+* WM and pial surface boundaries cross or overlap each other.
+* Pial surface (red outline) extends past the actual pial boundary (see images [here](https://surfer.nmr.mgh.harvard.edu/fswiki/FsTutorial/PialEdits_tktools) for an example ; this can be a result of bad skull-stripping).
+* QC assessment of FreeSurfer outcomes is comprehensively covered elsewhere (e.g., White et al. 2018 [white2018][2]; Klapwijk et al. 2019 [klapwijk2019][3]), and fMRI studies using vertex-wise (surface) analyses should rigorously assess these surfaces. 
+* In a voxel-wise analysis, data should be excluded only when the reconstructed surfaces are extremely inaccurate, which typically only happens in the presence of artifacts easily captured previously by [MRIQC](https://mriqc.readthedocs.io/en/latest/).
 
 * Common pitfalls in interpretation:
     * Note that cerebellum and brainstem are excluded from the surface reconstruction in fMRIPrep; it is thus normal that the outlines do not include these areas.
@@ -118,50 +112,52 @@ The FreeSurfer [fischl2012][1] subject reconstruction report shows the WM (blue 
 
 ### Textual summary
 
-* The BOLD summary describes the interpretation of the inputs by fMRIPrep, and the applied heuristics. For instance, if the dataset is multi-echo EPI and comprehends three or more echos, then fMRIPrep should indicate this in the BOLD summary.
+The BOLD summary describes the interpretation of the inputs by fMRIPrep, and the applied heuristics. For instance, if the dataset is multi-echo EPI and comprehends three or more echos, then fMRIPrep should indicate this in the BOLD summary.
 
-* Other potential issues are missing images or implausible values.
-    * Functional data can vary based on available data, metadata, user selections.
-        * What does “Heuristics - BBR may fall back to volume-based coregistration” mean?
+Other potential issues are missing images or implausible values.
+* Functional data can vary based on available data, metadata, user selections.
+    * What does “Heuristics - BBR may fall back to volume-based coregistration” mean?
 
-            In fMRIPrep's workflow, if boundary-based registration fails (meaning that `bbr` distorts the affine registration more than 15mm), fMRIPrep reverts to using the initial affine transform from Freesurfer’s `mri_coreg` tool instead of using the bbr refinement of the initial transform ([relevant code](https://github.com/nipreps/fmriprep/pull/694/files#diff-939042e0a10e509ce5708c3e112376ffR29)) 
+        In fMRIPrep's workflow, if boundary-based registration fails (meaning that `bbr` distorts the affine registration more than 15mm), fMRIPrep reverts to using the initial affine transform from Freesurfer’s `mri_coreg` tool instead of using the bbr refinement of the initial transform ([relevant code](https://github.com/nipreps/fmriprep/pull/694/files#diff-939042e0a10e509ce5708c3e112376ffR29)) 
 
-    * “Note on orientation: qform matrix overwritten/ this data has been copied from sform/sform matrix set” warnings
+* “Note on orientation: qform matrix overwritten/ this data has been copied from sform/sform matrix set” warnings
 
-        `qform` and `sform` refer to metadata fields in the NIfTI file header, prescribing a coordinate system for the image. 
-        This message warns you that information in the header was altered during the preprocessing.
-        This is an advisory message and does not necessarily indicate issues in data quality or registration.
-        A common scenario is that the sform code was 0, so fMRIPrep copied the code from qform in order to keep the affine matrices aligned, ensuring that the images will be treated as having the same orientation later down the pipeline.
-        See Chris Markewicz's Neurostars posts [here](https://neurostars.org/t/note-on-orientation-qform-and-sform-warning/4379/4) and [here](https://neurostars.org/t/note-on-orientation-sform-matrix-set/5939) for a longer explanation of when/why fMRIPrep produces these warnings. You can read more about how `qform` and `sform` work at the following links: [Recommended usage of qform and sform](https://nifti.nimh.nih.gov/nifti-1/documentation/nifti1fields/nifti1fields_pages/qsform_brief_usage) and [Nifti Qform and Sform](http://gru.stanford.edu/doku.php/mrTools/coordinateTransforms). 
+    `qform` and `sform` refer to metadata fields in the NIfTI file header, prescribing a coordinate system for the image. 
+    This message warns you that information in the header was altered during the preprocessing.
+    This is an advisory message and does not necessarily indicate issues in data quality or registration.
+    A common scenario is that the sform code was 0, so fMRIPrep copied the code from qform in order to keep the affine matrices aligned, ensuring that the images will be treated as having the same orientation later down the pipeline.
+    See Chris Markewicz's Neurostars posts [here](https://neurostars.org/t/note-on-orientation-qform-and-sform-warning/4379/4) and [here](https://neurostars.org/t/note-on-orientation-sform-matrix-set/5939) for a longer explanation of when/why fMRIPrep produces these warnings. You can read more about how `qform` and `sform` work at the following links: [Recommended usage of qform and sform](https://nifti.nimh.nih.gov/nifti-1/documentation/nifti1fields/nifti1fields_pages/qsform_brief_usage) and [Nifti Qform and Sform](http://gru.stanford.edu/doku.php/mrTools/coordinateTransforms). 
  
 ### Alignment of functional and anatomical data
 
 The alignment report shows the quality of co-registration and susceptibility distortion correction.
 
-* Co-registration
-    * The text tells you which method fMRIPrep used to align the functional and anatomical data - for example, by running `bbregister`. The images show the registered BOLD reference with the white and pial surfaces overlaid (red and blue lines)
-    * Better:
-        * The BOLD and T1w images are aligned; image boundaries and anatomical landmarks (for example, ventricles; corpus callosum) appear to be in the same place when toggling between the images.
-        * White and pial surface outlines (red and blue lines) appear to correspond well to the tissue boundaries in the functional images. 
+ #### Co-registration
+The text tells you which method fMRIPrep used to align the functional and anatomical data - for example, by running `bbregister`. The images show the registered BOLD reference with the white and pial surfaces overlaid (red and blue lines)
 
-    * Worse:
-        * Functional and anatomical images are not aligned and clearly differ in their spatial location or orientation.
-        * White and pial surface boundaries (red and blue lines) overlays correspond poorly to the tissue boundaries in the underlying images.
+**Better**:
+* The BOLD and T1w images are aligned; image boundaries and anatomical landmarks (for example, ventricles; corpus callosum) appear to be in the same place when toggling between the images.
+* White and pial surface outlines (red and blue lines) appear to correspond well to the tissue boundaries in the functional images. 
 
-* Susceptibility distortion correction
-    * The functional images can have some warping or distortion due to inhomogeneities in the $B_0$ magnetic field. For more details on what causes susceptibility distortion, refer to [the educational notebook of SDCFlows](https://github.com/nipreps/sdcflows/blob/master/docs/notebooks/SDC%20-%20Theory%20and%20physics.ipynb). Susceptibility distortion artifacts manifest in two different ways on the functional and structural images: as signal drop-out, that is, a region where the signal vanishes, or as brain distortions. Signal drop-outs often appear close to brain-air interfaces; these include ventromedial prefrontal cortex, the anterior part of the prefrontal cortex, and the region next to the ear cavities. 
-    * Better:
-        * No signal drop out or brain distortion affects your region of interest.
-        * The pial surface  outlines (blue lines) appear to correspond well to the tissue boundaries in the functional images.
-    * Worse:
-        * If the susceptibility distortion correction is unsuccessfull, residual susceptibility distortion artifacts can be observed. If the latter overlaps with regions of interest, the scan should be excluded.
-        * Note however that some drop out in inferior brain regions (such as the OFC or medial temporal lobe) in functional images is somewhat inevitable. Depending on the type of analysis you’re doing and what you’re interested in, this may be more/less of an issue for you. If you see a lot of signal drop out, you will probably want to check the brain mask generated by fMRIPrep to see how that drop-out impacts the location and quantity of missing voxels in your brain mask.
+**Worse**:
+* Functional and anatomical images are not aligned and clearly differ in their spatial location or orientation.
+* White and pial surface boundaries (red and blue lines) overlays correspond poorly to the tissue boundaries in the underlying images.
+
+#### Susceptibility distortion correction
+The functional images can have some warping or distortion due to inhomogeneities in the $B_0$ magnetic field. For more details on what causes susceptibility distortion, refer to [the educational notebook of SDCFlows](https://github.com/nipreps/sdcflows/blob/master/docs/notebooks/SDC%20-%20Theory%20and%20physics.ipynb). Susceptibility distortion artifacts manifest in two different ways on the functional and structural images: as signal drop-out, that is, a region where the signal vanishes, or as brain distortions. Signal drop-outs often appear close to brain-air interfaces; these include ventromedial prefrontal cortex, the anterior part of the prefrontal cortex, and the region next to the ear cavities. 
+
+**Better**:
+* No signal drop out or brain distortion affects your region of interest.
+* The pial surface  outlines (blue lines) appear to correspond well to the tissue boundaries in the functional images.
+
+**Worse**:
+* If the susceptibility distortion correction is unsuccessfull, residual susceptibility distortion artifacts can be observed. If the latter overlaps with regions of interest, the scan should be excluded.
+* Note however that some drop out in inferior brain regions (such as the OFC or medial temporal lobe) in functional images is somewhat inevitable. Depending on the type of analysis you’re doing and what you’re interested in, this may be more/less of an issue for you. If you see a lot of signal drop out, you will probably want to check the brain mask generated by fMRIPrep to see how that drop-out impacts the location and quantity of missing voxels in your brain mask.
         
-* Common pitfalls in interpretation:
-    * Note that the BOLD images displayed in the report may have what appears to be an “artifact” in the data, as shown below. This is because the reports use a faster but less precise type of interpolation (Nearest Neighbor interpolation) for display. In actuality, fMRIPrep uses Lanczos interpolation for resampling, so these apparent “artifacts” are not present in the actual data (you can confirm this by checking the preprocessed BOLD NIFTI file and its registration to the T1w image in your preferred software). 
+**Common pitfalls in interpretation**: Note that the BOLD images displayed in the report may have what appears to be an “artifact” in the data, as shown below. This is because the reports use a faster but less precise type of interpolation (Nearest Neighbor interpolation) for display. In actuality, fMRIPrep uses Lanczos interpolation for resampling, so these apparent “artifacts” are not present in the actual data (you can confirm this by checking the preprocessed BOLD NIFTI file and its registration to the T1w image in your preferred software). 
 
-        ![apparent-artifact-interpolation](../assets/fmriprep_visual_report/apparent-artifact-interpolation.png)
-        *Figure 3. The use of a fast interpolation for display can lead to artifact-like structure that are not present in the actual data.*
+![apparent-artifact-interpolation](../assets/fmriprep_visual_report/apparent-artifact-interpolation.png)
+*Figure 3. The use of a fast interpolation for display can lead to artifact-like structure that are not present in the actual data.*
 
 ### Brain mask and temporal/anatomical CompCor ROIs
 
@@ -173,80 +169,76 @@ The temporal CompCor ROI (blue contour) contains the top 2% most variable voxels
 
 The brain edge (or crown) ROI (green contour) picks signals outside but close to the brain, which are decomposed into 24 principal components.
 
-* Better:
-    * The brain mask correctly surrounds the brain boundary, not leaving out brain area. Note that holes in the brain mask such as on Figure 4, is not problematic as it should not disrupt co-registration.
-    ![hole-bold-brainmask](../assets/fmriprep_visual_report/hold-bold-brainmask.png)
-    *Figure 4. Such holes in the brain mask is not problematic as it should not disrupt co-registration.*
+**Better**:The brain mask correctly surrounds the brain boundary, not leaving out brain area. Note that holes in the brain mask such as on Figure 4, is not problematic as it should not disrupt co-registration.
+![hole-bold-brainmask](../assets/fmriprep_visual_report/hold-bold-brainmask.png)
+*Figure 4. Such holes in the brain mask is not problematic as it should not disrupt co-registration.*
 
-* Worse:
-    * The brain mask computed from the BOLD image mainly influences confounds estimation, but also co-registration, although the latter is primarily driven by the WM mask. As such the brain mask must not leave out any brain area, but it can be a bit loose around the brain. If the mask intersects with brain-originating signal, the nuisance regressors should not be used.
-    * If the study plan prescribes using CompCor or brain-edge regressors, it is critical to exclude BOLD runs where any of these masks substantially overlap regions of interest.
-    * The shape and the large overlap of the tCompCor with region of interest can also indicate the presence of an artifact that was missed in the other visualizations (e.g see Figure 5). In this case, the scan should be excluded. 
-    ![suspicious-compcor](../assets/fmriprep_visual_report/suspicious-compcor.png)
-    *Figure 5. The shape and the large overlap of the tCompCor with region of interest indicates the presence of an artifact that was missed in the other visualizations.*  
+**Worse**:
+* The brain mask computed from the BOLD image mainly influences confounds estimation, but also co-registration, although the latter is primarily driven by the WM mask. As such the brain mask must not leave out any brain area, but it can be a bit loose around the brain. If the mask intersects with brain-originating signal, the nuisance regressors should not be used.
+* If the study plan prescribes using CompCor or brain-edge regressors, it is critical to exclude BOLD runs where any of these masks substantially overlap regions of interest.
+* The shape and the large overlap of the tCompCor with region of interest can also indicate the presence of an artifact that was missed in the other visualizations (e.g see Figure 5). In this case, the scan should be excluded. 
+![suspicious-compcor](../assets/fmriprep_visual_report/suspicious-compcor.png)
+*Figure 5. The shape and the large overlap of the tCompCor with region of interest indicates the presence of an artifact that was missed in the other visualizations.*  
 
 ### Variance explained by t/a CompCor components
 
 The figure displays the cumulative variance explained by components for each of four CompCor decompositions (left to right: anatomical CSF mask, anatomical white matter mask, anatomical combined mask, temporal). Dotted lines indicate the minimum number of components necessary to explain 50%, 70%, and 90% of the variance in the nuisance mask.The number of components that must be included in the model in order to explain some fraction of variance in the decomposition mask can be used as a feature selection criterion for confound regression.
 
- * Better:
-    * High variance explained: A high variance explained by t/aCompCor components indicates that the selected regions of interest are capturing a significant portion of the motion and physiological noise in the data, which can improve the quality of subsequent analyses. In the fMRIPrep reports, by default only the components that explain the top 50% of the variance are saved. 
+ **Better**: High variance explained: A high variance explained by t/aCompCor components indicates that the selected regions of interest are capturing a significant portion of the motion and physiological noise in the data, which can improve the quality of subsequent analyses. In the fMRIPrep reports, by default only the components that explain the top 50% of the variance are saved. 
 
-* Worse:
-    * Low variance explained: A low variance explained by t/aCompCor components may indicate that the selected regions of interest are not capturing enough of the motion and physiological noise in the data, which can lead to reduced sensitivity and specificity in subsequent analyses.
+**Worse**: Low variance explained: A low variance explained by t/aCompCor components may indicate that the selected regions of interest are not capturing enough of the motion and physiological noise in the data, which can lead to reduced sensitivity and specificity in subsequent analyses.
 
 The benchmark for % variance explained and/or optimal number of CompCor components to include in the analysis can vary, depending on the specific dataset and analysis goals. In general, the goal is to select enough components to capture the majority of the motion and physiological noise in the data, while avoiding overfitting the model to noise or task-related signal.
  
 ### BOLD summary
 
 The BOLD summary report shows several characteristic statistics along with a carpet plot [power2017][5], giving a view of the temporal characteristics of the preprocessed BOLD series. The carpet plot is a tool to visualize changes in voxel intensities throughout an fMRI scan. It works by plotting voxel time series in close spatial proximity so that the eye notes temporal coincidence. One particular innovation of this carpet plot implementation is that it contains the "crown" area corresponding to voxels located on a closed band around the brain's outer edge [patriat2015][6]. As those voxels are outside the brain, we do not expect any signal there, meaning that the presence of signal can be interpreted as produced by an artifact.
-* Definitions: 
-    * GS - global signal, or the mean of the voxel time series within the whole-brain mask. In addition to the BOLD signal of interest, GS fluctuations can reflect non-neuronal contributions to the voxel time series, e.g., by motion, the MRI system (e.g., low frequency drift), physiology (respiration, cardiac rate), and/or participant state-related factors (e.g., vigilance or fatigue) [Liu2017][13].
-    * GSCSF - global signal calculated within cerebrospinal fluid (CSF)
-    * GSWM - global signal calculated within white matter (WM)
-    * DVARS - [*standardized DVARS!*](https://neurostars.org/t/fmriprep-standardised-dvars/5271) for each time point. DVARS is the average change in mean intensity between each pair of fMRI volumes in a series and can also be interpreted as the first derivative of the mean intensity. Higher values indicate more dramatic changes (e.g., due to motion or spiking).
-    * FD - framewise-displacement measures for each time point
 
-* Better:
-    * The carpet plot is homogeneous, particularly in the brain edge.
+| Name | Definitions |
+| -------- | ------- |
+| GS | global signal, or the mean of the voxel time series within the whole-brain mask. In addition to the BOLD signal of interest, GS fluctuations can reflect non-neuronal contributions to the voxel time series, e.g., by motion, the MRI system (e.g., low frequency drift), physiology (respiration, cardiac rate), and/or participant state-related factors (e.g., vigilance or fatigue) [Liu2017][13]. |
+| GSCSF | global signal calculated within cerebrospinal fluid (CSF) |
+| GSWM | global signal calculated within white matter (WM) |
+| DVARS | [*standardized DVARS!*](https://neurostars.org/t/fmriprep-standardised-dvars/5271) for each time point. DVARS is the average change in mean intensity between each pair of fMRI volumes in a series and can also be interpreted as the first derivative of the mean intensity. Higher values indicate more dramatic changes (e.g., due to motion or spiking). |
+| FD | framewise-displacement measures for each time point |
 
-* Worse:
-    * Strongly structured brain edge region in the carpet plot is a sign that artifacts are compromising the fMRI scan [provins2022][7]. Several types of carpet plot modulations can be differentiated and are illustrated in the figure below.
-        * Motion outbursts, visible as peaks in the FD trace, are often paired with prolonged dark deflections derived from spin-history effects (see Figure 6A). 
-        * Periodic modulations on the carpet plot indicate regular and slow motion, e.g., caused by respiration, which may also compromise the signal of interest (see Figure 6B). 
-        * Coil failures may be identifiable as a sudden change in overall signal intensity on the carpet plot not paired that is not paired with motion peaks and generally sustained through the end of the scan (see Figure 6C). 
-        * A strong polarized structure revealed by the clustering of carpet plot rows suggests that artifacts mitigate the signal of interest (see Figure 6D). Indeed, sorting the rows (i.e., the time series) of each segment of the carpet plot such that voxels with similar BOLD dynamics appear close to one another reveals non-global structure in the signal, which is obscured when voxels are ordered randomly [aquino2020][8].
-        * Finding temporal patterns similar in gray matter areas and simultaneously in regions of no interest (for instance, CSF or the brain edge) indicates the presence of artifacts, typically derived from head motion. If the planned analysis specifies noise regression techniques based on information from these regions of no interest (which is standard and recommended [ciric2017][9]), the risk of removing signals with neural origins is high, and affected scans should be excluded. For example, in standard task-based fMRI, stimulus presentation might evoke both participant movement and neural responses (_stimulus-correlated motion_).
+**Better**: The carpet plot is homogeneous, particularly in the brain edge.
+
+**Worse**: Strongly structured brain edge region in the carpet plot is a sign that artifacts are compromising the fMRI scan [provins2022][7]. Several types of carpet plot modulations can be differentiated and are illustrated in the figure below.
+* Motion outbursts, visible as peaks in the FD trace, are often paired with prolonged dark deflections derived from spin-history effects (see Figure 6A). 
+* Periodic modulations on the carpet plot indicate regular and slow motion, e.g., caused by respiration, which may also compromise the signal of interest (see Figure 6B). 
+* Coil failures may be identifiable as a sudden change in overall signal intensity on the carpet plot not paired that is not paired with motion peaks and generally sustained through the end of the scan (see Figure 6C). 
+* A strong polarized structure revealed by the clustering of carpet plot rows suggests that artifacts mitigate the signal of interest (see Figure 6D). Indeed, sorting the rows (i.e., the time series) of each segment of the carpet plot such that voxels with similar BOLD dynamics appear close to one another reveals non-global structure in the signal, which is obscured when voxels are ordered randomly [aquino2020][8].
+* Finding temporal patterns similar in gray matter areas and simultaneously in regions of no interest (for instance, CSF or the brain edge) indicates the presence of artifacts, typically derived from head motion. If the planned analysis specifies noise regression techniques based on information from these regions of no interest (which is standard and recommended [ciric2017][9]), the risk of removing signals with neural origins is high, and affected scans should be excluded. For example, in standard task-based fMRI, stimulus presentation might evoke both participant movement and neural responses (_stimulus-correlated motion_).
         
 
-    ![carpetplot_artifacts](../assets/fmriprep_visual_report/carpetplot_artifacts.png)
-    *Figure 6. Assessment of time series with the carpet plot. The brain edge region of the carpet plot comprises voxels outside the brain. As such, structure in the brain edge can be interpreted as artifactual, and thus corresponds to an exclusion criteria. (A) Motion outbursts, visible as peaks in the framewise displacement (FD) trace, are often paired with prolonged dark deflections. (B) Periodic modulations are indicative of regular, slow motion, e.g., caused by respiration. (C) An abrupt change in overall signal intensity that is not paired with motion peaks can be attributed to coil failure. (D) A strong polarized structure revealed by the clustering of carpet plot rows also suggests that artifacts mitigate the signal of interest.*
+![carpetplot_artifacts](../assets/fmriprep_visual_report/carpetplot_artifacts.png)
+*Figure 6. Assessment of time series with the carpet plot. The brain edge region of the carpet plot comprises voxels outside the brain. As such, structure in the brain edge can be interpreted as artifactual, and thus corresponds to an exclusion criteria. (A) Motion outbursts, visible as peaks in the framewise displacement (FD) trace, are often paired with prolonged dark deflections. (B) Periodic modulations are indicative of regular, slow motion, e.g., caused by respiration. (C) An abrupt change in overall signal intensity that is not paired with motion peaks can be attributed to coil failure. (D) A strong polarized structure revealed by the clustering of carpet plot rows also suggests that artifacts mitigate the signal of interest.*
     
- * Common pitfalls in interpretation
-    * The variance and the scaling of the trace plots affect a lot their display and interpretation (in other words, spikes are relative to other datapoints in the timeseries). Therefore, always pay attention to the trace metrics like its maximum and mean, before deriving any conclusion or visually comparing the trace plots between two participants.
+ **Common pitfalls in interpretation**: The variance and the scaling of the trace plots affect a lot their display and interpretation (in other words, spikes are relative to other datapoints in the timeseries). Therefore, always pay attention to the trace metrics like its maximum and mean, before deriving any conclusion or visually comparing the trace plots between two participants.
 
 ### Correlations among nuisance regressors
 
 This report presents a plot of correlations among confound regressors. The left-hand panel shows the matrix of correlations among selected confound time series as a heat-map. The right-hand panel displays the correlation of selected confound time series with the mean global signal computed across the whole brain; the regressors shown are those with greatest correlation with the global signal. These plots can be used to guide selection of a confound model or to assess the extent to which tissue-specific regressors correlate with global signal.; e.g if two regressors are highly correlated, it is recommended to include in the confound model only one of the two.
 
-* Selection of a confound model
-    * Better:
-        * Carefully choose a serie of regressors that are not highly correlated to include in the confound model. Refer to <https://fmriprep.org/en/stable/outputs.html#confounds> for more information on how to choose the nuisance regressors.
-        * Or proceed with feature orthogonalization before confound regression.
-    * Worse: 
-        * Include in the confound model two regressors that are highly correlated.
-    * Common pitfall in interpreptation:
-        * The CompCor components extracted from the same mask and the cosine bases are inherently orthogonal, implying a zero correlation by construction.
+#### Selection of a confound model
+**Better**: 
+* Carefully choose a serie of regressors that are not highly correlated to include in the confound model. Refer to <https://fmriprep.org/en/stable/outputs.html#confounds> for more information on how to choose the nuisance regressors.
+* Or proceed with feature orthogonalization before confound regression.
 
-* Assessment of partial volume effect [NEEDS COMPLETION]
-    * Partial volume effects refers to the mixing of signals from different tissue types within a single voxel in fMRI data, so that the MR signal reflects fractional contributions from multiple tissue types. This can lead to inaccurate estimates of neural activity. (However, note that other sources, such as motion or physiological noise, can also contribute to high correlations among the regressors).
-     * High partial volume effects in one group vs. another may reflect underlying anatomical differences in the groups. For example, older adults with Alzheimers have greater grey matter volume loss and ventricle enlargement, so may be more affected by PVE than their healthy controls [dukart][14].
+**Worse**: 
+* Include in the confound model two regressors that are highly correlated.
+* Common pitfall in interpreptation:
+    * The CompCor components extracted from the same mask and the cosine bases are inherently orthogonal, implying a zero correlation by construction.
 
-    * Better: 
-        * There is no specific threshold for the correlation coefficient that indicates the absence (or presence) of partial volume effects (PVE) in fMRI data. The strength of the correlation between nuisance regressors may depend on several factors, including the tissue properties of the brain region being examined, the voxel size, the signal-to-noise ratio of the data, and the specific nuisance regressors used in the analysis. 
+#### Assessment of partial volume effect [NEEDS COMPLETION]
+Partial volume effects refers to the mixing of signals from different tissue types within a single voxel in fMRI data, so that the MR signal reflects fractional contributions from multiple tissue types. This can lead to inaccurate estimates of neural activity. (However, note that other sources, such as motion or physiological noise, can also contribute to high correlations among the regressors).
+
+High partial volume effects in one group vs. another may reflect underlying anatomical differences in the groups. For example, older adults with Alzheimers have greater grey matter volume loss and ventricle enlargement, so may be more affected by PVE than their healthy controls [dukart][14].
+
+**Better**: There is no specific threshold for the correlation coefficient that indicates the absence (or presence) of partial volume effects (PVE) in fMRI data. The strength of the correlation between nuisance regressors may depend on several factors, including the tissue properties of the brain region being examined, the voxel size, the signal-to-noise ratio of the data, and the specific nuisance regressors used in the analysis. 
     
-    * Worse:
-         * Generally, a high correlation coefficient among nuisance regressors -- especially spatial/anatomical regressors -- may indicate the presence of PVE if it is accompanied by other evidence, such as spatial co-localization of the voxels with high correlation coefficients with regions known to be susceptible to PVE such as the gray/white matter boundary.
+**Worse**: Generally, a high correlation coefficient among nuisance regressors -- especially spatial/anatomical regressors -- may indicate the presence of PVE if it is accompanied by other evidence, such as spatial co-localization of the voxels with high correlation coefficients with regions known to be susceptible to PVE such as the gray/white matter boundary.
 
 #### Note on multiband/multi-echo fMRI data
 
