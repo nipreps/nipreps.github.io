@@ -13,6 +13,7 @@ copyright: Copyright &copy; 2020
 
 nav:
     - Home: index.md
+    - News and Announcements: news/index.md
     - NiPreps:
       - Framework: intro/nipreps.md
       - Transparency of workflows: intro/transparency.md
