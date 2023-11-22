@@ -1,27 +1,45 @@
-# How To Read fMRIPrep visual Report
+# How to read *fMRIPrep*'s visual reports
 
-fMRIPrep generates HTML visual reports that allow you to check the results of the preprocessing steps that were applied to the data. 
-Note: this is not a replacement for running quality control of your images before running fMRIPrep (FAQ link: https://fmriprep.readthedocs.io/en/stable/faq.html). 
-Below is a guide to interpreting the information contained in the visual reports, organized by subsection of the report.
+*fMRIPrep* generates an HTML visual report for each anatomical or functional image at the input.
+The visual report assists in checking the results of the preprocessing steps applied to the data.
+*fMRIPrep* is designed so relevant steps across the preprocessing chain generate targeted visualizations for assessing that particular step.
+We generally refer to these *processing breadcrumbs* that help *reconstruct* a particular derivative's provenance as ***reportlets***.
+For example, to assess the spatial standardization (by means of nonlinear image registration), we generate a reportlet that flickers between the individual's image and the standard template selected for reference (Figure 1).
+[[[[[ 
 
-If you have examples of “bad” preprocessing results that you’re willing to share, please [submit them somewhere?] with a short description of the problem (for example, “bad skull stripping”).
+ADD A FIGURE 1 HERE WITH ONE OF THESE REPORTLETS 
 
-When you open a report, it may be helpful to first jump to the Errors subsection to see whether fMRIPrep encountered any errors during preprocessing. Note that “errors” refers only to problems in running fMRIPrep, and NOT problems with the quality of the resulting images. This section won’t flag participants in which fMRIPrep was able to successfully run to completion but yielded poor results. 
+Caption should say something along the lines that by flickering between the two images we can get a sense of the accuracy of the mapping between the two images, and therefore the overall performance of this particular image registration step.
+]]]]]
+Therefore, during the execution of the *fMRIPrep*'s workflow, a number of reportlets are generated and stored in a particular folder.
+When the workflow concludes, the reportlets found in the intermediate location are assembled together into the final visual report corresponding to a particular subject and stored in the output folder.
+Both reportlets and assembler are implemented in a separate package called [*NiReports*](https://github.com/nipreps/nireports), which we share and maintain to allow researchers build their own reporting summaries with ease.
+Note: This is not a replacement for [QC'ing the *unprocessed* data before *fMRIPrep*](https://fmriprep.org/en/stable/faq.html#should-i-run-quality-control-of-my-images-before-running-fmriprep).
+Reports are structured in subsections focusing on different facets of the input data, and each section will display a number of specific reportlets.
+We suggest using such an organization to interpret the information in the visual reports, as it permits a sequential understanding of the overall processing workflow.
+Not only should individual reports facilitate the assessment of the performance of processing steps, our intent is that they also serve as a *learning scaffold* to understand *fMRIPrep*'s design decisions in particular and preprocessing more generally. 
 
-## **Summary**
+If you have examples of "bad" preprocessing results that you’re willing to share, please drop us an email at nipreps@gmail.com, with a short description of the problem (for example, "bad skull stripping").
 
-The first section of the report is a text summary, containing the subject ID, number of structural and functional images, task name, output spaces in which fMRIPrep generated your preprocessed data, and whether surface reconstruction with Freesurfer was run. 
-It is good to check that all of this information is as expected.
+Reports can be visualized with web browsers, and we recommend Google Chrome or Firefox for a better experience.
+When you open a report, it may be helpful to first jump to the Errors subsection to see whether *fMRIPrep* encountered any errors during preprocessing.
+Note that "errors" refers only to problems in running *fMRIPrep*, and NOT problems related to the performance of preprocessing steps.
+This section won't flag participants in which *fMRIPrep* was able to successfully run to completion but yielded poor results. 
 
-## **Anatomical**
+## Summary section
+
+At the head, the report includes a textual summary of relevant aspects of the data.
+These are the participant identifier, the number of structural and functional images, task(s) name(s), output spaces in which *fMRIPrep* generated your preprocessed data, and whether surface reconstruction with *FreeSurfer* was run.
+Deviations from the expectations (for instance, confused participant identifier, incorrect number of tasks or runs, etc.) should be carefully examined.
+
+## Anatomical section
 
 The reports first present results of anatomical preprocessing. 
 
 ### Anatomical conformation
 
-* This section provides information about the structural images.
 * Check for obvious failures, such as missing images or implausible values for voxel size, orientation, or dimensions.
-    * For example: you’re expecting two input T1w images but it says “Input T1w images: 1”
+    * For example: you're expecting two input T1w images but it says "Input T1w images: 1"
 
 ### Brain mask and brain tissue segmentation of the T1w
 
