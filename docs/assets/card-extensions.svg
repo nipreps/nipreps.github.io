@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="87.867012mm"
+   height="45.519653mm"
+   viewBox="0 0 87.867012 45.519653"
+   version="1.1"
+   id="svg5240"
+   inkscape:version="1.1 (c4e8f9e, 2021-05-24)"
+   sodipodi:docname="card-extensions.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview5242"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.67081229"
+     inkscape:cx="114.04084"
+     inkscape:cy="166.21639"
+     inkscape:window-width="1920"
+     inkscape:window-height="999"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs5237">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath33562">
+      <rect
+         style="opacity:0.5;fill:#000000;fill-opacity:0.670588;stroke-width:0.6291"
+         id="rect33564"
+         width="59.313847"
+         height="47.62936"
+         x="1.1503047"
+         y="9.2952061" />
+    </clipPath>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-74.787609,-104.63857)">
+    <g
+       id="g33585"
+       style="display:inline"
+       transform="translate(-58.688773,120.08983)">
+      <g
+         id="g40290">
+        <g
+           transform="translate(92.740783,-83.700209)"
+           id="g32928-3"
+           style="display:inline">
+          <text
+             id="text1619-38-4"
+             y="78.091553"
+             x="69.675484"
+             style="font-size:5.64444px;line-height:0.95;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';stroke-width:0.264583"
+             xml:space="preserve"><tspan
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:9.87778px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+               y="78.091553"
+               x="69.675484"
+               sodipodi:role="line"
+               id="tspan15597">*MRIPrep</tspan><tspan
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:9.87778px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+               y="87.475441"
+               x="69.675484"
+               sodipodi:role="line"
+               id="tspan1655">Extenstions</tspan></text>
+          <text
+             id="text1623-0-7"
+             y="95.171257"
+             x="43.257549"
+             style="font-size:5.64444px;line-height:0;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';stroke-width:0.264583"
+             xml:space="preserve"><tspan
+               style="font-style:oblique;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;line-height:1;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Oblique';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#666666;stroke-width:0.264583"
+               y="95.171257"
+               x="43.257549"
+               sodipodi:role="line"
+               id="tspan20713">Population-specific &quot;Preps&quot;</tspan></text>
+          <text
+             id="text1629-6-1"
+             y="103.16502"
+             x="43.175251"
+             style="font-size:5.64444px;line-height:0.85;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';stroke-width:0.264583"
+             xml:space="preserve"><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+               y="103.16502"
+               x="43.175251"
+               sodipodi:role="line"
+               id="tspan26180">Extensions of s/f MRIPrep for other </tspan><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+               y="107.9628"
+               x="43.175251"
+               sodipodi:role="line"
+               id="tspan26604">populations, such as infants (NiBabies) </tspan><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+               y="112.76057"
+               x="43.175251"
+               sodipodi:role="line"
+               id="tspan31182">and rodents (NiRodents)</tspan></text>
+        </g>
+        <g
+           id="g33264"
+           transform="matrix(0.49848672,0,0,0.50484165,132.90297,-22.014197)"
+           clip-path="url(#clipPath33562)">
+          <g
+             data-name="Autism 14"
+             id="g33246">
+            <path
+               d="M 21.5,13 A 5.51,5.51 0 0 0 16,18.5 4.44,4.44 0 0 0 16,19.13 6.14,6.14 0 0 0 14.75,19 6.25,6.25 0 0 0 8.5,25.25 6.33,6.33 0 0 0 8.73,26.91 7.87,7.87 0 0 0 7,32 7.87,7.87 0 0 0 8.73,37.09 6.33,6.33 0 0 0 8.5,38.75 6.25,6.25 0 0 0 14.75,45 6.14,6.14 0 0 0 16,44.87 a 4.44,4.44 0 0 0 0,0.63 5.5,5.5 0 0 0 11,0 v -27 A 5.51,5.51 0 0 0 21.5,13 Z m 0,36 A 3.5,3.5 0 0 1 18,45.5 3.44,3.44 0 0 1 18.56,43.62 v 0 a 1,1 0 0 0 0.08,-0.18 0.78,0.78 0 0 0 0.05,-0.14 v 0 a 2.56,2.56 0 0 1 1,-1.57 1.55,1.55 0 0 1 1.33,0.17 1,1 0 1 0 0.9,-1.78 3.41,3.41 0 0 0 -3.1,-0.19 4.19,4.19 0 0 0 -2,2.5 4.23,4.23 0 0 1 -6.37,-3.67 2.66,2.66 0 0 1 0,-0.28 4.6,4.6 0 0 0 2,0.46 v 0 a 5.23,5.23 0 0 0 3.71,-1.72 1.0040916,1.0040916 0 0 0 -1.42,-1.42 c -2.15,2.15 -3.89,0.67 -4.22,0.35 v 0 a 6.23,6.23 0 0 1 -0.14,-8.08 c 0.83,-0.16 3.25,-0.47 4.19,1.4 a 1,1 0 0 0 0.89,0.55 0.93,0.93 0 0 0 0.45,-0.11 1,1 0 0 0 0.44,-1.34 c -1.23,-2.47 -4,-2.79 -5.82,-2.55 a 4.76,4.76 0 0 1 -0.07,-0.75 4.26,4.26 0 0 1 4.29,-4.27 4.21,4.21 0 0 1 2.11,0.58 c 0.48,1.56 1.9,3.92 4.64,3.92 a 1,1 0 0 0 0,-2 c -2.14,0 -2.78,-2.66 -2.8,-2.79 v 0 A 1,1 0 0 0 18.57,20.38 3.44,3.44 0 0 1 18,18.5 a 3.5,3.5 0 0 1 7,0 v 11.17 c -1.31,0.32 -3.68,1.19 -4.45,3.51 a 1,1 0 0 0 0.63,1.27 1.25,1.25 0 0 0 0.32,0 1,1 0 0 0 0.95,-0.68 A 3.63,3.63 0 0 1 25,31.75 V 45.5 A 3.5,3.5 0 0 1 21.5,49 Z"
+               id="path33240" />
+            <path
+               d="M 47.72,34.15 A 8.63,8.63 0 0 0 48,32 7.87,7.87 0 0 0 46.27,26.91 6.33,6.33 0 0 0 46.5,25.25 6.25,6.25 0 0 0 40.25,19 a 6.14,6.14 0 0 0 -1.29,0.13 4.44,4.44 0 0 0 0,-0.63 5.5,5.5 0 0 0 -11,0 v 27 A 5.51,5.51 0 0 0 33.5,51 5.4,5.4 0 0 0 36.31,50.2 11,11 0 1 0 47.72,34.15 Z M 33.5,49 A 3.5,3.5 0 0 1 30,45.5 V 31.75 a 3.63,3.63 0 0 1 2.55,2.07 1,1 0 0 0 1,0.68 1.25,1.25 0 0 0 0.32,0 1,1 0 0 0 0.63,-1.27 C 33.68,30.86 31.31,30 30,29.67 V 18.5 a 3.5,3.5 0 0 1 7,0 3.44,3.44 0 0 1 -0.56,1.88 0.84,0.84 0 0 0 -0.13,0.33 v 0 c 0,0 -0.63,2.79 -2.8,2.79 a 1,1 0 0 0 0,2 c 2.74,0 4.16,-2.36 4.64,-3.92 A 4.21,4.21 0 0 1 40.25,21 4.26,4.26 0 0 1 44.5,25.25 4.76,4.76 0 0 1 44.43,26 c -1.86,-0.24 -4.59,0.08 -5.82,2.55 a 1,1 0 0 0 0.44,1.34 0.93,0.93 0 0 0 0.45,0.11 1,1 0 0 0 0.89,-0.55 c 0.94,-1.87 3.37,-1.56 4.19,-1.4 A 5.85,5.85 0 0 1 46,32 a 6.82,6.82 0 0 1 -0.31,2 10.78,10.78 0 0 0 -5.58,1.71 1,1 0 0 0 -1.52,1.17 10.9,10.9 0 0 0 -2.36,3.12 3.43,3.43 0 0 0 -3.18,0.14 1,1 0 0 0 0.9,1.78 c 0.75,-0.37 1.2,-0.29 1.52,0 A 11,11 0 0 0 35,45 11.12,11.12 0 0 0 35.52,48.34 3.39,3.39 0 0 1 33.5,49 Z M 46,54 a 9,9 0 0 1 0,-18 h 0.35 v 0 A 9.0017012,9.0017012 0 0 1 46,54 Z"
+               id="path33242" />
+            <path
+               d="m 51,42 h -2 v -2 a 1,1 0 0 0 -1,-1 h -4 a 1,1 0 0 0 -1,1 v 2 H 41 A 1,1 0 0 0 40.29,42.29 1,1 0 0 0 40,43 v 4 a 1,1 0 0 0 1,1 h 2 v 2 a 1,1 0 0 0 1,1 h 4 a 1,1 0 0 0 1,-1 v -2 h 2 A 1,1 0 0 0 51.71,47.71 1,1 0 0 0 52,47 v -4 a 1,1 0 0 0 -1,-1 z m -1,4 H 48 A 0.81,0.81 0 0 0 47.29,46.29 1,1 0 0 0 47,47 v 2 h -2 v -2 a 1,1 0 0 0 -1,-1 h -2 v -2 h 2 A 1,1 0 0 0 44.71,43.71 1,1 0 0 0 45,43 v -2 h 2 v 2 a 1,1 0 0 0 1,1 h 2 z"
+               id="path33244" />
+          </g>
+          <text
+             x="0"
+             y="79"
+             fill="#000000"
+             font-size="5px"
+             font-weight="bold"
+             font-family="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif"
+             id="text33248">Created by Berkah Icon</text>
+          <text
+             x="0"
+             y="84"
+             fill="#000000"
+             font-size="5px"
+             font-weight="bold"
+             font-family="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif"
+             id="text33250">from the Noun Project</text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
