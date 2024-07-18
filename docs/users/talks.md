@@ -1,6 +1,6 @@
 # Talks and presentations
 
-- [NiPreps @ BrainHack Seoul 2024)](../../assets/BrainHack2024)
+- [NiPreps @ BrainHack Seoul 2024](../../assets/BrainHack2024)
 - [Standardizing neuroimaging workflows (Journal Club @ EPFL 2023)](../../assets/EPFL2023)
 - [Presentation about MRIQC for INCF 2022 (10 min)](../../assets/INCF22-MRIQC/)
 - [NiPreps introduction, Educational Session at OHBM 2022](../../assets/OHBM2022)
