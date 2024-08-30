@@ -391,9 +391,9 @@ layout: true
 
 <br />
 
-* Overview of the neuroimaging pipeline structure
-
 * Why do data require preprocessing?
+
+* Overview of the neuroimaging pipeline structure
 
 * *fMRIPrep*
 
@@ -407,6 +407,49 @@ layout: true
 ]]
 
 ???
+
+---
+
+## fMRI Preprocessing Recap
+
+.boxed-content[
+
+.large[
+
+Goal: Ensure the time series at each voxel is meaningful
+
+* Drawn from the same location at all time points
+    * Motion correction
+* Location can be described anatomically
+    * Coregistration, susceptibility distortion correction
+* Location can be selected by standard coordinates
+    * Spatial normalization
+
+The quality of analysis is limited by the quality of preprocessing.
+
+]
+
+]
+
+---
+
+## Reproducibility
+
+
+.center[
+![](https://book.the-turing-way.org/_images/reproducible-matrix.jpg)
+.pull-right[(from [The Turing Way](https://book.the-turing-way.org/reproducible-research/overview/overview-definitions#table-of-definitions-for-reproducibility))]
+]
+
+.boxed-content[
+
+.large[
+
+The reproducibility of analysis is limited by the reproducibility of preprocessing.
+
+]
+
+]
 
 ---
 
@@ -433,10 +476,35 @@ layout: true
 
 ---
 
-template: title
-layout: false
+## fMRIPrep
+
+.boxed-content[
+
+.large[
+
+Robust, generic fMRI preprocessing
+* Works with the data you give it, imposing minimal requirements
+    * You can run it on a T1w scan and a BOLD series
+    * Will utilize additional scans (T2w/FLAIR, field maps) when available
+
+Cross-suite tooling
+* Select tools from each suite according to strengths
+* Use Nipype to abstract from tool details and construct modular workflows
+
+Standardized
+* NIfTI, JSON and TSV inputs (BIDS)
+* NIfTI, GIFTI, CIFTI-2, JSON and TSV outputs (BIDS Derivatives)
+
+]
+
+]
+
+---
+
+## fMRIPrep
+
 .middle[
-<p align="center">
+<p align="right">
 <img src="https://github.com/oesteban/fmriprep/raw/f4c7a9804be26c912b24ef4dccba54bdd72fa1fd/docs/_static/fmriprep-21.0.0.svg" width="95%" />
 </p>
 ]
