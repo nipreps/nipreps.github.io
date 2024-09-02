@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>fMRIPrep Bootcamp | Day 1 :: Introduction</title>
+    <title>fMRIPrep Bootcamp | Day 1 :: Brain Imaging Data Structure</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="/talks/assets/asciinema-player/asciinema-player.css" />
     <style>
@@ -44,6 +44,7 @@
         position: absolute;
         bottom: 3em;
         font-size: 0.7em;
+	left: 6em;
       }
       li p { line-height: 1.25em; }
       
@@ -67,6 +68,7 @@
       .remark-code, .remark-inline-code { font-family: 'Roboto Mono'; }
       .large .remark-code, .large .remark-inline-code { font-size: 0.8em; }
       .remark-code-line-highlighted     { background-color: #373832; }
+      .remark-code { width: 85%; }
       .pull-left {
         float: left;
         width: 45%;
@@ -307,6 +309,24 @@
       .gray-text {
         color: #aaa;
       }
+      .install-cmd {
+          top: 20px;
+          position: absolute;
+          right: 4em;
+      }
+      figure {
+	  display: block;
+	  margin-left: auto;
+	  margin-right: auto;
+	  font-size: 8pt;
+      }
+      figcaption {
+	  text-align: right;
+      }
+      figcaption a {
+        color: #444444;
+        text-decoration: underline dotted;
+      }
     </style>
   </head>
   <body>
@@ -352,7 +372,7 @@ count: false
 <br />
 <br />
 
-## Overview of the fMRI neuroimaging pipeline & *fMRIPrep*
+## The Brain Imaging Data Structure (BIDS)
 
 #### Chris Markiewicz &lt;<code>markiewicz@stanford.edu</code>> & Oscar Esteban &lt;<code>phd@oscaresteban.es</code>>
 
@@ -369,7 +389,7 @@ layout: true
 .perma-sidebar[
 <p class="rotate">
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0; height: 20px; padding-top: 6px;" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
-  <span style="padding-left: 10px; font-weight: 600;">Day 1 :: Introduction</span>
+  <span style="padding-left: 10px; font-weight: 600;">Day 1 :: Brain Imaging Data Structure</span>
 </p>
 ]
 
@@ -409,95 +429,282 @@ layout: true
 ???
 
 ---
+layout: true
+template: newsection
+name: BIDS
 
-## The neuroimaging worflow
-
-<br />
-<br />
-<br />
-<br />
-
-.boxed-content[
-<img src="images/neuroimaging-workflow-large.svg" alt="workflow" style="width: 100%" />
-
-<br />
-
-.align-right[
-([Esteban et al., 2020](http://doi.org/10.1038/s41596-020-0327-3))
-
-([Niso et al., 2022](https://doi.org/10.1016/j.neuroimage.2022.119623))
-]
-]
-
-???
+# BIDS: Brain Imaging Data Structure
 
 ---
+layout: true
+template: BIDS
 
-template: title
-layout: false
-.middle[
-<p align="center">
-<img src="https://github.com/oesteban/fmriprep/raw/f4c7a9804be26c912b24ef4dccba54bdd72fa1fd/docs/_static/fmriprep-21.0.0.svg" width="95%" />
-</p>
-]
+.pull-left[![Bids Layout](images/bids.png)]
 
 ---
-
-## The individual report
-<p align="center">
-<video controls="controls" width="70%"
-       name="Video Name" src="../../fmriprep-report.mov"></video>
-</p>
-
-
----
-
-# fMRIPrep's usage
-
-<p align="center">
-<img src="../../20240502_weekly.png" width="85%" /><br />
-</p>
-
----
-
-# fMRIPrep's usage
-
-<p align="center">
-<img src="../../20240502_versionstream.png" width="85%" /><br />
-</p>
-
----
-
-# "Analysis-grade" data
-
-.larger[
-The *NeuroImaging PREProcessing toolS* (*[NiPreps](https://nipreps.org).org*) augment scanners to produce *analysis-grade* data (= **directly consumable by analyses**)
-]
-
-<br />
-.pull-left[
-
-***Analysis-grade* data** is an analogy to the concept of "*sushi-grade (or [sashimi-grade](https://en.wikipedia.org/wiki/Sashimi)) fish*" in that both are:
-
-.large[**minimally preprocessed**,]
-
-and
-
-.large[**safe to consume** directly.]
-]
 
 .pull-right[
-<img align="right" style='margin-right: 50px' src="https://1.bp.blogspot.com/-Osh4H4WXka0/WlMJmVgkZTI/AAAAAAAAEMY/GynUzSomJ-EBiyqv2m-maiOyKSM7SOmNACLcBGAs/s400/yellowfin%2Btuna%2Bsteaks%2Bnutrition.jpg" />
-]
+* BIDS is a directory structure, based on common practices
 
-???
+* Builds on existing standards (NIfTI, JSON, TSV)
+
+* Intended for human *and* machine legibility
+
+* The [BIDS Validator](https://bids-standard.github.io/bids-validator)
+  makes compliance easy to verify
+
+* The [specification](https://bids-specification.readthedocs.io/en/stable/)
+  is a searchable HTML document
+]
 
 ---
 
-<p align="center">
-<img src="../../nipreps-chart.png" width="63%" /><br />
-<em>NiPreps</em> (<a href="https://doi.org/10.31219/osf.io/ujxp6">Esteban et al., 2020</a>)
-</p>
+.pull-right[
+
+* Basic metadata in the file names
+
+  * Subject, session, imaging modality, etc.
+  * Generally just enough to assign unique names
+
+]
+
+---
+count: false
+
+.pull-right[
+* Basic metadata in the file names
+  * Subject, session, imaging modality, etc.
+  * Generally just enough to assign unique names
+
+* NIfTI headers and JSON sidecars contain detailed,
+  image-related metadata
+
+]
+
+---
+count: false
+
+.pull-right[
+* Basic metadata in the file names
+  * Subject, session, imaging modality, etc.
+  * Generally just enough to assign unique names
+
+* NIfTI headers and JSON sidecars contain detailed,
+  image-related metadata
+
+* [`dataset_description.json`](https://bids-specification.readthedocs.io/en/stable/03-modality-agnostic-files.html#dataset_descriptionjson),
+  [`participants.tsv`](https://bids-specification.readthedocs.io/en/stable/03-modality-agnostic-files.html#participants-file),
+  [`sessions.tsv`](https://bids-specification.readthedocs.io/en/stable/05-longitudinal-and-multi-site-studies.html#sessions-file),
+  and [`scans.tsv`](https://bids-specification.readthedocs.io/en/stable/03-modality-agnostic-files.html#scans-file)
+  record study-level metadata that may not be associated
+  with specific images
+]
+
+---
+layout: true
+template: newsection
+
+---
+
+# Bidsification
+
+Constructing a BIDS dataset can be tedious and error-prone, so there are several
+[converters](https://bids.neuroimaging.io/benefits.html#converters).
+
+<figure style="width: 50%">
+![:img DICOM to BIDS conversion, 100%](images/dicom-reorganization-transparent-black_1000x477.png)
+</figure>
+
+DICOM images store their relevant metadata internally, but naming conventions tend
+to be scanner/institution-specific.
+
+The [Heuristic DICOM Converter](https://heudiconv.readthedocs.io/) (HeuDiConv) and
+[BIDSCoin](https://bidscoin.readthedocs.io/en/stable/) allow you to specify the mapping and
+apply in bulk. Both build off of [dcm2niix](https://github.com/rordenlab/dcm2niix/).
+
+---
+
+# Bidsification: ReproIn
+
+The [ReproIn](https://github.com/ReproNim/reproin) project aims to
+standardize scanner conventions, to eliminate the need to rewrite these mappings.
+
+<figure style="width: 40%">
+![:img ReproIn conversion schema, 100%](images/dbic-conversions_cropped.png)
+<figcaption>From <a href="https://github.com/ReproNim/reproin/blob/master/README.md#overall-workflow">ReproIn</a>;
+doi:![:doi](10.5281/zenodo.1207117)</figcaption>
+</figure>
+
+---
+
+# BIDS Validator
+
+The machine-readable structure makes validation possible:
+
+```bash
+$ deno run -A jsr:@bids/validator /data/bids/openneuro/ds000228
+        [WARNING] JSON_KEY_RECOMMENDED A JSON file is missing a key listed as recommended.
+                DatasetType
+                /dataset_description.json
+
+                GeneratedBy
+                /dataset_description.json
+
+                SourceDatasets
+                /dataset_description.json
+
+        Please visit https://neurostars.org/search?q=JSON_KEY_RECOMMENDED for existing 
+	conversations about this issue.
+...
+```
+
+.center[
+## https://bids-standard.github.io/bids-validator/
+]
+
+---
+layout: true
+template: newsection
+name: Apps
+
+# BIDS Applications
+
+---
+
+A common specification of neuroimaging datasets affords queries for and
+adaptation to the available data.
+
+--
+
+Queryable (meta)data allows a very simple protocol for a
+[BIDS App](https://bids-apps.neuroimaging.io/apps/):
+
+```Bash
+bids-app /bids-directory /output-directory participant [OPTIONS]
+```
+
+.footnote[
+\* Note that `participant` is an analysis level. Apps may also operate
+at the `run`, `session` or `group` levels.
+]
+
+--
+
+## Examples
+
+**MRIQC**
+
+```Bash
+mriqc /data/bids/openneuro/ds000228 /data/processed/ds000228-mriqc group
+```
+
+--
+
+**fMRIPrep**
+
+```Bash
+fmriprep /data/bids/openneuro/ds000228 /data/processed/ds000228-fmriprep \
+    participant --participant-label pixar001
+```
+
+---
+
+.pull-left[
+### Many application types are possible
+]
+.pull-right[
+[![:img BIDS App list, 75%](images/bids-apps.png)](https://bids-apps.neuroimaging.io/apps/)
+]
+
+---
+count: false
+
+.pull-left[
+### Many application types are possible
+
+* Quality control
+
+]
+.pull-right[
+[![:img BIDS QC Apps, 75%](images/bids-apps-qc.png)](https://bids-apps.neuroimaging.io/apps/)
+]
+
+---
+count: false
+
+.pull-left[
+### Many application types are possible
+
+* Quality control
+
+* Anatomical pipelines
+
+]
+.pull-right[
+[![:img BIDS Anatomical Apps, 75%](images/bids-apps-anatomical.png)](https://bids-apps.neuroimaging.io/apps/)
+]
+
+---
+count: false
+
+.pull-left[
+### Many application types are possible
+
+* Quality control
+
+* Anatomical pipelines
+
+* Functional pipelines
+
+]
+.pull-right[
+[![:img BIDS Functional Apps, 75%](images/bids-apps-functional.png)](https://bids-apps.neuroimaging.io/apps/)
+]
+
+---
+count: false
+
+.pull-left[
+### Many application types are possible
+
+* Quality control
+
+* Anatomical pipelines
+
+* Functional pipelines
+
+* Diffusion pipelines
+
+]
+.pull-right[
+[![:img BIDS Diffusion Apps, 75%](images/bids-apps-diffusion.png)](https://bids-apps.neuroimaging.io/apps/)
+]
+
+---
+count: false
+
+.pull-left[
+### Many application types are possible
+
+* Quality control
+
+* Anatomical pipelines
+
+* Functional pipelines
+
+* Diffusion pipelines
+
+### Lowered friction encourages adoption
+
+* Researchers gain easy access to tools by formatting data
+  in BIDS
+
+* Accepting BIDS datasets makes your tools easy to try
+
+]
+.pull-right[
+[![:img BIDS App list, 75%](images/bids-apps.png)](https://bids-apps.neuroimaging.io/apps/)
+]
 
 ---
 
@@ -549,6 +756,22 @@ Funding: [SNSF 185872](https://data.snf.ch/grants/grant/185872), [RF1MH121867](h
 </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
     <script>
+      // Use: ![:img Alt text with spaces but not commas, 50%](image.png)
+      remark.macros.img = function (altText, width) {
+        var url = this;
+        return '<img alt="' + altText + '" src="' + url + '" style="width: ' + width + '" />';
+      };
+      // Use: ![:video](10.5129/10234)
+      remark.macros.video = function (width) {
+        var url = this;
+        return '<video src="' + url + '" width="' + width + '" preload="auto" controls />';
+      };
+      // Use: ![:doi](10.5129/10234)
+      remark.macros.doi = function () {
+	var doi = this;
+	return '<a href="https://doi.org/' + doi + '">' + doi + '</a>';
+      };
+
       var slideshow = remark.create({
           highlightStyle: 'monokai',
           highlightLanguage: 'remark',
@@ -594,7 +817,6 @@ Funding: [SNSF 185872](https://data.snf.ch/grants/grant/185872), [RF1MH121867](h
           allcasts.get(slideNumber).pause();
         }
       });
-
     </script>
   </body>
 </html>
