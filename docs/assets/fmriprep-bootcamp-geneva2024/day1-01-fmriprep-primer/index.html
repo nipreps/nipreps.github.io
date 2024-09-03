@@ -265,7 +265,12 @@
         float: left;
         display: block;
         width: 89%;
-        height: 70%;
+        padding-right: 4%;
+      }
+
+      .boxed-bottom {
+        clear: both;
+        margin-top: 0px;
       }
 /*
       .distribute {
@@ -391,9 +396,9 @@ layout: true
 
 <br />
 
-* Why do data require preprocessing?
-
 * Overview of the neuroimaging pipeline structure
+
+* Why do data require preprocessing?
 
 * *fMRIPrep*
 
@@ -408,28 +413,124 @@ layout: true
 
 ???
 
+
 ---
 
-## fMRI Preprocessing Recap
+## The neuroimaging worflow
+
+<br />
+<br />
+<br />
+
+.boxed-content[
+<img src="images/neuroimaging-workflow-large.svg" alt="workflow" style="width: 100%" />
+
+.center[
+[Esteban et al., (2020)](http://doi.org/10.1038/s41596-020-0327-3);
+[Niso et al., (2022)](https://doi.org/10.1016/j.neuroimage.2022.119623)
+]
+]
+
+???
+
+
+The selling points are:
+
+- Data collection and organization is mostly data management. It's true sequences improve over time and that demands updates in the data management workflow (e.g., BIDS conversion), but you can get a very stable solution here (esp. if you use things like ReproIn and datalad) and standardization has been implemented (following different approaches and standards at each institution, true).
+- Statistical modeling requires some flexibility to come up with new and better models, so you may allow some analytical variability not to styme progress.
+- Preprocessing is the step in between, where standardization can (i) give you as an individual researcher a solid ground for this and future studies; (ii) make your study more comparable to others who standardize the same way.
+
+WDYT?
+
+---
+
+## Why do data require preprocessing?
 
 .boxed-content[
 
+.large.center[
+MRI measurements *generally* **cannot** be directly analyzed.
+]
+.center.small[and]
+.large.center[
+The quality of analysis is limited by the quality of preprocessing.
+]
+
+.pull-left.larger[
+**Spatiotemporal location**
+
+signal drawn from the same location and accurate time at all time points,
+sampled consistently with the analysis' design (e.g., surface, volume)
+]
+
+.pull-right.larger[
+**Signal *validity***
+
+extraction of confounds, identification/accounting for artifacts, spatiotemporal filtering for denoising, etc.
+]
+
+<br />
+
+.boxed-bottom.large.center[
+**Goal**: minimize false positives without increasing false negatives
+]
+]
+
+---
+
+## Why do data require preprocessing?
+
+.boxed-content[
+
+<br />
+<br />
+
 .large[
 
-Goal: Ensure the time series at each voxel is meaningful
+All analyses require consistency and accuracy in **spatiotemporal location**.
 
-* Drawn from the same location at all time points
-    * Motion correction
-* Location can be described anatomically
-    * Coregistration, susceptibility distortion correction
-* Location can be selected by standard coordinates
-    * Spatial normalization
+<br />
 
-The quality of analysis is limited by the quality of preprocessing.
+* within runs (head-motion, slice-timing),
+
+* within individuals (coregistration between runs, coregistration with anatomy [T1w images, surfaces, etc.], susceptibility distortion), and
+
+* across subjects (spatial normalization)
+
+]
 
 ]
 
+---
+
+## Example: susceptibility distortion
+
+
+<p align="center">
+<img src="images/sdc-the-problem.svg" width="80%" /><br />
+</p>
+
+---
+
+## Why do data require preprocessing?
+<br />
+
+.boxed-content.large[
+
+All analyses must consider confounders and covariates.
+
+* confounders such as global signals, signal drifts, DVARS, etc.
+
+* spatiotemporal filtering to increase SNR,
+
+* known artifacts such as head-motion parameters and derivations, etc.
+
+<br />
+.boxed-bottom.red[
+*fMRIPrep* is *conservative* in that it will not regress out signals or apply intended smoothing kernels
 ]
+]
+
 
 ---
 
@@ -450,29 +551,6 @@ The reproducibility of analysis is limited by the reproducibility of preprocessi
 ]
 
 ]
-
----
-
-## The neuroimaging worflow
-
-<br />
-<br />
-<br />
-<br />
-
-.boxed-content[
-<img src="images/neuroimaging-workflow-large.svg" alt="workflow" style="width: 100%" />
-
-<br />
-
-.align-right[
-([Esteban et al., 2020](http://doi.org/10.1038/s41596-020-0327-3))
-
-([Niso et al., 2022](https://doi.org/10.1016/j.neuroimage.2022.119623))
-]
-]
-
-???
 
 ---
 
