@@ -36,10 +36,10 @@
         transform: translateY(-50%);
       }
 
-      .remark-slide-content { height: 100%; padding: 0; }
-      .remark-slide-content h1 { font-size: 3em; }
-      .remark-slide-content h2 { font-size: 2em; }
-      .remark-slide-content h3 { font-size: 1.6em; }
+      .remark-slide-content { height: 100%; padding: 0; font-size: 16pt;}
+      .remark-slide-content h1 { font-size: 2em; color: #324989; }
+      .remark-slide-content h2 { font-size: 1.5em; color: #324989; }
+      .remark-slide-content h3 { font-size: 1.2em; color: #324989; }
       .footnote {
         position: absolute;
         bottom: 3em;
@@ -55,7 +55,7 @@
       .red { color: #fa0000; }
       .blue { color: #0000fa; }
       .green { color: #698b69; }
-      .large { font-size: 2em; }
+
       a, a > code {
         color: rgb(249, 38, 114);
         text-decoration: none;
@@ -89,6 +89,25 @@
       .section-separator .middle {
         margin-left: 210px;
         width: 80%;
+      }
+
+      .fa-solid {
+        color: #324989;
+      }
+
+      em {
+        color: #324989;
+      }
+
+      strong {
+        color: #324989;
+      }
+
+      .gray-text {
+        color: #888;
+      }
+      .gray-text em, .gray-text strong {
+        color: #888;
       }
 
       .perma-sidebar {
@@ -131,7 +150,7 @@
         left: 20px;
       }
       #slide-how .slides {
-        font-size: 0.9em;
+        /*font-size: .9em;*/
         position: absolute;
         top:  151px;
         right: 140px;
@@ -250,15 +269,15 @@
       }
 
       .small {
-        font-size: 12pt;
+        font-size: 0.7em;
       }
 
       .larger {
-        font-size: 20pt;
+        font-size: 1.4em;
       }
 
       .large {
-        font-size: 24pt;
+        font-size: 1.6em;
       }
 
       .boxed-content {
@@ -309,9 +328,7 @@
         color: transparent; /* make the text invisible */
         user-select: none; /* prevent selection of the text */
       }
-      .gray-text {
-        color: #aaa;
-      }
+
     </style>
   </head>
   <body>
@@ -359,7 +376,9 @@ count: false
 
 ## Overview of the fMRI neuroimaging pipeline & *fMRIPrep*
 
-#### Chris Markiewicz &lt;<code>markiewicz@stanford.edu</code>> & Oscar Esteban &lt;<code>phd@oscaresteban.es</code>>
+Chris Markiewicz &lt;<code>markiewicz@stanford.edu</code>>
+
+Oscar Esteban &lt;<code>phd@oscaresteban.es</code>>
 
 ]
 
@@ -380,7 +399,7 @@ layout: true
 
 ---
 
-## Outlook
+# Outlook
 
 .right-column3.center[
 <a href="https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/day1-01-fmriprep-primer/">
@@ -390,9 +409,7 @@ layout: true
 </a>
 ]
 
-.left-column3[
-
-.large[
+.left-column3.larger[
 
 <br />
 
@@ -402,28 +419,28 @@ layout: true
 
 * *fMRIPrep*
 
-    * [Hi]story behind the tool
-    * Why — just preprocessing
-    * Why — standardization
-    * Why — community
+    * Introduction
+    * Design and requirements
+    * Community
+    * Continuous validation
 
 * *NiPreps*
 
-]]
+]
 
 ???
 
 
 ---
 
-## The neuroimaging worflow
+# The neuroimaging worflow
 
-<br />
 <br />
 <br />
 
 .boxed-content[
 <img src="images/neuroimaging-workflow-large.svg" alt="workflow" style="width: 100%" />
+
 
 .center[
 [Esteban et al., (2020)](http://doi.org/10.1038/s41596-020-0327-3);
@@ -444,27 +461,28 @@ WDYT?
 
 ---
 
-## Why do data require preprocessing?
+# Why do data require preprocessing?
 
 .boxed-content[
 
+<br />
+
+
 .large.center[
-MRI measurements *generally* **cannot** be directly analyzed.
-]
-.center.small[and]
-.large.center[
-The quality of analysis is limited by the quality of preprocessing.
+<i class="fa-solid fa-circle-exclamation"></i> MRI measurements *generally* **cannot** be directly analyzed. <i class="fa-solid fa-circle-exclamation"></i>
 ]
 
-.pull-left.larger[
-**Spatiotemporal location**
+<br />
+
+.pull-left[
+.center.larger[<i class="fa-solid fa-map-pin"></i> **Spatiotemporal location**]
 
 signal drawn from the same location and accurate time at all time points,
 sampled consistently with the analysis' design (e.g., surface, volume)
 ]
 
-.pull-right.larger[
-**Signal *validity***
+.pull-right[
+.center.larger[<i class="fa-solid fa-location-crosshairs"></i> **Signal *validity***]
 
 extraction of confounds, identification/accounting for artifacts, spatiotemporal filtering for denoising, etc.
 ]
@@ -472,13 +490,13 @@ extraction of confounds, identification/accounting for artifacts, spatiotemporal
 <br />
 
 .boxed-bottom.large.center[
-**Goal**: minimize false positives without increasing false negatives
+**End goal**: minimize false positives without increasing false negatives
 ]
 ]
 
 ---
 
-## Why do data require preprocessing?
+# Why do data require preprocessing?
 
 .boxed-content[
 
@@ -486,16 +504,17 @@ extraction of confounds, identification/accounting for artifacts, spatiotemporal
 <br />
 
 .large[
-
 All analyses require consistency and accuracy in **spatiotemporal location**.
+]
 
 <br />
+.larger[
 
-* within runs (head-motion, slice-timing),
+<i class="fa-solid fa-circle-right"></i> **within runs** (head-motion, slice-timing),
 
-* within individuals (coregistration between runs, coregistration with anatomy [T1w images, surfaces, etc.], susceptibility distortion), and
+<i class="fa-solid fa-circle-right"></i> **within individuals** (coregistration between runs, coregistration with anatomy [T1w images, surfaces, etc.], susceptibility distortion), and
 
-* across subjects (spatial normalization)
+<i class="fa-solid fa-circle-right"></i> **across subjects** (spatial normalization)
 
 ]
 
@@ -512,93 +531,281 @@ All analyses require consistency and accuracy in **spatiotemporal location**.
 
 ---
 
-## Why do data require preprocessing?
+# Why do data require preprocessing?
 <br />
 
-.boxed-content.large[
-
-All analyses must consider confounders and covariates.
-
+.boxed-content[
+.large[
+All analyses must consider confounders and covariates that undermine the **validity** of the measurements.
+]
+.larger[
 * confounders such as global signals, signal drifts, DVARS, etc.
 
 * spatiotemporal filtering to increase SNR,
 
 * known artifacts such as head-motion parameters and derivations, etc.
+]
 
 <br />
-.boxed-bottom.red[
-*fMRIPrep* is *conservative* in that it will not regress out signals or apply intended smoothing kernels
-]
-]
 
+.boxed-bottom.large[
+**Minimal preprocessing**: .gray-text[*fMRIPrep* is *conservative* in that it will not regress out signals or apply intended smoothing kernels]
+]
+]
 
 ---
 
-## Reproducibility
+# Reproducibility
 
-
+.boxed-content[
+<br />
+<br />
+<br />
 .center[
 ![](https://book.the-turing-way.org/_images/reproducible-matrix.jpg)
 .pull-right[(from [The Turing Way](https://book.the-turing-way.org/reproducible-research/overview/overview-definitions#table-of-definitions-for-reproducibility))]
 ]
+]
+
+---
+
+# Reproducibility: increasing measurements' reliability
+
+<br />
+<br />
+
+.large[
+<i class="fa-solid fa-circle-right"></i> Repeat the measurement
+
+  .gray-text[Random errors cancel out]
+
+<i class="fa-solid fa-circle-right"></i> Standardize the measurement procedure
+
+  .gray-text[Reduce variance (potentially at the cost of bias)]
+]
+
+<br />
+
+.center.larger[.larger[Neither ensures the *validity* of the measurement]]
+
+---
+
+# Preprocessing & Reproducibility
 
 .boxed-content[
 
 .large[
-
-The reproducibility of analysis is limited by the reproducibility of preprocessing.
-
+The reproducibility of preprocessing sets bounds to the reproducibility of downstream analyses.
 ]
+
+.larger[
+* NARPS ([Botvinik-Nezer et al., 2020](https://doi.org/10.1038/s41586-020-2314-9)): single dataset, 70 teams, 9 *ex-ante* hypotheses.
+
+  <i class="fa-solid fa-circle-right"></i> Striking analytical variability (even with teams using same preprocessing)
+
+* [Li et al., (2024)](https://doi.org/10.1038/s41562-024-01942-4): single test-retest dataset, 5 pipelines
+
+  <i class="fa-solid fa-circle-right"></i> Moderate inter-pipeline agreement, limiting cross-study <s>reproducibility</s> [replicability]
+]
+]
+
+---
+
+# Preprocessing & Reproducibility
+
+.boxed-content[
+<br />
+<br />
+
+.large[
+Beyond analytical variability, other sources of variability are on the way:
+]
+.larger[
+* Random seeds
+
+  <i class="fa-solid fa-circle-right"></i> Keep track (*do not fix*) and report.
+
+* [Chatelain et al., (2023)](https://doi.org/10.48550/arXiv.2307.01373): Random rounding of floating-point calculations.
+
+  <i class="fa-solid fa-circle-right"></i> Uncovered substantial changes between patch-releases of *fMRIPrep*
+]
+
 
 ]
 
 ---
 
-## fMRIPrep
+# fMRIPrep: bird's eye picture
+
+.boxed-content.center[
+<br />
+<br />
+<img src="https://github.com/oesteban/fmriprep/raw/f4c7a9804be26c912b24ef4dccba54bdd72fa1fd/docs/_static/fmriprep-21.0.0.svg" width="100%" />
+]
+
+---
+
+.pull-left.center[
+<img src="images/fmriprep-anatomical.png" width="90%" />
+]
+
+.pull-right[
+
+# Anatomical processing
+
+.large[
+Delivered within *sMRIPrep*
+]
+
+.larger[
+
+<i class="fa-solid fa-circle-right"></i> Denoising
+
+<i class="fa-solid fa-circle-right"></i> INU correction
+
+<i class="fa-solid fa-circle-right"></i> Averaging (multi-session)
+
+<i class="fa-solid fa-circle-right"></i> Brain extraction
+
+<i class="fa-solid fa-circle-right"></i> Spatial normalization
+
+<i class="fa-solid fa-circle-right"></i> Brain tissue segmentation
+
+<i class="fa-solid fa-circle-right"></i> Surface reconstruction
+]
+
+
+]
+
+---
+
+.pull-left.center[
+<br />
+<br />
+<img src="images/fmriprep-functional.png" width="100%" />
+]
+
+.pull-right[
+
+# Functional processing
+
+.larger[
+
+<i class="fa-solid fa-circle-right"></i> Reference volume
+
+<i class="fa-solid fa-circle-right"></i> Slice-timing (optional)
+
+<i class="fa-solid fa-circle-right"></i> Head-motion (estimation)
+
+<i class="fa-solid fa-circle-right"></i> Susceptibility distortion (estimation)
+
+<i class="fa-solid fa-circle-right"></i> Co-registration with anatomical T1w
+
+<i class="fa-solid fa-circle-right"></i> Resampling into specific spaces
+
+<i class="fa-solid fa-circle-right"></i> Confound collection
+]
+
+
+]
+
+---
+
+# *TemplateFlow*
+
+.boxed-content.center[
+<img src="https://www.templateflow.org/assets/templateflow_fig-birdsview.png" width="70%" /><br />
+(<a href="https://doi.org/10.1038/s41592-022-01681-2">Ciric et al., 2022</a>)
+]
+
+---
+
+# *SDCFlows*
+
+.boxed-content[
+.large[
+SDC <i class="fa-solid fa-circle-right"></i> Susceptibility-derived Distortion Correction
+]
+<br />
+
+.larger[
+*SDCFlows* "caters" preprocessed fieldmap estimations for *fMRIPrep* to reconstruct the nonlinear displacements field to revert geometrical distortion.
+]
+
+.center[<img src="images/sdc-the-problem.svg" width="40%" />]
+]
+
+---
+
+# fMRIPrep's design
 
 .boxed-content[
 
-.large[
+.large[<i class="fa-solid fa-circle-right"></i> Robust & adaptive fMRI preprocessing]
 
-Robust, generic fMRI preprocessing
-* Works with the data you give it, imposing minimal requirements
-    * You can run it on a T1w scan and a BOLD series
-    * Will utilize additional scans (T2w/FLAIR, field maps) when available
+.larger[
+* Minimalist requirements (T1w + BOLD run)
+* Will utilize additional scans (T2w/FLAIR, field maps) when available
+* Capable of preprocessing multi-echo BOLD.
+]
 
-Cross-suite tooling
+.large[<i class="fa-solid fa-circle-right"></i> Cross-suite tooling]
+.larger[
 * Select tools from each suite according to strengths
-* Use Nipype to abstract from tool details and construct modular workflows
+* Use *Nipype* to abstract from tool details and construct modular workflows
+]
 
-Standardized
-* NIfTI, JSON and TSV inputs (BIDS)
-* NIfTI, GIFTI, CIFTI-2, JSON and TSV outputs (BIDS Derivatives)
-
+.large[<i class="fa-solid fa-circle-right"></i> Standardization and best-practices]
+.larger[
+* BIDS (inputs), BIDS Derivatives (outputs), BIDS Apps (architecture).
+* Containers, versioning, LTS, open-source, CI/CD, etc.
+* Visual reports
 ]
 
 ]
 
 ---
 
-## fMRIPrep
+# fMRIPrep's constrains and limitations
 
-.middle[
-<p align="right">
-<img src="https://github.com/oesteban/fmriprep/raw/f4c7a9804be26c912b24ef4dccba54bdd72fa1fd/docs/_static/fmriprep-21.0.0.svg" width="95%" />
-</p>
+.boxed-content[
+
+.large[<i class="fa-solid fa-circle-right"></i> Agnostic to downstream analysis]
+
+.larger[
+* Minimalist processing that refrains from applying analysis-specific steps.
+]
+
+.large[<i class="fa-solid fa-circle-right"></i> Cross-sectional studies]
+.larger[
+* *fMRIPrep* assumes individuals' anatomy does not change
+* Today, execution can be *hacked* but a *longitudinal mode* does not exist yet.
+]
+
+.large[<i class="fa-solid fa-circle-right"></i> Driven by the 80/20 principle]
+.larger[
+* 7T data fell on the 20 side (although that's about to change)
+]
+
 ]
 
 ---
 
-## The individual report
+# Standardizing preprocessing: visual reports
 <p align="center">
 <video controls="controls" width="70%"
        name="Video Name" src="../../fmriprep-report.mov"></video>
 </p>
 
+???
+
+To be replaced with an iframe to a real, current report
 
 ---
 
-# fMRIPrep's usage
+# Standardizing preprocessing: community building
+
+.large[fMRI practitioners have massively adopted *fMRIPrep* globally:]
 
 <p align="center">
 <img src="../../20240502_weekly.png" width="85%" /><br />
@@ -606,7 +813,28 @@ Standardized
 
 ---
 
-# fMRIPrep's usage
+# Standardizing preprocessing: community building
+
+
+<p align="center">
+<img src="../../20240502_weekly.png" width="80%" /><br />
+</p>
+
+
+.large.center[<i class="fa-solid fa-circle-right"></i> which has permitted the creation of a large community.]
+
+---
+
+# Standardizing preprocessing: software versions
+
+.larger[
+<i class="fa-solid fa-circle-right"></i> It's critical to report **exact versions**
+
+<i class="fa-solid fa-circle-right"></i> Semantics inform about compatibility: **24.0.1**
+
+<i class="fa-solid fa-circle-right"></i> Long-term support (LTS) program.
+
+]
 
 <p align="center">
 <img src="../../20240502_versionstream.png" width="85%" /><br />
@@ -614,29 +842,7 @@ Standardized
 
 ---
 
-# "Analysis-grade" data
-
-.larger[
-The *NeuroImaging PREProcessing toolS* (*[NiPreps](https://nipreps.org).org*) augment scanners to produce *analysis-grade* data (= **directly consumable by analyses**)
-]
-
-<br />
-.pull-left[
-
-***Analysis-grade* data** is an analogy to the concept of "*sushi-grade (or [sashimi-grade](https://en.wikipedia.org/wiki/Sashimi)) fish*" in that both are:
-
-.large[**minimally preprocessed**,]
-
-and
-
-.large[**safe to consume** directly.]
-]
-
-.pull-right[
-<img align="right" style='margin-right: 50px' src="https://1.bp.blogspot.com/-Osh4H4WXka0/WlMJmVgkZTI/AAAAAAAAEMY/GynUzSomJ-EBiyqv2m-maiOyKSM7SOmNACLcBGAs/s400/yellowfin%2Btuna%2Bsteaks%2Bnutrition.jpg" />
-]
-
-???
+# Standardizing preprocessing: validation
 
 ---
 
@@ -647,21 +853,45 @@ and
 
 ---
 
+# *NiPreps* produce *analysis-grade* data
+
+.boxed-content[
+<br />
+.larger.center[
+"*analysis-grade*" data <i class="fa-solid fa-circle-right"></i> data **directly consumable by analyses**
+]
+
+.pull-left[
+<br />
+<br />
+*Analysis-grade* data is an analogy to the concept of "*sushi-grade (or [sashimi-grade](https://en.wikipedia.org/wiki/Sashimi)) fish*" in that both are:
+
+.large[<i class="fa-solid fa-circle-right"></i> **minimally preprocessed**,]
+
+and
+
+.large[<i class="fa-solid fa-circle-right"></i> **safe to consume** directly.]
+]
+
+.pull-right.center[
+<img src="../../nipreps-transparent.png" width="100%" />
+<a href="https://www.nipreps.org"><img src="images/qr-nipreps-url.svg" width="40%" /><br />
+www.nipreps.org</a>
+]
+]
+
+???
+
+---
+
 ## Conclusion
 
 .boxed-content[
 .distribute.large[
 
-* Implementing a solid QA/QC is critical to the reliability of research
+<i class="fa-solid fa-circle-right"></i> fMRI's research workflow is complex
 
-  * Layering of QA/QC checkpoints
-  * Resources for efficient screening
-
-* MRIQC and the new extension to dMRI
-
-* Introduced the Human Connectome PHantom
-
-* Interest of exploratory analyses on IQMs
+<i class="fa-solid fa-circle-right"></i> Preprocessing is an area with standardization potential
 
 ]
 ]
