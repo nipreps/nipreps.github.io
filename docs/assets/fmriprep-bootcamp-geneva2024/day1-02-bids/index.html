@@ -3,7 +3,7 @@
   <head>
     <title>fMRIPrep Bootcamp | Day 1 :: Brain Imaging Data Structure</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="/talks/assets/asciinema-player/asciinema-player.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/asciinema-player/asciinema-player.css" />
     <style>
       @import url(https://fonts.googleapis.com/css?family=Roboto+Mono:400,700,400italic);
 
@@ -36,27 +36,34 @@
         transform: translateY(-50%);
       }
 
-      .remark-slide-content { height: 100%; padding: 0; }
-      .remark-slide-content h1 { font-size: 3em; }
-      .remark-slide-content h2 { font-size: 2em; }
-      .remark-slide-content h3 { font-size: 1.6em; }
+      .remark-slide-content { height: 100%; padding: 0; font-size: 16pt;}
+      .remark-slide-content h1 { font-size: 2em; color: #324989; }
+      .remark-slide-content h2 { font-size: 1.5em; color: #324989; }
+      .remark-slide-content h3 { font-size: 1.2em; color: #324989; }
       .footnote {
         position: absolute;
         bottom: 3em;
         font-size: 0.7em;
-	left: 6em;
       }
       li p { line-height: 1.25em; }
-      
+
       .remark-slide-content>p { margin-left: 60px; }
       .remark-slide-content>ul { margin-left: 60px; }
       .remark-slide-content>ul li { margin-left: 0.8em; }
 
+      .no-bullet > ul {
+        list-style-type: none;
+        padding-left:  0;
+      }
+
+      .no-bullet > ul > li > ul {
+        padding-left:  2.8em;
+      }
 
       .red { color: #fa0000; }
       .blue { color: #0000fa; }
       .green { color: #698b69; }
-      .large { font-size: 2em; }
+
       a, a > code {
         color: rgb(249, 38, 114);
         text-decoration: none;
@@ -68,7 +75,6 @@
       .remark-code, .remark-inline-code { font-family: 'Roboto Mono'; }
       .large .remark-code, .large .remark-inline-code { font-size: 0.8em; }
       .remark-code-line-highlighted     { background-color: #373832; }
-      .remark-code { width: 85%; }
       .pull-left {
         float: left;
         width: 45%;
@@ -91,6 +97,25 @@
       .section-separator .middle {
         margin-left: 210px;
         width: 80%;
+      }
+
+      .fa-solid {
+        color: #324989;
+      }
+
+      em {
+        color: #324989;
+      }
+
+      strong {
+        color: #324989;
+      }
+
+      .gray-text {
+        color: #888;
+      }
+      .gray-text em, .gray-text strong {
+        color: #888;
       }
 
       .perma-sidebar {
@@ -133,7 +158,7 @@
         left: 20px;
       }
       #slide-how .slides {
-        font-size: 0.9em;
+        /*font-size: .9em;*/
         position: absolute;
         top:  151px;
         right: 140px;
@@ -172,7 +197,7 @@
           color: #000;
         }
       .right-column {
-        width: 55%;
+        width: 65%;
         float: right;
         padding-top: 1em;
       }
@@ -186,9 +211,10 @@
           color: #000;
         }
       .right-column2 {
-        width: 43%;
+        width: 50%;
         float: right;
         padding-top: 1em;
+        margin-right: 2.5em;
       }
       /* Two-column layout (60% left) */
       .left-column3 {
@@ -252,22 +278,27 @@
       }
 
       .small {
-        font-size: 12pt;
+        font-size: 0.7em;
       }
 
       .larger {
-        font-size: 20pt;
+        font-size: 1.4em;
       }
 
       .large {
-        font-size: 24pt;
+        font-size: 1.6em;
       }
 
       .boxed-content {
         float: left;
         display: block;
         width: 89%;
-        height: 70%;
+        padding-right: 4%;
+      }
+
+      .boxed-bottom {
+        clear: both;
+        margin-top: 0px;
       }
 /*
       .distribute {
@@ -306,31 +337,15 @@
         color: transparent; /* make the text invisible */
         user-select: none; /* prevent selection of the text */
       }
-      .gray-text {
-        color: #aaa;
+
+      .pad-left {
+        padding-left: 2.0em;
       }
-      .install-cmd {
-          top: 20px;
-          position: absolute;
-          right: 4em;
-      }
-      figure {
-	  display: block;
-	  margin-left: auto;
-	  margin-right: auto;
-	  font-size: 8pt;
-      }
-      figcaption {
-	  text-align: right;
-      }
-      figcaption a {
-        color: #444444;
-        text-decoration: underline dotted;
-      }
+
     </style>
   </head>
   <body>
-<script src="/talks/assets/asciinema-player/asciinema-player.min.js"></script>
+<script src="/assets/asciinema-player/asciinema-player.min.js"></script>
 <script src="https://kit.fontawesome.com/7e31cfd31d.js" crossorigin="anonymous"></script>
 <script type="text/javascript"
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
@@ -374,7 +389,9 @@ count: false
 
 ## The Brain Imaging Data Structure (BIDS)
 
-#### Chris Markiewicz &lt;<code>markiewicz@stanford.edu</code>> & Oscar Esteban &lt;<code>phd@oscaresteban.es</code>>
+Chris Markiewicz &lt;<code>markiewicz@stanford.edu</code>>
+
+Oscar Esteban &lt;<code>phd@oscaresteban.es</code>>
 
 ]
 
@@ -395,7 +412,7 @@ layout: true
 
 ---
 
-## Outlook
+# Outlook
 
 .right-column3.center[
 <a href="https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/day1-02-bids/">
@@ -409,20 +426,7 @@ layout: true
 
 .large[
 
-<br />
-
-* Overview of the neuroimaging pipeline structure
-
-* Why do data require preprocessing?
-
-* *fMRIPrep*
-
-    * [Hi]story behind the tool
-    * Why — just preprocessing
-    * Why — standardization
-    * Why — community
-
-* *NiPreps*
+* 
 
 ]]
 
@@ -433,17 +437,46 @@ layout: true
 template: newsection
 name: BIDS
 
+---
+
 # BIDS: Brain Imaging Data Structure
 
----
-layout: true
-template: BIDS
-
-.pull-left[![Bids Layout](images/bids.png)]
-
----
-
-.pull-right[
+.left-column2.small[
+.pad-left[
+<i class="fa-solid fa-folder-open"></i> my_dataset/<br />
+.pad-left[<i class="fa-solid fa-file-lines"></i> CHANGES]<br />
+.pad-left[<i class="fa-solid fa-file-lines"></i> README]<br />
+.pad-left[<i class="fa-solid fa-circle-info"></i> dataset_description.json]<br />
+.pad-left[<i class="fa-solid fa-circle-info"></i> participants.json]<br />
+.pad-left[<i class="fa-solid fa-table"></i> participants.tsv]<br />
+.pad-left[<i class="fa-solid fa-circle-info"></i> scans.json]<br />
+.pad-left[<i class="fa-solid fa-folder-open"></i> sub-11]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> anat/]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-circle-info"></i> sub-11_T2w.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_T2w.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-circle-info"></i> sub-11_acq-denoised_T1w.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_acq-denoised_T1w.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-circle-info"></i> sub-11_acq-mp2rage_T1w.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_acq-mp2rage_T1w.nii.gz]]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> fmap/]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-circle-info"></i> sub-11_magnitude1.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_magnitude1.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-circle-info"></i> sub-11_magnitude2.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_magnitude2.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-circle-info"></i> sub-11_phasediff.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_phasediff.nii.gz]]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> func/]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-circle-info"></i> sub-11_task-mixed_bold.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_task-mixed_bold.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-table"></i> sub-11_task-mixed_events.tsv]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-circle-info"></i> sub-11_task-rest_bold.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_task-rest_bold.nii.gz]]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-table"></i> sub-11_scans.tsv]]<br />
+.pad-left[<i class="fa-solid fa-folder"></i> sub-14]<br />
+.pad-left[<i class="fa-solid fa-folder"></i> sub-15]<br />
+]
+]
+.right-column2[
 * BIDS is a directory structure, based on common practices
 
 * Builds on existing standards (NIfTI, JSON, TSV)
@@ -459,39 +492,57 @@ template: BIDS
 
 ---
 
-.pull-right[
+# BIDS: Brain Imaging Data Structure
 
+.left-column2.small[
+.pad-left[
+<i class="fa-solid fa-folder-open"></i> my_dataset/<br />
+.pad-left[<i class="fa-solid fa-file-lines"></i> CHANGES]<br />
+.pad-left[<i class="fa-solid fa-file-lines"></i> README]<br />
+.pad-left[<i class="fa-solid fa-circle-info"></i> dataset_description.json]<br />
+.pad-left[<i class="fa-solid fa-circle-info"></i> participants.json]<br />
+.pad-left[<i class="fa-solid fa-table"></i> participants.tsv]<br />
+.pad-left[<i class="fa-solid fa-circle-info"></i> scans.json]<br />
+.pad-left[<i class="fa-solid fa-folder-open"></i> sub-11]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> anat/]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-circle-info"></i> sub-11_T2w.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_T2w.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-circle-info"></i> sub-11_acq-denoised_T1w.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_acq-denoised_T1w.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-circle-info"></i> sub-11_acq-mp2rage_T1w.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_acq-mp2rage_T1w.nii.gz]]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> fmap/]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-circle-info"></i> sub-11_magnitude1.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_magnitude1.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-circle-info"></i> sub-11_magnitude2.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_magnitude2.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-circle-info"></i> sub-11_phasediff.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_phasediff.nii.gz]]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> func/]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-circle-info"></i> sub-11_task-mixed_bold.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_task-mixed_bold.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-table"></i> sub-11_task-mixed_events.tsv]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-circle-info"></i> sub-11_task-rest_bold.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_task-rest_bold.nii.gz]]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-table"></i> sub-11_scans.tsv]]<br />
+.pad-left[<i class="fa-solid fa-folder"></i> sub-14]<br />
+.pad-left[<i class="fa-solid fa-folder"></i> sub-15]<br />
+]
+]
+.right-column2[
 * Basic metadata in the file names
 
   * Subject, session, imaging modality, etc.
   * Generally just enough to assign unique names
-
 ]
 
----
-count: false
-
-.pull-right[
-* Basic metadata in the file names
-  * Subject, session, imaging modality, etc.
-  * Generally just enough to assign unique names
-
+--
+.right-column2[
 * NIfTI headers and JSON sidecars contain detailed,
   image-related metadata
-
 ]
-
----
-count: false
-
-.pull-right[
-* Basic metadata in the file names
-  * Subject, session, imaging modality, etc.
-  * Generally just enough to assign unique names
-
-* NIfTI headers and JSON sidecars contain detailed,
-  image-related metadata
-
+--
+.right-column2[
 * [`dataset_description.json`](https://bids-specification.readthedocs.io/en/stable/03-modality-agnostic-files.html#dataset_descriptionjson),
   [`participants.tsv`](https://bids-specification.readthedocs.io/en/stable/03-modality-agnostic-files.html#participants-file),
   [`sessions.tsv`](https://bids-specification.readthedocs.io/en/stable/05-longitudinal-and-multi-site-studies.html#sessions-file),
