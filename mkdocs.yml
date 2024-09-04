@@ -41,6 +41,7 @@ theme:
     - tabs
 
 markdown_extensions:
+  - attr_list
   - admonition
   - footnotes
   - toc:
