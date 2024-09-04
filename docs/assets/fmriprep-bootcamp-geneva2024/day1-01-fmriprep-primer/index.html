@@ -46,11 +46,19 @@
         font-size: 0.7em;
       }
       li p { line-height: 1.25em; }
-      
+
       .remark-slide-content>p { margin-left: 60px; }
       .remark-slide-content>ul { margin-left: 60px; }
       .remark-slide-content>ul li { margin-left: 0.8em; }
 
+      .no-bullet > ul {
+        list-style-type: none;
+        padding-left:  0;
+      }
+
+      .no-bullet > ul > li > ul {
+        padding-left:  2.8em;
+      }
 
       .red { color: #fa0000; }
       .blue { color: #0000fa; }
@@ -555,23 +563,32 @@ All analyses must consider confounders and covariates that undermine the **valid
 
 ---
 
-# Reproducibility
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 
 .boxed-content[
-<br />
-<br />
-<br />
-.center[
-![](https://book.the-turing-way.org/_images/reproducible-matrix.jpg)
-.pull-right[(from [The Turing Way](https://book.the-turing-way.org/reproducible-research/overview/overview-definitions#table-of-definitions-for-reproducibility))]
+.large.center[
+# Processing and reproducibility
 ]
+.larger.center.gray-text[How do they interact? Why *fMRIPrep*?
+]]
+
+---
+
+.center[
+<img src="images/reproducible-definition-grid.svg" alt="HPC" style="width: 68%" />
+.small[
+*The Turing Way project* illustration by Scriberia. Used under a CC-BY 4.0 licence. doi:<a href="https://doi.org/10.5281/zenodo.3332807">10.5281/zenodo.3332807</a>.]
 ]
 
 ---
 
 # Reproducibility: increasing measurements' reliability
 
-<br />
 <br />
 
 .large[
@@ -581,12 +598,15 @@ All analyses must consider confounders and covariates that undermine the **valid
 
 <i class="fa-solid fa-circle-right"></i> Standardize the measurement procedure
 
-  .gray-text[Reduce variance (potentially at the cost of bias)]
+  .gray-text[Reduce methodology variance (potentially at the cost of bias)]
 ]
 
 <br />
 
-.center.larger[.larger[Neither ensures the *validity* of the measurement]]
+.center.large[
+Both strategies *reduce the variance* of the measurement.
+
+Neither ensures the *validity* of the measurement]
 
 ---
 
@@ -599,7 +619,7 @@ The reproducibility of preprocessing sets bounds to the reproducibility of downs
 ]
 
 .larger[
-* NARPS ([Botvinik-Nezer et al., 2020](https://doi.org/10.1038/s41586-020-2314-9)): single dataset, 70 teams, 9 *ex-ante* hypotheses.
+* NARPS ([Botvinik-Nezer et al., 2020](https://doi.org/10.1038/s41586-020-2314-9)): single dataset, 70 teams, 9 <i>ex-ante</i> hypotheses.
 
   <i class="fa-solid fa-circle-right"></i> Striking analytical variability (even with teams using same preprocessing)
 
@@ -755,7 +775,7 @@ SDC <i class="fa-solid fa-circle-right"></i> Susceptibility-derived Distortion C
 * Use *Nipype* to abstract from tool details and construct modular workflows
 ]
 
-.large[<i class="fa-solid fa-circle-right"></i> Standardization and best-practices]
+.large[<i class="fa-solid fa-circle-right"></i> Standardization and best-practices — [check (Esteban, 2024)](https://doi.org/10.31219/osf.io/42bsu)]
 .larger[
 * BIDS (inputs), BIDS Derivatives (outputs), BIDS Apps (architecture).
 * Containers, versioning, LTS, open-source, CI/CD, etc.
@@ -791,6 +811,28 @@ SDC <i class="fa-solid fa-circle-right"></i> Susceptibility-derived Distortion C
 
 ---
 
+# Standardization in the research workflow
+
+.boxed-content[
+<br />
+.center[
+<img src="images/neuroimaging-workflow-large.svg" alt="workflow" style="width: 70%" />
+]
+<br />
+
+.larger[
+Data collection <i class="fa-solid fa-circle-right"></i> easy to standardize (BIDS, scanners' software)
+
+Statistical modeling <i class="fa-solid fa-circle-right"></i> keep analytical flexibility not to stifle the development of new ideas
+
+Preprocessing <i class="fa-solid fa-circle-right"></i> offers an **opportunity** to reduce analytical flexibility and **enable** cross-study comparisons
+]
+
+]
+
+
+---
+
 # Standardizing preprocessing: visual reports
 <p align="center">
 <video controls="controls" width="70%"
@@ -822,6 +864,25 @@ To be replaced with an iframe to a real, current report
 
 
 .large.center[<i class="fa-solid fa-circle-right"></i> which has permitted the creation of a large community.]
+
+---
+
+# Building a community was important to *fMRIPrep*
+
+.boxed-content.large[
+.no-bullet[
+* <i class="fa-solid fa-comments"></i> Feedback & support:
+   * error & bug reports <i class="fa-solid fa-bug" style="color: #ff4c26;"></i> help development,
+   * feature requests <i class="fa-solid fa-lightbulb" style="color: #00bc07;"></i> help driving a roadmap,
+   * questions <i class="fa-solid fa-circle-question"></i> are the entry point to deliver support
+      * [<i class="fa-solid fa-bullhorn"></i> NeuroStars.org](https://neurostars.org)
+
+* <i class="fa-solid fa-user-plus"></i> Engage contributors (see [our guidelines](https://www.nipreps.org/community/CONTRIBUTING/)):
+   * documentation, assistance debugging, code patches, everything counts!
+
+* <i class="fa-solid fa-globe"></i> Reach out, increase user-base.
+]
+]
 
 ---
 
