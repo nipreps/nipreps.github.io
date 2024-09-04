@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>fMRIPrep Bootcamp | Day 1 :: Introduction</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/talks/assets/asciinema-player/asciinema-player.css" />
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Roboto+Mono:400,700,400italic);
+
+      .blur {
+          -webkit-filter: blur(5px) opacity(.3);
+          -moz-filter: blur(10px) opacity(.3);
+          -o-filter: blur(5px) opacity(.3);
+          -ms-filter: blur(5px) opacity(.3);
+          filter: blur(5px) opacity(.3);
+      }
+
+      html {
+        height: 100%;
+      }
+      body {
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        height: 100%;
+      }
+      h1, h2, h3 {
+        font-weight: 600;
+        margin-bottom: 0;
+      }
+
+      .middle {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        width:100%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+      }
+
+      .remark-slide-content { height: 100%; padding: 0; font-size: 16pt;}
+      .remark-slide-content h1 { font-size: 2em; color: #324989; }
+      .remark-slide-content h2 { font-size: 1.5em; color: #324989; }
+      .remark-slide-content h3 { font-size: 1.2em; color: #324989; }
+      .footnote {
+        position: absolute;
+        bottom: 3em;
+        font-size: 0.7em;
+      }
+      li p { line-height: 1.25em; }
+
+      .remark-slide-content>p { margin-left: 60px; }
+      .remark-slide-content>ul { margin-left: 60px; }
+      .remark-slide-content>ul li { margin-left: 0.8em; }
+
+      .no-bullet > ul {
+        list-style-type: none;
+        padding-left:  0;
+      }
+
+      .no-bullet > ul > li > ul {
+        padding-left:  2.8em;
+      }
+
+      .red { color: #fa0000; }
+      .blue { color: #0000fa; }
+      .green { color: #698b69; }
+
+      a, a > code {
+        color: rgb(249, 38, 114);
+        text-decoration: none;
+      }
+      code {
+        background: #e7e8e2;
+        border-radius: 3px;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Roboto Mono'; }
+      .large .remark-code, .large .remark-inline-code { font-size: 0.8em; }
+      .remark-code-line-highlighted     { background-color: #373832; }
+      .pull-left {
+        float: left;
+        width: 45%;
+      }
+      .pull-right {
+        float: right;
+        width: 45%;
+        height: 75%;
+      }
+      .pull-right ~ p {
+        clear: both;
+      }
+      #slideshow .slide .content code {
+        font-size: 0.8em;
+      }
+      #slideshow .slide .content pre code {
+        font-size: 0.9em;
+        padding: 15px;
+      }
+      .section-separator .middle {
+        margin-left: 210px;
+        width: 80%;
+      }
+
+      .fa-solid {
+        color: #324989;
+      }
+
+      em {
+        color: #324989;
+      }
+
+      strong {
+        color: #324989;
+      }
+
+      .gray-text {
+        color: #888;
+      }
+      .gray-text em, .gray-text strong {
+        color: #888;
+      }
+
+      .perma-sidebar {
+        float: left;
+        background-color: #324989;
+        color: #f4f4f4;
+        width: 40px;
+        height: 100%;
+        padding: 0;
+        margin: 0 2em 0 0;
+        text-align: center;
+      }
+      .perma-sidebar p {
+        text-align: left;
+        font-size: 80%;
+        height: 35px;
+        width: 670px;
+        margin: 320px 0 0 -315px;
+      }
+      .perma-sidebar h2:last-of-type, .perma-sidebar h3:last-child {
+        color: #d2c295;
+      }
+
+/*      .sidebar-slug {
+          bottom: 12px;
+          left: 0;
+          position: absolute;
+          width: 210px;
+          text-align: center;
+      }
+      .sidebar-slug img {
+          width: 180px;
+      }*/
+
+      .svg-reportlet { width: 75%; }
+
+      /* Slide-specific styling */
+      #slide-inverse .footnote {
+        bottom: 12px;
+        left: 20px;
+      }
+      #slide-how .slides {
+        /*font-size: .9em;*/
+        position: absolute;
+        top:  151px;
+        right: 140px;
+      }
+      #slide-how .slides h3 {
+        margin-top: 0.2em;
+      }
+      #slide-how .slides .first, #slide-how .slides .second {
+        padding: 1px 20px;
+        height: 90px;
+        width: 120px;
+        -moz-box-shadow: 0 0 10px #777;
+        -webkit-box-shadow: 0 0 10px #777;
+        box-shadow: 0 0 10px #777;
+      }
+      #slide-how .slides .first {
+        background: #fff;
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        z-index: 1;
+      }
+      #slide-how .slides .second {
+        position: relative;
+        background: #fff;
+        z-index: 0;
+      }
+
+      /* Two-column layout */
+      .left-column {
+        width: 23%;
+        height: 82%;
+        float: left;
+      }
+        .left-column h2:last-of-type, .left-column h3:last-child {
+          color: #000;
+        }
+      .right-column {
+        width: 55%;
+        float: right;
+        padding-top: 1em;
+      }
+      /* Two-column layout (40% left) */
+      .left-column2 {
+        width: 35%;
+        height: 85%;
+        float: left;
+      }
+        .left-column2 h2:last-of-type, .left-column2 h3:last-child {
+          color: #000;
+        }
+      .right-column2 {
+        width: 43%;
+        float: right;
+        padding-top: 1em;
+      }
+      /* Two-column layout (60% left) */
+      .left-column3 {
+        display: block;
+        width: auto;
+        height: 85%;
+        margin: 0 32% 0 5%;
+      }
+        .left-column3 h2:last-of-type, .left-column3 h3:last-child {
+          color: #000;
+        }
+
+      .left-column3 li {
+        margin-left: 25px;
+      }
+
+      .right-column3 {
+        width: 30%;
+        float: right;
+        padding-top: 1em;
+      }
+      /* Two-column layout (even split) */
+      .left-column-mid {
+        width: 45%;
+        float: left;
+      }
+      .right-column-mid {
+        width: 45%;
+        float: right;
+      }
+      /* Two-column layout (flipped) */
+      .left-column-inv {
+        color: #777;
+        width: 75%;
+        height: 92%;
+        float: left;
+      }
+        .left-column h2:last-of-type, .left-column h3:last-child {
+          color: #000;
+        }
+      .right-column-inv {
+        width: 20%;
+        float: right;
+        padding-top: 1em;
+      }
+      .caption {
+          font-size: 0.7em;
+      }
+      .slide-slug {
+          bottom: 12px;
+          opacity: .5;
+          position: absolute;
+          left: 4em;
+      }
+
+      .small code {
+        font-size: 9pt;
+      }
+      .tiny code {
+        font-size: 8.5pt;
+      }
+
+      .small {
+        font-size: 0.7em;
+      }
+
+      .larger {
+        font-size: 1.4em;
+      }
+
+      .large {
+        font-size: 1.6em;
+      }
+
+      .boxed-content {
+        float: left;
+        display: block;
+        width: 89%;
+        padding-right: 4%;
+      }
+
+      .boxed-bottom {
+        clear: both;
+        margin-top: 0px;
+      }
+/*
+      .distribute {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+      }*/
+
+      .distribute {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        height: 80%;
+        width: 100%;
+      }
+
+      .cut-right {
+        margin-right: 100px;
+      }
+
+      .align-right {
+        text-align: right;
+      }
+
+      .rotate{
+        -webkit-transform: rotate(-90deg);
+        -moz-transform: rotate(-90deg);
+        -o-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+      }
+
+      .hidden-text {
+        color: transparent; /* make the text invisible */
+        user-select: none; /* prevent selection of the text */
+      }
+
+    </style>
+  </head>
+  <body>
+<script src="/talks/assets/asciinema-player/asciinema-player.min.js"></script>
+<script src="https://kit.fontawesome.com/7e31cfd31d.js" crossorigin="anonymous"></script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true},
+      jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"],
+      extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js", "[Contrib]/a11y/accessibility-menu.js"],
+      TeX: {
+      extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"],
+      equationNumbers: {
+      autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+
+<textarea id="source">
+
+name: title
+layout: true
+class: center
+---
+layout: false
+count: false
+
+
+.center[
+<a href="https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/day1-01-fmriprep-primer/">
+  <img src="images/qr-talk-url.svg" alt="workflow" style="width: 20%" />
+  <br />
+  https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/day1-01-fmriprep-primer/
+</a>
+
+<br />
+<br />
+
+## Overview of the fMRI neuroimaging pipeline & *fMRIPrep*
+
+Chris Markiewicz &lt;<code>markiewicz@stanford.edu</code>>
+
+Oscar Esteban &lt;<code>phd@oscaresteban.es</code>>
+
+]
+
+???
+
+NOTES TO OURSELVES GO HERE
+
+---
+name: newsection
+layout: true
+
+.perma-sidebar[
+<p class="rotate">
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0; height: 20px; padding-top: 6px;" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  <span style="padding-left: 10px; font-weight: 600;">Day 1 :: Introduction</span>
+</p>
+]
+
+---
+
+# Outlook
+
+.right-column3.center[
+<a href="https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/day1-01-fmriprep-primer/">
+  <img src="images/qr-talk-url.svg" alt="workflow" style="width: 100%" />
+  <br />
+  https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/day1-01-fmriprep-primer/
+</a>
+]
+
+.left-column3.larger[
+
+<br />
+
+* Overview of the neuroimaging pipeline structure
+
+* Why do data require preprocessing?
+
+* *fMRIPrep*
+
+    * Introduction
+    * Design and requirements
+    * Community
+    * Continuous validation
+
+* *NiPreps*
+
+]
+
+???
+
+
+---
+
+# The neuroimaging worflow
+
+<br />
+<br />
+
+.boxed-content[
+<img src="images/neuroimaging-workflow-large.svg" alt="workflow" style="width: 100%" />
+
+
+.center[
+[Esteban et al., (2020)](http://doi.org/10.1038/s41596-020-0327-3);
+[Niso et al., (2022)](https://doi.org/10.1016/j.neuroimage.2022.119623)
+]
+]
+
+???
+
+
+The selling points are:
+
+- Data collection and organization is mostly data management. It's true sequences improve over time and that demands updates in the data management workflow (e.g., BIDS conversion), but you can get a very stable solution here (esp. if you use things like ReproIn and datalad) and standardization has been implemented (following different approaches and standards at each institution, true).
+- Statistical modeling requires some flexibility to come up with new and better models, so you may allow some analytical variability not to styme progress.
+- Preprocessing is the step in between, where standardization can (i) give you as an individual researcher a solid ground for this and future studies; (ii) make your study more comparable to others who standardize the same way.
+
+WDYT?
+
+---
+
+# Why do data require preprocessing?
+
+.boxed-content[
+
+<br />
+
+
+.large.center[
+<i class="fa-solid fa-circle-exclamation"></i> MRI measurements *generally* **cannot** be directly analyzed. <i class="fa-solid fa-circle-exclamation"></i>
+]
+
+<br />
+
+.pull-left[
+.center.larger[<i class="fa-solid fa-map-pin"></i> **Spatiotemporal location**]
+
+signal drawn from the same location and accurate time at all time points,
+sampled consistently with the analysis' design (e.g., surface, volume)
+]
+
+.pull-right[
+.center.larger[<i class="fa-solid fa-location-crosshairs"></i> **Signal *validity***]
+
+extraction of confounds, identification/accounting for artifacts, spatiotemporal filtering for denoising, etc.
+]
+
+<br />
+
+.boxed-bottom.large.center[
+**End goal**: minimize false positives without increasing false negatives
+]
+]
+
+---
+
+# Why do data require preprocessing?
+
+.boxed-content[
+
+<br />
+<br />
+
+.large[
+All analyses require consistency and accuracy in **spatiotemporal location**.
+]
+
+<br />
+.larger[
+
+<i class="fa-solid fa-circle-right"></i> **within runs** (head-motion, slice-timing),
+
+<i class="fa-solid fa-circle-right"></i> **within individuals** (coregistration between runs, coregistration with anatomy [T1w images, surfaces, etc.], susceptibility distortion), and
+
+<i class="fa-solid fa-circle-right"></i> **across subjects** (spatial normalization)
+
+]
+
+]
+
+---
+
+## Example: susceptibility distortion
+
+
+<p align="center">
+<img src="images/sdc-the-problem.svg" width="80%" /><br />
+</p>
+
+---
+
+# Why do data require preprocessing?
+<br />
+
+.boxed-content[
+.large[
+All analyses must consider confounders and covariates that undermine the **validity** of the measurements.
+]
+.larger[
+* confounders such as global signals, signal drifts, DVARS, etc.
+
+* spatiotemporal filtering to increase SNR,
+
+* known artifacts such as head-motion parameters and derivations, etc.
+]
+
+<br />
+
+.boxed-bottom.large[
+**Minimal preprocessing**: .gray-text[*fMRIPrep* is *conservative* in that it will not regress out signals or apply intended smoothing kernels]
+]
+]
+
+---
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+.boxed-content[
+.large.center[
+# Processing and reproducibility
+]
+.larger.center.gray-text[How do they interact? Why *fMRIPrep*?
+]]
+
+---
+
+.center[
+<img src="images/reproducible-definition-grid.svg" alt="HPC" style="width: 68%" />
+.small[
+*The Turing Way project* illustration by Scriberia. Used under a CC-BY 4.0 licence. doi:<a href="https://doi.org/10.5281/zenodo.3332807">10.5281/zenodo.3332807</a>.]
+]
+
+---
+
+# Reproducibility: increasing measurements' reliability
+
+<br />
+
+.large[
+<i class="fa-solid fa-circle-right"></i> Repeat the measurement
+
+  .gray-text[Random errors cancel out]
+
+<i class="fa-solid fa-circle-right"></i> Standardize the measurement procedure
+
+  .gray-text[Reduce methodology variance (potentially at the cost of bias)]
+]
+
+<br />
+
+.center.large[
+Both strategies *reduce the variance* of the measurement.
+
+Neither ensures the *validity* of the measurement]
+
+---
+
+# Preprocessing & Reproducibility
+
+.boxed-content[
+
+.large[
+The reproducibility of preprocessing sets bounds to the reproducibility of downstream analyses.
+]
+
+.larger[
+* NARPS ([Botvinik-Nezer et al., 2020](https://doi.org/10.1038/s41586-020-2314-9)): single dataset, 70 teams, 9 <i>ex-ante</i> hypotheses.
+
+  <i class="fa-solid fa-circle-right"></i> Striking analytical variability (even with teams using same preprocessing)
+
+* [Li et al., (2024)](https://doi.org/10.1038/s41562-024-01942-4): single test-retest dataset, 5 pipelines
+
+  <i class="fa-solid fa-circle-right"></i> Moderate inter-pipeline agreement, limiting cross-study <s>reproducibility</s> [replicability]
+]
+]
+
+---
+
+# Preprocessing & Reproducibility
+
+.boxed-content[
+<br />
+<br />
+
+.large[
+Beyond analytical variability, other sources of variability are on the way:
+]
+.larger[
+* Random seeds
+
+  <i class="fa-solid fa-circle-right"></i> Keep track (*do not fix*) and report.
+
+* [Chatelain et al., (2023)](https://doi.org/10.48550/arXiv.2307.01373): Random rounding of floating-point calculations.
+
+  <i class="fa-solid fa-circle-right"></i> Uncovered substantial changes between patch-releases of *fMRIPrep*
+]
+
+
+]
+
+---
+
+# fMRIPrep: bird's eye picture
+
+.boxed-content.center[
+<br />
+<br />
+<img src="https://github.com/oesteban/fmriprep/raw/f4c7a9804be26c912b24ef4dccba54bdd72fa1fd/docs/_static/fmriprep-21.0.0.svg" width="100%" />
+]
+
+---
+
+.pull-left.center[
+<img src="images/fmriprep-anatomical.png" width="90%" />
+]
+
+.pull-right[
+
+# Anatomical processing
+
+.large[
+Delivered within *sMRIPrep*
+]
+
+.larger[
+
+<i class="fa-solid fa-circle-right"></i> Denoising
+
+<i class="fa-solid fa-circle-right"></i> INU correction
+
+<i class="fa-solid fa-circle-right"></i> Averaging (multi-session)
+
+<i class="fa-solid fa-circle-right"></i> Brain extraction
+
+<i class="fa-solid fa-circle-right"></i> Spatial normalization
+
+<i class="fa-solid fa-circle-right"></i> Brain tissue segmentation
+
+<i class="fa-solid fa-circle-right"></i> Surface reconstruction
+]
+
+
+]
+
+---
+
+.pull-left.center[
+<br />
+<br />
+<img src="images/fmriprep-functional.png" width="100%" />
+]
+
+.pull-right[
+
+# Functional processing
+
+.larger[
+
+<i class="fa-solid fa-circle-right"></i> Reference volume
+
+<i class="fa-solid fa-circle-right"></i> Slice-timing (optional)
+
+<i class="fa-solid fa-circle-right"></i> Head-motion (estimation)
+
+<i class="fa-solid fa-circle-right"></i> Susceptibility distortion (estimation)
+
+<i class="fa-solid fa-circle-right"></i> Co-registration with anatomical T1w
+
+<i class="fa-solid fa-circle-right"></i> Resampling into specific spaces
+
+<i class="fa-solid fa-circle-right"></i> Confound collection
+]
+
+
+]
+
+---
+
+# *TemplateFlow*
+
+.boxed-content.center[
+<img src="https://www.templateflow.org/assets/templateflow_fig-birdsview.png" width="70%" /><br />
+(<a href="https://doi.org/10.1038/s41592-022-01681-2">Ciric et al., 2022</a>)
+]
+
+---
+
+# *SDCFlows*
+
+.boxed-content[
+.large[
+SDC <i class="fa-solid fa-circle-right"></i> Susceptibility-derived Distortion Correction
+]
+<br />
+
+.larger[
+*SDCFlows* "caters" preprocessed fieldmap estimations for *fMRIPrep* to reconstruct the nonlinear displacements field to revert geometrical distortion.
+]
+
+.center[<img src="images/sdc-the-problem.svg" width="40%" />]
+]
+
+---
+
+# fMRIPrep's design
+
+.boxed-content[
+
+.large[<i class="fa-solid fa-circle-right"></i> Robust & adaptive fMRI preprocessing]
+
+.larger[
+* Minimalist requirements (T1w + BOLD run)
+* Will utilize additional scans (T2w/FLAIR, field maps) when available
+* Capable of preprocessing multi-echo BOLD.
+]
+
+.large[<i class="fa-solid fa-circle-right"></i> Cross-suite tooling]
+.larger[
+* Select tools from each suite according to strengths
+* Use *Nipype* to abstract from tool details and construct modular workflows
+]
+
+.large[<i class="fa-solid fa-circle-right"></i> Standardization and best-practices — [check (Esteban, 2024)](https://doi.org/10.31219/osf.io/42bsu)]
+.larger[
+* BIDS (inputs), BIDS Derivatives (outputs), BIDS Apps (architecture).
+* Containers, versioning, LTS, open-source, CI/CD, etc.
+* Visual reports
+]
+
+]
+
+---
+
+# fMRIPrep's constrains and limitations
+
+.boxed-content[
+
+.large[<i class="fa-solid fa-circle-right"></i> Agnostic to downstream analysis]
+
+.larger[
+* Minimalist processing that refrains from applying analysis-specific steps.
+]
+
+.large[<i class="fa-solid fa-circle-right"></i> Cross-sectional studies]
+.larger[
+* *fMRIPrep* assumes individuals' anatomy does not change
+* Today, execution can be *hacked* but a *longitudinal mode* does not exist yet.
+]
+
+.large[<i class="fa-solid fa-circle-right"></i> Driven by the 80/20 principle]
+.larger[
+* 7T data fell on the 20 side (although that's about to change)
+]
+
+]
+
+---
+
+# Standardization in the research workflow
+
+.boxed-content[
+<br />
+.center[
+<img src="images/neuroimaging-workflow-large.svg" alt="workflow" style="width: 70%" />
+]
+<br />
+
+.larger[
+Data collection <i class="fa-solid fa-circle-right"></i> easy to standardize (BIDS, scanners' software)
+
+Statistical modeling <i class="fa-solid fa-circle-right"></i> keep analytical flexibility not to stifle the development of new ideas
+
+Preprocessing <i class="fa-solid fa-circle-right"></i> offers an **opportunity** to reduce analytical flexibility and **enable** cross-study comparisons
+]
+
+]
+
+
+---
+
+# Standardizing preprocessing: visual reports
+<p align="center">
+<video controls="controls" width="70%"
+       name="Video Name" src="../../fmriprep-report.mov"></video>
+</p>
+
+???
+
+To be replaced with an iframe to a real, current report
+
+---
+
+# Standardizing preprocessing: community building
+
+.large[fMRI practitioners have massively adopted *fMRIPrep* globally:]
+
+<p align="center">
+<img src="../../20240502_weekly.png" width="85%" /><br />
+</p>
+
+---
+
+# Standardizing preprocessing: community building
+
+
+<p align="center">
+<img src="../../20240502_weekly.png" width="80%" /><br />
+</p>
+
+
+.large.center[<i class="fa-solid fa-circle-right"></i> which has permitted the creation of a large community.]
+
+---
+
+# Building a community was important to *fMRIPrep*
+
+.boxed-content.large[
+.no-bullet[
+* <i class="fa-solid fa-comments"></i> Feedback & support:
+   * error & bug reports <i class="fa-solid fa-bug" style="color: #ff4c26;"></i> help development,
+   * feature requests <i class="fa-solid fa-lightbulb" style="color: #00bc07;"></i> help driving a roadmap,
+   * questions <i class="fa-solid fa-circle-question"></i> are the entry point to deliver support
+      * [<i class="fa-solid fa-bullhorn"></i> NeuroStars.org](https://neurostars.org)
+
+* <i class="fa-solid fa-user-plus"></i> Engage contributors (see [our guidelines](https://www.nipreps.org/community/CONTRIBUTING/)):
+   * documentation, assistance debugging, code patches, everything counts!
+
+* <i class="fa-solid fa-globe"></i> Reach out, increase user-base.
+]
+]
+
+---
+
+# Standardizing preprocessing: software versions
+
+.larger[
+<i class="fa-solid fa-circle-right"></i> It's critical to report **exact versions**
+
+<i class="fa-solid fa-circle-right"></i> Semantics inform about compatibility: **24.0.1**
+
+<i class="fa-solid fa-circle-right"></i> Long-term support (LTS) program.
+
+]
+
+<p align="center">
+<img src="../../20240502_versionstream.png" width="85%" /><br />
+</p>
+
+---
+
+# Standardizing preprocessing: validation
+
+---
+
+<p align="center">
+<img src="../../nipreps-chart.png" width="63%" /><br />
+<em>NiPreps</em> (<a href="https://doi.org/10.31219/osf.io/ujxp6">Esteban et al., 2020</a>)
+</p>
+
+---
+
+# *NiPreps* produce *analysis-grade* data
+
+.boxed-content[
+<br />
+.larger.center[
+"*analysis-grade*" data <i class="fa-solid fa-circle-right"></i> data **directly consumable by analyses**
+]
+
+.pull-left[
+<br />
+<br />
+*Analysis-grade* data is an analogy to the concept of "*sushi-grade (or [sashimi-grade](https://en.wikipedia.org/wiki/Sashimi)) fish*" in that both are:
+
+.large[<i class="fa-solid fa-circle-right"></i> **minimally preprocessed**,]
+
+and
+
+.large[<i class="fa-solid fa-circle-right"></i> **safe to consume** directly.]
+]
+
+.pull-right.center[
+<img src="../../nipreps-transparent.png" width="100%" />
+<a href="https://www.nipreps.org"><img src="images/qr-nipreps-url.svg" width="40%" /><br />
+www.nipreps.org</a>
+]
+]
+
+???
+
+---
+
+## Conclusion
+
+.boxed-content[
+.distribute.large[
+
+<i class="fa-solid fa-circle-right"></i> fMRI's research workflow is complex
+
+<i class="fa-solid fa-circle-right"></i> Preprocessing is an area with standardization potential
+
+]
+]
+
+???
+
+
+---
+layout: false
+count: false
+
+
+.center[
+<a href="https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/day1-01-fmriprep-primer/"><img src="images/qr-talk-url.svg" alt="workflow" style="width: 20%" /></a>
+
+## Thanks
+
+<br />
+<br />
+
+#### Chris Markiewicz &lt;<code>markiewicz@stanford.edu</code>> & Oscar Esteban &lt;<code>phd@oscaresteban.es</code>>
+
+Overview of the fMRI neuroimaging pipeline & *fMRIPrep*
+
+Funding: [SNSF 185872](https://data.snf.ch/grants/grant/185872), [RF1MH121867](https://reporter.nih.gov/project-details/10260312), [CZI EOSS5-000266](https://chanzuckerberg.com/eoss/proposals/nipreps-a-community-framework-for-reproducible-neuroimaging/)
+
+]
+
+???
+
+</textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script>
+      var slideshow = remark.create({
+          highlightStyle: 'monokai',
+          highlightLanguage: 'remark',
+          highlightLines: true,
+          countIncrementalSlides: false,
+          highlightSpans: true,
+          ratio: '16:9'
+      });
+
+      // Now retrieve all IDs of asciinema casts
+      const allcasts = new Map();
+
+      slideshow.on('afterShowSlide', function (slide) {
+        // Slide is the slide being navigated
+        var slideNumber = slide.getSlideIndex();
+        var element = document.getElementsByClassName("remark-visible")[0].getElementsByClassName('asciicast')
+        if (element.length == 0 ) {
+          return;
+        }
+
+        if (allcasts.has(slideNumber)) {
+          allcasts.get(slideNumber).play();
+          return;
+        }
+
+        var castid = element[0].attributes["id"].value;
+        allcasts.set(slideNumber, AsciinemaPlayer.create(
+            'images/fix-typo.cast',
+            document.getElementById('636539'),
+            { autoPlay: true, speed: 2, idle_time_limit: 8, rows: 27 }
+        ));
+        // allcasts.set(slideNumber, AsciinemaPlayer.create(
+        //     'https://asciinema.org/a/' + castid + '.cast',
+        //     document.getElementById(castid),
+        //     { autoPlay: true, speed: 2, idle_time_limit: 8, rows: 17 }
+        // ));
+      });
+
+      slideshow.on('beforeHideSlide', function (slide) {
+        // Slide is the slide being navigated
+        var slideNumber = slide.getSlideIndex();
+        if (allcasts.has(slideNumber)) {
+          allcasts.get(slideNumber).pause();
+        }
+      });
+
+    </script>
+  </body>
+</html>
