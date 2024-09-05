@@ -845,27 +845,64 @@ Our dataset's DICOM had some non-compliant names:
 
 # BIDS Validator
 
+.boxed-content[
 The machine-readable structure makes validation possible:
 
-```bash
-$ deno run -A jsr:@bids/validator /data/bids/openneuro/ds000228
-        [WARNING] JSON_KEY_RECOMMENDED A JSON file is missing a key listed as recommended.
-                DatasetType
-                /dataset_description.json
+``` bash
+$ bids-validator .
+bids-validator@1.14.6
 
-                GeneratedBy
-                /dataset_description.json
+  1: [WARN] The recommended file /README is very small. Please consider expanding it with additional information about the dataset. (code: 213 - README_FILE_SMALL)
+    ./README
 
-                SourceDatasets
-                /dataset_description.json
+  Please visit https://neurostars.org/search?q=README_FILE_SMALL for existing conversations about this issue.
 
-        Please visit https://neurostars.org/search?q=JSON_KEY_RECOMMENDED for existing 
-	conversations about this issue.
-...
+        Summary:                Available Tasks:                            Available Modalities: 
+        96 Files, 6.63GB        Mixed-stimuli, positive-control task        MRI                   
+        5 - Subjects            Resting-state fMRI                                                
+        1 - Session                                                                               
+
+
+  If you have any questions, please post on https://neurostars.org/tags/bids.
 ```
 
 .center[
 ## https://bids-standard.github.io/bids-validator/
+]]
+
+---
+
+# BIDS Validator
+
+.boxed-content[
+Once all warnings and errors are addressed:
+
+``` bash
+$ bids-validator .
+bids-validator@1.14.6
+
+This dataset appears to be BIDS compatible.
+        Summary:                Available Tasks:                            Available Modalities: 
+        96 Files, 6.63GB        Mixed-stimuli, positive-control task        MRI                   
+        5 - Subjects            Resting-state fMRI                                                
+        1 - Session                                                                               
+
+
+  If you have any questions, please post on https://neurostars.org/tags/bids.
+```
+
+.center[
+## https://bids-standard.github.io/bids-validator/
+]]
+
+---
+
+# Sharing through OpenNeuro
+
+.boxed-content[
+.center[[https://openneuro.org/datasets/ds005454/versions/1.0.0](https://openneuro.org/datasets/ds005454/versions/1.0.0)]
+
+<iframe src="https://openneuro.org/datasets/ds005454/versions/1.0.0" width="100%" height="500px" style="border: 0" />
 ]
 
 ---
@@ -876,12 +913,10 @@ name: Apps
 # BIDS Applications
 
 ---
-
 A common specification of neuroimaging datasets affords queries for and
 adaptation to the available data.
-
 --
-
+.boxed-content[
 Queryable (meta)data allows a very simple protocol for a
 [BIDS App](https://bids-apps.neuroimaging.io/apps/):
 
@@ -892,10 +927,11 @@ bids-app /bids-directory /output-directory participant [OPTIONS]
 .footnote[
 \* Note that `participant` is an analysis level. Apps may also operate
 at the `run`, `session` or `group` levels.
-]
+]]
 
 --
 
+.boxed-content[
 ## Examples
 
 **MRIQC**
@@ -903,16 +939,17 @@ at the `run`, `session` or `group` levels.
 ```Bash
 mriqc /data/bids/openneuro/ds000228 /data/processed/ds000228-mriqc group
 ```
-
+]
 --
 
+.boxed-content[
 **fMRIPrep**
 
 ```Bash
 fmriprep /data/bids/openneuro/ds000228 /data/processed/ds000228-fmriprep \
     participant --participant-label pixar001
 ```
-
+]
 ---
 
 .pull-left[
@@ -1071,6 +1108,7 @@ pip install pybids
 
 # PyBIDS
 
+.boxed-content[
 A common specification of neuroimaging datasets affords queries for and
 adaptation to the available data.
 
@@ -1094,31 +1132,71 @@ querying and manipulating BIDS datasets.
  'suffix': 'bold',
  'task': 'rest'}
 ```
-
+]
 ---
 
-# PyBIDS - Derivatives
+# PyBIDS | Derivatives
 
+.boxed-content[
 PyBIDS layouts support BIDS derivatives:
 
 ```Python
->>> fmri_derivs = BIDSLayout('/my_dataset-fmriprep', config=['bids', 'derivatives'], validate=False)
+>>> fmri_derivs = BIDSLayout(
+...     '/my_dataset-fmriprep',
+...     config=['bids', 'derivatives'],
+...     validate=False,
+... )
 >>> spaces = fmri_derivs.get_spaces(desc='preproc', suffix='bold')
 >>> spaces
 ['MNI152NLin2009cAsym']
 ```
-
+]
 --
 
+.boxed-content[
 It is also possible to provide your own config:
 
 ```Python
 >>> import niworkflows
 >>> nipreps_config = niworkflows.data.load('nipreps.json')
->>> fmri_derivs = BIDSLayout('/my_dataset-fmriprep, config=[nipreps_config], validate=False)
+>>> fmri_derivs = BIDSLayout('/my_dataset-fmriprep', config=[nipreps_config], validate=False)
+```
+]
+---
+
+# PyBIDS | Large datasets
+
+.boxed-content[
+<br />
+.larger[*BIDS Apps* can spend long time indexing if they rely on *PyBIDS* ]
+.no-bullet[
+* <i class="fa-solid fa-circle-right"></i> **create a cache**:
+]
+
+```Bash
+$ pybids layout --reset-db --no-validate --index-metadata . /my_dataset/.bids-index/
 ```
 
+.larger[And then inform your *BIDS App*.]
+
+<br />
+
+In the case of *MRIQC* and *fMRIPrep*, point the `--bids-database-dir` argument to the newly created cache:
+
+```Bash
+$ mriqc /data/input /derivatives/output participant [OPTIONS] \
+    --bids-database-dir /my_dataset/.bids-index/
+```
+
+```Bash
+$ fmriprep /data/input /derivatives/output participant [OPTIONS] \
+    --bids-database-dir /my_dataset/.bids-index/
+```
+
+]
+
 ---
+
 template: newsection
 
 # Conclusion
