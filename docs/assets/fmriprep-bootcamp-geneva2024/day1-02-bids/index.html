@@ -42,8 +42,9 @@
       .remark-slide-content h3 { font-size: 1.2em; color: #324989; }
       .footnote {
         position: absolute;
-        bottom: 3em;
+        bottom: 0.5em;
         font-size: 0.7em;
+	left: 6em;
       }
       li p { line-height: 1.25em; }
 
@@ -101,6 +102,9 @@
 
       .fa-solid {
         color: #324989;
+      }
+      .fa-blank {
+	color: #ffffff;
       }
 
       em {
@@ -341,6 +345,20 @@
       .pad-left {
         padding-left: 2.0em;
       }
+      .install-cmd {
+          top: 20px;
+          position: absolute;
+          right: 4em;
+      }
+      figure {
+	  display: block;
+	  margin-left: auto;
+	  margin-right: auto;
+	  font-size: 8pt;
+      }
+      figcaption {
+	  text-align: right;
+      }
 
     </style>
   </head>
@@ -437,8 +455,6 @@ layout: true
 template: newsection
 name: BIDS
 
----
-
 # BIDS: Brain Imaging Data Structure
 
 .left-column2.small[
@@ -477,6 +493,7 @@ name: BIDS
 ]
 ]
 .right-column2.larger[
+
 * BIDS is a directory structure, based on common practices
 
 * Builds on existing standards (NIfTI, JSON, TSV)
@@ -492,43 +509,6 @@ name: BIDS
 
 ---
 
-# BIDS: Brain Imaging Data Structure
-
-.left-column2.small[
-.pad-left[
-<i class="fa-solid fa-folder-open"></i> my_dataset/<br />
-.pad-left[<i class="fa-solid fa-file-lines"></i> CHANGES]<br />
-.pad-left[<i class="fa-solid fa-file-lines"></i> README]<br />
-.pad-left[<i class="fa-solid fa-paperclip"></i> dataset_description.json]<br />
-.pad-left[<i class="fa-solid fa-paperclip"></i> participants.json]<br />
-.pad-left[<i class="fa-solid fa-table"></i> participants.tsv]<br />
-.pad-left[<i class="fa-solid fa-paperclip"></i> scans.json]<br />
-.pad-left[<i class="fa-solid fa-folder-open"></i> sub-11]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> anat/]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_T2w.json]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_T2w.nii.gz]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_acq-denoised_T1w.json]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_acq-denoised_T1w.nii.gz]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_acq-mp2rage_T1w.json]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_acq-mp2rage_T1w.nii.gz]]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> fmap/]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_magnitude1.json]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_magnitude1.nii.gz]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_magnitude2.json]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_magnitude2.nii.gz]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_phasediff.json]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_phasediff.nii.gz]]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> func/]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_task-mixed_bold.json]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_task-mixed_bold.nii.gz]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-table"></i> sub-11_task-mixed_events.tsv]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_task-rest_bold.json]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_task-rest_bold.nii.gz]]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-table"></i> sub-11_scans.tsv]]<br />
-.pad-left[<i class="fa-solid fa-folder"></i> sub-14]<br />
-.pad-left[<i class="fa-solid fa-folder"></i> sub-15]<br />
-]
-]
 .right-column2[.no-bullet[* .larger[Basic metadata in the file names]
   * Subject, session, imaging modality, etc.
   * Generally just enough to assign unique names]]
@@ -545,9 +525,18 @@ name: BIDS
 ]]
 
 ---
+name: newsection
+layout: true
+
+.perma-sidebar[
+<p class="rotate">
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0; height: 20px; padding-top: 6px;" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  <span style="padding-left: 10px; font-weight: 600;">Day 1 :: Brain Imaging Data Structure</span>
+</p>
+]
+---
 
 # Converting from DICOM into BIDS
-
 
 .left-column-mid.small[
 .pad-left[
@@ -847,8 +836,115 @@ count: false
 ]
 
 ---
+template: newsection
+layout: true
+name: Derivatives
 
-## Conclusion
+# BIDS Derivatives
+
+---
+
+BIDS Derivatives generally mirror the raw dataset.
+
+.small[
+.pad-left[
+<i class="fa-solid fa-folder-open"></i> fmriprep/<br />
+.pad-left[<i class="fa-solid fa-file-lines"></i> README]<br />
+.pad-left[<i class="fa-solid fa-circle-info"></i> dataset_description.json]<br />
+.pad-left[<i class="fa-solid fa-folder-open"></i> sub-11]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> anat/]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_desc-preproc_T2w.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_acq-denoised_desc-preproc_T1w.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_acq-denoised_desc-brain_mask.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_acq-denoised_from-T1w_to-MNI152NLin2009cAsym_mode-image_xfm.h5]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-blank fa-brain"></i> ...]]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> fmap/]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_fmapid-auto00000_desc-coeff_fieldmap.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_fmapid-auto00000_desc-magnitude_fieldmap.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_fmapid-auto00000_desc-preproc_fieldmap.nii.gz]]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> func/]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_task-mixed_desc-coreg_boldref.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_task-mixed_desc-hmc_boldref.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-file-lines"></i> sub-11_task-mixed_from-boldref_to-T1w_mode-image_desc-coreg_xfm.txt]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-file-lines"></i> sub-11_task-mixed_from-boldref_to-auto00000_mode-image_desc-fmapreg_xfm.txt]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_task-mixed_from-orig_to-boldref_mode-image_desc-hmc_xfm.txt]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_task-mixed_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-blank fa-brain"></i> ...]]]<br />
+.pad-left[<i class="fa-solid fa-folder"></i> sub-14]<br />
+.pad-left[<i class="fa-solid fa-folder"></i> sub-15]<br />
+]
+]
+
+--
+
+New file suffixes, extensions and entities are possible.
+
+---
+template: newsection
+layout: true
+name: PyBIDS
+
+.install-cmd[
+```Bash
+pip install pybids
+```
+]
+
+---
+
+# PyBIDS
+
+A common specification of neuroimaging datasets affords queries for and
+adaptation to the available data.
+
+[PyBIDS](https://github.com/bids-standard/pybids/) is a Python library for
+querying and manipulating BIDS datasets.
+
+
+```Python
+>>> from bids import BIDSLayout
+>>> layout = BIDSLayout('/my_dataset')
+>>> bold = layout.get(subject='11', task='rest', suffix='bold', extension='.nii.gz')
+>>> bold
+[<BIDSImageFile filename='/my_dataset/sub-11/func/sub-11_task-rest_bold.nii.gz'>]
+>>> md = bold[0].get_metadata()
+>>> md['RepetitionTime']
+1.5
+>>> bold[0].get_entities()
+{'datatype': 'func',
+ 'extension': '.nii.gz',
+ 'subject': '11',
+ 'suffix': 'bold',
+ 'task': 'rest'}
+```
+
+---
+
+# PyBIDS - Derivatives
+
+PyBIDS layouts support BIDS derivatives:
+
+```Python
+>>> fmri_derivs = BIDSLayout('/my_dataset-fmriprep', config=['bids', 'derivatives'], validate=False)
+>>> spaces = fmri_derivs.get_spaces(desc='preproc', suffix='bold')
+>>> spaces
+['MNI152NLin2009cAsym']
+```
+
+--
+
+It is also possible to provide your own config:
+
+```Python
+>>> import niworkflows
+>>> nipreps_config = niworkflows.data.load('nipreps.json')
+>>> fmri_derivs = BIDSLayout('/my_dataset-fmriprep, config=[nipreps_config], validate=False)
+```
+
+---
+template: newsection
+
+# Conclusion
 
 .boxed-content[
 .distribute.large[
