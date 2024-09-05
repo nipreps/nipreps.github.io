@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>fMRIPrep Bootcamp | Home</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/assets/asciinema-player/asciinema-player.css" />
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Roboto+Mono:400,700,400italic);
+
+      .blur {
+          -webkit-filter: blur(5px) opacity(.3);
+          -moz-filter: blur(10px) opacity(.3);
+          -o-filter: blur(5px) opacity(.3);
+          -ms-filter: blur(5px) opacity(.3);
+          filter: blur(5px) opacity(.3);
+      }
+
+      html {
+        height: 100%;
+      }
+      body {
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        height: 100%;
+      }
+      h1, h2, h3 {
+        font-weight: 600;
+        margin-bottom: 0;
+      }
+
+      .middle {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        width:100%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+      }
+
+      .remark-slide-content { height: 100%; padding: 0; font-size: 16pt;}
+      .remark-slide-content h1 { font-size: 2em; color: #324989; }
+      .remark-slide-content h2 { font-size: 1.5em; color: #324989; }
+      .remark-slide-content h3 { font-size: 1.2em; color: #324989; }
+      .footnote {
+        position: absolute;
+        bottom: 0.5em;
+        font-size: 0.7em;
+	left: 6em;
+      }
+      li p { line-height: 1.25em; }
+
+      .remark-slide-content>p { margin-left: 60px; }
+      .remark-slide-content>ul { margin-left: 60px; }
+      .remark-slide-content>ul li { margin-left: 0.8em; }
+
+      .no-bullet > ul {
+        list-style-type: none;
+        padding-left:  0;
+      }
+
+      .no-bullet > ul > li > ul {
+        padding-left:  2.8em;
+      }
+
+      .red { color: #fa0000; }
+      .blue { color: #0000fa; }
+      .green { color: #698b69; }
+
+      a, a > code {
+        color: rgb(249, 38, 114);
+        text-decoration: none;
+      }
+      code {
+        background: #e7e8e2;
+        border-radius: 3px;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Roboto Mono'; }
+      .large .remark-code, .large .remark-inline-code { font-size: 0.8em; }
+      .remark-code-line-highlighted     { background-color: #373832; }
+      .pull-left {
+        float: left;
+        width: 45%;
+      }
+      .pull-right {
+        float: right;
+        width: 45%;
+        height: 75%;
+      }
+      .pull-right ~ p {
+        clear: both;
+      }
+      #slideshow .slide .content code {
+        font-size: 0.8em;
+      }
+      #slideshow .slide .content pre code {
+        font-size: 0.9em;
+        padding: 15px;
+      }
+      .section-separator .middle {
+        margin-left: 210px;
+        width: 80%;
+      }
+
+      .fa-solid {
+        color: #324989;
+      }
+      .fa-blank {
+	color: #ffffff;
+      }
+
+      em {
+        color: #324989;
+      }
+
+      strong {
+        color: #324989;
+      }
+
+      .gray-text {
+        color: #888;
+      }
+      .gray-text em, .gray-text strong {
+        color: #888;
+      }
+
+      .perma-sidebar {
+        float: left;
+        background-color: #324989;
+        color: #f4f4f4;
+        width: 40px;
+        height: 100%;
+        padding: 0;
+        margin: 0 2em 0 0;
+        text-align: center;
+      }
+      .perma-sidebar p {
+        text-align: left;
+        font-size: 80%;
+        height: 35px;
+        width: 670px;
+        margin: 320px 0 0 -315px;
+      }
+      .perma-sidebar h2:last-of-type, .perma-sidebar h3:last-child {
+        color: #d2c295;
+      }
+
+/*      .sidebar-slug {
+          bottom: 12px;
+          left: 0;
+          position: absolute;
+          width: 210px;
+          text-align: center;
+      }
+      .sidebar-slug img {
+          width: 180px;
+      }*/
+
+      .svg-reportlet { width: 75%; }
+
+      /* Slide-specific styling */
+      #slide-inverse .footnote {
+        bottom: 12px;
+        left: 20px;
+      }
+      #slide-how .slides {
+        /*font-size: .9em;*/
+        position: absolute;
+        top:  151px;
+        right: 140px;
+      }
+      #slide-how .slides h3 {
+        margin-top: 0.2em;
+      }
+      #slide-how .slides .first, #slide-how .slides .second {
+        padding: 1px 20px;
+        height: 90px;
+        width: 120px;
+        -moz-box-shadow: 0 0 10px #777;
+        -webkit-box-shadow: 0 0 10px #777;
+        box-shadow: 0 0 10px #777;
+      }
+      #slide-how .slides .first {
+        background: #fff;
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        z-index: 1;
+      }
+      #slide-how .slides .second {
+        position: relative;
+        background: #fff;
+        z-index: 0;
+      }
+
+      /* Two-column layout */
+      .left-column {
+        width: 23%;
+        height: 82%;
+        float: left;
+      }
+        .left-column h2:last-of-type, .left-column h3:last-child {
+          color: #000;
+        }
+      .right-column {
+        width: 65%;
+        float: right;
+        padding-top: 1em;
+      }
+      /* Two-column layout (40% left) */
+      .left-column2 {
+        width: 35%;
+        height: 85%;
+        float: left;
+      }
+        .left-column2 h2:last-of-type, .left-column2 h3:last-child {
+          color: #000;
+        }
+      .right-column2 {
+        width: 50%;
+        float: right;
+        padding-top: 1em;
+        margin-right: 2.5em;
+      }
+      /* Two-column layout (60% left) */
+      .left-column3 {
+        display: block;
+        width: auto;
+        height: 85%;
+        margin: 0 32% 0 5%;
+      }
+        .left-column3 h2:last-of-type, .left-column3 h3:last-child {
+          color: #000;
+        }
+
+      .left-column3 li {
+        margin-left: 25px;
+      }
+
+      .right-column3 {
+        width: 30%;
+        float: right;
+        padding-top: 1em;
+      }
+      /* Two-column layout (even split) */
+      .left-column-mid {
+        width: 45%;
+        float: left;
+      }
+      .right-column-mid {
+        width: 45%;
+        float: right;
+      }
+      /* Two-column layout (flipped) */
+      .left-column-inv {
+        color: #777;
+        width: 75%;
+        height: 92%;
+        float: left;
+      }
+        .left-column h2:last-of-type, .left-column h3:last-child {
+          color: #000;
+        }
+      .right-column-inv {
+        width: 20%;
+        float: right;
+        padding-top: 1em;
+      }
+      .caption {
+          font-size: 0.7em;
+      }
+      .slide-slug {
+          bottom: 12px;
+          opacity: .5;
+          position: absolute;
+          left: 4em;
+      }
+
+      .small code {
+        font-size: 9pt;
+      }
+      .tiny code {
+        font-size: 8.5pt;
+      }
+
+      .small {
+        font-size: 0.7em;
+      }
+
+      .larger {
+        font-size: 1.4em;
+      }
+
+      .large {
+        font-size: 1.6em;
+      }
+
+      .boxed-content {
+        float: left;
+        display: block;
+        width: 89%;
+        padding-right: 4%;
+      }
+
+      .boxed-bottom {
+        clear: both;
+        margin-top: 0px;
+      }
+/*
+      .distribute {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+      }*/
+
+      .distribute {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        height: 80%;
+        width: 100%;
+      }
+
+      .cut-right {
+        margin-right: 100px;
+      }
+
+      .align-right {
+        text-align: right;
+      }
+
+      .rotate{
+        -webkit-transform: rotate(-90deg);
+        -moz-transform: rotate(-90deg);
+        -o-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+      }
+
+      .hidden-text {
+        color: transparent; /* make the text invisible */
+        user-select: none; /* prevent selection of the text */
+      }
+
+      .pad-left {
+        padding-left: 2.0em;
+      }
+      .install-cmd {
+          top: 20px;
+          position: absolute;
+          right: 4em;
+      }
+      figure {
+	  display: block;
+	  margin-left: auto;
+	  margin-right: auto;
+	  font-size: 8pt;
+      }
+      figcaption {
+	  text-align: right;
+      }
+
+    </style>
+  </head>
+  <body>
+<script src="/assets/asciinema-player/asciinema-player.min.js"></script>
+<script src="https://kit.fontawesome.com/7e31cfd31d.js" crossorigin="anonymous"></script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true},
+      jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"],
+      extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js", "[Contrib]/a11y/accessibility-menu.js"],
+      TeX: {
+      extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"],
+      equationNumbers: {
+      autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+
+<textarea id="source">
+
+name: title
+layout: true
+class: center
+---
+layout: false
+count: false
+
+
+.center[
+<a href="https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/home/">
+  <img src="images/qr-talk-url.svg" alt="workflow" style="width: 20%" />
+  <br />
+  https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/home/
+</a>
+
+<br />
+<br />
+
+.large[<i class="fa-solid fa-house"></i>]
+
+## fMRIPrep Bootcamp
+
+
+]
+
+???
+
+NOTES TO OURSELVES GO HERE
+
+---
+name: newsection
+layout: true
+
+.perma-sidebar[
+<p class="rotate">
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0; height: 20px; padding-top: 6px;" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  <span style="padding-left: 10px; font-weight: 600;">Day 1 :: Brain Imaging Data Structure</span>
+</p>
+]
+
+---
+
+# Program
+
+.right-column3.center[
+<a href="https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/home/#2">
+  <img src="images/qr-talk-url.svg" alt="workflow" style="width: 100%" />
+  <br />
+  https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/home/
+</a>
+]
+
+.left-column3[
+
+.large[
+
+* 
+
+]]
+
+???
+
+
+</textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script>
+      // Use: ![:img Alt text with spaces but not commas, 50%](image.png)
+      remark.macros.img = function (altText, width) {
+        var url = this;
+        return '<img alt="' + altText + '" src="' + url + '" style="width: ' + width + '" />';
+      };
+      // Use: ![:video](10.5129/10234)
+      remark.macros.video = function (width) {
+        var url = this;
+        return '<video src="' + url + '" width="' + width + '" preload="auto" controls />';
+      };
+      // Use: ![:doi](10.5129/10234)
+      remark.macros.doi = function () {
+	var doi = this;
+	return '<a href="https://doi.org/' + doi + '">' + doi + '</a>';
+      };
+
+      var slideshow = remark.create({
+          highlightStyle: 'monokai',
+          highlightLanguage: 'remark',
+          highlightLines: true,
+          countIncrementalSlides: false,
+          highlightSpans: true,
+          ratio: '16:9'
+      });
+
+      // Now retrieve all IDs of asciinema casts
+      const allcasts = new Map();
+
+      slideshow.on('afterShowSlide', function (slide) {
+        // Slide is the slide being navigated
+        var slideNumber = slide.getSlideIndex();
+        var element = document.getElementsByClassName("remark-visible")[0].getElementsByClassName('asciicast')
+        if (element.length == 0 ) {
+          return;
+        }
+
+        if (allcasts.has(slideNumber)) {
+          allcasts.get(slideNumber).play();
+          return;
+        }
+
+        var castid = element[0].attributes["id"].value;
+        allcasts.set(slideNumber, AsciinemaPlayer.create(
+            'images/fix-typo.cast',
+            document.getElementById('636539'),
+            { autoPlay: true, speed: 2, idle_time_limit: 8, rows: 27 }
+        ));
+        // allcasts.set(slideNumber, AsciinemaPlayer.create(
+        //     'https://asciinema.org/a/' + castid + '.cast',
+        //     document.getElementById(castid),
+        //     { autoPlay: true, speed: 2, idle_time_limit: 8, rows: 17 }
+        // ));
+      });
+
+      slideshow.on('beforeHideSlide', function (slide) {
+        // Slide is the slide being navigated
+        var slideNumber = slide.getSlideIndex();
+        if (allcasts.has(slideNumber)) {
+          allcasts.get(slideNumber).pause();
+        }
+      });
+    </script>
+  </body>
+</html>

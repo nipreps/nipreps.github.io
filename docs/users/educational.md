@@ -2,6 +2,7 @@
 
 ## fMRIPrep Bootcamp Geneva 2024
 
+- [Welcome Home](../../assets/fmriprep-bootcamp-geneva2024/home)
 - [Overview of the fMRI neuroimaging pipeline & *fMRIPrep*](../../assets/fmriprep-bootcamp-geneva2024/day1-01-fmriprep-primer)
 - [The Brain Imaging Data Structure (BIDS)](../../assets/fmriprep-bootcamp-geneva2024/day1-02-bids)
 - [Day 1: BIDS - Convert a dataset](../../assets/fmriprep-bootcamp-geneva2024/day1-03-bids-convert-a-dataset)
