@@ -461,7 +461,7 @@ layout: true
 .perma-sidebar[
 <p class="rotate">
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0; height: 20px; padding-top: 6px;" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
-  <span style="padding-left: 10px; font-weight: 600;">Day 1 :: Data & HPC</span>
+  <span style="padding-left: 10px; font-weight: 600;">Day 1 :: BIDS Hands-on</span>
 </p>
 ]
 
@@ -498,7 +498,17 @@ layout: true
 # Logging in into a cluster and setting up conda
 
 .boxed-content.pad-top[
-<div class="asciicast" id="636539"></div>
+<div class="asciicast" id="636539" data-src="images/setting-conda.cast"></div>
+]
+
+---
+
+# Exploring the bootcamp's dataset
+
+.boxed-content[
+.center[[https://openneuro.org/datasets/ds005454/versions/1.0.0](https://openneuro.org/datasets/ds005454/versions/1.0.0)]
+
+<iframe src="https://openneuro.org/datasets/ds005454/versions/1.0.0" width="100%" height="500px" style="border: 0" />
 ]
 
 ---
@@ -506,60 +516,13 @@ layout: true
 # First interaction with datalad
 
 .boxed-content.pad-top[
-<div class="asciicast" id="636540"></div>
+<div class="asciicast" id="636540" data-src="images/setting-datalad.cast"></div>
 ]
 
 ???
 
 </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
-    <script>
-      var slideshow = remark.create({
-          highlightStyle: 'monokai',
-          highlightLanguage: 'remark',
-          highlightLines: true,
-          countIncrementalSlides: false,
-          highlightSpans: true,
-          ratio: '16:9'
-      });
-
-      // Now retrieve all IDs of asciinema casts
-      const allcasts = new Map();
-
-      slideshow.on('afterShowSlide', function (slide) {
-        // Slide is the slide being navigated
-        var slideNumber = slide.getSlideIndex();
-        var element = document.getElementsByClassName("remark-visible")[0].getElementsByClassName('asciicast')
-        if (element.length == 0 ) {
-          return;
-        }
-
-        if (allcasts.has(slideNumber)) {
-          allcasts.get(slideNumber).play();
-          return;
-        }
-
-        var castid = element[0].attributes["id"].value;
-        allcasts.set(slideNumber, AsciinemaPlayer.create(
-            'images/setting-conda.cast',
-            document.getElementById('636539'),
-            { autoPlay: true, speed: 2, idle_time_limit: 8, rows: 23 }
-        ));
-        allcasts.set(slideNumber, AsciinemaPlayer.create(
-            'images/setting-datalad.cast',
-            document.getElementById('636540'),
-            { autoPlay: true, speed: 2, idle_time_limit: 8, rows: 23 }
-        ));
-      });
-
-      slideshow.on('beforeHideSlide', function (slide) {
-        // Slide is the slide being navigated
-        var slideNumber = slide.getSlideIndex();
-        if (allcasts.has(slideNumber)) {
-          allcasts.get(slideNumber).pause();
-        }
-      });
-
-    </script>
+    <script src="/assets/asciinema-player/asciicast-load.js"></script>
   </body>
 </html>

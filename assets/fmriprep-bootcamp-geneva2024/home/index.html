@@ -709,68 +709,6 @@ Access the building either from Av. Champe (3rd floor) or Rue Lombard (1st floor
 
 </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
-    <script>
-      // Use: ![:img Alt text with spaces but not commas, 50%](image.png)
-      remark.macros.img = function (altText, width) {
-        var url = this;
-        return '<img alt="' + altText + '" src="' + url + '" style="width: ' + width + '" />';
-      };
-      // Use: ![:video](10.5129/10234)
-      remark.macros.video = function (width) {
-        var url = this;
-        return '<video src="' + url + '" width="' + width + '" preload="auto" controls />';
-      };
-      // Use: ![:doi](10.5129/10234)
-      remark.macros.doi = function () {
-	var doi = this;
-	return '<a href="https://doi.org/' + doi + '">' + doi + '</a>';
-      };
-
-      var slideshow = remark.create({
-          highlightStyle: 'monokai',
-          highlightLanguage: 'remark',
-          highlightLines: true,
-          countIncrementalSlides: false,
-          highlightSpans: true,
-          ratio: '16:9'
-      });
-
-      // Now retrieve all IDs of asciinema casts
-      const allcasts = new Map();
-
-      slideshow.on('afterShowSlide', function (slide) {
-        // Slide is the slide being navigated
-        var slideNumber = slide.getSlideIndex();
-        var element = document.getElementsByClassName("remark-visible")[0].getElementsByClassName('asciicast')
-        if (element.length == 0 ) {
-          return;
-        }
-
-        if (allcasts.has(slideNumber)) {
-          allcasts.get(slideNumber).play();
-          return;
-        }
-
-        var castid = element[0].attributes["id"].value;
-        allcasts.set(slideNumber, AsciinemaPlayer.create(
-            'images/fix-typo.cast',
-            document.getElementById('636539'),
-            { autoPlay: true, speed: 2, idle_time_limit: 8, rows: 27 }
-        ));
-        // allcasts.set(slideNumber, AsciinemaPlayer.create(
-        //     'https://asciinema.org/a/' + castid + '.cast',
-        //     document.getElementById(castid),
-        //     { autoPlay: true, speed: 2, idle_time_limit: 8, rows: 17 }
-        // ));
-      });
-
-      slideshow.on('beforeHideSlide', function (slide) {
-        // Slide is the slide being navigated
-        var slideNumber = slide.getSlideIndex();
-        if (allcasts.has(slideNumber)) {
-          allcasts.get(slideNumber).pause();
-        }
-      });
-    </script>
+    <script src="/assets/asciinema-player/asciicast-load.js"></script>
   </body>
 </html>
