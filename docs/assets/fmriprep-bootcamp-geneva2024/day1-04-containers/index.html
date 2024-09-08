@@ -361,6 +361,7 @@
       }
       figcaption {
         text-align: right;
+        font-size: 2.0em;
       }
 
       .program-table td:nth-child(2) {
@@ -509,11 +510,299 @@ layout: true
 .large.center[
 # What are containers?
 ]
-.large.center.gray-text[Why do we]
+.large.center.gray-text[Why do we care?]
+]
+
+---
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+.boxed-content[
+.large[
+*A container is a unit of software that packages code with its required dependencies in order to run in an isolated, controlled environment.
+This allows you to run an application in a way that is predictable, repeatable, and without the uncertainty of inconsistent code execution 
+across diverse development and production environments.
+A container will always start up and run code the same way, regardless of what machine it exists on.*
+]
+.large.center.gray-text[https://www.digitalocean.com/community/conceptual-articles/introduction-to-containers]
+]
+
+---
+count:false
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+.boxed-content[
+.large[
+*A container is a unit of software that packages <mark>code with</mark> its required <mark>dependencies</mark> in order to run in an <mark>isolated</mark>, controlled environment.
+This allows you to run an application in a way that is <mark>predictable, repeatable</mark>, and without the uncertainty of inconsistent code execution 
+across diverse development and production environments.
+A container will always start up and run code the same way, <mark>regardless of what machine</mark> it exists on.*
+]
+.large.center.gray-text[https://www.digitalocean.com/community/conceptual-articles/introduction-to-containers]
+]
+
+---
+count:false
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+.boxed-content[
+.large[
+*A container is a unit of software that packages code with its required dependencies in order to run in an isolated, controlled environment.
+This allows you to run an application in a way that is predictable, <mark>repeatable</mark>, and without the uncertainty of inconsistent code execution 
+across diverse development and production environments.
+A container will always start up and run code the same way, regardless of what machine it exists on.*
+]
+.large.center.gray-text[https://www.digitalocean.com/community/conceptual-articles/introduction-to-containers]
+]
+
+---
+
+# Isn't this the same as virtual machines?
+
+<br />
+
+.boxed-content[
+<figure style="width: 100%">
+![:img containers-vs-vms, 100%](https://wac-cdn.atlassian.com/dam/jcr:92adde69-f728-4cfc-8bab-ba391c25ae58/SWTM-2060_Diagram_Containers_VirtualMachines_v03.png?cdnVersion=2218)
+<figcaption>From <a href="https://www.atlassian.com/microservices/cloud-computing/containers-vs-vms">the Atlassian documentation</a></figcaption>
+</figure>
+]
+
+---
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+.boxed-content[
+.large.center[
+# <i class="fa-brands fa-docker" style="font-size: 3em"></i> Docker]
+]
+
+---
+
+# First contact with docker
+
+.boxed-content.pad-top[
+<div class="asciicast" id="636539" data-src="images/docker-hello-world.cast"></div>
+]
+
+---
+
+# Container Images
+
+.boxed-content.pad-top[
+.no-bullet[
+* .large[<i class="fa-solid fa-box"></i> Images are software bundles]
+  * .larger[when executed become containers]
+
+* .large[<i class="fa-solid fa-layer-group"></i> Images are made of layers]
+  * .larger[each layer encapsulates a set of filesystem changes]
+  * .larger[layers are akin to software deployment steps]
+
+* .large[<i class="fa-solid fa-square-pen" style="color: #ff0f0f;"></i> Layers are **unmutable**]
+  * .larger[except for a R/W layer that is added on top by the container runtime]
+
+* .large[<i class="fa-solid fa-file-prescription"></i> Layers are described in the `Dockerfile`]
+  * .larger[The `Dockerfile` establishes the instructions to create an image]
+  * .larger[The `Dockerfile` is some sort of recipe]
+
+]
+]
+
+---
+
+# Building an image: docker/whalesay
+
+## 1 The `Dockerfile`
+
+.boxed-content[
+```Dockerfile
+# Containers are generally bootstrapped from an existing OS image
+# Alpine Linux is a Linux distribution very small and simple
+# It's special in that it is not based on the GNU Core Utilities
+FROM alpine
+
+# Our container will need perl
+RUN apk add --no-cache perl
+
+# Copy the original 'cowsay' program into one layer
+COPY cowsay /usr/local/bin/cowsay
+
+# Copy the replacement of the cow asciiart with a whale
+COPY docker.cow /usr/local/share/cows/default.cow
+
+# Instruct the runtime to execute the new program
+ENTRYPOINT ["/usr/local/bin/cowsay"]
+```
+]
+
+---
+
+# Building an image: docker/whalesay
+
+## 2 The `cowsay` script
+
+.boxed-content[
+
+Because it is a very long perl script, we just download it:
+
+```bash
+$ curl https://raw.githubusercontent.com/docker/whalesay/master/cowsay -o cowsay
+```
+]
+
+---
+
+# Building an image: docker/whalesay
+
+## 3 The replacement for the cow (`docker.cow`)
+
+.boxed-content[
+``` Perl
+##
+## Docker Cow
+##
+$the_cow = <<EOC;
+    $thoughts
+     $thoughts
+      $thoughts
+EOC
+$the_cow .= <<'EOC';
+                    ##         .
+              ## ## ##        ==
+           ## ## ## ## ##    ===
+       /"""""""""""""""""\___/ ===
+      {                       /  ===-
+       \______ O           __/
+         \    \         __/
+          \____\_______/
+
+EOC
+```
+]
+---
+
+# Building an image: docker/whalesay
+
+## 4 Build it
+
+.boxed-content[
+```bash
+$ docker build -t oesteban/whalesay .
+```
+]
+
+---
+
+# Building the image
+
+.boxed-content.pad-top[
+<div class="asciicast" id="636540" data-src="images/docker-build.cast"></div>
+]
+
+---
+
+# Docker images and the *Docker Hub*
+
+.boxed-content.pad-top[
+.no-bullet[
+* .large[Images can be distributed through **registries**.]
+   * .larger[*Docker*'s official registry is called *Docker Hub*]
+   * .larger[Thanks to *Docker Hub* we could fetch and execute the `hello-world` image]
+   * .larger[Website: [hub.docker.com](https://hub.docker.com/)]
+
+* .large[Let's download two interesting images:]
+  * .larger[*MRIQC*]
+    ``` Bash
+    docker pull nipreps/mriqc:latest
+    ```
+  * .larger[*fMRIPrep*]
+    ``` Bash
+    docker pull nipreps/fmriprep:24.0.1rc0
+    ```
+]
+]
+
+---
+
+# Fetching images & the R/W runtime layer
+
+.boxed-content.pad-top[
+<div class="asciicast" id="636541" data-src="images/docker-pull.cast"></div>
+]
+
+---
+
+# Docker is not generally available at HPC systems
+
+.boxed-content.pad-top[
+<div class="asciicast" id="636542" data-src="images/apptainer-pull.cast"></div>
+]
+
+---
+
+# Pulling *MRIQC*'s image on the cluster
+
+.boxed-content.pad-top[
+<div class="asciicast" id="636543" data-src="images/apptainer-mriqc-pull.cast"></div>
+]
+
+---
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+.boxed-content[
+.large.center[
+# Exercise
+]
+.large.center.gray-text[Pull **docker://nipreps/fmriprep:24.1.0rc0** on the cluster]
 ]
 
 </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script>
+    // Use: ![:img Alt text with spaces but not commas, 50%](image.png)
+    remark.macros.img = function (altText, width) {
+      var url = this;
+      return '<img alt="' + altText + '" src="' + url + '" style="width: ' + width + '" />';
+    };
+    // Use: ![:video](10.5129/10234)
+    remark.macros.video = function (width) {
+      var url = this;
+      return '<video src="' + url + '" width="' + width + '" preload="auto" controls />';
+    };
+    // Use: ![:doi](10.5129/10234)
+    remark.macros.doi = function () {
+      var doi = this;
+      return '<a href="https://doi.org/' + doi + '">' + doi + '</a>';
+    };
+    </script>
     <script src="/assets/asciinema-player/asciicast-load.js"></script>
   </body>
 </html>
