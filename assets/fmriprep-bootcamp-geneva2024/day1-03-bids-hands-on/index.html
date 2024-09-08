@@ -103,6 +103,9 @@
       .fa-solid {
         color: #324989;
       }
+      .fa-brands {
+        color: #324989;
+      }
       .fa-blank {
   color: #ffffff;
       }
@@ -467,7 +470,7 @@ layout: true
 
 ---
 
-## Outlook
+# Outlook
 
 .right-column3.center[
 <a href="https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/day1-03-bids-hands-on/">
@@ -483,23 +486,17 @@ layout: true
 
 <br />
 
+* Explore the bootcamp's dataset
+
+* Compute environments
+
 * Accessing the cluster and creating an environment
 
-* Datalad
-
-* Fetching data
+* Datalad & PyBIDS
 
 ]]
 
 ???
-
----
-
-# Logging in into a cluster and setting up conda
-
-.boxed-content.pad-top[
-<div class="asciicast" id="636539" data-src="images/setting-conda.cast"></div>
-]
 
 ---
 
@@ -513,13 +510,362 @@ layout: true
 
 ---
 
+# Understanding ds005454
+
+.left-column2.small[
+.pad-left[
+<i class="fa-solid fa-folder-open"></i> my_dataset/<br />
+.pad-left[<i class="fa-solid fa-file-lines"></i> CHANGES]<br />
+.pad-left[<i class="fa-solid fa-file-lines"></i> README]<br />
+.pad-left[<i class="fa-solid fa-paperclip"></i> dataset_description.json]<br />
+.pad-left[<i class="fa-solid fa-paperclip"></i> participants.json]<br />
+.pad-left[<i class="fa-solid fa-table"></i> participants.tsv]<br />
+.pad-left[<i class="fa-solid fa-paperclip"></i> scans.json]<br />
+.pad-left[<i class="fa-solid fa-folder-open"></i> sub-11]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> anat/]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> <mark>sub-11_T2w.json</mark>]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> <mark>sub-11_T2w.nii.gz</mark>]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> <mark>sub-11_acq-denoised_T1w.json</mark>]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> <mark>sub-11_acq-denoised_T1w.nii.gz</mark>]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> <mark>sub-11_acq-mp2rage_T1w.json</mark>]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> <mark>sub-11_acq-mp2rage_T1w.nii.gz</mark>]]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> fmap/]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_magnitude1.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_magnitude1.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_magnitude2.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_magnitude2.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_phasediff.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_phasediff.nii.gz]]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> func/]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_task-mixed_bold.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_task-mixed_bold.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-table"></i> sub-11_task-mixed_events.tsv]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_task-rest_bold.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_task-rest_bold.nii.gz]]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-table"></i> sub-11_scans.tsv]]<br />
+.pad-left[<i class="fa-solid fa-folder"></i> sub-14]<br />
+.pad-left[<i class="fa-solid fa-folder"></i> sub-15]<br />
+]
+]
+
+.right-column2.larger[
+
+### Anatomical images
+
+* T<sub>1</sub>-weighted (T1w) images:
+
+  * MP2RAGE scheme
+  * Two versions: uniform and denoised
+
+* T<sub>2</sub>-weighted (T2w) images
+]
+
+---
+
+# Understanding ds005454
+
+.left-column2.small[
+.pad-left[
+<i class="fa-solid fa-folder-open"></i> my_dataset/<br />
+.pad-left[<i class="fa-solid fa-file-lines"></i> CHANGES]<br />
+.pad-left[<i class="fa-solid fa-file-lines"></i> README]<br />
+.pad-left[<i class="fa-solid fa-paperclip"></i> dataset_description.json]<br />
+.pad-left[<i class="fa-solid fa-paperclip"></i> participants.json]<br />
+.pad-left[<i class="fa-solid fa-table"></i> participants.tsv]<br />
+.pad-left[<i class="fa-solid fa-paperclip"></i> scans.json]<br />
+.pad-left[<i class="fa-solid fa-folder-open"></i> sub-11]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> anat/]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_T2w.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_T2w.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_acq-denoised_T1w.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_acq-denoised_T1w.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_acq-mp2rage_T1w.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_acq-mp2rage_T1w.nii.gz]]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> fmap/]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_magnitude1.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_magnitude1.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_magnitude2.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_magnitude2.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_phasediff.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_phasediff.nii.gz]]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> func/]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> <mark>sub-11_task-mixed_bold.json</mark>]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> <mark>sub-11_task-mixed_bold.nii.gz</mark>]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-table"></i> <mark>sub-11_task-mixed_events.tsv</mark>]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> <mark>sub-11_task-rest_bold.json</mark>]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> <mark>sub-11_task-rest_bold.nii.gz</mark>]]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-table"></i> sub-11_scans.tsv]]<br />
+.pad-left[<i class="fa-solid fa-folder"></i> sub-14]<br />
+.pad-left[<i class="fa-solid fa-folder"></i> sub-15]<br />
+]
+]
+
+.right-column2.larger[
+
+### Functional images
+
+* Two tasks:
+  * Resting state fMRI (`task-rest`)
+  * Task fMRI (`task-mixed`)
+
+* Repetition time: 1.5s
+
+* Length ~7 minutes
+
+]
+
+---
+
+# Understanding ds005454
+
+.left-column2.small[
+.pad-left[
+<i class="fa-solid fa-folder-open"></i> my_dataset/<br />
+.pad-left[<i class="fa-solid fa-file-lines"></i> CHANGES]<br />
+.pad-left[<i class="fa-solid fa-file-lines"></i> README]<br />
+.pad-left[<i class="fa-solid fa-paperclip"></i> dataset_description.json]<br />
+.pad-left[<i class="fa-solid fa-paperclip"></i> participants.json]<br />
+.pad-left[<i class="fa-solid fa-table"></i> participants.tsv]<br />
+.pad-left[<i class="fa-solid fa-paperclip"></i> scans.json]<br />
+.pad-left[<i class="fa-solid fa-folder-open"></i> sub-11]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> anat/]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_T2w.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_T2w.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_acq-denoised_T1w.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_acq-denoised_T1w.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_acq-mp2rage_T1w.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_acq-mp2rage_T1w.nii.gz]]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> fmap/]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> <mark>sub-11_magnitude1.json</mark>]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> <mark>sub-11_magnitude1.nii.gz</mark>]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> <mark>sub-11_magnitude2.json</mark>]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> <mark>sub-11_magnitude2.nii.gz</mark>]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> <mark>sub-11_phasediff.json</mark>]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> <mark>sub-11_phasediff.nii.gz</mark>]]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> func/]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_task-mixed_bold.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_task-mixed_bold.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-table"></i> sub-11_task-mixed_events.tsv]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_task-rest_bold.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_task-rest_bold.nii.gz]]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-table"></i> sub-11_scans.tsv]]<br />
+.pad-left[<i class="fa-solid fa-folder"></i> sub-14]<br />
+.pad-left[<i class="fa-solid fa-folder"></i> sub-15]<br />
+]
+]
+
+.right-column2.larger[
+
+### B<sub>0</sub> inhomogeneity maps
+
+.gray-text[... or 'fieldmaps' for short]
+
+* GRE (gradient recalled echo) scheme
+* Measures the phase drift between two close echos
+  * Two magnitude files
+  * One phase-difference map (one echo minus the other)
+
+]
+
+---
+
+# General metadata | `dataset_description.json`
+
+.boxed-content.pad-top[
+
+```JSON
+{
+  "Acknowledgements": "Provided by Emilie C. Sleight for the fMRIPrep bootcamp",
+  "Authors": [
+    "Emilie C. Sleight",
+    "Oscar Esteban",
+    "Frédéric Grouiller"
+  ],
+  "BIDSVersion": "1.8.0",
+  "DatasetDOI": "10.18112/openneuro.ds005454.v1.0.0",
+  "HowToAcknowledge": "Cite OpenNeuro's DOI",
+  "License": "CC-BY",
+  "Name": "fMRIPrep boot camp -- 7T training dataset",
+  "ReferencesAndLinks": [
+    "https://doi.org/10.18112/openneuro.ds005454.v1.0.0",
+    "https://doi.org/10.1038/s41592-018-0235-4"
+  ]
+}
+```
+]
+---
+
+# General metadata | `participants.tsv`
+
+.boxed-content.pad-top[
+
+```TSV
+participant_id  age sex group
+sub-17  28  F control
+sub-16  33  F control
+sub-15  40  F control
+sub-14  38  F control
+sub-11  27  M control
+```
+]
+
+---
+
+# General metadata | `task-mixed_events.tsv`
+
+.boxed-content.pad-top[
+
+```TSV
+onset duration  trial_type
+21.2  20.0  motor
+44.5  20.0  music
+66.9  20.0  visual
+89.7  20.0  motor
+113.0 20.0  music
+135.4 20.0  visual
+158.2 20.0  music
+180.6 20.0  visual
+203.4 20.0  motor
+226.7 20.0  visual
+249.5 20.0  motor
+272.8 20.0  music
+295.2 20.0  visual
+318.0 20.0  motor
+341.3 20.0  music
+363.6 20.0  visual
+386.4 20.0  music
+408.8 20.0  motor
+```
+]
+
+---
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+.boxed-content[
+.large.center[
+# Let's play with these data
+]
+.large.center.gray-text[Who knows about Conda?]
+]
+
+---
+
+# Execution environment
+
+.boxed-content[
+.no-bullet[
+* .large[<i class="fa-solid fa-computer"></i> One way or another, we will need to *install stuff*.]
+   * .larger[Easy on a computer you administer], but
+   * .larger[hard in multi-tenant systems such as HPC.]
+
+### What are the options?
+
+* .larger[<i class="fa-solid fa-floppy-disk"></i> Good old days: modules (`module load FreeSurfer`)]
+   * Requires intervention from the cluster admin for default modules
+   * Users can create modules, but installation is not trivial nor portable
+
+* .larger[<i class="fa-brands fa-python"></i> Conda environments: handle beyond *Python*]
+   * Easy to deploy, very *Python*-friendly
+   * Replicating environments is possible, but requires 'some' effort
+
+* .larger[<i class="fa-brands fa-docker"></i> Containers (Docker, Apptainer)]
+   * Conceived to resolve the problem
+   * Sometimes images are hefty
+]
+]
+
+---
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+.boxed-content[
+.large.center[
+# Hack!
+]
+.larger.center.gray-text[Pause to install Conda & Docker and check access to the cluster]
+]
+
+---
+
+# Logging in into a cluster and setting up conda
+
+.boxed-content.pad-top[
+<div class="asciicast" id="636539" data-src="images/setting-conda.cast"></div>
+]
+
+---
+
+.boxed-content[
+.center[
+https://www.datalad.org
+<iframe src="https://www.datalad.org" width="100%" height="600px" style="border: 0" />
+]
+]
+
+---
+
 # First interaction with datalad
 
 .boxed-content.pad-top[
 <div class="asciicast" id="636540" data-src="images/setting-datalad.cast"></div>
 ]
 
-???
+---
+
+.boxed-content[
+.center[
+https://handbook.datalad.org/en/latest/
+<iframe src="https://handbook.datalad.org/en/latest/" width="100%" height="600px" style="border: 0" />
+]
+]
+
+---
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+.boxed-content[
+.large.center[
+# Git?
+]
+.larger.center.gray-text[Pause to ask about git, GitHub, and git-annex]
+<br />
+<br />
+]
+--
+
+.boxed-content.center[
+.gray-text[Let's investigate our dataset...]
+
+.large[https://github.com/nipreps-data/bootcamp-geneva-2024-dataset]
+]
+
+---
+
+# Exercises with *PyBIDS*
+
+.large.boxed-content[
+* Get a list of all the resting-state BOLD files in the dataset
+
+* Get a list of all T1w images in the dataset
+
+* Get the `PhaseEncodingDirection` (or directions) of only BOLD files
+]
 
 </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
