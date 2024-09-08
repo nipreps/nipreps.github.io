@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>fMRIPrep Bootcamp | Day 1 :: Introduction</title>
+    <title>fMRIPrep Bootcamp | Day 1 :: BIDS Hands-on</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="/talks/assets/asciinema-player/asciinema-player.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/asciinema-player/asciinema-player.css" />
     <style>
       @import url(https://fonts.googleapis.com/css?family=Roboto+Mono:400,700,400italic);
 
@@ -36,26 +36,35 @@
         transform: translateY(-50%);
       }
 
-      .remark-slide-content { height: 100%; padding: 0; }
-      .remark-slide-content h1 { font-size: 3em; }
-      .remark-slide-content h2 { font-size: 2em; }
-      .remark-slide-content h3 { font-size: 1.6em; }
+      .remark-slide-content { height: 100%; padding: 0; font-size: 16pt;}
+      .remark-slide-content h1 { font-size: 2em; color: #324989; }
+      .remark-slide-content h2 { font-size: 1.5em; color: #324989; }
+      .remark-slide-content h3 { font-size: 1.2em; color: #324989; }
       .footnote {
         position: absolute;
-        bottom: 3em;
+        bottom: 0.5em;
         font-size: 0.7em;
+  left: 6em;
       }
       li p { line-height: 1.25em; }
-      
+
       .remark-slide-content>p { margin-left: 60px; }
       .remark-slide-content>ul { margin-left: 60px; }
       .remark-slide-content>ul li { margin-left: 0.8em; }
 
+      .no-bullet > ul {
+        list-style-type: none;
+        padding-left:  0;
+      }
+
+      .no-bullet > ul > li > ul {
+        padding-left:  2.8em;
+      }
 
       .red { color: #fa0000; }
       .blue { color: #0000fa; }
       .green { color: #698b69; }
-      .large { font-size: 2em; }
+
       a, a > code {
         color: rgb(249, 38, 114);
         text-decoration: none;
@@ -89,6 +98,28 @@
       .section-separator .middle {
         margin-left: 210px;
         width: 80%;
+      }
+
+      .fa-solid {
+        color: #324989;
+      }
+      .fa-blank {
+  color: #ffffff;
+      }
+
+      em {
+        color: #324989;
+      }
+
+      strong {
+        color: #324989;
+      }
+
+      .gray-text {
+        color: #888;
+      }
+      .gray-text em, .gray-text strong {
+        color: #888;
       }
 
       .perma-sidebar {
@@ -131,7 +162,7 @@
         left: 20px;
       }
       #slide-how .slides {
-        font-size: 0.9em;
+        /*font-size: .9em;*/
         position: absolute;
         top:  151px;
         right: 140px;
@@ -170,7 +201,7 @@
           color: #000;
         }
       .right-column {
-        width: 55%;
+        width: 65%;
         float: right;
         padding-top: 1em;
       }
@@ -184,9 +215,10 @@
           color: #000;
         }
       .right-column2 {
-        width: 43%;
+        width: 50%;
         float: right;
         padding-top: 1em;
+        margin-right: 2.5em;
       }
       /* Two-column layout (60% left) */
       .left-column3 {
@@ -250,22 +282,27 @@
       }
 
       .small {
-        font-size: 12pt;
+        font-size: 0.7em;
       }
 
       .larger {
-        font-size: 20pt;
+        font-size: 1.4em;
       }
 
       .large {
-        font-size: 24pt;
+        font-size: 1.6em;
       }
 
       .boxed-content {
         float: left;
         display: block;
         width: 89%;
-        height: 70%;
+        padding-right: 4%;
+      }
+
+      .boxed-bottom {
+        clear: both;
+        margin-top: 0px;
       }
 /*
       .distribute {
@@ -304,13 +341,71 @@
         color: transparent; /* make the text invisible */
         user-select: none; /* prevent selection of the text */
       }
-      .gray-text {
-        color: #aaa;
+
+      .pad-left {
+        padding-left: 2.0em;
       }
+      .install-cmd {
+          top: 20px;
+          position: absolute;
+          right: 4em;
+      }
+      figure {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 8pt;
+      }
+      figcaption {
+        text-align: right;
+      }
+
+      .program-table td:nth-child(2) {
+        font-size: 1.2em;
+        
+      }
+      .program-table td:nth-child(1) {
+        font-size: 0.9em;
+        color: #999;
+        padding-right: 20px;
+      }
+
+      .people-table td:nth-child(1) {
+        padding-right: 20px;
+      }
+      .people-table td:nth-child(1) img {
+        object-fit: cover;
+        width: 200px;
+        height: 200px;
+      }
+
+      .many-people-table td:nth-child(1) {
+        padding-right: 20px;
+      }
+      .many-people-table td:nth-child(1) img {
+        object-fit: cover;
+        width: 80px;
+        height: 80px;
+      }
+
+      .top-right {
+        font-size: 0.8em;
+        position:  absolute;
+        width: 100px;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        top: 0;
+        right: 5%;
+      }
+      .pad-top {
+        padding-top: 30px;
+      }
+
     </style>
   </head>
   <body>
-<script src="/talks/assets/asciinema-player/asciinema-player.min.js"></script>
+<script src="/assets/asciinema-player/asciinema-player.min.js"></script>
 <script src="https://kit.fontawesome.com/7e31cfd31d.js" crossorigin="anonymous"></script>
 <script type="text/javascript"
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
@@ -343,24 +438,21 @@ count: false
 
 
 .center[
-<a href="https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/day1-01-fmriprep-primer/">
+<a href="https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/day1-03-bids-hands-on/">
   <img src="images/qr-talk-url.svg" alt="workflow" style="width: 20%" />
   <br />
-  https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/day1-01-fmriprep-primer/
+  https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/day1-03-bids-hands-on/
 </a>
 
 <br />
 <br />
 
-## Overview of the fMRI neuroimaging pipeline & *fMRIPrep*
+## BIDS | Hands-on
 
-#### Chris Markiewicz &lt;<code>markiewicz@stanford.edu</code>> & Oscar Esteban &lt;<code>phd@oscaresteban.es</code>>
+Chris Markiewicz &lt;<code>markiewicz@stanford.edu</code>>
 
+Oscar Esteban &lt;<code>phd@oscaresteban.es</code>>
 ]
-
-???
-
-NOTES TO OURSELVES GO HERE
 
 ---
 name: newsection
@@ -369,7 +461,7 @@ layout: true
 .perma-sidebar[
 <p class="rotate">
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0; height: 20px; padding-top: 6px;" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
-  <span style="padding-left: 10px; font-weight: 600;">Day 1 :: Introduction</span>
+  <span style="padding-left: 10px; font-weight: 600;">Day 1 :: Data & HPC</span>
 </p>
 ]
 
@@ -378,10 +470,10 @@ layout: true
 ## Outlook
 
 .right-column3.center[
-<a href="https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/day1-01-fmriprep-primer/">
+<a href="https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/day1-03-bids-hands-on/">
   <img src="images/qr-talk-url.svg" alt="workflow" style="width: 100%" />
   <br />
-  https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/day1-01-fmriprep-primer/
+  https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/day1-03-bids-hands-on/
 </a>
 ]
 
@@ -391,18 +483,11 @@ layout: true
 
 <br />
 
-* Overview of the neuroimaging pipeline structure
+* Accessing the cluster and creating an environment
 
-* Why do data require preprocessing?
+* Datalad
 
-* *fMRIPrep*
-
-    * [Hi]story behind the tool
-    * Why — just preprocessing
-    * Why — standardization
-    * Why — community
-
-* *NiPreps*
+* Fetching data
 
 ]]
 
@@ -410,138 +495,18 @@ layout: true
 
 ---
 
-## The neuroimaging worflow
+# Logging in into a cluster and setting up conda
 
-<br />
-<br />
-<br />
-<br />
-
-.boxed-content[
-<img src="images/neuroimaging-workflow-large.svg" alt="workflow" style="width: 100%" />
-
-<br />
-
-.align-right[
-([Esteban et al., 2020](http://doi.org/10.1038/s41596-020-0327-3))
-
-([Niso et al., 2022](https://doi.org/10.1016/j.neuroimage.2022.119623))
-]
-]
-
-???
-
----
-
-template: title
-layout: false
-.middle[
-<p align="center">
-<img src="https://github.com/oesteban/fmriprep/raw/f4c7a9804be26c912b24ef4dccba54bdd72fa1fd/docs/_static/fmriprep-21.0.0.svg" width="95%" />
-</p>
+.boxed-content.pad-top[
+<div class="asciicast" id="636539"></div>
 ]
 
 ---
 
-## The individual report
-<p align="center">
-<video controls="controls" width="70%"
-       name="Video Name" src="../../fmriprep-report.mov"></video>
-</p>
+# First interaction with datalad
 
-
----
-
-# fMRIPrep's usage
-
-<p align="center">
-<img src="../../20240502_weekly.png" width="85%" /><br />
-</p>
-
----
-
-# fMRIPrep's usage
-
-<p align="center">
-<img src="../../20240502_versionstream.png" width="85%" /><br />
-</p>
-
----
-
-# "Analysis-grade" data
-
-.larger[
-The *NeuroImaging PREProcessing toolS* (*[NiPreps](https://nipreps.org).org*) augment scanners to produce *analysis-grade* data (= **directly consumable by analyses**)
-]
-
-<br />
-.pull-left[
-
-***Analysis-grade* data** is an analogy to the concept of "*sushi-grade (or [sashimi-grade](https://en.wikipedia.org/wiki/Sashimi)) fish*" in that both are:
-
-.large[**minimally preprocessed**,]
-
-and
-
-.large[**safe to consume** directly.]
-]
-
-.pull-right[
-<img align="right" style='margin-right: 50px' src="https://1.bp.blogspot.com/-Osh4H4WXka0/WlMJmVgkZTI/AAAAAAAAEMY/GynUzSomJ-EBiyqv2m-maiOyKSM7SOmNACLcBGAs/s400/yellowfin%2Btuna%2Bsteaks%2Bnutrition.jpg" />
-]
-
-???
-
----
-
-<p align="center">
-<img src="../../nipreps-chart.png" width="63%" /><br />
-<em>NiPreps</em> (<a href="https://doi.org/10.31219/osf.io/ujxp6">Esteban et al., 2020</a>)
-</p>
-
----
-
-## Conclusion
-
-.boxed-content[
-.distribute.large[
-
-* Implementing a solid QA/QC is critical to the reliability of research
-
-  * Layering of QA/QC checkpoints
-  * Resources for efficient screening
-
-* MRIQC and the new extension to dMRI
-
-* Introduced the Human Connectome PHantom
-
-* Interest of exploratory analyses on IQMs
-
-]
-]
-
-???
-
-
----
-layout: false
-count: false
-
-
-.center[
-<a href="https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/day1-01-fmriprep-primer/"><img src="images/qr-talk-url.svg" alt="workflow" style="width: 20%" /></a>
-
-## Thanks
-
-<br />
-<br />
-
-#### Chris Markiewicz &lt;<code>markiewicz@stanford.edu</code>> & Oscar Esteban &lt;<code>phd@oscaresteban.es</code>>
-
-Overview of the fMRI neuroimaging pipeline & *fMRIPrep*
-
-Funding: [SNSF 185872](https://data.snf.ch/grants/grant/185872), [RF1MH121867](https://reporter.nih.gov/project-details/10260312), [CZI EOSS5-000266](https://chanzuckerberg.com/eoss/proposals/nipreps-a-community-framework-for-reproducible-neuroimaging/)
-
+.boxed-content.pad-top[
+<div class="asciicast" id="636540"></div>
 ]
 
 ???
@@ -576,15 +541,15 @@ Funding: [SNSF 185872](https://data.snf.ch/grants/grant/185872), [RF1MH121867](h
 
         var castid = element[0].attributes["id"].value;
         allcasts.set(slideNumber, AsciinemaPlayer.create(
-            'images/fix-typo.cast',
+            'images/setting-conda.cast',
             document.getElementById('636539'),
-            { autoPlay: true, speed: 2, idle_time_limit: 8, rows: 27 }
+            { autoPlay: true, speed: 2, idle_time_limit: 8, rows: 23 }
         ));
-        // allcasts.set(slideNumber, AsciinemaPlayer.create(
-        //     'https://asciinema.org/a/' + castid + '.cast',
-        //     document.getElementById(castid),
-        //     { autoPlay: true, speed: 2, idle_time_limit: 8, rows: 17 }
-        // ));
+        allcasts.set(slideNumber, AsciinemaPlayer.create(
+            'images/setting-datalad.cast',
+            document.getElementById('636540'),
+            { autoPlay: true, speed: 2, idle_time_limit: 8, rows: 23 }
+        ));
       });
 
       slideshow.on('beforeHideSlide', function (slide) {
