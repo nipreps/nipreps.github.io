@@ -5,9 +5,9 @@
 - [Welcome Home](../../assets/fmriprep-bootcamp-geneva2024/home)
 - [Overview of the fMRI neuroimaging pipeline & *fMRIPrep*](../../assets/fmriprep-bootcamp-geneva2024/day1-01-fmriprep-primer)
 - [The Brain Imaging Data Structure (BIDS)](../../assets/fmriprep-bootcamp-geneva2024/day1-02-bids)
-- [Day 1: BIDS - Convert a dataset](../../assets/fmriprep-bootcamp-geneva2024/day1-03-bids-convert-a-dataset)
-- [Day 1: Data and HPC](../../assets/fmriprep-bootcamp-geneva2024/day1-04-data-and-hpc)
-- [Day 1: Containers](../../assets/fmriprep-bootcamp-geneva2024/day1-05-containers)
+- [BIDS Hands-on](../../assets/fmriprep-bootcamp-geneva2024/day1-03-bids-hands-on)
+- [Data and HPC](../../assets/fmriprep-bootcamp-geneva2024/day1-04-data-and-hpc)
+- [Containers](../../assets/fmriprep-bootcamp-geneva2024/day1-05-containers)
 
 ## Online books
 

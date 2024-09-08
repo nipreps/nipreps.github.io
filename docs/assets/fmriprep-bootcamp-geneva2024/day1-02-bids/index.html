@@ -430,6 +430,21 @@ layout: true
 
 ---
 
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+.boxed-content[
+.large.center[
+.larger.center.gray-text[Before we start...]
+## What do you think/know about BIDS?
+]]
+
+---
+
 # Outlook
 
 .right-column3.center[
@@ -532,314 +547,58 @@ template: newsection
 layout: true
 
 ---
-
-# Converting from DICOM into BIDS
-
-.left-column-mid.small[
-.pad-left[
-<i class="fa-solid fa-folder-open"></i> my_dataset/<br />
-.pad-left[<i class="fa-solid fa-folder-open"></i> sub-11]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 10 - anat-T1w_acq-mp2rage_run-01_UNI_Images.dicom]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 11 - anat-T1w_acq-mp2rage_run-01_UNI-DEN.dicom]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 12 - anat-T1w_acq-mp2rage_run-01_INV2.dicom]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> 16 - fmap-gre_acq-siemens_run-01/]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[...]25.MR.dcm]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[..]33.MR.dcm]]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 17 - fmap-gre_acq-siemens_run-01.dicom ]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> 18 - func-bold_acq-midRes_task-rest_run-01/ ]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[...]25.MR.dcm]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-ellipsis"></i>]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[..]33.MR.dcm]]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> 20 - func-bold_acq-midRes_task-mixed_run-01/ ]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[...]25.MR.dcm]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-ellipsis"></i>]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[..]33.MR.dcm]]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 22 - anat-T2w_acq-p6_run-01.dicom]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 7 - anat-T1w_acq-mp2rage_run-01_INV1.dicom]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 8 - anat-T1w_acq-mp2rage_run-01_T1_Images.dicom]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 9 - anat-T1w_acq-mp2rage_run-01_T1_Images.dicom]]<br />
-.pad-left[<i class="fa-solid fa-folder"></i> sub-14]<br />
-.pad-left[<i class="fa-solid fa-folder"></i> sub-15]<br />
-]
-]
-
-.right-column-mid[
-.no-bullet[
-* .larger[DICOM (Digital Imaging and Communications in Medicine)]
-   * was originally meant for storage and transmission within/between machines.
-* .larger[DICOM structures store their relevant metadata internally,]
-   * but structure and fields tend to be vendor- & institution-specific.
-
-* .larger[Constructing a BIDS dataset can be tedious and error-prone, so there are several
-[converters](https://bids.neuroimaging.io/benefits.html#converters).] 
-   * The [Heuristic DICOM Converter](https://heudiconv.readthedocs.io/) (HeuDiConv) and
-[BIDSCoin](https://bidscoin.readthedocs.io/en/stable/) allow you to specify the mapping and
-apply in bulk. Both build off of [dcm2niix](https://github.com/rordenlab/dcm2niix/).
-]
-]
-
----
-
-# Converting from DICOM into BIDS
-
-.left-column-mid.small[
-.pad-left[
-<i class="fa-solid fa-folder-open"></i> my_dataset/<br />
-.pad-left[<i class="fa-solid fa-folder-open"></i> sub-11]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 10 - anat-T1w_acq-mp2rage_run-01_UNI_Images.dicom]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 11 - anat-T1w_acq-mp2rage_run-01_UNI-DEN.dicom]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 12 - anat-T1w_acq-mp2rage_run-01_INV2.dicom]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> 16 - fmap-gre_acq-siemens_run-01/]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[...]25.MR.dcm]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[..]33.MR.dcm]]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 17 - fmap-gre_acq-siemens_run-01.dicom ]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> 18 - func-bold_acq-midRes_task-rest_run-01/ ]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[...]25.MR.dcm]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-ellipsis"></i>]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[..]33.MR.dcm]]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> 20 - func-bold_acq-midRes_task-mixed_run-01/ ]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[...]25.MR.dcm]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-ellipsis"></i>]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[..]33.MR.dcm]]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 22 - anat-T2w_acq-p6_run-01.dicom]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 7 - anat-T1w_acq-mp2rage_run-01_INV1.dicom]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 8 - anat-T1w_acq-mp2rage_run-01_T1_Images.dicom]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 9 - anat-T1w_acq-mp2rage_run-01_T1_Images.dicom]]<br />
-.pad-left[<i class="fa-solid fa-folder"></i> sub-14]<br />
-.pad-left[<i class="fa-solid fa-folder"></i> sub-15]<br />
-]
-]
-
-.right-column-mid.small[
-.pad-left[
-<i class="fa-solid fa-folder-open"></i> my_dataset/<br />
-.pad-left[<i class="fa-solid fa-file-lines"></i> CHANGES]<br />
-.pad-left[<i class="fa-solid fa-file-lines"></i> README]<br />
-.pad-left[<i class="fa-solid fa-paperclip"></i> dataset_description.json]<br />
-.pad-left[<i class="fa-solid fa-paperclip"></i> participants.json]<br />
-.pad-left[<i class="fa-solid fa-table"></i> participants.tsv]<br />
-.pad-left[<i class="fa-solid fa-paperclip"></i> scans.json]<br />
-.pad-left[<i class="fa-solid fa-folder-open"></i> sub-11]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> anat/]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_T2w.json]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_T2w.nii.gz]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_acq-denoised_T1w.json]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_acq-denoised_T1w.nii.gz]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_acq-mp2rage_T1w.json]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_acq-mp2rage_T1w.nii.gz]]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> fmap/]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_magnitude1.json]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_magnitude1.nii.gz]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_magnitude2.json]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_magnitude2.nii.gz]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_phasediff.json]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_phasediff.nii.gz]]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> func/]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_task-mixed_bold.json]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_task-mixed_bold.nii.gz]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-table"></i> sub-11_task-mixed_events.tsv]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_task-rest_bold.json]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_task-rest_bold.nii.gz]]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-table"></i> sub-11_scans.tsv]]<br />
-.pad-left[<i class="fa-solid fa-folder"></i> sub-14]<br />
-.pad-left[<i class="fa-solid fa-folder"></i> sub-15]<br />
-]
-]
-
-<i class="fa-solid fa-circle-right" style="margin-top: 20%; font-size: 1.7em"></i>
-
----
-
-# DICOM-to-BIDS: ReproIn
-
-.center[[ReproIn](https://github.com/ReproNim/reproin) standardizes scanner conventions:]
-
-<figure style="width: 60%">
-![:img HCPh-sops-naming, 100%](https://www.axonlab.org/hcph-sops/assets/images/launch_sequence.jpg)
-<figcaption>From <a href="https://www.axonlab.org/hcph-sops">the HCPh SOPs</a>;
-doi:![:doi](10.6084/m9.figshare.19579873.v1)</figcaption>
-</figure>
-
----
-
-<figure style="width: 60%">
-![:img ReproIn conversion schema, 100%](images/dbic-conversions_cropped.png)
-<figcaption>From <a href="https://github.com/ReproNim/reproin/blob/master/README.md#overall-workflow">ReproIn</a>;
-doi:![:doi](10.5281/zenodo.1207117)</figcaption>
-
-???
-
-Please note that this figure is OUT OF DATE. For example, the anatomicals are called anat-T1W__, anat-T2w__ etc.
-
----
-
-# DICOM-to-BIDS: HeuDiConv
-
-.boxed-content.no-bullet[
-
-* .large[<i class="fa-solid fa-circle-chevron-right"></i> **Heu**ristic **DI**COM** Conv**erter: maps DICOM metadata into BIDS]
-
-* .large[<i class="fa-solid fa-circle-chevron-right"></i> Mappings are encoded within the *heuristic file*]
-
-   * The `.heudiconv/` folder contains the metadata that can be employed in the *heuristic file* to define mappings.<br /><br />
-
+<br />
+.boxed-content[
 <figure style="width: 100%">
-![:img HeuDiConv workflow, 100%](https://raw.githubusercontent.com/nipy/heudiconv/master/figs/workflow.png)
-<figcaption>From <a href="https://github.com/nipy/heudiconv?tab=readme-ov-file#howto-101">HeuDiConv</a>;
-doi:![:doi](10.5281/zenodo.1012598)</figcaption>
-
+![:img timeline, 100%](images/timeline.png)
+</figure>
 ]
 
 ---
 
-# DICOM-to-BIDS: HeuDiConv
+# A staggering pace of adoption
+
+<br />
+.boxed-content[
+<figure style="width: 100%">
+![:img timeline, 100%](images/bids-growth.png)
+</figure>
+]
+
+---
+
+# bids-specification.readthedocs.io
 
 .boxed-content[
-
-.no-bullet.large[
-* <i class="fa-solid fa-1"></i> &nbsp; Generate a **heuristic file**
-
-* <i class="fa-solid fa-2"></i> &nbsp; Edit the **heuristic file**
-]
-
-.small[
-```Python
-data = create_key('run-{item:03d}')
-
-t1w = create_key('sub-{subject}/{session}/anat/sub-{subject}_{session}_T1w')
-
-dwi = create_key('sub-{subject}/{session}/dwi/sub-{subject}_{session}_dir-AP_dwi')
-
-# Save the RPE (reverse phase-encode) B0 image as a fieldmap (fmap).  It will be used to correct
-# the distortion in the DWI
-fmap_rev_phase =  create_key('sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-PA_epi')
-
-fmap_mag =  create_key('sub-{subject}/{session}/fmap/sub-{subject}_{session}_magnitude')
-
-fmap_phase = create_key('sub-{subject}/{session}/fmap/sub-{subject}_{session}_phasediff')
-
-# Even if this is resting state, you still need a task key
-func_rest = create_key('sub-{subject}/{session}/func/sub-{subject}_{session}_task-rest_run-01_bold')
-func_rest_post = create_key('sub-{subject}/{session}/func/sub-{subject}_{session}_task-rest_run-02_bold')
-```
-]
-
-.no-bullet.large[
-* <i class="fa-solid fa-3"></i> &nbsp; Execute *HeuDiConv*
-]
-
+<iframe src="https://bids-specification.readthedocs.io/en/stable/" width="100%" height="540px" style="border: 0; margin-top: 15px" />
 ]
 
 ---
 
-# DICOM-to-BIDS: ReproIn + HeuDiConv
+# More reproducible research
 
-.no-bullet.large[
-* <i class="fa-solid fa-circle-chevron-right"></i> &nbsp; Just run *HeuDiConv* directly! *Heuristic file* is pre-defined.
+.boxed-content[
+.no-bullet[
+* .larger[<i class="fa-solid fa-arrow-right-arrow-left"></i> BIDS defines a clear interface]
+   * Standardized through a large-community agreement
+   * Human readable (as opposed to DICOM)
+   * Machine readable (enabling tooling, see below)
+   * Stable (e.g., backward compatibility principle), extensible, and predictable (*BIDS Schema*)
 
-* <i class="fa-solid fa-circle-question"></i> &nbsp; What if I **did not** follow *ReproIn* namings?
-]
+* .larger[<i class="fa-solid fa-box-archive"></i> Harnesses data-sharing and archival (sharing with self)]
+   * Can be checked for correctness (*BIDS Validator*)
+   * Establishes a solid *contract* on the organization of data between authors and reusers (or your future self)
+   * Separates *data blobs* and metadata, facilitating agile management and understanding of the dataset, HPC operations (e.g., *datalad drop*), etc.
+   * Enables open-sharing (e.g., *OpenNeuro*)
 
---
-
-.boxed-content.small[
-
-``` Python
-# A dictionary containing fixes/remapping for sequence names per study.
-# Keys are md5sum of study_description from DICOMs, in the form of PI-Experimenter^protocolname
-# You can use `heudiconv -f reproin --command ls --files  PATH
-# to list the "study hash".
-# Values are list of tuples in the form (regex_pattern, substitution).
-# If the  key is an empty string "", it would apply to any study.
-protocols2fix: dict[str | re.Pattern[str], list[tuple[str, str]]] = {
-    "": [  # <-- empty string means apply to whole study
-        ("anat-T1w_acq-mp2rage_run-01", "anat-mp2rage"),
-        ("_UNI_", "_acq-mp2rage__"),
-        ("_UNI-DEN", "_acq-denoised__"),
-        ("_INV", "_inv-"),
-        ("_T1_", "_acq-T1map__"),
-        ("fmap_acq-siemens", "fmap-phasediff"),
-        ("fmap-gre_acq-siemens", "fmap-phasediff"),
-        ("_acq-midRes", ""),
-        ("_acq-p6", ""),
-        ("_run-01", ""),
-    ]
-}
-```
-
-]
-
----
-
-# DICOM-to-BIDS: ReproIn + HeuDiConv
-
-.left-column-mid[
-Our dataset's DICOM had some non-compliant names:
-.small[
-.pad-left[
-<i class="fa-solid fa-folder-open"></i> my_dataset/<br />
-.pad-left[<i class="fa-solid fa-folder-open"></i> sub-11]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 10 - anat-T1w_acq-mp2rage_run-01<mark>_UNI_Images</mark>.dicom]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 11 - anat-T1w_acq-mp2rage_run-01<mark>_UNI-DEN</mark>.dicom]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 12 - anat-T1w_acq-mp2rage_run-01<mark>_INV2</mark>.dicom]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> 16 - fmap-gre_acq-siemens_run-01/]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[...]25.MR.dcm]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[..]33.MR.dcm]]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 17 - <mark>fmap-gre</mark>_acq-siemens_run-01.dicom ]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> 18 - func-bold_acq-midRes_task-rest_run-01/ ]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[...]25.MR.dcm]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-ellipsis"></i>]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[..]33.MR.dcm]]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> 20 - func-bold_acq-midRes_task-mixed_run-01/ ]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[...]25.MR.dcm]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-ellipsis"></i>]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[..]33.MR.dcm]]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 22 - anat-T2w_acq-p6_run-01.dicom]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 7 - anat-T1w_acq-mp2rage_run-01<mark>_INV1</mark>.dicom]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 8 - anat-T1w_acq-mp2rage_run-01<mark>_T1_Images</mark>.dicom]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 9 - anat-T1w_acq-mp2rage_run-01<mark>_T1_Images</mark>.dicom]]<br />
-.pad-left[<i class="fa-solid fa-folder"></i> sub-14]<br />
-.pad-left[<i class="fa-solid fa-folder"></i> sub-15]<br />
-]
-]]
-
-.right-column-mid.small[
-.pad-left[
-<i class="fa-solid fa-folder-open"></i> my_dataset/<br />
-.pad-left[<i class="fa-solid fa-file-lines"></i> CHANGES]<br />
-.pad-left[<i class="fa-solid fa-file-lines"></i> README]<br />
-.pad-left[<i class="fa-solid fa-paperclip"></i> dataset_description.json]<br />
-.pad-left[<i class="fa-solid fa-paperclip"></i> participants.json]<br />
-.pad-left[<i class="fa-solid fa-table"></i> participants.tsv]<br />
-.pad-left[<i class="fa-solid fa-paperclip"></i> scans.json]<br />
-.pad-left[<i class="fa-solid fa-folder-open"></i> sub-11]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> anat/]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_T2w.json]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_T2w.nii.gz]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_acq-denoised_T1w.json]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_acq-denoised_T1w.nii.gz]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_acq-mp2rage_T1w.json]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_acq-mp2rage_T1w.nii.gz]]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> fmap/]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_magnitude1.json]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_magnitude1.nii.gz]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_magnitude2.json]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_magnitude2.nii.gz]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_phasediff.json]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_phasediff.nii.gz]]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> func/]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_task-mixed_bold.json]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_task-mixed_bold.nii.gz]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-table"></i> sub-11_task-mixed_events.tsv]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_task-rest_bold.json]]]<br />
-.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_task-rest_bold.nii.gz]]]<br />
-.pad-left[.pad-left[<i class="fa-solid fa-table"></i> sub-11_scans.tsv]]<br />
-.pad-left[<i class="fa-solid fa-folder"></i> sub-14]<br />
-.pad-left[<i class="fa-solid fa-folder"></i> sub-15]<br />
+* .larger[<i class="fa-solid fa-gear"></i> Supports tooling]
+   * Querying the dataset, filtering data, etc. (*PyBIDS*)
+   * Conversion from other formats (mostly *DICOM*)
+   * Interpreting unprocessed data (development of *BIDS Apps* such as *MRIQC* or *fMRIPrep*)
+   * *BIDS Derivatives* enable concatenating *BIDS Apps* (e.g., *fMRIPrep* + *XCPD*, *brainlife.io*)
+   * Data-management-friendly (*DataLad*)
 ]
 ]
-
-<i class="fa-solid fa-circle-right" style="margin-top: 20%; font-size: 1.7em"></i>
 
 ---
 
@@ -849,7 +608,7 @@ Our dataset's DICOM had some non-compliant names:
 The machine-readable structure makes validation possible:
 
 ``` bash
-$ bids-validator .
+$ bids-validator my_dataset/
 bids-validator@1.14.6
 
   1: [WARN] The recommended file /README is very small. Please consider expanding it with additional information about the dataset. (code: 213 - README_FILE_SMALL)
@@ -878,7 +637,7 @@ bids-validator@1.14.6
 Once all warnings and errors are addressed:
 
 ``` bash
-$ bids-validator .
+$ bids-validator my_dataset/
 bids-validator@1.14.6
 
 This dataset appears to be BIDS compatible.
@@ -1196,24 +955,356 @@ $ fmriprep /data/input /derivatives/output participant [OPTIONS] \
 ]
 
 ---
-
 template: newsection
+layout: true
+name: conversion
+---
+
+# Converting from DICOM into BIDS
+
+.left-column-mid.small[
+.pad-left[
+<i class="fa-solid fa-folder-open"></i> my_dataset/<br />
+.pad-left[<i class="fa-solid fa-folder-open"></i> sub-11]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 10 - anat-T1w_acq-mp2rage_run-01_UNI_Images.dicom]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 11 - anat-T1w_acq-mp2rage_run-01_UNI-DEN.dicom]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 12 - anat-T1w_acq-mp2rage_run-01_INV2.dicom]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> 16 - fmap-gre_acq-siemens_run-01/]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[...]25.MR.dcm]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[..]33.MR.dcm]]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 17 - fmap-gre_acq-siemens_run-01.dicom ]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> 18 - func-bold_acq-midRes_task-rest_run-01/ ]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[...]25.MR.dcm]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-ellipsis"></i>]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[..]33.MR.dcm]]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> 20 - func-bold_acq-midRes_task-mixed_run-01/ ]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[...]25.MR.dcm]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-ellipsis"></i>]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[..]33.MR.dcm]]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 22 - anat-T2w_acq-p6_run-01.dicom]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 7 - anat-T1w_acq-mp2rage_run-01_INV1.dicom]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 8 - anat-T1w_acq-mp2rage_run-01_T1_Images.dicom]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 9 - anat-T1w_acq-mp2rage_run-01_T1_Images.dicom]]<br />
+.pad-left[<i class="fa-solid fa-folder"></i> sub-14]<br />
+.pad-left[<i class="fa-solid fa-folder"></i> sub-15]<br />
+]
+]
+
+.right-column-mid[
+.no-bullet[
+* .larger[DICOM (Digital Imaging and Communications in Medicine)]
+   * was originally meant for storage and transmission within/between machines.
+* .larger[DICOM structures store their relevant metadata internally,]
+   * but structure and fields tend to be vendor- & institution-specific.
+
+* .larger[Constructing a BIDS dataset can be tedious and error-prone, so there are several
+[converters](https://bids.neuroimaging.io/benefits.html#converters).] 
+   * The [Heuristic DICOM Converter](https://heudiconv.readthedocs.io/) (HeuDiConv) and
+[BIDSCoin](https://bidscoin.readthedocs.io/en/stable/) allow you to specify the mapping and
+apply in bulk. Both build off of [dcm2niix](https://github.com/rordenlab/dcm2niix/).
+]
+]
+
+---
+
+# Converting from DICOM into BIDS
+
+.left-column-mid.small[
+.pad-left[
+<i class="fa-solid fa-folder-open"></i> my_dataset/<br />
+.pad-left[<i class="fa-solid fa-folder-open"></i> sub-11]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 10 - anat-T1w_acq-mp2rage_run-01_UNI_Images.dicom]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 11 - anat-T1w_acq-mp2rage_run-01_UNI-DEN.dicom]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 12 - anat-T1w_acq-mp2rage_run-01_INV2.dicom]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> 16 - fmap-gre_acq-siemens_run-01/]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[...]25.MR.dcm]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[..]33.MR.dcm]]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 17 - fmap-gre_acq-siemens_run-01.dicom ]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> 18 - func-bold_acq-midRes_task-rest_run-01/ ]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[...]25.MR.dcm]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-ellipsis"></i>]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[..]33.MR.dcm]]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> 20 - func-bold_acq-midRes_task-mixed_run-01/ ]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[...]25.MR.dcm]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-ellipsis"></i>]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[..]33.MR.dcm]]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 22 - anat-T2w_acq-p6_run-01.dicom]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 7 - anat-T1w_acq-mp2rage_run-01_INV1.dicom]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 8 - anat-T1w_acq-mp2rage_run-01_T1_Images.dicom]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 9 - anat-T1w_acq-mp2rage_run-01_T1_Images.dicom]]<br />
+.pad-left[<i class="fa-solid fa-folder"></i> sub-14]<br />
+.pad-left[<i class="fa-solid fa-folder"></i> sub-15]<br />
+]
+]
+
+.right-column-mid.small[
+.pad-left[
+<i class="fa-solid fa-folder-open"></i> my_dataset/<br />
+.pad-left[<i class="fa-solid fa-file-lines"></i> CHANGES]<br />
+.pad-left[<i class="fa-solid fa-file-lines"></i> README]<br />
+.pad-left[<i class="fa-solid fa-paperclip"></i> dataset_description.json]<br />
+.pad-left[<i class="fa-solid fa-paperclip"></i> participants.json]<br />
+.pad-left[<i class="fa-solid fa-table"></i> participants.tsv]<br />
+.pad-left[<i class="fa-solid fa-paperclip"></i> scans.json]<br />
+.pad-left[<i class="fa-solid fa-folder-open"></i> sub-11]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> anat/]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_T2w.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_T2w.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_acq-denoised_T1w.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_acq-denoised_T1w.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_acq-mp2rage_T1w.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_acq-mp2rage_T1w.nii.gz]]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> fmap/]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_magnitude1.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_magnitude1.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_magnitude2.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_magnitude2.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_phasediff.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_phasediff.nii.gz]]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> func/]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_task-mixed_bold.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_task-mixed_bold.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-table"></i> sub-11_task-mixed_events.tsv]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_task-rest_bold.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_task-rest_bold.nii.gz]]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-table"></i> sub-11_scans.tsv]]<br />
+.pad-left[<i class="fa-solid fa-folder"></i> sub-14]<br />
+.pad-left[<i class="fa-solid fa-folder"></i> sub-15]<br />
+]
+]
+
+<i class="fa-solid fa-circle-right" style="margin-top: 20%; font-size: 1.7em"></i>
+
+---
+
+# DICOM-to-BIDS: ReproIn
+
+.center[[ReproIn](https://github.com/ReproNim/reproin) standardizes protocol naming conventions:]
+
+<figure style="width: 60%">
+![:img HCPh-sops-naming, 100%](https://www.axonlab.org/hcph-sops/assets/images/launch_sequence.jpg)
+<figcaption>From <a href="https://www.axonlab.org/hcph-sops">the HCPh SOPs</a>;
+doi:![:doi](10.6084/m9.figshare.19579873.v1)</figcaption>
+</figure>
+
+---
+
+<figure style="width: 60%">
+![:img ReproIn conversion schema, 100%](images/dbic-conversions_cropped.png)
+<figcaption>From <a href="https://github.com/ReproNim/reproin/blob/master/README.md#overall-workflow">ReproIn</a>;
+doi:![:doi](10.5281/zenodo.1207117)</figcaption>
+
+???
+
+Please note that this figure is OUT OF DATE. For example, the anatomicals are called anat-T1W__, anat-T2w__ etc.
+
+---
+
+# DICOM-to-BIDS: HeuDiConv
+
+.boxed-content.no-bullet[
+
+* .large[<i class="fa-solid fa-circle-chevron-right"></i> **Heu**ristic **DI**COM** Conv**erter: maps DICOM metadata into BIDS]
+
+* .large[<i class="fa-solid fa-circle-chevron-right"></i> Mappings are encoded within the *heuristic file*]
+
+   * The `.heudiconv/` folder contains the metadata that can be employed in the *heuristic file* to define mappings.<br /><br />
+
+<figure style="width: 100%">
+![:img HeuDiConv workflow, 100%](https://raw.githubusercontent.com/nipy/heudiconv/master/figs/workflow.png)
+<figcaption>From <a href="https://github.com/nipy/heudiconv?tab=readme-ov-file#howto-101">HeuDiConv</a>;
+doi:![:doi](10.5281/zenodo.1012598)</figcaption>
+
+]
+
+---
+
+# DICOM-to-BIDS: HeuDiConv
+
+.boxed-content[
+
+.no-bullet.large[
+* <i class="fa-solid fa-1"></i> &nbsp; Generate a **heuristic file**
+
+* <i class="fa-solid fa-2"></i> &nbsp; Edit the **heuristic file**
+]
+
+.small[
+```Python
+data = create_key('run-{item:03d}')
+
+t1w = create_key('sub-{subject}/{session}/anat/sub-{subject}_{session}_T1w')
+
+dwi = create_key('sub-{subject}/{session}/dwi/sub-{subject}_{session}_dir-AP_dwi')
+
+# Save the RPE (reverse phase-encode) B0 image as a fieldmap (fmap).  It will be used to correct
+# the distortion in the DWI
+fmap_rev_phase =  create_key('sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-PA_epi')
+
+fmap_mag =  create_key('sub-{subject}/{session}/fmap/sub-{subject}_{session}_magnitude')
+
+fmap_phase = create_key('sub-{subject}/{session}/fmap/sub-{subject}_{session}_phasediff')
+
+# Even if this is resting state, you still need a task key
+func_rest = create_key('sub-{subject}/{session}/func/sub-{subject}_{session}_task-rest_run-01_bold')
+func_rest_post = create_key('sub-{subject}/{session}/func/sub-{subject}_{session}_task-rest_run-02_bold')
+```
+]
+
+.no-bullet.large[
+* <i class="fa-solid fa-3"></i> &nbsp; Execute *HeuDiConv*
+]
+
+]
+
+---
+
+# DICOM-to-BIDS: ReproIn + HeuDiConv
+
+.no-bullet.large[
+* <i class="fa-solid fa-circle-chevron-right"></i> &nbsp; Just run *HeuDiConv* directly! *Heuristic file* is pre-defined.
+
+* <i class="fa-solid fa-circle-question"></i> &nbsp; What if I **did not** follow *ReproIn* namings?
+]
+
+--
+
+.boxed-content.small[
+
+``` Python
+# A dictionary containing fixes/remapping for sequence names per study.
+# Keys are md5sum of study_description from DICOMs, in the form of PI-Experimenter^protocolname
+# You can use `heudiconv -f reproin --command ls --files  PATH
+# to list the "study hash".
+# Values are list of tuples in the form (regex_pattern, substitution).
+# If the  key is an empty string "", it would apply to any study.
+protocols2fix: dict[str | re.Pattern[str], list[tuple[str, str]]] = {
+    "": [  # <-- empty string means apply to whole study
+        ("anat-T1w_acq-mp2rage_run-01", "anat-mp2rage"),
+        ("_UNI_", "_acq-mp2rage__"),
+        ("_UNI-DEN", "_acq-denoised__"),
+        ("_INV", "_inv-"),
+        ("_T1_", "_acq-T1map__"),
+        ("fmap_acq-siemens", "fmap-phasediff"),
+        ("fmap-gre_acq-siemens", "fmap-phasediff"),
+        ("_acq-midRes", ""),
+        ("_acq-p6", ""),
+        ("_run-01", ""),
+    ]
+}
+```
+
+]
+
+---
+
+# DICOM-to-BIDS: ReproIn + HeuDiConv
+
+.left-column-mid[
+Our dataset's DICOM had some non-compliant names:
+.small[
+.pad-left[
+<i class="fa-solid fa-folder-open"></i> my_dataset/<br />
+.pad-left[<i class="fa-solid fa-folder-open"></i> sub-11]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 10 - anat-T1w_acq-mp2rage_run-01<mark>_UNI_Images</mark>.dicom]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 11 - anat-T1w_acq-mp2rage_run-01<mark>_UNI-DEN</mark>.dicom]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 12 - anat-T1w_acq-mp2rage_run-01<mark>_INV2</mark>.dicom]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> 16 - fmap-gre_acq-siemens_run-01/]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[...]25.MR.dcm]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[..]33.MR.dcm]]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 17 - <mark>fmap-gre</mark>_acq-siemens_run-01.dicom ]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> 18 - func-bold_acq-midRes_task-rest_run-01/ ]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[...]25.MR.dcm]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-ellipsis"></i>]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[..]33.MR.dcm]]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> 20 - func-bold_acq-midRes_task-mixed_run-01/ ]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[...]25.MR.dcm]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-ellipsis"></i>]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 1.3.12.2.1107.5.2.61.237203.20[..]33.MR.dcm]]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 22 - anat-T2w_acq-p6_run-01.dicom]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 7 - anat-T1w_acq-mp2rage_run-01<mark>_INV1</mark>.dicom]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 8 - anat-T1w_acq-mp2rage_run-01<mark>_T1_Images</mark>.dicom]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-layer-group"></i> 9 - anat-T1w_acq-mp2rage_run-01<mark>_T1_Images</mark>.dicom]]<br />
+.pad-left[<i class="fa-solid fa-folder"></i> sub-14]<br />
+.pad-left[<i class="fa-solid fa-folder"></i> sub-15]<br />
+]
+]]
+
+.right-column-mid.small[
+.pad-left[
+<i class="fa-solid fa-folder-open"></i> my_dataset/<br />
+.pad-left[<i class="fa-solid fa-file-lines"></i> CHANGES]<br />
+.pad-left[<i class="fa-solid fa-file-lines"></i> README]<br />
+.pad-left[<i class="fa-solid fa-paperclip"></i> dataset_description.json]<br />
+.pad-left[<i class="fa-solid fa-paperclip"></i> participants.json]<br />
+.pad-left[<i class="fa-solid fa-table"></i> participants.tsv]<br />
+.pad-left[<i class="fa-solid fa-paperclip"></i> scans.json]<br />
+.pad-left[<i class="fa-solid fa-folder-open"></i> sub-11]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> anat/]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_T2w.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_T2w.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_acq-denoised_T1w.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_acq-denoised_T1w.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_acq-mp2rage_T1w.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_acq-mp2rage_T1w.nii.gz]]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> fmap/]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_magnitude1.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_magnitude1.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_magnitude2.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_magnitude2.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_phasediff.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_phasediff.nii.gz]]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> func/]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_task-mixed_bold.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_task-mixed_bold.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-table"></i> sub-11_task-mixed_events.tsv]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_task-rest_bold.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_task-rest_bold.nii.gz]]]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-table"></i> sub-11_scans.tsv]]<br />
+.pad-left[<i class="fa-solid fa-folder"></i> sub-14]<br />
+.pad-left[<i class="fa-solid fa-folder"></i> sub-15]<br />
+]
+]
+
+<i class="fa-solid fa-circle-right" style="margin-top: 20%; font-size: 1.7em"></i>
+
+---
+
+# DICOM-to-BIDS: HeuDiConv may not be sufficient
+
+.boxed-content[
+.no-bullet[
+* .large[<i class="fa-solid fa-timeline"></i> **'events'** files describing the experiment's timeline]
+]
+
+.pad-left[
+<i class="fa-solid fa-folder-open"></i> my_dataset/<br />
+.pad-left[<i class="fa-solid fa-folder-open"></i> sub-11]<br />
+.pad-left[.pad-left[<i class="fa-solid fa-folder-open"></i> func/]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_task-mixed_bold.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_task-mixed_bold.nii.gz]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-table"></i> <mark>sub-11_task-mixed_events.tsv</mark>]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-paperclip"></i> sub-11_task-rest_bold.json]]]<br />
+.pad-left[.pad-left[.pad-left[<i class="fa-solid fa-brain"></i> sub-11_task-rest_bold.nii.gz]]]<br />
+]
+
+<br />
+.no-bullet[
+* .large[<i class="fa-solid fa-heart-pulse"></i> **'physio'** files (physiological recordings, eye-tracking, etc.)]
+
+* .large[<i class="fa-solid fa-film"></i> **'stim'** files (stimuli-related such as movies, task cues, etc.)]
+
+* .large[<i class="fa-solid fa-suitcase-medical"></i> supporting metadata (e.g., field maps, covariates, phenotype, etc.)]
+]
+]
+
+
+---
 
 # Conclusion
 
 .boxed-content[
 .distribute.large[
-
-* Implementing a solid QA/QC is critical to the reliability of research
-
-  * Layering of QA/QC checkpoints
-  * Resources for efficient screening
-
-* MRIQC and the new extension to dMRI
-
-* Introduced the Human Connectome PHantom
-
-* Interest of exploratory analyses on IQMs
 
 ]
 ]
@@ -1236,7 +1327,7 @@ count: false
 
 #### Chris Markiewicz &lt;<code>markiewicz@stanford.edu</code>> & Oscar Esteban &lt;<code>phd@oscaresteban.es</code>>
 
-Overview of the fMRI neuroimaging pipeline & *fMRIPrep*
+The Brain Imaging Data Structure (BIDS)
 
 Funding: [SNSF 185872](https://data.snf.ch/grants/grant/185872), [RF1MH121867](https://reporter.nih.gov/project-details/10260312), [CZI EOSS5-000266](https://chanzuckerberg.com/eoss/proposals/nipreps-a-community-framework-for-reproducible-neuroimaging/)
 
