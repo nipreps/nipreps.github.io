@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>fMRIPrep Bootcamp | Home</title>
+    <title>fMRIPrep Bootcamp | Day 1 :: Containers</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="/assets/asciinema-player/asciinema-player.css" />
     <style>
@@ -44,7 +44,7 @@
         position: absolute;
         bottom: 0.5em;
         font-size: 0.7em;
-	left: 6em;
+  left: 6em;
       }
       li p { line-height: 1.25em; }
 
@@ -103,8 +103,11 @@
       .fa-solid {
         color: #324989;
       }
+      .fa-brands {
+        color: #324989;
+      }
       .fa-blank {
-	color: #ffffff;
+  color: #ffffff;
       }
 
       em {
@@ -351,13 +354,14 @@
           right: 4em;
       }
       figure {
-      	display: block;
-      	margin-left: auto;
-      	margin-right: auto;
-      	font-size: 8pt;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 8pt;
       }
       figcaption {
-	      text-align: right;
+        text-align: right;
+        font-size: 2.0em;
       }
 
       .program-table td:nth-child(2) {
@@ -375,9 +379,8 @@
       }
       .people-table td:nth-child(1) img {
         object-fit: cover;
-        width: 150px;
-        height: 150px;
-        filter: grayscale(1);
+        width: 200px;
+        height: 200px;
       }
 
       .many-people-table td:nth-child(1) {
@@ -387,7 +390,6 @@
         object-fit: cover;
         width: 80px;
         height: 80px;
-        filter: grayscale(1);
       }
 
       .top-right {
@@ -439,18 +441,22 @@ layout: false
 count: false
 
 
-.center.pad-top[
-<img class="pad-top" src="https://cibm.ch/wp-content/uploads/bannerfMRIPrep.jpg" width="100%" />
+.center[
+<a href="https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/day1-06-apptainer/">
+  <img src="images/qr-talk-url.svg" alt="workflow" style="width: 20%" />
+  <br />
+  https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/day1-06-apptainer/
+</a>
+
+<br />
+<br />
+
+## Hands-on: Apptainer in UNIGE's HPC
+
+Chris Markiewicz &lt;<code>markiewicz@stanford.edu</code>>
+
+Oscar Esteban &lt;<code>phd@oscaresteban.es</code>>
 ]
-
-.boxed-content[
-| | |
-|---:|---|
-|<a href="https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/home/"> <img src="images/qr-talk-url.svg" alt="workflow" style="width: 100%" /></a> | .large[<i class="fa-solid fa-play"></i> Get started] <br /> https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/home/ |
-]
-
-
-???
 
 ---
 name: newsection
@@ -459,269 +465,88 @@ layout: true
 .perma-sidebar[
 <p class="rotate">
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0; height: 20px; padding-top: 6px;" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
-  <span style="padding-left: 10px; font-weight: 600;">Day 1 :: Welcome</span>
+  <span style="padding-left: 10px; font-weight: 600;">Day 1 :: Apptainer in UNIGE's HPC</span>
 </p>
 ]
 
 ---
 
-# About us | Instructors
-
-<br />
+# First SBATCH file
 
 .boxed-content[
-.people-table.larger[
-| | |
-|---:|---|
-| ![oscar-esteban](https://cibm.ch/wp-content/uploads/OscarEsteban-300x300-1.jpg)| **Oscar Esteban** <br /> Research and Teaching FNS Fellow, Lausanne University Hospital (CHUV) and the University of Lausanne. <br /> &lt;<code>phd@oscaresteban.es</code>> |
-| ![chris-markiewicz](https://cibm.ch/wp-content/uploads/chris.jpg)| **Chris Markiewicz** <br /> Senior Research Engineer, Stanford University. <br /> &lt;<code>markiewicz@stanford.edu</code>> |
-| ![adrien-albert](https://www.unige.ch/stic/application/files/cache/thumbnails/d6d8cfe20f70dece2f181ff09055f6bd.png) | **Adrien Albert** <br /> Ingénieur infrastructures et systèmes, STIC UNIGE <br /> &lt;<code>adrien.albert@unige.ch</code>> |
-]
-]
+Running *MRIQC* on the anatomical T1w images:
+``` Bash
+#!/bin/bash
+#SBATCH --time=1:00:00 #NOTE: likely longer than generally needed 
+#SBATCH --ntasks 1
+#SBATCH --cpus-per-task=16
+#SBATCH --mem-per-cpu=4G
+#SBATCH --partition=public-cpu
 
----
+# Outputs ----------------------------------
+#SBATCH --output log/%x-%A-%a.out
+#SBATCH --error log/%x-%A-%a.err
+#SBATCH --mail-user=phd@oscaresteban.es
+#SBATCH --mail-type=ALL
+# ------------------------------------------
 
-# About us | Organizers
+srun apptainer run mriqc_latest.sif \
+     $HOME/ds005454/ $HOME/derivatives/mriqc-24.0.2 participant \
+     -m T1w -vv --dsname bootcamp --nprocs 16 --omp-nthreads 8
 
-.boxed-content.pad-top[
-.many-people-table[
-| | |
-|---:|---|
-| ![frederic-grouiller](https://cibm.ch/wp-content/uploads/MRI-UNIGE-GrouillerFred-BWcropped-982x1024.jpg)| **Frédéric Grouiller** <br /> Head, CIBM MRI HUG-UNIGE Clinical MR Imaging Section |
-| ![emilie-sleigh](https://people.epfl.ch/private/common/photos/links/233788.jpg?ts=1725608851)| **Emilie Sleight** <br /> Postdoctoral Researcher, CIBM MRI EPFL. |
-| ![elda-fischi](https://cibm.ch/wp-content/uploads/Fischi-GomezE_PhotoBW.jpg)| **Elda Fischi-Gómez** <br /> Research Staff Scientist, CIBM CHUV-EPFL. |
-| ![sebastien-courvoisier](https://cibm.ch/wp-content/uploads/S%C3%A9bastien-Courvoisier.jpg)| **Sébastien Courvoisier** <br /> MRI Operational Manager, Research Staff Scientist, CIBM HUG-UNIGE. |
-| ![pina-marziliano](https://cibm.ch/wp-content/uploads/i01_Pina-705x1024.jpg)| **Pina Marziliano** <br /> Executive Director, CIBM |
-| ![oscar-esteban](https://cibm.ch/wp-content/uploads/OscarEsteban-300x300-1.jpg)| **Oscar Esteban** <br /> Research and Teaching FNS Fellow, Lausanne University Hospital (CHUV) and the University of Lausanne. |
-]
-]
+```
 
----
-
-# Rules
-
-.boxed-content[
-.no-bullet[
-* .large[<i class="fa-solid fa-handshake"></i> **Code of Conduct**]
-  * [https://www.nipreps.org/community/CODE_OF_CONDUCT/](https://www.nipreps.org/community/CODE_OF_CONDUCT/)
-]
-]
-
----
-count: false
-
-# Rules
-
-.boxed-content[
-.top-right[
-<a href="https://www.nipreps.org/community/CODE_OF_CONDUCT/"><img src="images/qr-coc-url.svg" style="width: 100%" />NiPreps CoC</a>
-]
-]
---
-.boxed-content[
-.no-bullet.pad-top[
-* .large[<i class="fa-solid fa-message"></i> &nbsp; **Participate at any moment**]
-  * .larger[Dynamics more fluid than a lecture mode - raise your hand as soon as you feel something needs further discussion]
-  * .larger[**Hive mind**: share your knowledge]
-]
-]
---
-.boxed-content[
-.no-bullet[
-* .large[<i class="fa-solid fa-mug-hot"></i> &nbsp; **Feel welcome and ensure your well-being**]
-  * .larger[Take breaks, stand up, etc. as you need them]
-  * .larger[Override your name in your badge and write down your pronouns]
-  * .larger[Mingle and enjoy the bootcamp!]
-]
-]
---
-.boxed-content[
-.no-bullet[
-* .large[<i class="fa-solid fa-people-pulling"></i> &nbsp; **Lead during hack times**]
-  * .larger[Take this opportunity to pull others into your work]
-  * .larger[Unlock some issue that has slowed down your project]
-  * .larger[Address some issue that is slowing down others]
-]
+Run with:
+``` Bash
+$ sbatch mriqc.sbatch
+```
 ]
 
 ---
 
-# <i class="fa-solid fa-map-location-dot"></i> Room D02.1549.A
+# The `srun` call
 
-.boxed-content[
-.large[This is located at the CMU Building D, 2<sup>nd</sup> floor.]
+### 1 | apptainer run
 
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2069.0208636535194!2d6.1517161492085055!3d46.19430985911478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c7acd97a35cc1%3A0x1017e45635097c72!2sUniversit%C3%A9%20de%20Gen%C3%A8ve%20%2F%20Centre%20M%C3%A9dical%20Universitaire!5e0!3m2!1sen!2sch!4v1725613579689!5m2!1sen!2sch" width="50%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+``` Bash
+srun apptainer run mriqc_latest.sif \
+```
 
-.pull-right[
-<img src="https://www.unige.ch/medecine/audio/download_file/view_inline/123" style="width: 100%" /> <br />
-Access the building either from Av. Champe (3rd floor) or Rue Lombard (1st floor).
-]]
+### 2 | BIDS-Apps' interface
 
----
+Reminder: `<bids-app-name> /input-data /output-folder participant`
+``` Bash
+     $HOME/ds005454/ $HOME/derivatives/mriqc-24.0.2 participant \
+```
 
-# Expected from you
+### 3 | MRIQC's specific arguments
 
-.boxed-content.pad-top[
-.no-bullet[
-* .large[<i class="fa-solid fa-laptop"></i> Bring **your laptop**]
-  * You'll need it to follow the units and exercise on your own
-
-<br />
-* .large[<i class="fa-solid fa-hard-drive"></i> Bring your **data** for days 2 & 3]
-  * The hackathon is for you to work on a different environment
-
-<br />
-* .large[<i class="fa-solid fa-ice-cream"></i> Join the **welcome dinner**]
-  * Please let us know if you can join and you haven't already
-
-<br />
-* .large[<i class="fa-solid fa-server"></i> Check you can **access** UNIGE's HPC]
-  * Contact **Sébastien Courvoisier** *ASAP* if you can't.
-]]
-
----
-
-# Program | Day 1
-
-.right-column3.center[
-<a href="https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/home/">
-  <img src="images/qr-talk-url.svg" alt="workflow" style="width: 100%" />
-  <br />
-  https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/home/
-</a>
-]
-
-<br />
-.left-column3[
-.program-table[
-| | |
-|---:|---|
-|  9h00 | Welcome & opening |
-|  9h30 | [Overview of the fMRI neuroimaging pipeline & <i>fMRIPrep</i>](/assets/fmriprep-bootcamp-geneva2024/day1-01-fmriprep-primer) |
-| 10h30 | Coffee break |
-| 10h45 | [The Brain Imaging Data Structure (BIDS)](/assets/fmriprep-bootcamp-geneva2024/day1-02-bids) |
-| 11h30 | [BIDS hands-on](/assets/fmriprep-bootcamp-geneva2024/day1-03-bids-hands-on) |
-| 12h00 | [Containers](/assets/fmriprep-bootcamp-geneva2024/day1-04-containers) |
-| 12h30 | Lunch break |
-| 14h00 | Introduction to UNIGE's HPC and running jobs |
-| 14h45 | [Making data available on HPC (hands-on)](/assets/fmriprep-bootcamp-geneva2024/day1-05-data-and-hpc) |
-| 15h15 | Coffee break |
-| 15h30 | [Hands-on: Apptainer within HPC Unige](/assets/fmriprep-bootcamp-geneva2024/day1-06-apptainer) |
-| 16h00 | Hands-on: run fMRIPrep on the dataset |
-| 17h00 | End |
-| 19h00 | Welcome dinner |
-]]
-
-???
-
-
----
-
-# Program | Day 2
-
-.right-column3.center[
-<a href="https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/home/">
-  <img src="images/qr-talk-url.svg" alt="workflow" style="width: 100%" />
-  <br />
-  https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/home/
-</a>
-]
-
-<br />
-.left-column3[
-.program-table[
-| | |
-|---:|---|
-|  9h00 | Execution forensics: did it work? |
-|  9h30 | Resource planning, parallelization |
-| 10h30 | Coffee break |
-| 10h45 | Analysis of the *mixed* task |
-| 12h30 | Lunch break |
-| 14h00 | MRIQC and QA/QC |
-| 15h00 | Coffee break |
-| 15h15 | Hands-on: Running *fMRIPrep* on your data on cluster |
-| 16h00 | Preparation of the hackathon (groups, projects) |
-| 17h00 | End |
-]]
-
-???
-
----
-
-# Program | Day 3 (Hackathon)
-
-.right-column3.center[
-<a href="https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/home/#3">
-  <img src="images/qr-talk-url.svg" alt="workflow" style="width: 100%" />
-  <br />
-  https://www.nipreps.org/assets/fmriprep-bootcamp-geneva2024/home/
-</a>
-]
-
-
-<br />
-.left-column3[
-.program-table[
-| | |
-|---:|---|
-|  9h00 | Project pitches |
-| | Coffee break |
-| | **Hacking!** |
-| 12h30 | Lunch break |
-| 14h00 | **Hacking!** |
-| 15h00 | Coffee break |
-| 15h15 | Round table and showcasing results |
-| 16h30 | End |
-]]
-
-???
-
----
-
-# Hackathon (Day 3)
-
-.boxed-content.no-bullet[
-<br />
-
-* .large[<i class="fa-solid fa-circle-chevron-right"></i> Perhaps, address a **current roadblock** in your research pipeline]
-  
-  * .larger[having neuroimagers around to **ask for responsive help**]
-  * .larger[having UNIGE's HPC at your fingertips]
-
-<br />
-* .large[<i class="fa-solid fa-circle-chevron-right"></i> BYOD (bring your own dataset)]
-
-  * .larger[but you can use the example dataset we provide]
-
-<br />
-* .large[<i class="fa-solid fa-circle-chevron-right"></i> **Team up** with other attendees]
-
-  * .larger[if you don't have a clear objective for yourself,]
-  * .larger[or the objective can be shared with others]
-]
-
----
-
-# Pitch roulette
-
-.boxed-content.large[
-* Everyone will be up for 45 secs (max).
-
-* Names will come randomly from a roulette, organizers first.
-
-* Suggested items to mention:
-
-   * Preferred name and pronouns
-   * Appropriate pronunciation of name
-   * Current position
-   * General interests
-   * Goals for the bootcamp
-   * Previous experience with fMRI and fMRIPrep
-]
+We only run T1w images (`-m T1w`), we make it more verbose `-vv`,
+we name the dataset (`--dsname bootcamp`) and we allow the workflow
+to run up to 16 processes with up to 8 cores each `--nprocs 16 --omp-nthreads 8`:
+``` Bash
+     -m T1w -vv --dsname bootcamp --nprocs 16 --omp-nthreads 8
+```
 
 </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script>
+    // Use: ![:img Alt text with spaces but not commas, 50%](image.png)
+    remark.macros.img = function (altText, width) {
+      var url = this;
+      return '<img alt="' + altText + '" src="' + url + '" style="width: ' + width + '" />';
+    };
+    // Use: ![:video](10.5129/10234)
+    remark.macros.video = function (width) {
+      var url = this;
+      return '<video src="' + url + '" width="' + width + '" preload="auto" controls />';
+    };
+    // Use: ![:doi](10.5129/10234)
+    remark.macros.doi = function () {
+      var doi = this;
+      return '<a href="https://doi.org/' + doi + '">' + doi + '</a>';
+    };
+    </script>
     <script src="/assets/asciinema-player/asciicast-load.js"></script>
   </body>
 </html>
