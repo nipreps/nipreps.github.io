@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>fMRIPrep Bootcamp | Day 1 :: Containers</title>
+    <title>fMRIPrep Bootcamp | Day 1 :: Apptainer in UNIGE's HPC</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="/assets/asciinema-player/asciinema-player.css" />
     <style>
@@ -522,10 +522,12 @@ Reminder: `<bids-app-name> /input-data /output-folder participant`
 ### 3 | MRIQC's specific arguments
 
 We only run T1w images (`-m T1w`), we make it more verbose `-vv`,
-we name the dataset (`--dsname bootcamp`) and we allow the workflow
-to run up to 16 processes with up to 8 cores each `--nprocs 16 --omp-nthreads 8`:
+we name the dataset (`--dsname bootcamp`), we allow the workflow
+to run up to 16 processes with up to 8 cores each `--nprocs 16 --omp-nthreads 8`,
+and preserve the intermediate files at `$HOME/scratch/work`:
 ``` Bash
-     -m T1w -vv --dsname bootcamp --nprocs 16 --omp-nthreads 8
+     -m T1w -vv --dsname bootcamp --nprocs 16 --omp-nthreads 8 \
+     -w $HOME/scratch/work
 ```
 
 </textarea>
