@@ -649,6 +649,9 @@ RUN apk add --no-cache perl
 # Copy the original 'cowsay' program into one layer
 COPY cowsay /usr/local/bin/cowsay
 
+# Ensure permissions
+RUN chmod a+rx /usr/local/bin/cowsay
+
 # Copy the replacement of the cow asciiart with a whale
 COPY docker.cow /usr/local/share/cows/default.cow
 
