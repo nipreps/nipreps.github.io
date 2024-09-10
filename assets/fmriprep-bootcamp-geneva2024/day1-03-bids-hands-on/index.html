@@ -867,6 +867,28 @@ https://handbook.datalad.org/en/latest/
 * Get the `PhaseEncodingDirection` (or directions) of only BOLD files
 ]
 
+---
+
+# Those having issues on bamboo
+
+``` Bash
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/ebsofts/Miniconda3/4.9.2/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/ebsofts/Miniconda3/4.9.2/etc/profile.d/conda.sh" ]; then
+        . "/opt/ebsofts/Miniconda3/4.9.2/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/ebsofts/Miniconda3/4.9.2/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+```
+
+
 </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
     <script src="/assets/asciinema-player/asciicast-load.js"></script>
