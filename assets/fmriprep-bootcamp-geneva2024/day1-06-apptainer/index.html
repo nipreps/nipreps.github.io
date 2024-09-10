@@ -480,8 +480,9 @@ Running *MRIQC* on the anatomical T1w images:
 #SBATCH --time=1:00:00 #NOTE: likely longer than generally needed 
 #SBATCH --ntasks 1
 #SBATCH --cpus-per-task=16
-#SBATCH --mem-per-cpu=4G
-#SBATCH --partition=public-cpu
+#SBATCH --mem-per-cpu=1G
+#SBATCH --partition=shared-cpu
+#SBATCH --reservation=share_courvoisier_workshop_570
 
 # Outputs ----------------------------------
 #SBATCH --output log/%x-%A-%a.out
@@ -523,11 +524,9 @@ Reminder: `<bids-app-name> /input-data /output-folder participant`
 
 We only run T1w images (`-m T1w`), we make it more verbose `-vv`,
 we name the dataset (`--dsname bootcamp`), we allow the workflow
-to run up to 16 processes with up to 8 cores each `--nprocs 16 --omp-nthreads 8`,
-and preserve the intermediate files at `$HOME/scratch/work`:
+to run up to 16 processes with up to 8 cores each `--nprocs 16 --omp-nthreads 8`:
 ``` Bash
-     -m T1w -vv --dsname bootcamp --nprocs 16 --omp-nthreads 8 \
-     -w $HOME/scratch/work
+     -m T1w -vv --dsname bootcamp --nprocs 16 --omp-nthreads 8
 ```
 
 </textarea>
