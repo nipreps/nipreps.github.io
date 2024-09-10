@@ -8,6 +8,8 @@
 - [BIDS Hands-on](../../assets/fmriprep-bootcamp-geneva2024/day1-03-bids-hands-on)
 - [Data and HPC](../../assets/fmriprep-bootcamp-geneva2024/day1-04-data-and-hpc)
 - [Containers](../../assets/fmriprep-bootcamp-geneva2024/day1-05-containers)
+- [Apptainer in UNIGE's HPC](../../assets/fmriprep-bootcamp-geneva2024/day1-06-apptainer)
+- [Links](../../assets/fmriprep-bootcamp-geneva2024/day2-links)
 
 ## Online books
 
