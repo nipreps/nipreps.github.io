@@ -33,7 +33,7 @@ Containerized Images bundling *NiPreps* components and their dependencies can be
 distributed under a free and open-source license without copyleft, such as the
 [MIT License](https://choosealicense.com/licenses/mit/).
 In such a case, the attribution notice of the MIT license must be present in the
-header comment of the container image bootstraping file (for instance, the so-called
+header comment of the container image bootstrapping file (for instance, the so-called
 `Dockerfile`).
 This different licensing must be also indicated in the `NOTICE` file of the corresponding
 *NiPreps* components bundled within the image.

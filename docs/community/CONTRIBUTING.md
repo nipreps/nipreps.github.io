@@ -232,7 +232,7 @@ but those accepted fastest will follow a workflow similar to the following:
      * `DOC`: new or updated documentation ([example][doc_ex])
      * `STY`: style changes ([example][sty_ex])
      * `REF`: refactoring existing code ([example][ref_ex])
-     * `CI`: updates to continous integration infrastructure ([example][ci_ex])
+     * `CI`: updates to continuous integration infrastructure ([example][ci_ex])
      * `MAINT`: general maintenance ([example][maint_ex])
      * For works-in-progress, add the `WIP` tag in addition to the descriptive prefix.
        Pull-requests tagged with `WIP:` will not be merged until the tag is removed.
