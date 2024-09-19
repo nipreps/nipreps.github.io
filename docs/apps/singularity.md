@@ -246,7 +246,7 @@ endpoints), then you can try the following:
 
 * `requests.exceptions.SSLError: HTTPSConnectionPool ...`. In this case,
   your container seems to be able to reach the Internet, but unable to use
-  SSL encription. There are two potential solutions to the issue. The
+  SSL encryption. There are two potential solutions to the issue. The
   [recommended one](https://neurostars.org/t/problems-using-pediatric-template-from-templateflow/4566/17)
   is setting `REQUESTS_CA_BUNDLE` to the appropriate path, and/or binding
   the appropriate filesystem:

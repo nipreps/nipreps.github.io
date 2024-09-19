@@ -157,7 +157,7 @@ INFO    - Not serving HTTPS
 Now you can switch to your favorite browser and go to: [127.0.0.1:8445](http://127.0.0.1:8445) (or [192.168.99.100:8445](http://192.168.99.100:8445) for Docker Toolbox).
 
 **3. Copy `fmriprep.egg-info` into your `fmriprep/` project directory**
-`fmriprep.egg-info` makes the package exacutable inside the docker container.
+`fmriprep.egg-info` makes the package executable inside the docker container.
 Open a terminal in vscode and type the following:
 
 ```shell

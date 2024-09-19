@@ -290,7 +290,7 @@ Therefore, it is better to keep things that way (although some minimal efforts t
 
 ## The *dMRIPrep* story
 
-After the success of *fMRIPrep*, some neuroimagers asked "*when a diffussion MRI fMRIPrep?*"
+After the success of *fMRIPrep*, some neuroimagers asked "*when a diffusion MRI fMRIPrep?*"
 
 ## NeuroStars.org
 (please note this down)
