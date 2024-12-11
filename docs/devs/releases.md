@@ -21,7 +21,7 @@ These releases must satisfy four conditions:
 1. **API compatibility.** Workflow-generating functions, workflow input- and outputnode fields must not change. As an end-user application, this may seem overly strict, but the odds of introducing a bug are much higher in these cases.
 1. **User interface compatibility.** Substantial changes to *fMRIPrep* command line must not happen (e.g., the addition of a new, relevant flag).
 
-Note that not all bugs can be fixed in a way that satisfies all three of these criteria without significant effort. A developer may determine that the bug will be fixed in the next feature release.
+Note that not all bugs can be fixed in a way that satisfies all four of these criteria without significant effort. A developer may determine that the bug will be fixed in the next feature release.
 
 Additional acceptable changes within a minor release series:
 
