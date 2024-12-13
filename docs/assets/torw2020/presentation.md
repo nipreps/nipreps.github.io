@@ -1072,7 +1072,7 @@ Such is the case of the quality control tools.
 
 MRIQC produces visual reports for the efficient screening of acquired (meaning, unprocessed) data - in particular anatomical and functional MRI of the human brain.
 
-CrowdMRI is an internet service where anonimized quality control metrics are uploaded automatically as they are computed by MRIQC.
+CrowdMRI is an internet service where anonymized quality control metrics are uploaded automatically as they are computed by MRIQC.
 
 The endgoal is to gather enough data to describe the normative distribution of these metrics across image parameters and scanning devices and sites.
 
