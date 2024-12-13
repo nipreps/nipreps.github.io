@@ -39,6 +39,8 @@ theme:
   name: material
   features:
     - tabs
+  favicon: assets/nipreps_brain.png
+  logo: assets/nipreps_brain.png
 
 markdown_extensions:
   - attr_list
