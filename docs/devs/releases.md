@@ -18,10 +18,10 @@ These releases must satisfy four conditions:
 
 1. **Resolving one or more bugs.** These mostly include failures of *fMRIPrep* to complete or producing invalid derivatives (e.g., a NIfTI file of all zeroes).
 1. **Derivatives compatibility.** If a subject may be successfully run on 20.0.n, then the imaging derivatives should be identical if rerun with 20.0.(n+1), modulo rounding errors and the effects of nondeterministic algorithms. The changes between successful runs of 20.0.n and 20.0.(n+1) should not be larger than the changes between two successful runs of 20.0.n. Cosmetic changes to reports are acceptable, while differing fields of view or data types in a NIfTI file would not be.
-1. **API compatibility.** Workflow-generating functions, workflow input- and outputnode fields must not change. As an end-user application, this may seem overly strict, but the odds of introducing a bug are much higher in these cases.
+1. **API compatibility.** Workflow-generating functions, workflow `inputnode` and `outputnode` fields must not change. As an end-user application, this may seem overly strict, but the odds of introducing a bug are much higher in these cases.
 1. **User interface compatibility.** Substantial changes to *fMRIPrep* command line must not happen (e.g., the addition of a new, relevant flag).
 
-Note that not all bugs can be fixed in a way that satisfies all three of these criteria without significant effort. A developer may determine that the bug will be fixed in the next feature release.
+Note that not all bugs can be fixed in a way that satisfies all four of these criteria without significant effort. A developer may determine that the bug will be fixed in the next feature release.
 
 Additional acceptable changes within a minor release series:
 
