@@ -12,13 +12,13 @@
         <meta name="author" content="The NiPreps developers">
       
       
-        <link rel="canonical" href="https://www.nipreps.org/devs/versions/">
+        <link rel="canonical" href="https://www.nipreps.org/apps/datalad/">
       
       
-        <link rel="prev" href="../devenv/">
+        <link rel="prev" href="../singularity/">
       
       
-        <link rel="next" href="../releases/">
+        <link rel="next" href="../../users/talks/">
       
       
       <link rel="icon" href="../../assets/nipreps_brain.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Versions Matrix - NiPreps</title>
+        <title>Git-Annex and DataLad within containers - NiPreps</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#fmriprep" class="md-skip">
+        <a href="#datalad-and-docker" class="md-skip">
           Skip to content
         </a>
       
@@ -105,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Versions Matrix
+              Git-Annex and DataLad within containers
             
           </span>
         </div>
@@ -486,17 +486,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -510,7 +512,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Documentation (users)
@@ -521,17 +523,19 @@
                 
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" checked>
         
           
           <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
@@ -545,7 +549,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_1">
             <span class="md-nav__icon md-icon"></span>
             BIDS-Apps
@@ -559,7 +563,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../apps/framework/" class="md-nav__link">
+      <a href="../framework/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -580,7 +584,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../apps/docker/" class="md-nav__link">
+      <a href="../docker/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -601,7 +605,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../apps/singularity/" class="md-nav__link">
+      <a href="../singularity/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -619,10 +623,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../apps/datalad/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Git-Annex and DataLad within containers
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -631,6 +653,66 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#datalad-and-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      DataLad and Docker
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DataLad and Docker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-execution-uid" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting execution uid
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mounting-the-dataset-folder-without-read-only-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mounting the dataset folder without read-only permissions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datalad-and-singularityapptainer" class="md-nav__link">
+    <span class="md-ellipsis">
+      DataLad and Singularity/Apptainer
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -697,19 +779,17 @@
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -723,7 +803,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Documentation (devs)
@@ -737,7 +817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../devenv/" class="md-nav__link">
+      <a href="../../devs/devenv/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -755,28 +835,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Versions Matrix
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../devs/versions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -785,60 +847,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#fmriprep" class="md-nav__link">
-    <span class="md-ellipsis">
-      fMRIPrep
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dmriprep" class="md-nav__link">
-    <span class="md-ellipsis">
-      dMRIPrep
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#smriprep" class="md-nav__link">
-    <span class="md-ellipsis">
-      sMRIPrep
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mriqc" class="md-nav__link">
-    <span class="md-ellipsis">
-      MRIQC
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -851,7 +859,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../releases/" class="md-nav__link">
+      <a href="../../devs/releases/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -897,36 +905,42 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#fmriprep" class="md-nav__link">
+  <a href="#datalad-and-docker" class="md-nav__link">
     <span class="md-ellipsis">
-      fMRIPrep
+      DataLad and Docker
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DataLad and Docker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-execution-uid" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting execution uid
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#dmriprep" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#mounting-the-dataset-folder-without-read-only-permissions" class="md-nav__link">
     <span class="md-ellipsis">
-      dMRIPrep
+      Mounting the dataset folder without read-only permissions
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#smriprep" class="md-nav__link">
-    <span class="md-ellipsis">
-      sMRIPrep
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#mriqc" class="md-nav__link">
+  <a href="#datalad-and-singularityapptainer" class="md-nav__link">
     <span class="md-ellipsis">
-      MRIQC
+      DataLad and Singularity/Apptainer
     </span>
   </a>
   
@@ -947,130 +961,151 @@
                   
 
 
-  <h1>Versions Matrix</h1>
+  <h1>Git-Annex and DataLad within containers</h1>
 
-<p>The versions matrix is intended to allow easy reference for the dependencies within the <em>NiPreps</em> family of projects.</p>
-<h2 id="fmriprep"><em>fMRIPrep</em><a class="headerlink" href="#fmriprep" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th><em>fMRIPrep</em> series</th>
-<th><em>sMRIPrep</em> series</th>
-<th><em>SDCflows</em> series</th>
-<th><em>NiWorkflows</em> series</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>23.1.x</td>
-<td><code>~= 0.12.0</code></td>
-<td><code>~= 2.5.0</code></td>
-<td><code>~= 1.8.0</code></td>
-</tr>
-<tr>
-<td>23.0.x</td>
-<td><code>~= 0.11.0</code></td>
-<td><code>~= 2.4.0</code></td>
-<td><code>~= 1.7.6</code></td>
-</tr>
-<tr>
-<td>22.1.x</td>
-<td><code>~= 0.10.0</code></td>
-<td><code>~= 2.2.1</code></td>
-<td><code>~= 1.7.0</code></td>
-</tr>
-<tr>
-<td>22.0.x</td>
-<td><code>~= 0.9.2</code></td>
-<td><code>~= 2.1.1</code></td>
-<td><code>~= 1.6.3</code></td>
-</tr>
-<tr>
-<td>21.0.x</td>
-<td><code>~= 0.8.0</code></td>
-<td><code>~= 2.0.0</code></td>
-<td><code>~= 1.4.0</code></td>
-</tr>
-<tr>
-<td>20.2.x</td>
-<td><code>~= 0.7.0</code></td>
-<td><code>~= 1.3.1</code></td>
-<td><code>~= 1.3.0</code></td>
-</tr>
-<tr>
-<td>20.1.x</td>
-<td><code>~= 0.6.1</code></td>
-<td><code>~= 1.3.1</code></td>
-<td><code>~= 1.2.3</code></td>
-</tr>
-<tr>
-<td>20.0.x</td>
-<td><code>~= 0.5.2</code></td>
-<td><code>~= 1.2.0</code></td>
-<td><code>~= 1.1.7</code></td>
-</tr>
-<tr>
-<td>1.5.3+</td>
-<td><code>~= 0.4.0</code></td>
-<td><code>~= 1.0.1</code></td>
-<td><code>~= 1.0.2</code></td>
-</tr>
-</tbody>
-</table>
-<p>(Originally posted at <a href="https://github.com/nipreps/fmriprep/issues/2054">nipreps/fmriprep#2054</a>)</p>
-<h2 id="dmriprep"><em>dMRIPrep</em><a class="headerlink" href="#dmriprep" title="Permanent link">&para;</a></h2>
-<p>(Work in progress)</p>
-<h2 id="smriprep"><em>sMRIPrep</em><a class="headerlink" href="#smriprep" title="Permanent link">&para;</a></h2>
-<p>sMRIPrep requires niworkflows and generally must depend on one minor series of niworkflows for the duration of an sMRIPrep minor series. Each sMRIPrep series may also be depended on for an fMRIPrep series and/or a dMRIPrep series. Noting these dependencies here should make it easier to track when a new minor series needs to be created.</p>
-<table>
-<thead>
-<tr>
-<th><em>sMRIPrep</em> series</th>
-<th><em>NiWorkflows</em> series</th>
-<th><em>TemplateFlow</em> series</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0.12.x</td>
-<td><code>~=1.8.0</code></td>
-<td>...</td>
-</tr>
-<tr>
-<td>0.10.x</td>
-<td><code>~= 1.7.0</code></td>
-<td><code>&gt;= 0.6</code></td>
-</tr>
-<tr>
-<td>0.9.x</td>
-<td><code>~= 1.6.0</code></td>
-<td><code>&gt;= 0.6</code></td>
-</tr>
-<tr>
-<td>0.8.x</td>
-<td><code>~= 1.4.0</code></td>
-<td><code>&gt;= 0.6</code></td>
-</tr>
-<tr>
-<td>0.7.x</td>
-<td><code>~= 1.3.0</code></td>
-<td><code>~= 0.6</code></td>
-</tr>
-<tr>
-<td>0.6.x</td>
-<td><code>~= 1.2.0</code></td>
-<td><code>~= 0.6</code></td>
-</tr>
-<tr>
-<td>0.5.x</td>
-<td><code>~= 1.1.5</code></td>
-<td><code>~= 0.4.2</code></td>
-</tr>
-</tbody>
-</table>
-<p>(Originally posted at <a href="https://github.com/nipreps/smriprep/issues/172">nipreps/smriprep#172</a>)</p>
-<h2 id="mriqc"><em>MRIQC</em><a class="headerlink" href="#mriqc" title="Permanent link">&para;</a></h2>
-<p>(Work in progress)</p>
+<p>Apps may be able to identify if the input dataset is handled with
+<em>DataLad</em> or <em>Git-Annex</em>, and pull down linked data that has not
+been fetched yet.
+One example of one such application is <em>MRIQC</em>, and all the examples
+on this documentation page will refer to it.</p>
+<div class="admonition important">
+<p class="admonition-title">Summary</p>
+<p>Executing <em>BIDS-Apps</em> leveraging <em>DataLad</em>-controlled datasets
+within containers can be tricky.
+In particular, one of our general recommendations involves mounting
+or binding folders into the container in <strong>read-only mode</strong>, which
+will disallow <em>DataLad</em> from writing to the dataset tree.
+Similarly, and depending on the specific runtime settings of the
+container framework, <em>DataLad</em> may encounter issues with file ownership too.
+This section guides users through ensuring smooth execution of
+<em>BIDS-Apps</em> on <em>DataLad</em>/<em>Git-annex</em>-managed datasets.</p>
+</div>
+<h2 id="datalad-and-docker"><em>DataLad</em> and <em>Docker</em><a class="headerlink" href="#datalad-and-docker" title="Permanent link">&para;</a></h2>
+<p>When executing <em>MRIQC</em> within <em>Docker</em> on a <em>DataLad</em> dataset
+(for instance, installed from <a href="https://openneuro.org"><em>OpenNeuro</em></a>),
+we will need to ensure the following settings are observed:</p>
+<ul>
+<li>the user id (uid) who <em>installed</em> the <em>DataLad</em> dataset must match
+  the uid who is <em>executing MRIQC</em> within the container runtime</li>
+<li>the uid who is <em>executing MRIQC</em> within the container must
+  have sufficient permissions to write in the tree.</li>
+</ul>
+<h3 id="setting-execution-uid">Setting execution uid<a class="headerlink" href="#setting-execution-uid" title="Permanent link">&para;</a></h3>
+<p>If the uid is not correct, we will likely encounter the following error:</p>
+<div class="highlight"><pre><span></span><code>datalad.runner.exception.CommandError: CommandError: &#39;git -c diff.ignoreSubmodules=none -c core.quotepath=false -c annex.merge-annex-branches=false annex find --not --in . --json --json-error-messages -c annex.dotfiles=true -- sub-0001/func/sub-0001_task-restingstate_acq-mb3_bold.nii.gz sub-0002/func/sub-0002_task-emomatching_acq-seq_bold.nii.gz sub-0002/func/sub-0002_task-restingstate_acq-mb3_bold.nii.gz sub-0001/func/sub-0001_task-emomatching_acq-seq_bold.nii.gz sub-0001/func/sub-0001_task-faces_acq-mb3_bold.nii.gz sub-0001/dwi/sub-0001_dwi.nii.gz sub-0002/func/sub-0002_task-workingmemory_acq-seq_bold.nii.gz sub-0001/anat/sub-0001_T1w.nii.gz sub-0002/anat/sub-0002_T1w.nii.gz sub-0001/func/sub-0001_task-gstroop_acq-seq_bold.nii.gz sub-0002/func/sub-0002_task-faces_acq-mb3_bold.nii.gz sub-0002/func/sub-0002_task-anticipation_acq-seq_bold.nii.gz sub-0002/dwi/sub-0002_dwi.nii.gz sub-0001/func/sub-0001_task-anticipation_acq-seq_bold.nii.gz sub-0001/func/sub-0001_task-workingmemory_acq-seq_bold.nii.gz sub-0002/func/sub-0002_task-gstroop_acq-seq_bold.nii.gz&#39; failed with exitcode 1 under /data [info keys: stdout_json] [err: &#39;git-annex: Git refuses to operate in this repository, probably because it is owned by someone else.
+
+To add an exception for this directory, call:
+git config --global --add safe.directory /data
+
+git-annex: automatic initialization failed due to above problems&#39;]
+</code></pre></div>
+<p>Confusingly, following the suggestion from <em>DataLad</em> directly on the host
+(<code>git config --global --add safe.directory /data</code>) will not work in this
+case, because this line must be executed within the container.</p>
+<p>Instead, we can override the default user executing within the container
+(which is <code>root</code>, or uid = 0).
+This can be achieved with
+<a href="https://docs.docker.com/engine/containers/run/#user"><em>Docker</em>'s <code>-u</code>/<code>--user</code> option</a>:</p>
+<div class="highlight"><pre><span></span><code>--user=[ user | user:group | uid | uid:gid | user:gid | uid:group ]
+</code></pre></div>
+<p>We can combine this option with <em>Bash</em>'s <code>id</code> command to ensure the current user's uid and group id (gid) are being set.
+Let's update the last example in the previous
+<a href="../docker/#running-a-niprep-directly-interacting-with-the-docker-engine"><em>Docker</em> execution section</a>:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-ti<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span><span class="nv">$HOME</span>/ds002785:/data:ro<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span><span class="nv">$HOME</span>/ds002785/derivatives:/out<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span><span class="nv">$HOME</span>/tmp/ds002785-workdir:/work<span class="w"> </span><span class="se">\</span>
+<span class="hll"><span class="w">    </span>-u<span class="w"> </span><span class="k">$(</span>id<span class="w"> </span>-u<span class="k">)</span>:<span class="k">$(</span>id<span class="w"> </span>-g<span class="k">)</span><span class="w"> </span><span class="se">\ </span><span class="w">                  </span><span class="c1"># set execution uid:gid</span>
+</span><span class="w">    </span>nipreps/mriqc:&lt;latest-version&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="se">\</span>
+<span class="w">    </span>/data<span class="w"> </span>/out/mriqc-&lt;latest-version&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>participant<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-w<span class="w"> </span>/work
+</code></pre></div>
+<p>The above command line will ensure <em>MRIQC</em> to be executed with the current
+uid and gid, which will match the filesystem's permissions if the dataset
+was installed with the same user.</p>
+<div class="admonition danger">
+<p class="admonition-title">Match uid and gid with those corresponding to the user who installed the dataset</p>
+<p>When different users are to install the dataset and
+execute the application, <em>Docker</em> must be executed with the
+uid and gid corresponding to the user who installed the dataset.
+The uid corresponding to a given username (for instance <code>janedoe</code>)
+can be obtained as follows:</p>
+<div class="highlight"><pre><span></span><code>getent passwd &quot;janedoe&quot; | cut -f 3 -d &quot;:&quot;
+</code></pre></div>
+<p>and her gid:</p>
+<div class="highlight"><pre><span></span><code>getent passwd &quot;janedoe&quot; | cut -f 4 -d &quot;:&quot;
+</code></pre></div>
+</div>
+<h3 id="mounting-the-dataset-folder-without-read-only-permissions">Mounting the dataset folder without <em>read-only</em> permissions<a class="headerlink" href="#mounting-the-dataset-folder-without-read-only-permissions" title="Permanent link">&para;</a></h3>
+<p>If the dataset is protected with <em>read-only</em> permissions, then <em>MRIQC</em>
+will hit the following error
+(<a href="https://github.com/nipreps/mriqc/issues/1363">see <code>nipreps/mriqc#1363</code></a>):</p>
+<div class="highlight"><pre><span></span><code>get(error): sub-0001/func/sub-0001_task-restingstate_acq-mb3_bold.nii.gz (file) [git-annex: .git/annex/tmp: createDirectory: permission denied (Read-only file system)]
+action summary:
+  get (error: 1)
+Traceback (most recent call last):
+  File &quot;/opt/conda/bin/mriqc&quot;, line 8, in &lt;module&gt;
+    sys.exit(main())
+             ^^^^^^
+  File &quot;/opt/conda/lib/python3.11/site-packages/mriqc/cli/run.py&quot;, line 43, in main
+    parse_args(argv)
+  File &quot;/opt/conda/lib/python3.11/site-packages/mriqc/cli/parser.py&quot;, line 658, in parse_args
+    initialize_meta_and_data()
+  File &quot;/opt/conda/lib/python3.11/site-packages/mriqc/utils/misc.py&quot;, line 447, in initialize_meta_and_data
+    _datalad_get(dataset)
+  File &quot;/opt/conda/lib/python3.11/site-packages/mriqc/utils/misc.py&quot;, line 282, in _datalad_get
+    return get(
+           ^^^^
+  File &quot;/opt/conda/lib/python3.11/site-packages/datalad/interface/base.py&quot;, line 773, in eval_func
+    return return_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/opt/conda/lib/python3.11/site-packages/datalad/interface/base.py&quot;, line 763, in return_func
+    results = list(results)
+              ^^^^^^^^^^^^^
+  File &quot;/opt/conda/lib/python3.11/site-packages/datalad_next/patches/interface_utils.py&quot;, line 287, in _execute_command_
+    raise IncompleteResultsError(
+datalad.support.exceptions.IncompleteResultsError: Command did not complete successfully. 1 failed:
+[{&#39;action&#39;: &#39;get&#39;,
+  &#39;annexkey&#39;: &#39;MD5E-s76037251--344f061a3165c71e36b98ad1649c3c8c.nii.gz&#39;,
+  &#39;error_message&#39;: &#39;git-annex: .git/annex/tmp: createDirectory: permission &#39;
+                   &#39;denied (Read-only file system)&#39;,
+  &#39;path&#39;: &#39;/data/sub-0001/func/sub-0001_task-restingstate_acq-mb3_bold.nii.gz&#39;,
+  &#39;refds&#39;: &#39;/data&#39;,
+  &#39;status&#39;: &#39;error&#39;,
+  &#39;type&#39;: &#39;file&#39;}]
+</code></pre></div>
+<p>This error indicates that the container is executed with
+the appropriate uid and gid pair.
+In this case, we will need to ensure <em>DataLad</em> can write
+to the dataset installation when obtaining new data.
+This is easily achieved by <strong>removing the read-only parameters</strong> of the
+mount option:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-ti<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="hll"><span class="w">    </span>-v<span class="w"> </span><span class="nv">$HOME</span>/ds002785:/data<span class="w"> </span><span class="se">\ </span><span class="w">               </span><span class="c1"># mount data WITHOUT :ro</span>
+</span><span class="w">    </span>-v<span class="w"> </span><span class="nv">$HOME</span>/ds002785/derivatives:/out<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span><span class="nv">$HOME</span>/tmp/ds002785-workdir:/work<span class="w"> </span><span class="se">\</span>
+<span class="hll"><span class="w">    </span>-u<span class="w"> </span><span class="k">$(</span>id<span class="w"> </span>-u<span class="k">)</span>:<span class="k">$(</span>id<span class="w"> </span>-g<span class="k">)</span><span class="w"> </span><span class="se">\ </span><span class="w">                  </span><span class="c1"># set execution uid:gid</span>
+</span><span class="w">    </span>nipreps/mriqc:&lt;latest-version&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="se">\</span>
+<span class="w">    </span>/data<span class="w"> </span>/out/mriqc-&lt;latest-version&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>participant<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-w<span class="w"> </span>/work
+</code></pre></div>
+<h2 id="datalad-and-singularityapptainer"><em>DataLad</em> and <em>Singularity</em>/<em>Apptainer</em><a class="headerlink" href="#datalad-and-singularityapptainer" title="Permanent link">&para;</a></h2>
+<p>In the case of <em>Singularity</em> and <em>Apptainer</em>, ensuring the uid that
+executes the container <a href="https://apptainer.org/docs/admin/1.0/user_namespace.html#user-namespace-requirementsn">involves using user namespace mappings</a>.
+Therefore, you will need to contact your system administrator to figure
+out a convenient solution to the problem.</p>
+<p>Since most of <em>Singularity</em>/<em>Apptainer</em> deployments automatically bind
+the user's <code>$HOME</code> directory, <em>DataLad</em>'s suggested direction may
+work:</p>
+<div class="highlight"><pre><span></span><code>git config --global --add safe.directory &lt;path-to-dataset-in-host&gt;
+</code></pre></div>
+<p>Allowing the container to write on the dataset's tree is straightforward
+and homologous to <em>Docker</em>, by removing the <code>:ro</code> setting in the binding
+option (<code>-B</code>).</p>
 
 
 
