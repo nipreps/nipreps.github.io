@@ -29,6 +29,7 @@ nav:
         - Introduction: apps/framework.md
         - Executing with Docker: apps/docker.md
         - Executing with Singularity: apps/singularity.md
+        - Git-Annex and DataLad within containers: apps/datalad.md
       - Presentations: users/talks.md
       - Educational: users/educational.md
     - Documentation (devs):
