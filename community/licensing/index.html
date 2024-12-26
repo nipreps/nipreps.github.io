@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../assets/nipreps_brain.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
     
     
       
@@ -1077,7 +1077,9 @@ The file may or may not have the attribution notice.
 At the time of writing, the header comment of <a href="https://github.com/nipreps/sdcflows/blob/50393a8584dd0abf5f8e16e6ba66c43e1126f844/sdcflows/viz/utils.py">this file</a> is:</p>
 <div class="admonition example">
 <p class="admonition-title">Header comment in the original Work</p>
-<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">With attribution notice</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="with-attribution-notice" name="__tabbed_1" type="radio" /><input id="without-attribution-notice" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="with-attribution-notice">With attribution notice</label><label for="without-attribution-notice">Without attribution notice</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># emacs: -*- mode: python; py-indent-offset: 4; indent-tabs-mode: nil -*-</span>
 <span class="c1"># vi: set ft=python sts=4 ts=4 sw=4 et:</span>
 <span class="c1">#</span>
@@ -1097,7 +1099,7 @@ At the time of writing, the header comment of <a href="https://github.com/niprep
 <span class="sd">&quot;&quot;&quot;Visualization tooling.&quot;&quot;&quot;</span>
 </code></pre></div>
 </div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Without attribution notice</label><div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># emacs: -*- mode: python; py-indent-offset: 4; indent-tabs-mode: nil -*-</span>
 <span class="c1"># vi: set ft=python sts=4 ts=4 sw=4 et:</span>
 <span class="sd">&quot;&quot;&quot;Visualization tooling.&quot;&quot;&quot;</span>
@@ -1105,10 +1107,13 @@ At the time of writing, the header comment of <a href="https://github.com/niprep
 </div>
 </div>
 </div>
+</div>
 <p>Either way (whether the attribution notice is present or not), we suggest to update this header comment to something along the lines of the following:</p>
 <div class="admonition example">
 <p class="admonition-title">Suggested header comment in the Derived Work</p>
-<div class="tabbed-set" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Required</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="required" name="__tabbed_2" type="radio" /><input id="recommended-commit" name="__tabbed_2" type="radio" /><input id="recommended-version" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="required">Required</label><label for="recommended-commit">Recommended (commit)</label><label for="recommended-version">Recommended (version)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <p><div class="highlight"><pre><span></span><code><span class="c1"># &lt;shebang and editor settings can be preserved or removed freely&gt;</span>
 <span class="c1">#</span>
 <span class="c1"># &lt;your attribution notice, either maintaining the Apache-2.0 license or changing the license&gt;</span>
@@ -1142,7 +1147,7 @@ At the time of writing, the header comment of <a href="https://github.com/niprep
 </code></pre></div>
 The lines highlighted with yellow color are explicitly required by the Apache-2.0 conditions.</p>
 </div>
-<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Recommended (commit)</label><div class="tabbed-content">
+<div class="tabbed-block">
 <p><div class="recommended highlight"><pre><span></span><code><span class="c1"># &lt;shebang and editor settings can be preserved or removed freely&gt;</span>
 <span class="c1">#</span>
 <span class="c1"># &lt;your attribution notice, either maintaining the Apache-2.0 license or changing the license&gt;</span>
@@ -1176,7 +1181,7 @@ The lines highlighted with yellow color are explicitly required by the Apache-2.
 </code></pre></div>
 The lines highlighted with green color are recommended by the <em>NiPreps Developers</em>.</p>
 </div>
-<input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><label for="__tabbed_2_3">Recommended (version)</label><div class="tabbed-content">
+<div class="tabbed-block">
 <p><div class="recommended highlight"><pre><span></span><code><span class="c1"># &lt;shebang and editor settings can be preserved or removed freely&gt;</span>
 <span class="c1">#</span>
 <span class="c1"># &lt;your attribution notice, either maintaining the Apache-2.0 license or changing the license&gt;</span>
@@ -1212,6 +1217,7 @@ The lines highlighted with green color are recommended by the <em>NiPreps Develo
 </div>
 </div>
 </div>
+</div>
 <p>Although it is not mandated by the license letter, the spirit of the Apache-2.0 (and all other licenses stipulating the statement of changes, such as the CC-BY 4.0) suggests that a date of modification and an overview of outstanding changes are pertinent.
 We also suggest a link to the original code, including the commit-hash (that long string starting with <code>50393a</code> in the URL above) for the location of the exact origin of the file.
 Alternatively, Derived Works may point to a exact release identifier where the original file is part of the code-base distribution.
@@ -1233,7 +1239,9 @@ This <code>NOTICE</code> file for containers will be placed in the <code>/.docke
 Alternatively, and if the corresponding <em>NiPreps Developers</em> consider that the Apache-2.0 imposes too onerous requirements for the container image distribution, the source code of such images (e.g., <code>Dockerfile</code>) can be licensed under the MIT license.</p>
 <div class="admonition example">
 <p class="admonition-title">Example <code>NOTICE</code> file for <em>fMRIPrep</em></p>
-<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Python distribution <code>/NOTICE</code></label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="python-distribution-notice" name="__tabbed_3" type="radio" /><input id="container-image-distribution-dockernotice" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="python-distribution-notice">Python distribution <code>/NOTICE</code></label><label for="container-image-distribution-dockernotice">Container image distribution <code>/.docker/NOTICE</code></label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>fMRIPrep
 Copyright 2021 The NiPreps Developers.
 
@@ -1250,7 +1258,7 @@ help from the FSL crew (www.fmrib.ox.ac.uk/fsl) and the Biomedical
 Informatics Research Network (www.nbirn.net).
 </code></pre></div>
 </div>
-<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Container image distribution <code>/.docker/NOTICE</code></label><div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>fMRIPrep Container Image distribution
 Copyright 2021 The NiPreps Developers.
 
@@ -1344,6 +1352,7 @@ Informatics Research Network (www.nbirn.net).
 </div>
 </div>
 </div>
+</div>
 
 
 
@@ -1361,6 +1370,8 @@ Informatics Research Network (www.nbirn.net).
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -1394,10 +1405,10 @@ Informatics Research Network (www.nbirn.net).
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["tabs"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
       
     
   </body>
