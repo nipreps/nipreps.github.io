@@ -38,7 +38,7 @@ nav:
 theme:
   name: material
   features:
-    - tabs
+    - content.tabs.link
   favicon: assets/nipreps_brain.png
   logo: assets/nipreps_brain.png
 
@@ -51,7 +51,11 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
-  - pymdownx.tabbed
+  - pymdownx.tabbed:
+      alternate_style: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
   - pymdownx.highlight
   - pymdownx.superfences
   - pymdownx.snippets
