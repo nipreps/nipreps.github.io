@@ -1,10 +1,4 @@
-Apps may be able to identify if the input dataset is handled with
-*DataLad* or *Git-Annex*, and pull down linked data that has not
-been fetched yet.
-One example of one such application is *MRIQC*, and all the examples
-on this documentation page will refer to it.
-
-!!! important "Summary"
+!!! abstract "Summary"
 
     Executing *BIDS-Apps* leveraging *DataLad*-controlled datasets
     within containers can be tricky.
@@ -18,6 +12,12 @@ on this documentation page will refer to it.
 
 ## *DataLad* and *Docker*
 
+Apps may be able to identify if the input dataset is handled with
+*DataLad* or *Git-Annex*, and pull down linked data that has not
+been fetched yet.
+One example of one such application is *MRIQC*, and all the examples
+on this documentation page will refer to it.
+
 When executing *MRIQC* within *Docker* on a *DataLad* dataset
 (for instance, installed from [*OpenNeuro*](https://openneuro.org)),
 we will need to ensure the following settings are observed:
@@ -27,9 +27,12 @@ we will need to ensure the following settings are observed:
 * the uid who is *executing MRIQC* within the container must
   have sufficient permissions to write in the tree.
 
-### Setting execution uid
+### Setting a regular user's execution uid
 
-If the uid is not correct, we will likely encounter the following error:
+If the execution uid does not match the uid of the user who installed
+the *DataLad* dataset, we will likely encounter the following error
+with relatively recent
+[*Git* versions (+2.35.2)](https://github.blog/open-source/git/git-security-vulnerability-announced/#):
 
 ```
 datalad.runner.exception.CommandError: CommandError: 'git -c diff.ignoreSubmodules=none -c core.quotepath=false -c annex.merge-annex-branches=false annex find --not --in . --json --json-error-messages -c annex.dotfiles=true -- sub-0001/func/sub-0001_task-restingstate_acq-mb3_bold.nii.gz sub-0002/func/sub-0002_task-emomatching_acq-seq_bold.nii.gz sub-0002/func/sub-0002_task-restingstate_acq-mb3_bold.nii.gz sub-0001/func/sub-0001_task-emomatching_acq-seq_bold.nii.gz sub-0001/func/sub-0001_task-faces_acq-mb3_bold.nii.gz sub-0001/dwi/sub-0001_dwi.nii.gz sub-0002/func/sub-0002_task-workingmemory_acq-seq_bold.nii.gz sub-0001/anat/sub-0001_T1w.nii.gz sub-0002/anat/sub-0002_T1w.nii.gz sub-0001/func/sub-0001_task-gstroop_acq-seq_bold.nii.gz sub-0002/func/sub-0002_task-faces_acq-mb3_bold.nii.gz sub-0002/func/sub-0002_task-anticipation_acq-seq_bold.nii.gz sub-0002/dwi/sub-0002_dwi.nii.gz sub-0001/func/sub-0001_task-anticipation_acq-seq_bold.nii.gz sub-0001/func/sub-0001_task-workingmemory_acq-seq_bold.nii.gz sub-0002/func/sub-0002_task-gstroop_acq-seq_bold.nii.gz' failed with exitcode 1 under /data [info keys: stdout_json] [err: 'git-annex: Git refuses to operate in this repository, probably because it is owned by someone else.
@@ -40,20 +43,16 @@ git config --global --add safe.directory /data
 git-annex: automatic initialization failed due to above problems']
 ```
 
-Confusingly, following the suggestion from *DataLad* directly on the host
-(`git config --global --add safe.directory /data`) will not work in this
+Confusingly, following the suggestion from *DataLad*
+(just propagated from *Git*) of executing
+`git config --global --add safe.directory /data` will not work in this
 case, because this line must be executed within the container.
+However, containers are *transient* and the setting this configuration
+on *Git* will not be propagated between executions unless advanced
+actions are taken (such as mounting a *Home* folder with the necessary settings).
 
 Instead, we can override the default user executing within the container
 (which is `root`, or uid = 0).
-This can be achieved with
-[*Docker*'s `-u`/`--user` option](https://docs.docker.com/engine/containers/run/#user):
-
-```
---user=[ user | user:group | uid | uid:gid | user:gid | uid:group ]
-```
-
-We can combine this option with *Bash*'s `id` command to ensure the current user's uid and group id (gid) are being set.
 Let's update the last example in the previous
 [*Docker* execution section](docker.md#running-a-niprep-directly-interacting-with-the-docker-engine):
 
