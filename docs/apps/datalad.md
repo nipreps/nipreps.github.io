@@ -13,7 +13,7 @@
 ## *DataLad* and *Docker*
 
 Apps may be able to identify if the input dataset is handled with
-*DataLad* or *Git-Annex*, and pull down linked data that has not
+[*DataLad*](https://www.datalad.org/) or [*git-annex*](https://git-annex.branchable.com), and pull down linked data that has not
 been fetched yet.
 One example of one such application is *MRIQC*, and all the examples
 on this documentation page will refer to it.
@@ -49,7 +49,7 @@ Confusingly, following the suggestion from *DataLad*
 case, because this line must be executed within the container.
 However, containers are *transient* and the setting this configuration
 on *Git* will not be propagated between executions unless advanced
-actions are taken (such as mounting a *Home* folder with the necessary settings).
+actions are taken (such as mounting a *HOME* folder with the necessary settings).
 
 Instead, we can override the default user executing within the container
 (which is `root`, or uid = 0).
