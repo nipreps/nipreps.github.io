@@ -101,6 +101,13 @@ The Docker Engine provides mounting filesystems into the container with the `-v`
 where the trailing `:ro` specifies that the mount is read-only.
 The mount permissions modifiers can be omitted, which means the mount
 will have read-write permissions.
+
+!!! warning "*Docker for Windows* requires enabling Shared Drives"
+
+    On *Windows* installations, the `-v` argument will not work
+    by default because it is necessary to enable shared drives.
+    Please check on this [Stackoverflow post](https://stackoverflow.com/a/51822083) how to enable them.
+
 In general, you'll want to at least provide two mount-points:
 one set in read-only mode for the input data and one read/write
 to store the outputs:
@@ -133,7 +140,48 @@ $ docker run -ti --rm \
     -w /work                             # override default directory
 ```
 
-*BIDS Apps* relying on [TemplateFlow](https://www.templateflow.org)
+!!! tip "Best practices"
+
+    The [*ReproNim* initiative](https://www.repronim.org/)
+    distributes materials and documentation of best practices
+    for containerized execution of neuroimaging workflows.
+    Most of these are organized within the
+    [*YODA* (Yoda's Organigram on Data Analysis)](https://github.com/myyoda) principles.
+
+    For example, mounting `$PWD` into `$PWD` and setting that path
+    as current working directory can effectively resolve many issues.
+    This strategy may be combined with the above suggestion about
+    the application's work directory as follows:
+
+    ``` {.shell hl_lines="4 5 9"}
+    $ docker run -ti --rm \
+        -v path/to/data:/data:ro \
+        -v path/to/output:/out \
+        -v $PWD:$PWD \
+        -w $PWD \   # DO NOT confuse with the application's work directory
+        nipreps/fmriprep:<latest-version> \
+        /data /out/out \
+        participant
+        -w $PWD/work
+    ```
+
+    Mounting `$PWD` may be used with YODA so that all necessary *parts*
+    in execution are reachable from under `$PWD`.
+    This effectively
+    (i) makes it easy to *transfer* configurations from
+    *outside* the container to the *inside* execution runtime;
+    (ii) the *outside*/*inside* filesystem trees are homologous, which
+    makes post-processing and orchestration easier;
+    (iii) execution in shared systems is easier as everything is
+    sort of *self-contained*.
+
+    In addition to mounting `$PWD`, other advanced practices
+    include mounting specific configuration files (for example, a
+    [*Nipype* configuration file](https://miykael.github.io/nipype_tutorial/notebooks/basic_execution_configuration.html))
+    into the appropriate paths within the container.
+
+
+*BIDS Apps* relying on [*TemplateFlow*](https://www.templateflow.org)
 for atlases and templates management may require
 the *TemplateFlow Archive* be mounted from the host.
 Mounting the *Archive* from the host is an effective way
@@ -152,13 +200,26 @@ $ docker run -ti --rm \
     -w /work
 ```
 
-!!! warning "*Docker for Windows* requires enabling Shared Drives"
+!!! danger "Sharing the *TemplateFlow* cache can cause race conditions in parallel execution"
 
-    On *Windows* installations, the `-v` argument will not work
-    by default because it is necessary to enable shared drives.
-    Please check on this [Stackoverflow post](https://stackoverflow.com/a/51822083) how to enable them.
+    When sharing the *TemplateFlow* *HOME* folder across several parallel
+    executions against a single filesystem, these instance will likely
+    attempt to fetch unavailable templates without sufficient time between
+    actions for the data to be fully downloaded (in other words,
+    data downloads will be *racing* each other).
+
+    To resolve this issue, you will need to make sure all necessary
+    templates are already downloaded within the cache folder.
+    If the *TemplateFlow Client* is properly installed in your system,
+    this is possible with the following command line
+    (example shows how to fully download `MNI152NLin2009cAsym`:
+
+    ``` Shell
+    $ templateflow get MNI152NLin2009cAsym
+    ```
 
 ### Running containers as a user
+
 By default, Docker will run the container with the
 user id (uid) **0**, which is reserved for the default **root**
 account in *Linux*.

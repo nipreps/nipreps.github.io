@@ -27,6 +27,20 @@ we will need to ensure the following settings are observed:
 * the uid who is *executing MRIQC* within the container must
   have sufficient permissions to write in the tree.
 
+!!! tip "Check *ReproNim* if the suggestions here did not work"
+
+    The actions suggested here are relatively fundamental, and your
+    settings may showcase specific circumstances that render them
+    insufficient.
+    For a more detailed discussion about orchestrating containers, version
+    control, and reproducible pipelines, please check
+    [the *ReproNim* guidelines](https://www.repronim.org/).
+
+    In the particular case of *MRIQC*, please consider updating (if necessary)
+    and fetching the required data before execution and then
+    add the `--no-datalad-get` argument to workaround issues with
+    *DataLad*.
+
 ### Setting a regular user's execution uid
 
 If the execution uid does not match the uid of the user who installed
