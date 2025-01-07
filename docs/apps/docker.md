@@ -1,14 +1,15 @@
-!!! important "Summary"
+!!! abstract "Summary"
 
     Here, we describe how to run *NiPreps* with Docker containers.
     To illustrate the process, we will show the execution of *fMRIPrep*, but these guidelines extend to any other end-user *NiPrep*.
 
 ## Before you start: install Docker
 
-Probably, the most popular framework to execute containers is Docker.
+Probably, the most popular framework to execute containers is *Docker*.
 If you are to run a *NiPrep* on your PC/laptop, this is the **RECOMMENDED** way of execution.
-Please make sure you follow the Docker installation instructions.
-You can check your Docker Runtime installation running their `hello-world` image:
+Please make sure you follow the
+[*Docker Engine*'s installation instructions](https://docs.docker.com/engine/install/).
+You can check your installation running their `hello-world` image:
 
 ```Shell
 $ docker run --rm hello-world
@@ -39,12 +40,22 @@ For more examples and ideas, visit:
  https://docs.docker.com/get-started/
 ```
 
-After checking your Docker Engine is capable of running Docker images, you are ready to pull your first *NiPreps* container image.
+After checking your *Docker Engine* is capable of running *Docker*
+images, you are ready to pull your first *NiPreps* container image.
 
-## Docker images
+!!! tip "Troubleshooting"
 
-For every new version of the particular *NiPrep* app that is released, a corresponding Docker image is generated.
-The Docker image *becomes* a container when the execution engine loads the image and adds an extra layer that makes it *runnable*. In order to run *NiPreps* Docker images, the Docker Runtime must be installed.
+    If you encounter issues while executing a containerized application,
+    it is critical to identify where the fault is sourced.
+    For issues emerging from the *Docker Engine*, please read the
+    [corresponding troubleshooting guidelines](https://docs.docker.com/desktop/troubleshoot-and-support/troubleshoot/#volumes).
+    Once verified the problem is not related to the container system,
+    then follow the specific application debugging guidelines.
+
+## *Docker* images
+
+For every new version of the particular *NiPreps* application that is released, a corresponding *Docker* image is generated.
+The Docker image *becomes* a container when the execution engine loads the image and adds an extra layer that makes it *runnable*. In order to run *NiPreps*' *Docker* images, the *Docker Engine* must be installed.
 <!-- (see `installation_docker`{.interpreted-text
 role="ref"}).-->
 
@@ -54,7 +65,7 @@ Taking *fMRIPrep* to illustrate the usage, first you might want to make sure of 
 $ docker pull nipreps/fmriprep:<latest-version>
 ```
 
-You can run *NiPreps* interacting directly with the Docker Engine via the `docker run` interface.
+You can run *NiPreps* interacting directly with the *Docker Engine* via the `docker run` interface.
 
 
 ## Running a *NiPrep* with a lightweight wrapper
@@ -72,83 +83,279 @@ RUNNING: docker run --rm -it -v /path/to/data/dir:/data:ro \
 ...
 ```
 
-`fmriprep-docker` implements [the unified command-line interface of BIDS Apps](framework.md#a-unified-command-line-interface), and automatically translates directories into Docker mount points for you.
+`fmriprep-docker` implements [the unified command-line interface of *BIDS Apps*](framework.md#a-unified-command-line-interface), and automatically translates directories into *Docker* mount points for you.
 
 We have published a [step-by-step tutorial](http://reproducibility.stanford.edu/fmriprep-tutorial-running-the-docker-image/) illustrating how to run `fmriprep-docker`.
 This tutorial also provides valuable troubleshooting insights and advice on what to do after
 *fMRIPrep* has run.
 
-## Running a *NiPrep* directly interacting with the Docker Engine
+## Running a *NiPrep* directly interacting with the *Docker Engine*
 
-If you need a finer control over the container execution, or you feel comfortable with the Docker Engine, avoiding the extra software layer of the wrapper might be a good decision.
+If you need a finer control over the container execution, or you feel comfortable with the *Docker Engine*, avoiding the extra software layer of the wrapper might be a good decision.
 
-**Accessing filesystems in the host within the container**:
-Containers are confined in a sandbox, so they can't access the host in any ways
-unless you explicitly prescribe acceptable accesses to the host. The
-Docker Engine provides mounting filesystems into the container with the
-`-v` argument and the following syntax:
-`-v some/path/in/host:/absolute/path/within/container:ro`, where the
-trailing `:ro` specifies that the mount is read-only. The mount
-permissions modifiers can be omitted, which means the mount will have
-read-write permissions. In general, you'll want to at least provide two
-mount-points: one set in read-only mode for the input data and one
-read/write to store the outputs. Potentially, you'll want to provide
-one or two more mount-points: one for the working directory, in case you
-need to debug some issue or reuse pre-cached results; and a
-[TemplateFlow](https://www.templateflow.org) folder to preempt the
-download of your favorite templates in every run.
+### Accessing filesystems in the host within the container
 
-**Running containers as a user**:
-By default, Docker will run the
-container as **root**. Some share systems my limit this feature and only
-allow running containers as a user. When the container is run as
-**root**, files written out to filesystems mounted from the host will
-have the user id `1000` by default. In other words, you'll need to be
-able to run as root in the host to change permissions or manage these
-files. Alternatively, running as a user allows preempting these
-permissions issues. It is possible to run as a user with the `-u`
-argument. In general, we will want to use the same user ID as the
-running user in the host to ensure the ownership of files written during
-the container execution. Therefore, you will generally run the container
-with `-u $( id -u )`.
+Containers are confined in a sandbox, so they can't access the data on the host
+unless explicitly enabled.
+The *Docker Engine* provides mounting filesystems into the container with the `-v` argument and the following syntax:
+`-v some/path/in/host:/absolute/path/within/container:ro`,
+where the trailing `:ro` specifies that the mount is read-only.
+The mount permissions modifiers can be omitted, which means the mount
+will have read-write permissions.
 
-You may also invoke `docker` directly:
+!!! warning "*Docker for Windows* requires enabling Shared Drives"
 
-``` Shell
+    On *Windows* installations, the `-v` argument will not work
+    by default because it is necessary to enable shared drives.
+    Please check on this [Stackoverflow post](https://stackoverflow.com/a/51822083) how to enable them.
+
+In general, you'll want to at least provide two mount-points:
+one set in read-only mode for the input data and one read/write
+to store the outputs:
+
+``` {.shell hl_lines="2 3"}
 $ docker run -ti --rm \
-    -v path/to/data:/data:ro \
-    -v path/to/output:/out \
+    -v path/to/data:/data:ro \        # read-only, for data
+    -v path/to/output:/out \          # read-write, for outputs
     nipreps/fmriprep:<latest-version> \
     /data /out/out \
     participant
 ```
 
-For example: :
+We recommend mounting a work (or scratch) directory for intermediate workflow results.
+This is particularly useful for **debugging** or **reusing pre-cached intermediate results**,
+but can also be useful to control where these (large) directories get created,
+as the default location for files created inside a docker container may not have sufficient space.
+In the case of *NiPreps*, we typically inform the *BIDS Apps*
+to override the work directory by setting the `-w`/`--work-dir`
+argument (please note that this is not defined by the *BIDS Apps*
+specifications and it may change across applications):
+
+``` {.shell hl_lines="4 8"}
+$ docker run -ti --rm \
+    -v path/to/data:/data:ro \
+    -v path/to/output:/out \
+    -v path/to/work:/work \              # mount from host
+    nipreps/fmriprep:<latest-version> \
+    /data /out/out \
+    participant
+    -w /work                             # override default directory
+```
+
+!!! tip "Best practices"
+
+    The [*ReproNim* initiative](https://www.repronim.org/)
+    distributes materials and documentation of best practices
+    for containerized execution of neuroimaging workflows.
+    Most of these are organized within the
+    [*YODA* (Yoda's Organigram on Data Analysis)](https://github.com/myyoda) principles.
+
+    For example, mounting `$PWD` into `$PWD` and setting that path
+    as current working directory can effectively resolve many issues.
+    This strategy may be combined with the above suggestion about
+    the application's work directory as follows:
+
+    ``` {.shell hl_lines="4 5 9"}
+    $ docker run -ti --rm \
+        -v $PWD:$PWD \  # Mount the current directory with its own name
+        -w $PWD \       # DO NOT confuse with the application's work directory
+        nipreps/fmriprep:<latest-version> \
+        inputs/raw-data outputs/fmriprep \  # With YODA, the inputs are inside the working directory
+        participant
+        -w $PWD/work
+    ```
+
+    Mounting `$PWD` may be used with YODA so that all necessary *parts*
+    in execution are reachable from under `$PWD`.
+    This effectively
+    (i) makes it easy to *transfer* configurations from
+    *outside* the container to the *inside* execution runtime;
+    (ii) the *outside*/*inside* filesystem trees are homologous, which
+    makes post-processing and orchestration easier;
+    (iii) execution in shared systems is easier as everything is
+    sort of *self-contained*.
+
+    In addition to mounting `$PWD`, other advanced practices
+    include mounting specific configuration files (for example, a
+    [*Nipype* configuration file](https://miykael.github.io/nipype_tutorial/notebooks/basic_execution_configuration.html))
+    into the appropriate paths within the container.
+
+
+*BIDS Apps* relying on [*TemplateFlow*](https://www.templateflow.org)
+for atlas and template management may require
+the *TemplateFlow Archive* be mounted from the host.
+Mounting the *Archive* from the host is an effective way
+to prevent multiple downloads of templates that are not bundled in the image:
+
+``` {.shell hl_lines="5 6"}
+$ docker run -ti --rm \
+    -v path/to/data:/data:ro \
+    -v path/to/output:/out \
+    -v path/to/work:/work \
+    -v path/to/tf-cache:/opt/templateflow \  # mount from host
+    -e TEMPLATEFLOW_HOME=/opt/templateflow \ # override TF home
+    nipreps/fmriprep:<latest-version> \
+    /data /out/out \
+    participant
+    -w /work
+```
+
+!!! danger "Sharing the *TemplateFlow* cache can cause race conditions in parallel execution"
+
+    When sharing the *TemplateFlow* *HOME* folder across several parallel
+    executions against a single filesystem, these instance will likely
+    attempt to fetch unavailable templates without sufficient time between
+    actions for the data to be fully downloaded (in other words,
+    data downloads will be *racing* each other).
+
+    To resolve this issue, you will need to make sure all necessary
+    templates are already downloaded within the cache folder.
+    If the *TemplateFlow Client* is properly installed in your system,
+    this is possible with the following command line
+    (example shows how to fully download `MNI152NLin2009cAsym`:
+
+    ``` Shell
+    $ templateflow get MNI152NLin2009cAsym
+    ```
+
+### Running containers as a user
+
+By default, *Docker* will run the container with the
+user id (uid) **0**, which is reserved for the default **root**
+account in *Linux*.
+In other words, by default *Docker* will use the superuser account
+to execute the container and will write files with the corresponding
+uid=0 unless configured otherwise.
+Executing as superuser may result in permissions and security issues,
+for example, [with *DataLad* (discussed later)](datalad.md#).
+One paramount example of permissions issues where beginners typically
+run into is deleting files after a containerized execution.
+If the uid is not overridden, the outputs of a containerized execution
+will be owned by **root** and group **root**.
+Therefore, normal users will not be able to modify the output and
+superuser permissions will be required to delete data generated
+by the containerized application.
+Some shared systems only allow running containers as a normal user
+because the user will not be able to operate on the outputs otherwise.
+
+Whether the container is available with default settings,
+or the execution has been customized to normal users,
+running as a normal user avoids these permissions issues.
+This can be achieved with
+[*Docker*'s `-u`/`--user` option](https://docs.docker.com/engine/containers/run/#user):
 
 ```
+--user=[ user | user:group | uid | uid:gid | user:gid | uid:group ]
+```
+
+We can combine this option with *Bash*'s `id` command to ensure the current user's uid and group id (gid) are being set:
+
+``` {.shell hl_lines="4"}
+$ docker run -ti --rm \
+    -v path/to/data:/data:ro \
+    -v path/to/output:/out \
+    -u $(id -u):$(id -g) \                   # set execution uid:gid
+    -v path/to/tf-cache:/opt/templateflow \  # mount from host
+    -e TEMPLATEFLOW_HOME=/opt/templateflow \ # override TF home
+    nipreps/fmriprep:<latest-version> \
+    /data /out/out \
+    participant
+```
+
+For example:
+
+``` Shell
 $ docker run -ti --rm \
     -v $HOME/ds005:/data:ro \
     -v $HOME/ds005/derivatives:/out \
     -v $HOME/tmp/ds005-workdir:/work \
+    -u $(id -u):$(id -g) \
+    -v $HOME/.cache/templateflow:/opt/templateflow \
+    -e TEMPLATEFLOW_HOME=/opt/templateflow \
     nipreps/fmriprep:<latest-version> \
     /data /out/fmriprep-<latest-version> \
     participant \
     -w /work
 ```
 
-Once the Docker Engine arguments are written, the remainder of the
-command line follows the [usage](https://fmriprep.readthedocs.io/en/latest/usage.html).
-In other words, the first section of the command line is all equivalent to the
-`fmriprep` executable in a *bare-metal* installation: :
+### Application-specific options
 
-``` Shell
-$ docker run -ti --rm \                      # These lines
-    -v $HOME/ds005:/data:ro \                # are equivalent to
-    -v $HOME/ds005/derivatives:/out \        # a call to the App's
-    -v $HOME/tmp/ds005-workdir:/work \       # entry-point.
-    nipreps/fmriprep:<latest-version> \  #
-    \
-    /data /out/fmriprep-<latest-version> \   # These lines correspond
-    participant \                            # to the particular BIDS
-    -w /work                                 # App arguments.
+Once the *Docker Engine* arguments are written, the remainder of the
+command line follows the interface defined by the specific
+*BIDS App* (for instance,
+[*fMRIPrep*](https://fmriprep.readthedocs.io/en/latest/usage.html)
+or [*MRIQC*](https://mriqc.readthedocs.io/en/latest/running.html#command-line-interface)).
+
+The first section of a call consists of arguments specific to *Docker*,
+which configure the execution of the container:
+
+``` {.shell hl_lines="1-7"}
+$ docker run -ti --rm \
+    -v $HOME/ds005:/data:ro \
+    -v $HOME/ds005/derivatives:/out \
+    -v $HOME/tmp/ds005-workdir:/work \
+    -u $(id -u):$(id -g) \
+    -v $HOME/.cache/templateflow:/opt/templateflow \
+    -e TEMPLATEFLOW_HOME=/opt/templateflow \
+    nipreps/fmriprep:<latest-version> \
+    /data /out/fmriprep-<latest-version> \
+    participant \
+    -w /work
+```
+
+Then, we specify the container image that we execute:
+
+``` {.shell hl_lines="8"}
+$ docker run -ti --rm \
+    -v $HOME/ds005:/data:ro \
+    -v $HOME/ds005/derivatives:/out \
+    -v $HOME/tmp/ds005-workdir:/work \
+    -u $(id -u):$(id -g) \
+    -v $HOME/.cache/templateflow:/opt/templateflow \
+    -e TEMPLATEFLOW_HOME=/opt/templateflow \
+    nipreps/fmriprep:<latest-version> \
+    /data /out/fmriprep-<latest-version> \
+    participant \
+    -w /work
+```
+
+Finally, the application-specific options can be added.
+We already described the work directory setting before, in the case
+of *NiPreps* such as *MRIQC* and *fMRIPrep*.
+Some options are *BIDS Apps* standard, such as
+the *analysis level* (`participant` or `group`)
+and specific participant identifier(s) (`--participant-label`):
+
+``` {.shell hl_lines="9-12"}
+$ docker run -ti --rm \
+    -v $HOME/ds005:/data:ro \
+    -v $HOME/ds005/derivatives:/out \
+    -v $HOME/tmp/ds005-workdir:/work \
+    -u $(id -u):$(id -g) \
+    -v $HOME/.cache/templateflow:/opt/templateflow \
+    -e TEMPLATEFLOW_HOME=/opt/templateflow \
+    nipreps/fmriprep:<latest-version> \
+    /data /out/fmriprep-<latest-version> \
+    participant \
+    --participant-label 001 002 \
+    -w /work
+```
+
+### Resource constraints
+
+*Docker* may be executed with limited resources.
+Please [read the documentation](https://docs.docker.com/engine/containers/resource_constraints/)
+to limit resources such as memory, memory policies, number of CPUs, etc.
+
+**Memory will be a common culprit** when working with large datasets
+(+10GB).
+However, the *Docker Engine* is limited to 2GB of RAM by default
+for some installations of *Docker* for *MacOSX* and *Windows*.
+The general resource settings can be also modified through the *Docker Desktop*
+graphical user interface.
+On a shell, the memory limit can be overridden with:
+
+```
+$ service docker stop
+$ dockerd --storage-opt dm.basesize=30G
 ```
