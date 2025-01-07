@@ -182,7 +182,7 @@ $ docker run -ti --rm \
 
 
 *BIDS Apps* relying on [*TemplateFlow*](https://www.templateflow.org)
-for atlases and templates management may require
+for atlas and template management may require
 the *TemplateFlow Archive* be mounted from the host.
 Mounting the *Archive* from the host is an effective way
 to prevent multiple downloads of templates that are not bundled in the image:
