@@ -659,6 +659,48 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Running a NiPrep directly interacting with the Docker Engine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accessing-filesystems-in-the-host-within-the-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing filesystems in the host within the container
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-containers-as-a-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running containers as a user
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-specific-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application-specific options
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource constraints
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -932,6 +974,48 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Running a NiPrep directly interacting with the Docker Engine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accessing-filesystems-in-the-host-within-the-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing filesystems in the host within the container
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-containers-as-a-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running containers as a user
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-specific-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application-specific options
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource constraints
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -951,16 +1035,17 @@
 
   <h1>Executing with Docker</h1>
 
-<div class="admonition important">
+<div class="admonition abstract">
 <p class="admonition-title">Summary</p>
 <p>Here, we describe how to run <em>NiPreps</em> with Docker containers.
 To illustrate the process, we will show the execution of <em>fMRIPrep</em>, but these guidelines extend to any other end-user <em>NiPrep</em>.</p>
 </div>
 <h2 id="before-you-start-install-docker">Before you start: install Docker<a class="headerlink" href="#before-you-start-install-docker" title="Permanent link">&para;</a></h2>
-<p>Probably, the most popular framework to execute containers is Docker.
+<p>Probably, the most popular framework to execute containers is <em>Docker</em>.
 If you are to run a <em>NiPrep</em> on your PC/laptop, this is the <strong>RECOMMENDED</strong> way of execution.
-Please make sure you follow the Docker installation instructions.
-You can check your Docker Runtime installation running their <code>hello-world</code> image:</p>
+Please make sure you follow the
+<a href="https://docs.docker.com/engine/install/"><em>Docker Engine</em>'s installation instructions</a>.
+You can check your installation running their <code>hello-world</code> image:</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>hello-world
 </code></pre></div>
 <p>If you have a functional installation, then you should obtain the following output:</p>
@@ -985,17 +1070,27 @@ Share<span class="w"> </span>images,<span class="w"> </span>automate<span class=
 For<span class="w"> </span>more<span class="w"> </span>examples<span class="w"> </span>and<span class="w"> </span>ideas,<span class="w"> </span>visit:
 <span class="w"> </span>https://docs.docker.com/get-started/
 </code></pre></div>
-<p>After checking your Docker Engine is capable of running Docker images, you are ready to pull your first <em>NiPreps</em> container image.</p>
-<h2 id="docker-images">Docker images<a class="headerlink" href="#docker-images" title="Permanent link">&para;</a></h2>
-<p>For every new version of the particular <em>NiPrep</em> app that is released, a corresponding Docker image is generated.
-The Docker image <em>becomes</em> a container when the execution engine loads the image and adds an extra layer that makes it <em>runnable</em>. In order to run <em>NiPreps</em> Docker images, the Docker Runtime must be installed.</p>
+<p>After checking your <em>Docker Engine</em> is capable of running <em>Docker</em>
+images, you are ready to pull your first <em>NiPreps</em> container image.</p>
+<div class="admonition tip">
+<p class="admonition-title">Troubleshooting</p>
+<p>If you encounter issues while executing a containerized application,
+it is critical to identify where the fault is sourced.
+For issues emerging from the <em>Docker Engine</em>, please read the
+<a href="https://docs.docker.com/desktop/troubleshoot-and-support/troubleshoot/#volumes">corresponding troubleshooting guidelines</a>.
+Once verified the problem is not related to the container system,
+then follow the specific application debugging guidelines.</p>
+</div>
+<h2 id="docker-images"><em>Docker</em> images<a class="headerlink" href="#docker-images" title="Permanent link">&para;</a></h2>
+<p>For every new version of the particular <em>NiPreps</em> application that is released, a corresponding <em>Docker</em> image is generated.
+The Docker image <em>becomes</em> a container when the execution engine loads the image and adds an extra layer that makes it <em>runnable</em>. In order to run <em>NiPreps</em>' <em>Docker</em> images, the <em>Docker Engine</em> must be installed.</p>
 <!-- (see `installation_docker`{.interpreted-text
 role="ref"}).-->
 
 <p>Taking <em>fMRIPrep</em> to illustrate the usage, first you might want to make sure of the exact version of the tool to be used:</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>pull<span class="w"> </span>nipreps/fmriprep:&lt;latest-version&gt;
 </code></pre></div>
-<p>You can run <em>NiPreps</em> interacting directly with the Docker Engine via the <code>docker run</code> interface.</p>
+<p>You can run <em>NiPreps</em> interacting directly with the <em>Docker Engine</em> via the <code>docker run</code> interface.</p>
 <h2 id="running-a-niprep-with-a-lightweight-wrapper">Running a <em>NiPrep</em> with a lightweight wrapper<a class="headerlink" href="#running-a-niprep-with-a-lightweight-wrapper" title="Permanent link">&para;</a></h2>
 <p>Some <em>NiPreps</em> include a lightweight wrapper script for convenience.
 That is the case of <em>fMRIPrep</em> and its <code>fmriprep-docker</code> wrapper.
@@ -1007,71 +1102,231 @@ RUNNING:<span class="w"> </span>docker<span class="w"> </span>run<span class="w"
 <span class="w">    </span>/data<span class="w"> </span>/out<span class="w"> </span>participant
 ...
 </code></pre></div>
-<p><code>fmriprep-docker</code> implements <a href="../framework/#a-unified-command-line-interface">the unified command-line interface of BIDS Apps</a>, and automatically translates directories into Docker mount points for you.</p>
+<p><code>fmriprep-docker</code> implements <a href="../framework/#a-unified-command-line-interface">the unified command-line interface of <em>BIDS Apps</em></a>, and automatically translates directories into <em>Docker</em> mount points for you.</p>
 <p>We have published a <a href="http://reproducibility.stanford.edu/fmriprep-tutorial-running-the-docker-image/">step-by-step tutorial</a> illustrating how to run <code>fmriprep-docker</code>.
 This tutorial also provides valuable troubleshooting insights and advice on what to do after
 <em>fMRIPrep</em> has run.</p>
-<h2 id="running-a-niprep-directly-interacting-with-the-docker-engine">Running a <em>NiPrep</em> directly interacting with the Docker Engine<a class="headerlink" href="#running-a-niprep-directly-interacting-with-the-docker-engine" title="Permanent link">&para;</a></h2>
-<p>If you need a finer control over the container execution, or you feel comfortable with the Docker Engine, avoiding the extra software layer of the wrapper might be a good decision.</p>
-<p><strong>Accessing filesystems in the host within the container</strong>:
-Containers are confined in a sandbox, so they can't access the host in any ways
-unless you explicitly prescribe acceptable accesses to the host. The
-Docker Engine provides mounting filesystems into the container with the
-<code>-v</code> argument and the following syntax:
-<code>-v some/path/in/host:/absolute/path/within/container:ro</code>, where the
-trailing <code>:ro</code> specifies that the mount is read-only. The mount
-permissions modifiers can be omitted, which means the mount will have
-read-write permissions. In general, you'll want to at least provide two
-mount-points: one set in read-only mode for the input data and one
-read/write to store the outputs. Potentially, you'll want to provide
-one or two more mount-points: one for the working directory, in case you
-need to debug some issue or reuse pre-cached results; and a
-<a href="https://www.templateflow.org">TemplateFlow</a> folder to preempt the
-download of your favorite templates in every run.</p>
-<p><strong>Running containers as a user</strong>:
-By default, Docker will run the
-container as <strong>root</strong>. Some share systems my limit this feature and only
-allow running containers as a user. When the container is run as
-<strong>root</strong>, files written out to filesystems mounted from the host will
-have the user id <code>1000</code> by default. In other words, you'll need to be
-able to run as root in the host to change permissions or manage these
-files. Alternatively, running as a user allows preempting these
-permissions issues. It is possible to run as a user with the <code>-u</code>
-argument. In general, we will want to use the same user ID as the
-running user in the host to ensure the ownership of files written during
-the container execution. Therefore, you will generally run the container
-with <code>-u $( id -u )</code>.</p>
-<p>You may also invoke <code>docker</code> directly:</p>
+<h2 id="running-a-niprep-directly-interacting-with-the-docker-engine">Running a <em>NiPrep</em> directly interacting with the <em>Docker Engine</em><a class="headerlink" href="#running-a-niprep-directly-interacting-with-the-docker-engine" title="Permanent link">&para;</a></h2>
+<p>If you need a finer control over the container execution, or you feel comfortable with the <em>Docker Engine</em>, avoiding the extra software layer of the wrapper might be a good decision.</p>
+<h3 id="accessing-filesystems-in-the-host-within-the-container">Accessing filesystems in the host within the container<a class="headerlink" href="#accessing-filesystems-in-the-host-within-the-container" title="Permanent link">&para;</a></h3>
+<p>Containers are confined in a sandbox, so they can't access the data on the host
+unless explicitly enabled.
+The <em>Docker Engine</em> provides mounting filesystems into the container with the <code>-v</code> argument and the following syntax:
+<code>-v some/path/in/host:/absolute/path/within/container:ro</code>,
+where the trailing <code>:ro</code> specifies that the mount is read-only.
+The mount permissions modifiers can be omitted, which means the mount
+will have read-write permissions.</p>
+<div class="admonition warning">
+<p class="admonition-title"><em>Docker for Windows</em> requires enabling Shared Drives</p>
+<p>On <em>Windows</em> installations, the <code>-v</code> argument will not work
+by default because it is necessary to enable shared drives.
+Please check on this <a href="https://stackoverflow.com/a/51822083">Stackoverflow post</a> how to enable them.</p>
+</div>
+<p>In general, you'll want to at least provide two mount-points:
+one set in read-only mode for the input data and one read/write
+to store the outputs:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-ti<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="hll"><span class="w">    </span>-v<span class="w"> </span>path/to/data:/data:ro<span class="w"> </span><span class="se">\ </span><span class="w">       </span><span class="c1"># read-only, for data</span>
+</span><span class="hll"><span class="w">    </span>-v<span class="w"> </span>path/to/output:/out<span class="w"> </span><span class="se">\ </span><span class="w">         </span><span class="c1"># read-write, for outputs</span>
+</span><span class="w">    </span>nipreps/fmriprep:&lt;latest-version&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>/data<span class="w"> </span>/out/out<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>participant
+</code></pre></div>
+<p>We recommend mounting a work (or scratch) directory for intermediate workflow results.
+This is particularly useful for <strong>debugging</strong> or <strong>reusing pre-cached intermediate results</strong>,
+but can also be useful to control where these (large) directories get created,
+as the default location for files created inside a docker container may not have sufficient space.
+In the case of <em>NiPreps</em>, we typically inform the <em>BIDS Apps</em>
+to override the work directory by setting the <code>-w</code>/<code>--work-dir</code>
+argument (please note that this is not defined by the <em>BIDS Apps</em>
+specifications and it may change across applications):</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-ti<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-v<span class="w"> </span>path/to/data:/data:ro<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-v<span class="w"> </span>path/to/output:/out<span class="w"> </span><span class="se">\</span>
+<span class="hll"><span class="w">    </span>-v<span class="w"> </span>path/to/work:/work<span class="w"> </span><span class="se">\ </span><span class="w">             </span><span class="c1"># mount from host</span>
+</span><span class="w">    </span>nipreps/fmriprep:&lt;latest-version&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>/data<span class="w"> </span>/out/out<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>participant
+<span class="hll"><span class="w">    </span>-w<span class="w"> </span>/work<span class="w">                             </span><span class="c1"># override default directory</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Best practices</p>
+<p>The <a href="https://www.repronim.org/"><em>ReproNim</em> initiative</a>
+distributes materials and documentation of best practices
+for containerized execution of neuroimaging workflows.
+Most of these are organized within the
+<a href="https://github.com/myyoda"><em>YODA</em> (Yoda's Organigram on Data Analysis)</a> principles.</p>
+<p>For example, mounting <code>$PWD</code> into <code>$PWD</code> and setting that path
+as current working directory can effectively resolve many issues.
+This strategy may be combined with the above suggestion about
+the application's work directory as follows:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-ti<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span><span class="nv">$PWD</span>:<span class="nv">$PWD</span><span class="w"> </span><span class="se">\ </span><span class="w"> </span><span class="c1"># Mount the current directory with its own name</span>
+<span class="w">    </span>-w<span class="w"> </span><span class="nv">$PWD</span><span class="w"> </span><span class="se">\ </span><span class="w">      </span><span class="c1"># DO NOT confuse with the application&#39;s work directory</span>
+<span class="hll"><span class="w">    </span>nipreps/fmriprep:&lt;latest-version&gt;<span class="w"> </span><span class="se">\</span>
+</span><span class="hll"><span class="w">    </span>inputs/raw-data<span class="w"> </span>outputs/fmriprep<span class="w"> </span><span class="se">\ </span><span class="w"> </span><span class="c1"># With YODA, the inputs are inside the working directory</span>
+</span><span class="w">    </span>participant
+<span class="w">    </span>-w<span class="w"> </span><span class="nv">$PWD</span>/work
+</code></pre></div>
+<p>Mounting <code>$PWD</code> may be used with YODA so that all necessary <em>parts</em>
+in execution are reachable from under <code>$PWD</code>.
+This effectively
+(i) makes it easy to <em>transfer</em> configurations from
+<em>outside</em> the container to the <em>inside</em> execution runtime;
+(ii) the <em>outside</em>/<em>inside</em> filesystem trees are homologous, which
+makes post-processing and orchestration easier;
+(iii) execution in shared systems is easier as everything is
+sort of <em>self-contained</em>.</p>
+<p>In addition to mounting <code>$PWD</code>, other advanced practices
+include mounting specific configuration files (for example, a
+<a href="https://miykael.github.io/nipype_tutorial/notebooks/basic_execution_configuration.html"><em>Nipype</em> configuration file</a>)
+into the appropriate paths within the container.</p>
+</div>
+<p><em>BIDS Apps</em> relying on <a href="https://www.templateflow.org"><em>TemplateFlow</em></a>
+for atlas and template management may require
+the <em>TemplateFlow Archive</em> be mounted from the host.
+Mounting the <em>Archive</em> from the host is an effective way
+to prevent multiple downloads of templates that are not bundled in the image:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-ti<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>path/to/data:/data:ro<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>path/to/output:/out<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>path/to/work:/work<span class="w"> </span><span class="se">\</span>
+<span class="hll"><span class="w">    </span>-v<span class="w"> </span>path/to/tf-cache:/opt/templateflow<span class="w"> </span><span class="se">\ </span><span class="w"> </span><span class="c1"># mount from host</span>
+</span><span class="hll"><span class="w">    </span>-e<span class="w"> </span><span class="nv">TEMPLATEFLOW_HOME</span><span class="o">=</span>/opt/templateflow<span class="w"> </span><span class="se">\ </span><span class="c1"># override TF home</span>
+</span><span class="w">    </span>nipreps/fmriprep:&lt;latest-version&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>/data<span class="w"> </span>/out/out<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>participant
+<span class="w">    </span>-w<span class="w"> </span>/work
+</code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Sharing the <em>TemplateFlow</em> cache can cause race conditions in parallel execution</p>
+<p>When sharing the <em>TemplateFlow</em> <em>HOME</em> folder across several parallel
+executions against a single filesystem, these instance will likely
+attempt to fetch unavailable templates without sufficient time between
+actions for the data to be fully downloaded (in other words,
+data downloads will be <em>racing</em> each other).</p>
+<p>To resolve this issue, you will need to make sure all necessary
+templates are already downloaded within the cache folder.
+If the <em>TemplateFlow Client</em> is properly installed in your system,
+this is possible with the following command line
+(example shows how to fully download <code>MNI152NLin2009cAsym</code>:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>templateflow<span class="w"> </span>get<span class="w"> </span>MNI152NLin2009cAsym
+</code></pre></div>
+</div>
+<h3 id="running-containers-as-a-user">Running containers as a user<a class="headerlink" href="#running-containers-as-a-user" title="Permanent link">&para;</a></h3>
+<p>By default, <em>Docker</em> will run the container with the
+user id (uid) <strong>0</strong>, which is reserved for the default <strong>root</strong>
+account in <em>Linux</em>.
+In other words, by default <em>Docker</em> will use the superuser account
+to execute the container and will write files with the corresponding
+uid=0 unless configured otherwise.
+Executing as superuser may result in permissions and security issues,
+for example, <a href="../datalad/">with <em>DataLad</em> (discussed later)</a>.
+One paramount example of permissions issues where beginners typically
+run into is deleting files after a containerized execution.
+If the uid is not overridden, the outputs of a containerized execution
+will be owned by <strong>root</strong> and group <strong>root</strong>.
+Therefore, normal users will not be able to modify the output and
+superuser permissions will be required to delete data generated
+by the containerized application.
+Some shared systems only allow running containers as a normal user
+because the user will not be able to operate on the outputs otherwise.</p>
+<p>Whether the container is available with default settings,
+or the execution has been customized to normal users,
+running as a normal user avoids these permissions issues.
+This can be achieved with
+<a href="https://docs.docker.com/engine/containers/run/#user"><em>Docker</em>'s <code>-u</code>/<code>--user</code> option</a>:</p>
+<div class="highlight"><pre><span></span><code>--user=[ user | user:group | uid | uid:gid | user:gid | uid:group ]
+</code></pre></div>
+<p>We can combine this option with <em>Bash</em>'s <code>id</code> command to ensure the current user's uid and group id (gid) are being set:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-ti<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>path/to/data:/data:ro<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>path/to/output:/out<span class="w"> </span><span class="se">\</span>
+<span class="hll"><span class="w">    </span>-u<span class="w"> </span><span class="k">$(</span>id<span class="w"> </span>-u<span class="k">)</span>:<span class="k">$(</span>id<span class="w"> </span>-g<span class="k">)</span><span class="w"> </span><span class="se">\ </span><span class="w">                  </span><span class="c1"># set execution uid:gid</span>
+</span><span class="w">    </span>-v<span class="w"> </span>path/to/tf-cache:/opt/templateflow<span class="w"> </span><span class="se">\ </span><span class="w"> </span><span class="c1"># mount from host</span>
+<span class="w">    </span>-e<span class="w"> </span><span class="nv">TEMPLATEFLOW_HOME</span><span class="o">=</span>/opt/templateflow<span class="w"> </span><span class="se">\ </span><span class="c1"># override TF home</span>
 <span class="w">    </span>nipreps/fmriprep:&lt;latest-version&gt;<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>/data<span class="w"> </span>/out/out<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>participant
 </code></pre></div>
-<p>For example: :</p>
-<div class="highlight"><pre><span></span><code>$ docker run -ti --rm \
-    -v $HOME/ds005:/data:ro \
-    -v $HOME/ds005/derivatives:/out \
-    -v $HOME/tmp/ds005-workdir:/work \
-    nipreps/fmriprep:&lt;latest-version&gt; \
-    /data /out/fmriprep-&lt;latest-version&gt; \
-    participant \
-    -w /work
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-ti<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span><span class="nv">$HOME</span>/ds005:/data:ro<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span><span class="nv">$HOME</span>/ds005/derivatives:/out<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span><span class="nv">$HOME</span>/tmp/ds005-workdir:/work<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-u<span class="w"> </span><span class="k">$(</span>id<span class="w"> </span>-u<span class="k">)</span>:<span class="k">$(</span>id<span class="w"> </span>-g<span class="k">)</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span><span class="nv">$HOME</span>/.cache/templateflow:/opt/templateflow<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-e<span class="w"> </span><span class="nv">TEMPLATEFLOW_HOME</span><span class="o">=</span>/opt/templateflow<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>nipreps/fmriprep:&lt;latest-version&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>/data<span class="w"> </span>/out/fmriprep-&lt;latest-version&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>participant<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-w<span class="w"> </span>/work
 </code></pre></div>
-<p>Once the Docker Engine arguments are written, the remainder of the
-command line follows the <a href="https://fmriprep.readthedocs.io/en/latest/usage.html">usage</a>.
-In other words, the first section of the command line is all equivalent to the
-<code>fmriprep</code> executable in a <em>bare-metal</em> installation: :</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-ti<span class="w"> </span>--rm<span class="w"> </span><span class="se">\ </span><span class="w">                     </span><span class="c1"># These lines</span>
-<span class="w">    </span>-v<span class="w"> </span><span class="nv">$HOME</span>/ds005:/data:ro<span class="w"> </span><span class="se">\ </span><span class="w">               </span><span class="c1"># are equivalent to</span>
-<span class="w">    </span>-v<span class="w"> </span><span class="nv">$HOME</span>/ds005/derivatives:/out<span class="w"> </span><span class="se">\ </span><span class="w">       </span><span class="c1"># a call to the App&#39;s</span>
-<span class="w">    </span>-v<span class="w"> </span><span class="nv">$HOME</span>/tmp/ds005-workdir:/work<span class="w"> </span><span class="se">\ </span><span class="w">      </span><span class="c1"># entry-point.</span>
-<span class="w">    </span>nipreps/fmriprep:&lt;latest-version&gt;<span class="w"> </span><span class="se">\ </span><span class="w"> </span><span class="c1">#</span>
-<span class="w">    </span><span class="se">\</span>
-<span class="w">    </span>/data<span class="w"> </span>/out/fmriprep-&lt;latest-version&gt;<span class="w"> </span><span class="se">\ </span><span class="w">  </span><span class="c1"># These lines correspond</span>
-<span class="w">    </span>participant<span class="w"> </span><span class="se">\ </span><span class="w">                           </span><span class="c1"># to the particular BIDS</span>
-<span class="w">    </span>-w<span class="w"> </span>/work<span class="w">                                 </span><span class="c1"># App arguments.</span>
+<h3 id="application-specific-options">Application-specific options<a class="headerlink" href="#application-specific-options" title="Permanent link">&para;</a></h3>
+<p>Once the <em>Docker Engine</em> arguments are written, the remainder of the
+command line follows the interface defined by the specific
+<em>BIDS App</em> (for instance,
+<a href="https://fmriprep.readthedocs.io/en/latest/usage.html"><em>fMRIPrep</em></a>
+or <a href="https://mriqc.readthedocs.io/en/latest/running.html#command-line-interface"><em>MRIQC</em></a>).</p>
+<p>The first section of a call consists of arguments specific to <em>Docker</em>,
+which configure the execution of the container:</p>
+<div class="highlight"><pre><span></span><code><span class="hll">$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-ti<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+</span><span class="hll"><span class="w">    </span>-v<span class="w"> </span><span class="nv">$HOME</span>/ds005:/data:ro<span class="w"> </span><span class="se">\</span>
+</span><span class="hll"><span class="w">    </span>-v<span class="w"> </span><span class="nv">$HOME</span>/ds005/derivatives:/out<span class="w"> </span><span class="se">\</span>
+</span><span class="hll"><span class="w">    </span>-v<span class="w"> </span><span class="nv">$HOME</span>/tmp/ds005-workdir:/work<span class="w"> </span><span class="se">\</span>
+</span><span class="hll"><span class="w">    </span>-u<span class="w"> </span><span class="k">$(</span>id<span class="w"> </span>-u<span class="k">)</span>:<span class="k">$(</span>id<span class="w"> </span>-g<span class="k">)</span><span class="w"> </span><span class="se">\</span>
+</span><span class="hll"><span class="w">    </span>-v<span class="w"> </span><span class="nv">$HOME</span>/.cache/templateflow:/opt/templateflow<span class="w"> </span><span class="se">\</span>
+</span><span class="hll"><span class="w">    </span>-e<span class="w"> </span><span class="nv">TEMPLATEFLOW_HOME</span><span class="o">=</span>/opt/templateflow<span class="w"> </span><span class="se">\</span>
+</span><span class="w">    </span>nipreps/fmriprep:&lt;latest-version&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>/data<span class="w"> </span>/out/fmriprep-&lt;latest-version&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>participant<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-w<span class="w"> </span>/work
+</code></pre></div>
+<p>Then, we specify the container image that we execute:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-ti<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span><span class="nv">$HOME</span>/ds005:/data:ro<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span><span class="nv">$HOME</span>/ds005/derivatives:/out<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span><span class="nv">$HOME</span>/tmp/ds005-workdir:/work<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-u<span class="w"> </span><span class="k">$(</span>id<span class="w"> </span>-u<span class="k">)</span>:<span class="k">$(</span>id<span class="w"> </span>-g<span class="k">)</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span><span class="nv">$HOME</span>/.cache/templateflow:/opt/templateflow<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-e<span class="w"> </span><span class="nv">TEMPLATEFLOW_HOME</span><span class="o">=</span>/opt/templateflow<span class="w"> </span><span class="se">\</span>
+<span class="hll"><span class="w">    </span>nipreps/fmriprep:&lt;latest-version&gt;<span class="w"> </span><span class="se">\</span>
+</span><span class="w">    </span>/data<span class="w"> </span>/out/fmriprep-&lt;latest-version&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>participant<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-w<span class="w"> </span>/work
+</code></pre></div>
+<p>Finally, the application-specific options can be added.
+We already described the work directory setting before, in the case
+of <em>NiPreps</em> such as <em>MRIQC</em> and <em>fMRIPrep</em>.
+Some options are <em>BIDS Apps</em> standard, such as
+the <em>analysis level</em> (<code>participant</code> or <code>group</code>)
+and specific participant identifier(s) (<code>--participant-label</code>):</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-ti<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span><span class="nv">$HOME</span>/ds005:/data:ro<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span><span class="nv">$HOME</span>/ds005/derivatives:/out<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span><span class="nv">$HOME</span>/tmp/ds005-workdir:/work<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-u<span class="w"> </span><span class="k">$(</span>id<span class="w"> </span>-u<span class="k">)</span>:<span class="k">$(</span>id<span class="w"> </span>-g<span class="k">)</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span><span class="nv">$HOME</span>/.cache/templateflow:/opt/templateflow<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-e<span class="w"> </span><span class="nv">TEMPLATEFLOW_HOME</span><span class="o">=</span>/opt/templateflow<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>nipreps/fmriprep:&lt;latest-version&gt;<span class="w"> </span><span class="se">\</span>
+<span class="hll"><span class="w">    </span>/data<span class="w"> </span>/out/fmriprep-&lt;latest-version&gt;<span class="w"> </span><span class="se">\</span>
+</span><span class="hll"><span class="w">    </span>participant<span class="w"> </span><span class="se">\</span>
+</span><span class="hll"><span class="w">    </span>--participant-label<span class="w"> </span><span class="m">001</span><span class="w"> </span><span class="m">002</span><span class="w"> </span><span class="se">\</span>
+</span><span class="hll"><span class="w">    </span>-w<span class="w"> </span>/work
+</span></code></pre></div>
+<h3 id="resource-constraints">Resource constraints<a class="headerlink" href="#resource-constraints" title="Permanent link">&para;</a></h3>
+<p><em>Docker</em> may be executed with limited resources.
+Please <a href="https://docs.docker.com/engine/containers/resource_constraints/">read the documentation</a>
+to limit resources such as memory, memory policies, number of CPUs, etc.</p>
+<p><strong>Memory will be a common culprit</strong> when working with large datasets
+(+10GB).
+However, the <em>Docker Engine</em> is limited to 2GB of RAM by default
+for some installations of <em>Docker</em> for <em>MacOSX</em> and <em>Windows</em>.
+The general resource settings can be also modified through the <em>Docker Desktop</em>
+graphical user interface.
+On a shell, the memory limit can be overridden with:</p>
+<div class="highlight"><pre><span></span><code>$ service docker stop
+$ dockerd --storage-opt dm.basesize=30G
 </code></pre></div>
 
 

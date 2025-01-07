@@ -678,9 +678,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#setting-execution-uid" class="md-nav__link">
+  <a href="#setting-a-regular-users-execution-uid" class="md-nav__link">
     <span class="md-ellipsis">
-      Setting execution uid
+      Setting a regular user's execution uid
     </span>
   </a>
   
@@ -915,9 +915,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#setting-execution-uid" class="md-nav__link">
+  <a href="#setting-a-regular-users-execution-uid" class="md-nav__link">
     <span class="md-ellipsis">
-      Setting execution uid
+      Setting a regular user's execution uid
     </span>
   </a>
   
@@ -963,12 +963,7 @@
 
   <h1>Git-Annex and DataLad within containers</h1>
 
-<p>Apps may be able to identify if the input dataset is handled with
-<em>DataLad</em> or <em>Git-Annex</em>, and pull down linked data that has not
-been fetched yet.
-One example of one such application is <em>MRIQC</em>, and all the examples
-on this documentation page will refer to it.</p>
-<div class="admonition important">
+<div class="admonition abstract">
 <p class="admonition-title">Summary</p>
 <p>Executing <em>BIDS-Apps</em> leveraging <em>DataLad</em>-controlled datasets
 within containers can be tricky.
@@ -981,6 +976,11 @@ This section guides users through ensuring smooth execution of
 <em>BIDS-Apps</em> on <em>DataLad</em>/<em>Git-annex</em>-managed datasets.</p>
 </div>
 <h2 id="datalad-and-docker"><em>DataLad</em> and <em>Docker</em><a class="headerlink" href="#datalad-and-docker" title="Permanent link">&para;</a></h2>
+<p>Apps may be able to identify if the input dataset is handled with
+<a href="https://www.datalad.org/"><em>DataLad</em></a> or <a href="https://git-annex.branchable.com"><em>git-annex</em></a>, and pull down linked data that has not
+been fetched yet.
+One example of one such application is <em>MRIQC</em>, and all the examples
+on this documentation page will refer to it.</p>
 <p>When executing <em>MRIQC</em> within <em>Docker</em> on a <em>DataLad</em> dataset
 (for instance, installed from <a href="https://openneuro.org"><em>OpenNeuro</em></a>),
 we will need to ensure the following settings are observed:</p>
@@ -990,8 +990,27 @@ we will need to ensure the following settings are observed:</p>
 <li>the uid who is <em>executing MRIQC</em> within the container must
   have sufficient permissions to write in the tree.</li>
 </ul>
-<h3 id="setting-execution-uid">Setting execution uid<a class="headerlink" href="#setting-execution-uid" title="Permanent link">&para;</a></h3>
-<p>If the uid is not correct, we will likely encounter the following error:</p>
+<div class="admonition tip">
+<p class="admonition-title">Check <em>ReproNim</em> if the suggestions here did not work</p>
+<p>The actions suggested here are expected to work in most circumstances,
+but your system may have specific circumstances that require additional
+or alternative approaches.
+For instance,  <a href="https://www.repronim.org/">the <em>ReproNim</em> project</a> maintains 
+<a href="https://github.com/ReproNim/containers">ReproNim/containers</a>, a
+<em>DataLad</em> dataset with ready-to-use Singularity images for released <em>BIDS Apps</em>, <em>NeuroDesktop</em> applications,
+and other containers. 
+Its <a href="https://github.com/ReproNim/containers?tab=readme-ov-file#runnable-script"><code>README.md</code></a> guides through an approach via that dataset with <em>built-in</em> execution helper taking care about bind-mounts,
+proxying critical <em>Git</em> configuration and potentially executing <em>Singularity</em> images via <em>Docker</em> (e.g., under OSX).</p>
+<p>In the particular case of <em>MRIQC</em>, please consider updating (if necessary)
+and fetching the required data before execution and then
+add the <code>--no-datalad-get</code> argument to workaround issues with
+<em>DataLad</em>.</p>
+</div>
+<h3 id="setting-a-regular-users-execution-uid">Setting a regular user's execution uid<a class="headerlink" href="#setting-a-regular-users-execution-uid" title="Permanent link">&para;</a></h3>
+<p>If the execution uid does not match the uid of the user who installed
+the <em>DataLad</em> dataset, we will likely encounter the following error
+with relatively recent
+<a href="https://github.blog/open-source/git/git-security-vulnerability-announced/#"><em>Git</em> versions (+2.35.2)</a>:</p>
 <div class="highlight"><pre><span></span><code>datalad.runner.exception.CommandError: CommandError: &#39;git -c diff.ignoreSubmodules=none -c core.quotepath=false -c annex.merge-annex-branches=false annex find --not --in . --json --json-error-messages -c annex.dotfiles=true -- sub-0001/func/sub-0001_task-restingstate_acq-mb3_bold.nii.gz sub-0002/func/sub-0002_task-emomatching_acq-seq_bold.nii.gz sub-0002/func/sub-0002_task-restingstate_acq-mb3_bold.nii.gz sub-0001/func/sub-0001_task-emomatching_acq-seq_bold.nii.gz sub-0001/func/sub-0001_task-faces_acq-mb3_bold.nii.gz sub-0001/dwi/sub-0001_dwi.nii.gz sub-0002/func/sub-0002_task-workingmemory_acq-seq_bold.nii.gz sub-0001/anat/sub-0001_T1w.nii.gz sub-0002/anat/sub-0002_T1w.nii.gz sub-0001/func/sub-0001_task-gstroop_acq-seq_bold.nii.gz sub-0002/func/sub-0002_task-faces_acq-mb3_bold.nii.gz sub-0002/func/sub-0002_task-anticipation_acq-seq_bold.nii.gz sub-0002/dwi/sub-0002_dwi.nii.gz sub-0001/func/sub-0001_task-anticipation_acq-seq_bold.nii.gz sub-0001/func/sub-0001_task-workingmemory_acq-seq_bold.nii.gz sub-0002/func/sub-0002_task-gstroop_acq-seq_bold.nii.gz&#39; failed with exitcode 1 under /data [info keys: stdout_json] [err: &#39;git-annex: Git refuses to operate in this repository, probably because it is owned by someone else.
 
 To add an exception for this directory, call:
@@ -999,16 +1018,15 @@ git config --global --add safe.directory /data
 
 git-annex: automatic initialization failed due to above problems&#39;]
 </code></pre></div>
-<p>Confusingly, following the suggestion from <em>DataLad</em> directly on the host
-(<code>git config --global --add safe.directory /data</code>) will not work in this
-case, because this line must be executed within the container.</p>
+<p>Confusingly, following the suggestion from <em>DataLad</em>
+(just propagated from <em>Git</em>) of executing
+<code>git config --global --add safe.directory /data</code> will not work in this
+case, because this line must be executed within the container.
+However, containers are <em>transient</em> and the setting this configuration
+on <em>Git</em> will not be propagated between executions unless advanced
+actions are taken (such as mounting a <em>HOME</em> folder with the necessary settings).</p>
 <p>Instead, we can override the default user executing within the container
 (which is <code>root</code>, or uid = 0).
-This can be achieved with
-<a href="https://docs.docker.com/engine/containers/run/#user"><em>Docker</em>'s <code>-u</code>/<code>--user</code> option</a>:</p>
-<div class="highlight"><pre><span></span><code>--user=[ user | user:group | uid | uid:gid | user:gid | uid:group ]
-</code></pre></div>
-<p>We can combine this option with <em>Bash</em>'s <code>id</code> command to ensure the current user's uid and group id (gid) are being set.
 Let's update the last example in the previous
 <a href="../docker/#running-a-niprep-directly-interacting-with-the-docker-engine"><em>Docker</em> execution section</a>:</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-ti<span class="w"> </span>--rm<span class="w"> </span><span class="se">\</span>
