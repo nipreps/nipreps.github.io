@@ -29,12 +29,15 @@ we will need to ensure the following settings are observed:
 
 !!! tip "Check *ReproNim* if the suggestions here did not work"
 
-    The actions suggested here are relatively fundamental, and your
-    settings may showcase specific circumstances that render them
-    insufficient.
-    For a more detailed discussion about orchestrating containers, version
-    control, and reproducible pipelines, please check
-    [the *ReproNim* guidelines](https://www.repronim.org/).
+    The actions suggested here are expected to work in most circumstances,
+    but your system may have specific circumstances that require additional
+    or alternative approaches.
+    For instance,  [the *ReproNim* project](https://www.repronim.org/) maintains 
+    [ReproNim/containers](https://github.com/ReproNim/containers), a
+    *DataLad* dataset with ready-to-use Singularity images for released *BIDS Apps*, *NeuroDesktop* applications,
+    and other containers. 
+    Its [`README.md`](https://github.com/ReproNim/containers?tab=readme-ov-file#runnable-script) guides through an approach via that dataset with *built-in* execution helper taking care about bind-mounts,
+    proxying critical *Git* configuration and potentially executing *Singularity* images via *Docker* (e.g., under OSX).
 
     In the particular case of *MRIQC*, please consider updating (if necessary)
     and fetching the required data before execution and then

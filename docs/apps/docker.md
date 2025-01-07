@@ -93,9 +93,8 @@ If you need a finer control over the container execution, or you feel comfortabl
 
 ### Accessing filesystems in the host within the container
 
-Containers are confined in a sandbox, so they can't access the host
-in any ways unless you explicitly prescribe acceptable accesses
-to the host.
+Containers are confined in a sandbox, so they can't access the data on the host
+unless explicitly enabled.
 The Docker Engine provides mounting filesystems into the container with the `-v` argument and the following syntax:
 `-v some/path/in/host:/absolute/path/within/container:ro`,
 where the trailing `:ro` specifies that the mount is read-only.
@@ -121,9 +120,10 @@ $ docker run -ti --rm \
     participant
 ```
 
-When **debugging** or **reusing pre-cached intermediate results**,
-you'll also need to mount some working directory that otherwise
-is not exposed by the application.
+We recommend mounting a work (or scratch) directory for intermediate workflow results.
+This is particularly useful for **debugging** or **reusing pre-cached intermediate results**,
+but can also be useful to control where these (large) directories get created,
+as the default location for files created inside a docker container may not have sufficient space.
 In the case of *NiPreps*, we typically inform the *BIDS Apps*
 to override the work directory by setting the `-w`/`--work-dir`
 argument (please note that this is not defined by the *BIDS Apps*
@@ -155,12 +155,10 @@ $ docker run -ti --rm \
 
     ``` {.shell hl_lines="4 5 9"}
     $ docker run -ti --rm \
-        -v path/to/data:/data:ro \
-        -v path/to/output:/out \
-        -v $PWD:$PWD \
-        -w $PWD \   # DO NOT confuse with the application's work directory
+        -v $PWD:$PWD \  # Mount the current directory with its own name
+        -w $PWD \       # DO NOT confuse with the application's work directory
         nipreps/fmriprep:<latest-version> \
-        /data /out/out \
+        inputs/raw-data outputs/fmriprep \  # With YODA, the inputs are inside the working directory
         participant
         -w $PWD/work
     ```
@@ -185,7 +183,7 @@ $ docker run -ti --rm \
 for atlases and templates management may require
 the *TemplateFlow Archive* be mounted from the host.
 Mounting the *Archive* from the host is an effective way
-to preempt the download of your favorite templates in every run:
+to prevent multiple downloads of templates that are not bundled in the image:
 
 ``` {.shell hl_lines="5 6"}
 $ docker run -ti --rm \
@@ -226,21 +224,21 @@ account in *Linux*.
 In other words, by default *Docker* will use the superuser account
 to execute the container and will write files with the corresponding
 uid=0 unless configured otherwise.
-Executing as superuser may derive in permissions and security issues,
+Executing as superuser may result in permissions and security issues,
 for example, [with *DataLad* (discussed later)](datalad.md#).
 One paramount example of permissions issues where beginners typically
 run into is deleting files after a containerized execution.
 If the uid is not overridden, the outputs of a containerized execution
 will be owned by **root** and group **root**.
 Therefore, normal users will not be able to modify the output and
-superuser permissions will be required to deleted data generated
+superuser permissions will be required to delete data generated
 by the containerized application.
 Some shared systems only allow running containers as a normal user
-because the user will not be able to action on the outputs otherwise.
+because the user will not be able to operate on the outputs otherwise.
 
-Either way (whether the container is available with default settings
-or the execution has been customized to normal users),
-running as a normal user allows preempting these permissions issues.
+Whether the container is available with default settings,
+or the execution has been customized to normal users,
+running as a normal user avoids these permissions issues.
 This can be achieved with
 [*Docker*'s `-u`/`--user` option](https://docs.docker.com/engine/containers/run/#user):
 
@@ -286,8 +284,8 @@ command line follows the interface defined by the specific
 [*fMRIPrep*](https://fmriprep.readthedocs.io/en/latest/usage.html)
 or [*MRIQC*](https://mriqc.readthedocs.io/en/latest/running.html#command-line-interface)).
 
-The first section of a call comprehends arguments specific to *Docker*,
-and configure the execution of the container:
+The first section of a call consists of arguments specific to *Docker*,
+which configure the execution of the container:
 
 ``` {.shell hl_lines="1-7"}
 $ docker run -ti --rm \
