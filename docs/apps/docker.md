@@ -5,10 +5,11 @@
 
 ## Before you start: install Docker
 
-Probably, the most popular framework to execute containers is Docker.
+Probably, the most popular framework to execute containers is *Docker*.
 If you are to run a *NiPrep* on your PC/laptop, this is the **RECOMMENDED** way of execution.
-Please make sure you follow the Docker installation instructions.
-You can check your Docker Runtime installation running their `hello-world` image:
+Please make sure you follow the
+[*Docker Engine*'s installation instructions](https://docs.docker.com/engine/install/).
+You can check your installation running their `hello-world` image:
 
 ```Shell
 $ docker run --rm hello-world
@@ -39,7 +40,8 @@ For more examples and ideas, visit:
  https://docs.docker.com/get-started/
 ```
 
-After checking your Docker Engine is capable of running Docker images, you are ready to pull your first *NiPreps* container image.
+After checking your *Docker Engine* is capable of running *Docker*
+images, you are ready to pull your first *NiPreps* container image.
 
 !!! tip "Troubleshooting"
 
@@ -50,10 +52,10 @@ After checking your Docker Engine is capable of running Docker images, you are r
     Once verified the problem is not related to the container system,
     then follow the specific application debugging guidelines.
 
-## Docker images
+## *Docker* images
 
-For every new version of the particular *NiPrep* app that is released, a corresponding Docker image is generated.
-The Docker image *becomes* a container when the execution engine loads the image and adds an extra layer that makes it *runnable*. In order to run *NiPreps* Docker images, the Docker Runtime must be installed.
+For every new version of the particular *NiPreps* application that is released, a corresponding *Docker* image is generated.
+The Docker image *becomes* a container when the execution engine loads the image and adds an extra layer that makes it *runnable*. In order to run *NiPreps*' *Docker* images, the *Docker Engine* must be installed.
 <!-- (see `installation_docker`{.interpreted-text
 role="ref"}).-->
 
@@ -63,7 +65,7 @@ Taking *fMRIPrep* to illustrate the usage, first you might want to make sure of 
 $ docker pull nipreps/fmriprep:<latest-version>
 ```
 
-You can run *NiPreps* interacting directly with the Docker Engine via the `docker run` interface.
+You can run *NiPreps* interacting directly with the *Docker Engine* via the `docker run` interface.
 
 
 ## Running a *NiPrep* with a lightweight wrapper
@@ -81,21 +83,21 @@ RUNNING: docker run --rm -it -v /path/to/data/dir:/data:ro \
 ...
 ```
 
-`fmriprep-docker` implements [the unified command-line interface of BIDS Apps](framework.md#a-unified-command-line-interface), and automatically translates directories into Docker mount points for you.
+`fmriprep-docker` implements [the unified command-line interface of *BIDS Apps*](framework.md#a-unified-command-line-interface), and automatically translates directories into *Docker* mount points for you.
 
 We have published a [step-by-step tutorial](http://reproducibility.stanford.edu/fmriprep-tutorial-running-the-docker-image/) illustrating how to run `fmriprep-docker`.
 This tutorial also provides valuable troubleshooting insights and advice on what to do after
 *fMRIPrep* has run.
 
-## Running a *NiPrep* directly interacting with the Docker Engine
+## Running a *NiPrep* directly interacting with the *Docker Engine*
 
-If you need a finer control over the container execution, or you feel comfortable with the Docker Engine, avoiding the extra software layer of the wrapper might be a good decision.
+If you need a finer control over the container execution, or you feel comfortable with the *Docker Engine*, avoiding the extra software layer of the wrapper might be a good decision.
 
 ### Accessing filesystems in the host within the container
 
 Containers are confined in a sandbox, so they can't access the data on the host
 unless explicitly enabled.
-The Docker Engine provides mounting filesystems into the container with the `-v` argument and the following syntax:
+The *Docker Engine* provides mounting filesystems into the container with the `-v` argument and the following syntax:
 `-v some/path/in/host:/absolute/path/within/container:ro`,
 where the trailing `:ro` specifies that the mount is read-only.
 The mount permissions modifiers can be omitted, which means the mount
@@ -218,7 +220,7 @@ $ docker run -ti --rm \
 
 ### Running containers as a user
 
-By default, Docker will run the container with the
+By default, *Docker* will run the container with the
 user id (uid) **0**, which is reserved for the default **root**
 account in *Linux*.
 In other words, by default *Docker* will use the superuser account
@@ -278,7 +280,7 @@ $ docker run -ti --rm \
 
 ### Application-specific options
 
-Once the Docker Engine arguments are written, the remainder of the
+Once the *Docker Engine* arguments are written, the remainder of the
 command line follows the interface defined by the specific
 *BIDS App* (for instance,
 [*fMRIPrep*](https://fmriprep.readthedocs.io/en/latest/usage.html)
@@ -347,7 +349,7 @@ to limit resources such as memory, memory policies, number of CPUs, etc.
 
 **Memory will be a common culprit** when working with large datasets
 (+10GB).
-However, *Docker* engine is limited to 2GB of RAM by default
+However, the *Docker Engine* is limited to 2GB of RAM by default
 for some installations of *Docker* for *MacOSX* and *Windows*.
 The general resource settings can be also modified through the *Docker Desktop*
 graphical user interface.
