@@ -52,6 +52,14 @@ images, you are ready to pull your first *NiPreps* container image.
     Once verified the problem is not related to the container system,
     then follow the specific application debugging guidelines.
 
+!!! danger "Fix *Docker Desktop* startup issue on *macOS*"
+
+    Due to a [recent issue](https://www.docker.com/blog/incident-update-docker-desktop-for-mac/)
+    affecting *Docker Desktop* versions 4.29 through 4.36,
+    the application may fail to start.
+    If affected, please follow the
+    [official guidelines](https://docs.docker.com/desktop/cert-revoke-solution/) to resolve this issue.
+
 ## *Docker* images
 
 For every new version of the particular *NiPreps* application that is released, a corresponding *Docker* image is generated.
