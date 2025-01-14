@@ -186,7 +186,7 @@ the templates that are used, e.g., in the atlas-based brain extraction
 step or spatial normalization.
 
 Default settings in the Singularity image should get along with the
-Singularity installation of your system. However, deviations from the
+*Singularity* installation of your system. However, deviations from the
 default configurations of your installation may break this
 compatibility. A particularly problematic case arises when the home
 directory is mounted in the container, but the `$HOME` environment
@@ -257,7 +257,7 @@ endpoints), then you can try the following:
           --cleanenv fmriprep.simg <fmriprep arguments>
     ```
   Otherwise, [some users have succeeded pre-fetching the necessary
-  templates onto the TemplateFlow directory to then bind the folder at
+  templates onto the *TemplateFlow* directory to then bind the folder at
   execution](https://neurostars.org/t/problems-using-pediatric-template-from-templateflow/4566/15):
 
     ```Shell
@@ -276,6 +276,27 @@ $ export SINGULARITYENV_TEMPLATEFLOW_HOME=/templateflow
 $ singularity run -B ${TEMPLATEFLOW_HOME:-$HOME/.cache/templateflow}:/templateflow \
       --cleanenv fmriprep.simg <fmriprep arguments>
 ```
+
+## *Socket errors* when running parallel processes on HPC
+
+When running multiple instances of a *NiPreps* on HPC, you may encounter
+errors like [`nipreps/mriqc#1170`](https://github.com/nipreps/mriqc/issues/1170):
+
+``` text
+OSError: [Errno 98] Address already in use
+```
+
+To solve this issue, you can try to isolate the container network from
+the host network by using the `--network none` setting of *Singularity*/*Apptainer*:
+
+``` shell
+apptainer run --net --network none ...
+```
+
+This solution prevents the container from accessing the Internet and from
+downloading data, for example, templates.
+Please follow the previous section's guidelines to pre-fetch templates
+and then making them accessible.
 
 ## Troubleshooting
 
