@@ -701,6 +701,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#socket-errors-when-running-parallel-processes-on-hpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Socket errors when running parallel processes on HPC
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#troubleshooting" class="md-nav__link">
     <span class="md-ellipsis">
       Troubleshooting
@@ -989,6 +998,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#socket-errors-when-running-parallel-processes-on-hpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Socket errors when running parallel processes on HPC
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#troubleshooting" class="md-nav__link">
     <span class="md-ellipsis">
       Troubleshooting
@@ -1167,7 +1185,7 @@ In other words, <em>TemplateFlow</em> allows <em>NiPreps</em> to dynamically cha
 the templates that are used, e.g., in the atlas-based brain extraction
 step or spatial normalization.</p>
 <p>Default settings in the Singularity image should get along with the
-Singularity installation of your system. However, deviations from the
+<em>Singularity</em> installation of your system. However, deviations from the
 default configurations of your installation may break this
 compatibility. A particularly problematic case arises when the home
 directory is mounted in the container, but the <code>$HOME</code> environment
@@ -1223,7 +1241,7 @@ $<span class="w"> </span>singularity<span class="w"> </span>run<span class="w"> 
 <span class="w">      </span>--cleanenv<span class="w"> </span>fmriprep.simg<span class="w"> </span>&lt;fmriprep<span class="w"> </span>arguments&gt;
 </code></pre></div>
   Otherwise, <a href="https://neurostars.org/t/problems-using-pediatric-template-from-templateflow/4566/15">some users have succeeded pre-fetching the necessary
-  templates onto the TemplateFlow directory to then bind the folder at
+  templates onto the <em>TemplateFlow</em> directory to then bind the folder at
   execution</a>:</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">TEMPLATEFLOW_HOME</span><span class="o">=</span>/path/to/keep/templateflow
 $<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>templateflow<span class="w">  </span><span class="c1"># Install the client</span>
@@ -1239,6 +1257,19 @@ $<span class="w"> </span>python
 $<span class="w"> </span>singularity<span class="w"> </span>run<span class="w"> </span>-B<span class="w"> </span><span class="si">${</span><span class="nv">TEMPLATEFLOW_HOME</span><span class="k">:-</span><span class="nv">$HOME</span><span class="p">/.cache/templateflow</span><span class="si">}</span>:/templateflow<span class="w"> </span><span class="se">\</span>
 <span class="w">      </span>--cleanenv<span class="w"> </span>fmriprep.simg<span class="w"> </span>&lt;fmriprep<span class="w"> </span>arguments&gt;
 </code></pre></div>
+<h2 id="socket-errors-when-running-parallel-processes-on-hpc"><em>Socket errors</em> when running parallel processes on HPC<a class="headerlink" href="#socket-errors-when-running-parallel-processes-on-hpc" title="Permanent link">&para;</a></h2>
+<p>When running multiple instances of a <em>NiPreps</em> on HPC, you may encounter
+errors like <a href="https://github.com/nipreps/mriqc/issues/1170"><code>nipreps/mriqc#1170</code></a>:</p>
+<div class="highlight"><pre><span></span><code>OSError: [Errno 98] Address already in use
+</code></pre></div>
+<p>To solve this issue, you can try to isolate the container network from
+the host network by using the <code>--network none</code> setting of <em>Singularity</em>/<em>Apptainer</em>:</p>
+<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>run<span class="w"> </span>--net<span class="w"> </span>--network<span class="w"> </span>none<span class="w"> </span>...
+</code></pre></div>
+<p>This solution prevents the container from accessing the Internet and from
+downloading data, for example, templates.
+Please follow the previous section's guidelines to pre-fetch templates
+and then making them accessible.</p>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <p>Setting up a functional execution framework with Singularity might be
 tricky in some HPC (high-performance computing) systems.
