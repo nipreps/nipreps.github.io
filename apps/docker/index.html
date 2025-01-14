@@ -1081,6 +1081,14 @@ For issues emerging from the <em>Docker Engine</em>, please read the
 Once verified the problem is not related to the container system,
 then follow the specific application debugging guidelines.</p>
 </div>
+<div class="admonition danger">
+<p class="admonition-title">Fix <em>Docker Desktop</em> startup issue on <em>macOS</em></p>
+<p>Due to a <a href="https://www.docker.com/blog/incident-update-docker-desktop-for-mac/">recent issue</a>
+affecting <em>Docker Desktop</em> versions 4.29 through 4.36,
+the application may fail to start.
+If affected, please follow the
+<a href="https://docs.docker.com/desktop/cert-revoke-solution/">official guidelines</a> to resolve this issue.</p>
+</div>
 <h2 id="docker-images"><em>Docker</em> images<a class="headerlink" href="#docker-images" title="Permanent link">&para;</a></h2>
 <p>For every new version of the particular <em>NiPreps</em> application that is released, a corresponding <em>Docker</em> image is generated.
 The Docker image <em>becomes</em> a container when the execution engine loads the image and adds an extra layer that makes it <em>runnable</em>. In order to run <em>NiPreps</em>' <em>Docker</em> images, the <em>Docker Engine</em> must be installed.</p>
