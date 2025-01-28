@@ -3,6 +3,10 @@
     Here, we describe how to run *NiPreps* with Singularity containers.
     To illustrate the process, we will show the execution of *fMRIPrep*, but these guidelines extend to any other end-user *NiPrep*.
 
+!!! warning "Apptainer"
+    In 2021, [*Singularity* was rebranded as *Apptainer* when the project was transferred to the Linux Foundation](https://apptainer.org/news/community-announcement-20211130/).
+    As noted in the community announcement, all the commands below that contain `singularity` as the command line executable will execute *Apptainer* and can be replaced with the `apptainer` command with no change in function. 
+
 ## Preparing a Singularity image
 
 **Singularity version >= 2.5**:
