@@ -8,6 +8,12 @@ permalink: /news.html
 
 # News and Announcements
 
+## NiFreeze receives best poster award at the ISMRM 2025 Diffusion Study Group meeting
+
+The [*NiFreeze* abstract](https://osf.io/preprints/psyarxiv/gfny9_v2) submitted to the [ISMRM 2025 Annual Meeting](https://www.ismrm.org/25m/)
+was among the featured abstracts at the ISMRM 2025 Diffusion Study Group
+meeting. It received the best [poster award in the *Methods* category](https://x.com/DiffusionISMRM/status/1926200224860475571/photo/1).
+
 ## NiPreps hackathon 2025 @ McGovern Institute for Brain Research
 
 Building on the success of the 2024, the *NiPreppers* gathered again
