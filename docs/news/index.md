@@ -7,6 +7,26 @@ permalink: /news.html
 ---
 
 # News and Announcements
+
+## NiPreps hackathon 2025 @ McGovern Institute for Brain Research
+
+Building on the success of the 2024, the *NiPreppers* gathered again
+virtually and in-person at the McGovern Institute for Brain Research in
+Cambridge (MA, USA) to hold another [3-day hackathon](https://www.nipreps.org/202504-sprint/).
+
+*NiPost* and fMRI infant/rodent extensions were among the projects that
+assembled most contributors.
+
+## NiPreps hackathon 2024 @ McGovern Institute for Brain Research
+
+The NiPreps community gathered both virtually and in-person at the McGovern
+Institute for Brain Research in Cambridge (MA, USA) to hold a
+[3-day hackathon](https://www.nipreps.org/202405-sprint/).
+
+Several NiPreps projects received relevant improvements and bug fixes, and
+extensive discussions about the *NiTransforms* component were held during the
+event.
+
 ## Register for the NiPreps hackathon with the OHBM'23 Brainhack!
 
 **We are thrilled to announce that the NiPreps Hackathon's second edition will be part of the upcoming OHBM'23 Brainhack** (July 19-21, Maison Notman House, Montreal, Canada).
