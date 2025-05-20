@@ -26,5 +26,3 @@ See you in Montreal!
 ## NiPreps Roundups <span style="color: grey; font-size: 72%; position: relative; right: -10px;"> Feb 22, 2023</span>
 
 We resumed the bi-monthly NiPreps Roundups with a first meeting on February 22, 2023.
-
-
