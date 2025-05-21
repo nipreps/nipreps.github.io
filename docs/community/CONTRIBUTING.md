@@ -290,6 +290,13 @@ myworkflow_rh_wf = init_workflow_wf(name='myworkflow_rh_wf')
 We welcome and recognize all contributions regardless their size, content or scope:
 from documentation to testing and code development.
 You can see a list of current developers and contributors in our [zenodo file][link_zenodo].
+Note that the `.zenodo.json` file is generated automatically, digesting data
+from the `maint/MAINTAINERS.md` and `maint/CONTRIBUTORS.md` files (and from
+the `maint/PIs.md` and `maint/FORMER.md` files, if applicable).
+New contributors should add their names to the `maint/CONTRIBUTORS.md` file.
+Contributors are promoted to the `maint/MAINTAINERS.md` list following the
+*NiPreps* governance model.
+Governance information can be found in the [GOVERNANCE repository][link_governance_repository].
 Before every release, a new [zenodo file][link_zenodo] will be generated.
 The [update script][link_update_script] will also sort creators and contributors by
 the relative size of their contributions, as provided by the `git-line-summary` utility
@@ -343,6 +350,8 @@ You're awesome. :wave::smiley:
 [link_signupinstructions]: https://help.github.com/articles/signing-up-for-a-new-github-account
 
 [link_neurostars]: https://neurostars.org/tags/fmriprep
+
+[link_governance_repository]: https://github.com/nipreps/GOVERNANCE
 
 [link_git]: https://git-scm.com/
 [link_handbook]: https://guides.github.com/introduction/git-handbook/
