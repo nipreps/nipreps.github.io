@@ -373,7 +373,7 @@ You're awesome. :wave::smiley:
 [link_updateupstreamwiki]: https://help.github.com/articles/syncing-a-fork/
 [link_stemmrolemodels]: https://github.com/KirstieJane/STEMMRoleModels
 [link_zenodo]: https://github.com/nipreps/fmriprep/blob/master/.zenodo.json
-[link_update_script]: https://github.com/nipreps/fmriprep/blob/master/.maintenance/update_zenodo.py
+[link_update_script]: https://github.com/nipreps/fmriprep/blob/master/.maint/update_authors.py
 [link_devel]: https://fmriprep.readthedocs.io/en/latest/contributors.html
 [link_fmriprep]: http://fmriprep.org
 [link_bidsapps]: https://bids-apps.neuroimaging.io
