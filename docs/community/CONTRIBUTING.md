@@ -220,6 +220,9 @@ but those accepted fastest will follow a workflow similar to the following:
   using a [NiPreps development environment][link_devel].
   Once you are satisfied with your local changes, [add/commit/push them][link_add_commit_push]
   to the branch on your forked repository.
+  Note that that each commit must include changes that serve a coherent
+  purpose only (e.g. documentation, feature, bug fix) and that have a clear
+  scoped. They should be prefixed as indicated below.
 
 1. **Submit a [pull request][link_pullrequest].**<br />
    A member of the development team will review your changes to confirm
@@ -233,7 +236,7 @@ but those accepted fastest will follow a workflow similar to the following:
      * `STY`: style changes ([example][sty_ex])
      * `REF`: refactoring existing code ([example][ref_ex])
      * `CI`: updates to continuous integration infrastructure ([example][ci_ex])
-     * `MAINT`: general maintenance ([example][maint_ex])
+     * `MAINT`/`MNT`: general maintenance ([example][maint_ex])
      * For works-in-progress, add the `WIP` tag in addition to the descriptive prefix.
        Pull-requests tagged with `WIP:` will not be merged until the tag is removed.
 
