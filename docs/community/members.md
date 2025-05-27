@@ -4,7 +4,15 @@ However, because of the scientific domain of *NiPreps*, the community features s
 structure from *meritocracy models* to prescribe the order in the
 authors list of [new papers about these tools](CONTRIBUTING.md#publications).
 
-## Developers
+## Historical note
+
+The sections below provide a note on how contributions to the *NiPreps*
+projects were historically acknowledged.
+The scheme below has been substituted by a robuster strategy
+that is described in the [contributor recognition](CONTRIBUTING.md#recognizing-contributions)
+section.
+
+### Developers
 
 Developers are members of a wonderful team _driving the project_.
 Names and contacts of all developers are included in the
@@ -13,7 +21,7 @@ Examples of steering activities that _drive the project_ are: actively participa
 follow-up meetings, leading documentation sprints, helping in the design of the tool and definition of the roadmap,
 providing resources (in the broad sense, including funding), code-review, etc.
 
-## Contributors
+### Contributors
 
 Contributors enlisted in the
 [`.maint/contributors.json` file](https://github.com/nipreps/fmriprep/blob/master/.maint/contributors.json) of each project
