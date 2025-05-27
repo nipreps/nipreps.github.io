@@ -1396,7 +1396,10 @@ git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </
   It can also be helpful to test your changes locally,
   using a <a href="https://fmriprep.readthedocs.io/en/latest/contributors.html">NiPreps development environment</a>.
   Once you are satisfied with your local changes, <a href="https://help.github.com/articles/adding-a-file-to-a-repository-using-the-command-line">add/commit/push them</a>
-  to the branch on your forked repository.</p>
+  to the branch on your forked repository.
+  Note that that each commit must include changes that serve a coherent
+  purpose only (e.g. documentation, feature, bug fix) and that have a clear
+  scoped. They should be prefixed as indicated below.</p>
 </li>
 <li>
 <p><strong>Submit a <a href="https://help.github.com/articles/creating-a-pull-request-from-a-fork">pull request</a>.</strong><br />
@@ -1412,7 +1415,7 @@ git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </
 <li><code>STY</code>: style changes (<a href="https://github.com/nipreps/fmriprep/pull/675">example</a>)</li>
 <li><code>REF</code>: refactoring existing code (<a href="https://github.com/nipreps/fmriprep/pull/816">example</a>)</li>
 <li><code>CI</code>: updates to continuous integration infrastructure (<a href="https://github.com/nipreps/fmriprep/pull/1048">example</a>)</li>
-<li><code>MAINT</code>: general maintenance (<a href="https://github.com/nipreps/fmriprep/pull/1239">example</a>)</li>
+<li><code>MAINT</code>/<code>MNT</code>: general maintenance (<a href="https://github.com/nipreps/fmriprep/pull/1239">example</a>)</li>
 <li>For works-in-progress, add the <code>WIP</code> tag in addition to the descriptive prefix.
    Pull-requests tagged with <code>WIP:</code> will not be merged until the tag is removed.</li>
 </ul>
