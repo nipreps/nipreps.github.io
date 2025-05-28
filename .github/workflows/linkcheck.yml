@@ -1,3 +1,5 @@
+# Checks the existence of links within docs
+---
 name: Check links
 
 on:
@@ -15,11 +17,10 @@ env:
   FORCE_COLOR: true
 
 jobs:
-
   link-check:
     runs-on: ubuntu-latest
-
-      steps:
+    
+    steps:
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -28,7 +29,7 @@ jobs:
         with:
           python-version: 3.12
 
-       - uses: tcort/github-action-markdown-link-check@v1
-         with:
-           use-quiet-mode: yes
-           # use-verbose-mode: no
+      - uses: tcort/github-action-markdown-link-check@v1
+        with:
+          use-quiet-mode: yes
+          # use-verbose-mode: no
