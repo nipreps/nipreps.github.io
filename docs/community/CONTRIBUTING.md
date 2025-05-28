@@ -292,7 +292,8 @@ myworkflow_rh_wf = init_workflow_wf(name='myworkflow_rh_wf')
 
 We welcome and recognize all contributions regardless their size, content or scope:
 from documentation to testing and code development.
-You can see a list of current developers and contributors in our [zenodo file][link_zenodo].
+You can see a list of current developers and contributors in the `.zenodo.json` file
+of the corresponding repository. See [zenodo file][link_zenodo] for an example.
 Note that the `.zenodo.json` file is generated automatically, digesting data
 from the `maint/MAINTAINERS.md` and `maint/CONTRIBUTORS.md` files (and from
 the `maint/PIs.md` and `maint/FORMER.md` files, if applicable).
@@ -300,10 +301,12 @@ New contributors should add their names to the `maint/CONTRIBUTORS.md` file.
 Contributors are promoted to the `maint/MAINTAINERS.md` list following the
 *NiPreps* governance model.
 Governance information can be found in the [GOVERNANCE repository][link_governance_repository].
-Before every release, a new [zenodo file][link_zenodo] will be generated.
-The [update script][link_update_script] will also sort creators and contributors by
-the relative size of their contributions, as provided by the `git-line-summary` utility
-distributed with the `git-extras` package.
+Before every release, a new `.zenodo.json` will be generated through the
+`.maint/update_authors.py` script that dwells in the repository at issue.
+The script will also sort creators and contributors by the relative size of their
+contributions, as provided by the `git-line-summary` utility distributed with the
+`git-extras` package. See [update script][link_update_script] for
+an example of the script.
 Last positions in both the *creators* and *contributors* list will be reserved to
 the project leaders.
 These special positions can be revised to add names by punctual request and revised for
