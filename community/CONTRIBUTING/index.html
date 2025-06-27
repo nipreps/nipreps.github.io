@@ -1462,7 +1462,8 @@ identifier or a one-word description, such as:</p>
 <h2 id="recognizing-contributions">Recognizing contributions<a class="headerlink" href="#recognizing-contributions" title="Permanent link">&para;</a></h2>
 <p>We welcome and recognize all contributions regardless their size, content or scope:
 from documentation to testing and code development.
-You can see a list of current developers and contributors in our <a href="https://github.com/nipreps/fmriprep/blob/master/.zenodo.json">zenodo file</a>.
+You can see a list of current developers and contributors in the <code>.zenodo.json</code> file
+of the corresponding repository. See <a href="https://github.com/nipreps/fmriprep/blob/master/.zenodo.json">zenodo file</a> for an example.
 Note that the <code>.zenodo.json</code> file is generated automatically, digesting data
 from the <code>maint/MAINTAINERS.md</code> and <code>maint/CONTRIBUTORS.md</code> files (and from
 the <code>maint/PIs.md</code> and <code>maint/FORMER.md</code> files, if applicable).
@@ -1470,10 +1471,12 @@ New contributors should add their names to the <code>maint/CONTRIBUTORS.md</code
 Contributors are promoted to the <code>maint/MAINTAINERS.md</code> list following the
 <em>NiPreps</em> governance model.
 Governance information can be found in the <a href="https://github.com/nipreps/GOVERNANCE">GOVERNANCE repository</a>.
-Before every release, a new <a href="https://github.com/nipreps/fmriprep/blob/master/.zenodo.json">zenodo file</a> will be generated.
-The <a href="https://github.com/nipreps/fmriprep/blob/master/.maint/update_authors.py">update script</a> will also sort creators and contributors by
-the relative size of their contributions, as provided by the <code>git-line-summary</code> utility
-distributed with the <code>git-extras</code> package.
+Before every release, a new <code>.zenodo.json</code> will be generated through the
+<code>.maint/update_authors.py</code> script that dwells in the repository at issue.
+The script will also sort creators and contributors by the relative size of their
+contributions, as provided by the <code>git-line-summary</code> utility distributed with the
+<code>git-extras</code> package. See <a href="https://github.com/nipreps/fmriprep/blob/master/.maint/update_authors.py">update script</a> for
+an example of the script.
 Last positions in both the <em>creators</em> and <em>contributors</em> list will be reserved to
 the project leaders.
 These special positions can be revised to add names by punctual request and revised for
