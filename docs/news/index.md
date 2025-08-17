@@ -8,13 +8,13 @@ permalink: /news.html
 
 # News and Announcements
 
-## NiFreeze receives best poster award at the ISMRM 2025 Diffusion Study Group meeting
+## NiFreeze receives best poster award at the ISMRM 2025 Diffusion Study Group meeting <span style="color: grey; font-size: 72%; position: relative; right: -10px;"> May 16, 2025</span>
 
 The [*NiFreeze* abstract](https://osf.io/preprints/psyarxiv/gfny9_v2) submitted to the [ISMRM 2025 Annual Meeting](https://www.ismrm.org/25m/)
 was among the featured abstracts at the ISMRM 2025 Diffusion Study Group
 meeting. It received the best [poster award in the *Methods* category](https://x.com/DiffusionISMRM/status/1926200224860475571/photo/1).
 
-## NiPreps hackathon 2025 @ McGovern Institute for Brain Research
+## NiPreps hackathon 2025 @ McGovern Institute for Brain Research <span style="color: grey; font-size: 72%; position: relative; right: -10px;"> May 5, 2025</span>
 
 Building on the success of the 2024, the *NiPreppers* gathered again
 virtually and in-person at the McGovern Institute for Brain Research in
@@ -23,7 +23,7 @@ Cambridge (MA, USA) to hold another [3-day hackathon](https://www.nipreps.org/20
 *NiPost* and fMRI infant/rodent extensions were among the projects that
 assembled most contributors.
 
-## NiPreps hackathon 2024 @ McGovern Institute for Brain Research
+## NiPreps hackathon 2024 @ McGovern Institute for Brain Research <span style="color: grey; font-size: 72%; position: relative; right: -10px;"> May 20, 2024</span>
 
 The NiPreps community gathered both virtually and in-person at the McGovern
 Institute for Brain Research in Cambridge (MA, USA) to hold a
@@ -33,7 +33,7 @@ Several NiPreps projects received relevant improvements and bug fixes, and
 extensive discussions about the *NiTransforms* component were held during the
 event.
 
-## Register for the NiPreps hackathon with the OHBM'23 Brainhack!
+## Register for the NiPreps hackathon with the OHBM'23 Brainhack! <span style="color: grey; font-size: 72%; position: relative; right: -10px;"> Jun 12, 2023</span>
 
 **We are thrilled to announce that the NiPreps Hackathon's second edition will be part of the upcoming OHBM'23 Brainhack** (July 19-21, Maison Notman House, Montreal, Canada).
 
