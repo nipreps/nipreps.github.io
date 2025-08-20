@@ -8,6 +8,16 @@ permalink: /news.html
 
 # News and Announcements
 
+## PETPrep sprint <span style="color: grey; font-size: 72%; position: relative; right: -10px;"> Aug 18-19, 2025</span>
+
+Several researchers across Europe and North America convened online to
+drive forward the development of [*PETPrep*](https://github.com/nipreps/petprep/).
+Efforts focused on enhancing documentation and continuous integration
+infrastructure, automating packaging and release workflows, and setting
+up containerized environments. This work allowed to merge 23 pull
+requests and to open another 9, and to publish the first alpha release
+to [PyPI](https://pypi.org/project/petprep/0.0.1a0/).
+
 ## NiFreeze receives best poster award at the ISMRM 2025 Diffusion Study Group meeting
 
 The [*NiFreeze* abstract](https://osf.io/preprints/psyarxiv/gfny9_v2) submitted to the [ISMRM 2025 Annual Meeting](https://www.ismrm.org/25m/)
