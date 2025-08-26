@@ -8,6 +8,40 @@ permalink: /news.html
 
 # News and Announcements
 
+## NSC election result <span style="color: grey; font-size: 72%; position: relative; right: -10px;"> Aug 5, 2025</span>
+
+Following our recent call to extend the NiPreps Steering Committee
+(NSC) from three to five members, we are pleased to announce that
+**Eilidh MacNicol** and **Guiomar Niso** have been appointed to occupy
+the new NSC seats.
+
+Eilidh has played a key role in the development of the fMRIPrep
+extension to rodent data, and plans for generalizing the NiPreps tools
+to non-human data.
+
+Guiomar has been an active contributor to the NiPreps ecosystem through
+repeated participation in our hackathons and community discussions.
+Notably, her plans to support the extension of NiPreps tools toward EEG
+and MEG aligns with our long-term vision for modality convergence.
+
+We are also sensitive to the fact that the original NSC consisted of
+three male members, and are pleased that this appointment contributes
+to building a more sex-balanced leadership team.
+
+We are **deeply grateful to all nominees** for their commitment and
+thoughtful applications.
+**In particular**, we want to recognize **Steven Meisler** and 
+**Jon Haitz Legarreta** for their commitment and instrumental contributions
+to the NiPreps tools.
+
+## NSC call for new seat election
+
+With the growth of the NiPreps community, the current NSC has
+considered that increasing the number of seats from 3 to 5 is
+necessary.
+Thus, a call for nominations was made through [this
+announcement](https://github.com/nipreps/GOVERNANCE/issues/47).
+
 ## NiFreeze receives best poster award at the ISMRM 2025 Diffusion Study Group meeting <span style="color: grey; font-size: 72%; position: relative; right: -10px;"> May 16, 2025</span>
 
 The [*NiFreeze* abstract](https://osf.io/preprints/psyarxiv/gfny9_v2) submitted to the [ISMRM 2025 Annual Meeting](https://www.ismrm.org/25m/)
