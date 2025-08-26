@@ -29,15 +29,17 @@ three male members, and are pleased that this appointment contributes
 to building a more sex-balanced leadership team.
 
 We are **deeply grateful to all nominees** for their commitment and
-thoughtful applications. **In particular**, we want to recognize
-**Steven Meisler** and **Jon Haitz Legarreta** for their commitment
-and instrumental contributions to the NiPreps tools.
+thoughtful applications.
+**In particular**, we want to recognize **Steven Meisler** and 
+**Jon Haitz Legarreta** for their commitment and instrumental contributions
+to the NiPreps tools.
 
 ## NSC call for new seat election
 
 With the growth of the NiPreps community, the current NSC has
 considered that increasing the number of seats from 3 to 5 is
-necessary. Thus, a call for nominations was made through [this
+necessary.
+Thus, a call for nominations was made through [this
 announcement](https://github.com/nipreps/GOVERNANCE/issues/47).
 
 ## NiFreeze receives best poster award at the ISMRM 2025 Diffusion Study Group meeting
