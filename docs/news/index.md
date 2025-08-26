@@ -8,6 +8,17 @@ permalink: /news.html
 
 # News and Announcements
 
+## PETPrep sprint <span style="color: grey; font-size: 72%; position: relative; right: -10px;"> Aug 18-19, 2025</span>
+
+Several researchers across Europe and North America convened online to
+drive forward the development of [*PETPrep*](https://github.com/nipreps/petprep/).
+Efforts focused on enhancing documentation and continuous integration
+infrastructure, automating packaging and release workflows, and setting
+up containerized environments.
+This work allowed us to merge 23 pull requests and to open another 9,
+and to publish the first alpha release to
+[PyPI](https://pypi.org/project/petprep/0.0.1a0/).
+
 ## NSC election result <span style="color: grey; font-size: 72%; position: relative; right: -10px;"> Aug 5, 2025</span>
 
 Following our recent call to extend the NiPreps Steering Committee
