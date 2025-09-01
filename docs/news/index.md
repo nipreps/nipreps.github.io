@@ -45,7 +45,7 @@ thoughtful applications.
 **Jon Haitz Legarreta** for their commitment and instrumental contributions
 to the NiPreps tools.
 
-## NSC call for new seat election
+## NSC call for new seat election <span style="color: grey; font-size: 72%; position: relative; right: -10px;"> May 21, 2025</span>
 
 With the growth of the NiPreps community, the current NSC has
 considered that increasing the number of seats from 3 to 5 is
