@@ -71,7 +71,7 @@ Already know what you're looking for in this guide? Jump to the following sectio
 * [Contributing through Github](#contributing-through-github)
 * [Understanding issues](#understanding-issues)
 * [Making a change](#making-a-change)
-* [Structuring contributions](#NiPreps-coding-style-guide)
+* [Structuring contributions](#nipreps-coding-style-guide)
 * [Licensing](#licensing)
 * [Recognizing contributors](#recognizing-contributions)
 
