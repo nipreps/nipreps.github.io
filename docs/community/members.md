@@ -16,7 +16,7 @@ section.
 
 Developers are members of a wonderful team _driving the project_.
 Names and contacts of all developers are included in the
-[`.maint/developers.json` file](https://github.com/nipreps/fmriprep/blob/master/.maint/developers.json) of each project.
+[`.maint/developers.json` file](https://github.com/nipreps/fmriprep/blob/main/.maint/developers.json) of each project.
 Examples of steering activities that _drive the project_ are: actively participating in the
 follow-up meetings, leading documentation sprints, helping in the design of the tool and definition of the roadmap,
 providing resources (in the broad sense, including funding), code-review, etc.
@@ -24,7 +24,7 @@ providing resources (in the broad sense, including funding), code-review, etc.
 ### Contributors
 
 Contributors enlisted in the
-[`.maint/contributors.json` file](https://github.com/nipreps/fmriprep/blob/master/.maint/contributors.json) of each project
+[`.maint/contributors.json` file](https://github.com/nipreps/fmriprep/blob/main/.maint/contributors.json) of each project
 actively help or have previously helped the project in a broad sense: writing code, writing documentation,
 benchmarking modules of the tool, proposing new features, helping improve the scientific
 rigor of implementations, giving out support on the different communication
@@ -37,7 +37,7 @@ Before every release, unlisted contributors will be invited again to add their n
 
 Contributors who have contributed at some point to the project but were required or they wished to
 disconnect from the project's updates and to drop-out from publications and other dissemination activities,
-are listed in the [`.maint/former.json` file](https://github.com/nipreps/fmriprep/blob/master/.maint/former.json).
+are listed in the [`.maint/former.json` file](https://github.com/nipreps/fmriprep/blob/main/.maint/former.json).
 
 
 [link_neurostars]: https://neurostars.org
