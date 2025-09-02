@@ -71,7 +71,7 @@ Already know what you're looking for in this guide? Jump to the following sectio
 * [Contributing through Github](#contributing-through-github)
 * [Understanding issues](#understanding-issues)
 * [Making a change](#making-a-change)
-* [Structuring contributions](#NiPreps-coding-style-guide)
+* [Structuring contributions](#nipreps-coding-style-guide)
 * [Licensing](#licensing)
 * [Recognizing contributors](#recognizing-contributions)
 
@@ -328,7 +328,7 @@ Then, please modify this list and place your name first.
 All developers and contributors are pulled together in a unique list, and last authorships assigned.
 *NiPreps* and its community adheres to open science principles, such that a pre-print should
 be posted on an adequate archive service (e.g., [ArXiv](https://arxiv.org) or
-[BioRxiv](https://biorxiv.org)) prior publication.
+[BioRxiv](https://www.biorxiv.org)) prior publication.
 
 
 ## Licensing
