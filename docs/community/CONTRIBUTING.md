@@ -328,7 +328,7 @@ Then, please modify this list and place your name first.
 All developers and contributors are pulled together in a unique list, and last authorships assigned.
 *NiPreps* and its community adheres to open science principles, such that a pre-print should
 be posted on an adequate archive service (e.g., [ArXiv](https://arxiv.org) or
-[BioRxiv](https://biorxiv.org)) prior publication.
+[BioRxiv](https://www.biorxiv.org)) prior publication.
 
 
 ## Licensing
