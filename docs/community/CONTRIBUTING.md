@@ -389,7 +389,7 @@ You're awesome. :wave::smiley:
 [link_stemmrolemodels]: https://github.com/KirstieJane/STEMMRoleModels
 [link_zenodo]: https://github.com/nipreps/fmriprep/blob/master/.zenodo.json
 [link_update_script]: https://github.com/nipreps/fmriprep/blob/master/.maint/update_authors.py
-[link_devel]: https://fmriprep.readthedocs.io/en/latest/contributors.html
+[link_devel]: https://fmriprep.org/en/stable/contributors.html
 [link_fmriprep]: http://fmriprep.org
 [link_bidsapps]: https://bids-apps.neuroimaging.io
 [link_mattermost]: https://mattermost.brainhack.org/brainhack/channels/fmriprep

@@ -1,0 +1,12 @@
+{
+  "ignorePatterns": [
+    {"pattern": "^http://127\\.0\\.0\\.1:8445"},
+    {"pattern": "^http://192\\.168\\.99\\.100:8445"},
+    {"pattern": "biorxiv\\.org"},
+    {"pattern": "doi\\.org"},
+    {"pattern": "toptal\\.com"},
+    {"pattern": "^/"},
+    {"pattern": "^\\.\\./\\.\\./assets/"},
+    {"pattern": "^\\.\\./\\.\\./"}
+  ]
+}
