@@ -46,7 +46,7 @@ The *NiPreps* framework (Figure 1) encompasses a wide array of software projects
 
 [1]: http://fmriprep.org/ "fMRIPrep documentation"
 [2]: https://nipype.readthedocs.io/ "NiPype documentation"
-[3]: https://nibabel.readthedocs.io/ "NiBabel documentation"
+[3]: https://nipy.org/nibabel/ "NiBabel documentation"
 [4]: https://www.nipreps.org/niworkflows/ "NiWorkflows documentation"
 [5]: https://www.nipreps.org/sdcflows/ "SDCflows documentation"
 [6]: https://www.nipreps.org/dmriprep/ "dMRIPrep documentation"
