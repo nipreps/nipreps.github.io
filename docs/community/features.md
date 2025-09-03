@@ -75,7 +75,7 @@ as the *NiPreps* maintainers will consider them:
     > Especially when the CLI is affected, and yet another option is added,
     > that makes the tool more complex to use.
     >
-    > -- <cite>Alejandro ([source](https://github.com/nipreps/fmriprep/    issues/1963#issuecomment-582174814))</cite>.
+    > -- <cite>Alejandro ([source](https://github.com/nipreps/fmriprep/issues/1963#issuecomment-582174814))</cite>.
 
   * Does the new feature substantially **increase the internal complexity**?
     Maintainers and developers will attempt to consolidate tools and lower the internal
