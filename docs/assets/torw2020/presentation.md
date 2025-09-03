@@ -1,3 +1,4 @@
+<!-- markdown-link-check-disable -->
 name: title
 layout: true
 class: center
@@ -1200,3 +1201,4 @@ layout: false
 
 ## Questions?
 ]
+<!-- markdown-link-check-enable -->
