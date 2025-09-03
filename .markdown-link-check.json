@@ -7,7 +7,6 @@
     {"pattern": "toptal\\.com"},
     {"pattern": "nbirn\\.net"},
     {"pattern": "^/"},
-    {"pattern": "^\\.\\./\\.\\./assets/"},
-    {"pattern": "^\\.\\./\\.\\./"}
+    {"pattern": "^site/assets/[A-Za-z0-9-]*/presentation"}
   ]
 }
