@@ -292,7 +292,7 @@ Once the *Docker Engine* arguments are written, the remainder of the
 command line follows the interface defined by the specific
 *BIDS App* (for instance,
 [*fMRIPrep*](https://fmriprep.readthedocs.io/en/latest/usage.html)
-or [*MRIQC*](https://mriqc.readthedocs.io/en/latest/running.html#command-line-interface)).
+or [*MRIQC*](https://mriqc.readthedocs.io/en/latest/usage.html#a-bids-apps-command-line-interface)).
 
 The first section of a call consists of arguments specific to *Docker*,
 which configure the execution of the container:
