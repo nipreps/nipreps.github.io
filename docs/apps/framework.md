@@ -5,7 +5,7 @@
 brain datasets, including MRI.
 The common naming convention and folder structure allow researchers to easily reuse BIDS datasets, re-apply analysis protocols, and run standardized automatic data preprocessing pipelines (and particularly, BIDS Apps).
 The [BIDS starter-kit](https://github.com/bids-standard/bids-starter-kit) contains a wide collection of educational resources.
-Validity of the structure can be assessed with the online [BIDS-Validator](https://bids-standard.github.io/bidsvalidator/).
+Validity of the structure can be assessed with the online [BIDS-Validator](https://bids-standard.github.io/bids-validator/).
 The tree of a typical, valid (*BIDS-compliant*) dataset is shown below:
 
 ```
