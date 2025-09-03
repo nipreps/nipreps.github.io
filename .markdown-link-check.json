@@ -5,6 +5,7 @@
     {"pattern": "biorxiv\\.org"},
     {"pattern": "doi\\.org"},
     {"pattern": "toptal\\.com"},
+    {"pattern": "nbirn\\.net"},
     {"pattern": "^/"},
     {"pattern": "^\\.\\./\\.\\./assets/"},
     {"pattern": "^\\.\\./\\.\\./"}
