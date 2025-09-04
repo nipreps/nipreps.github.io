@@ -72,7 +72,7 @@ $ singularity run --cleanenv fmriprep.simg \
 
 ## Handling environment variables
 
-Singularity by default [exposes all environment variables from the host inside the container](https://github.com/singularityware/singularity/issues/445).
+Singularity by default [exposes all environment variables from the host inside the container](https://github.com/apptainer/singularity/issues/445).
 Because of this, your host libraries (e.g., [NiPype](https://nipype.readthedocs.io) or a Python environment) could be accidentally used instead of the ones inside the
 container. To avoid such a situation, we strongly **recommend** using the
 `--cleanenv` argument in all scenarios. For example:

@@ -1,3 +1,4 @@
+<!-- markdown-link-check-disable -->
 name: title
 layout: true
 class: center
@@ -103,7 +104,7 @@ template: sidebar
 ### fMRIPrep produces analysis-ready data from acquired (fMRI) data
 * minimal requirements ([BIDS-compliant](https://bids-standard.github.io/bids-validator/));
 * *agnostic* to downstream steps of the workflow
-  * produces [BIDS-Derivatives](https://bids-specification.readthedocs.io/en/derivatives/05-derivatives/01-introduction.html);
+  * produces [BIDS-Derivatives](https://bids-specification.readthedocs.io/en/stable/derivatives/introduction.html);
 
 ???
 
@@ -1200,3 +1201,4 @@ layout: false
 
 ## Questions?
 ]
+<!-- markdown-link-check-enable -->

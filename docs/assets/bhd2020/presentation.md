@@ -53,7 +53,7 @@ class: section-separator
 <br />
 
 <p align="center">
-<img src="../nipreps-qr.svg" width="70%" />
+<object type="text/xml+svg" data="https://raw.githubusercontent.com/nipreps/identity/refs/heads/main/nipreps-general/qr-code.svg" style="width: 70%"></object>
 </p>
 <br />
 <p align="center">
@@ -77,7 +77,7 @@ layout: true
 <br />
 
 <p align="center">
-<img src="../nipreps-qr.svg" width="70%" />
+<object type="text/xml+svg" data="https://raw.githubusercontent.com/nipreps/identity/refs/heads/main/nipreps-general/qr-code.svg" style="width: 70%"></object>
 </p>
 <br />
 <p align="center">
@@ -196,7 +196,7 @@ Around 50% of teams used *fMRIPrep*'ed inputs.
 ### fMRIPrep produces analysis-ready data from diverse data
 * minimal requirements ([BIDS-compliant](https://bids-standard.github.io/bids-validator/));
 * *agnostic* to downstream steps of the workflow
-  * produces [BIDS-Derivatives](https://bids-specification.readthedocs.io/en/derivatives/05-derivatives/01-introduction.html);
+  * produces [BIDS-Derivatives](https://bids-specification.readthedocs.io/en/stable/derivatives/introduction.html);
 * robust against inhomogeneity of data across studies
 
 ???
