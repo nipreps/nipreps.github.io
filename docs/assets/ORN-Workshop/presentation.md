@@ -53,7 +53,7 @@ class: section-separator
 <br />
 
 <p align="center">
-<img src="../nipreps-qr.svg" width="70%" />
+<object type="text/xml+svg" data="https://raw.githubusercontent.com/nipreps/identity/refs/heads/main/nipreps-general/qr-code.svg" style="width: 70%"></object>
 </p>
 <br />
 <p align="center">
@@ -77,7 +77,7 @@ layout: true
 <br />
 
 <p align="center">
-<img src="../nipreps-qr.svg" width="70%" />
+<object type="text/xml+svg" data="https://raw.githubusercontent.com/nipreps/identity/refs/heads/main/nipreps-general/qr-code.svg" style="width: 70%"></object>
 </p>
 <br />
 <p align="center">
