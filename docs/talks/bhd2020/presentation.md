@@ -678,7 +678,7 @@ Finally, the paper also stresses the importance of containerizing applications t
 
 .pull-left[
 <p align="center">
-<img src="../card-nipype.svg" width="100%" />
+<img src="images/card-nipype.svg" width="100%" />
 </p>
 <br />
 
@@ -711,7 +711,7 @@ Finally, combining these interfaces we generate processing workflows to fulfill 
 
 ---
 
-<img src="../card-nipype.svg" width="39%" />
+<img src="images/card-nipype.svg" width="39%" />
 <p align="center">
 <img src="https://fmriprep.org/en/stable/_images/workflows-5.png" width="60%" />
 </p>
@@ -724,7 +724,7 @@ Nipype helps understand (and opens windows in the black box) generating these gr
 
 ---
 
-<img src="../card-nibabel.svg" width="39%" />
+<img src="images/card-nibabel.svg" width="39%" />
 
 ``` Python
 """Fix the affine of a rodent dataset, imposing 0.2x0.2x0.2 [mm]."""
@@ -759,7 +759,7 @@ In the snippet, we can see how we can manipulate the orientation headers of a NI
 
 .pull-left[
 <p align="center">
-<img src="../card-nitransforms.svg" width="100%" />
+<img src="images/card-nitransforms.svg" width="100%" />
 </p>
 <br />
 <br />
@@ -803,7 +803,7 @@ Finally (step 3) we generate a new image object with the structure of the refere
 
 .pull-left[
 <p align="center">
-<img src="../card-templateflow.svg" width="100%" />
+<img src="images/card-templateflow.svg" width="100%" />
 </p>
 
 
@@ -877,7 +877,7 @@ Multiple cohorts are useful, for instance, in infant templates with averages at 
 
 ---
 
-<img src="../card-niworkflows.svg" width="39%" />
+<img src="images/card-niworkflows.svg" width="39%" />
 
 <br />
 <br />
@@ -922,7 +922,7 @@ Finally, NiWorkflows indeed offers workflows that can be used by end-user NiPrep
 
 ---
 
-<img src="../card-sdcflows.svg" width="39%" />
+<img src="images/card-sdcflows.svg" width="39%" />
 
 <object style="width: 75%;" type="image/svg+xml" data="../torw2020/assets/sub-100068_task-machinegame_run-6_desc-sdc_bold.svg"></object>
 
