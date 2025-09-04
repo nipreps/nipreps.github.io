@@ -1155,7 +1155,7 @@ the <em>NiPrep</em>:</p>
 <span class="w">    </span>--participant-label<span class="w"> </span>label
 </code></pre></div>
 <h2 id="handling-environment-variables">Handling environment variables<a class="headerlink" href="#handling-environment-variables" title="Permanent link">&para;</a></h2>
-<p>Singularity by default <a href="https://github.com/singularityware/singularity/issues/445">exposes all environment variables from the host inside the container</a>.
+<p>Singularity by default <a href="https://github.com/apptainer/singularity/issues/445">exposes all environment variables from the host inside the container</a>.
 Because of this, your host libraries (e.g., <a href="https://nipype.readthedocs.io">NiPype</a> or a Python environment) could be accidentally used instead of the ones inside the
 container. To avoid such a situation, we strongly <strong>recommend</strong> using the
 <code>--cleanenv</code> argument in all scenarios. For example:</p>
