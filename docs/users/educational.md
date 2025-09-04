@@ -13,8 +13,8 @@
 
 ## Online books
 
-- [QC-Book, member-initiated tutorial at ISMRM 2022](../../qc-book)
-- [NiPreps Book, developing processing tools for dMRI, ISBI 2021](../../nipreps-book)
+- [QC-Book, member-initiated tutorial at ISMRM 2022](https://www.nipreps.org/qc-book)
+- [NiPreps Book, developing processing tools for dMRI, ISBI 2021](https://www.nipreps.org/nipreps-book/)
 
 ## QC protocols and Standard Operating Procedures
 
