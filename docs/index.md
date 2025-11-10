@@ -7,7 +7,7 @@ We refer to data *directly consumable by analyses* as ***analysis-grade data*** 
   * **minimally preprocessed**, but are
   * **safe to consume** directly.
 
-<object type="image/svg+xml" data="https://www.nipreps.org/identity/nipreps-general/nipreps-chart.svg" style="padding-top: 20px; width: 80%"></object>
+<object type="image/svg+xml" data="https://www.nipreps.org/identity/nipreps-general/nipreps-chart.svg" style="padding-top: 20px; width: 100%"></object>
 
 ## Building on the success story of *fMRIPrep*
 
