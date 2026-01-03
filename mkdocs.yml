@@ -9,7 +9,7 @@ google_analytics: ['UA-170131052-1', 'www.nipreps.org']
 # repo_url: https://github.com/nipreps/nipreps.github.io
 
 # Copyright
-copyright: Copyright &copy; 2020
+copyright: '&copy; The NiPreps developers'
 
 nav:
     - Home: index.md
@@ -38,6 +38,9 @@ nav:
       - Releases: devs/releases.md
 theme:
   name: material
+  font:
+    text: Arimo
+    code: Anonymous Pro
   features:
     - content.tabs.link
   favicon: assets/nipreps_brain.png

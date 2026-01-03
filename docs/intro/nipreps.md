@@ -24,7 +24,7 @@ The *NiPreps* framework (Figure 1) encompasses a wide array of software projects
   * **End-user tools such as *fMRIPrep***: Some existing end-user tools include *sMRIPrep (Structural MRI Preprocessing)*, which lies in between an end-user tool and middleware, as it is involved in higher-level tools such as *fMRIPrep*. Finally, quality control tools (e.g., *MRIQC*) to be executed before any preprocessing happens.
 
 <br />
-![overview](../assets/nipreps-chart.png)
+<object type="image/svg+xml" data="https://www.nipreps.org/identity/nipreps-general/nipreps-chart.svg" style="padding-top: 20px; width: 100%"></object>
 
 ## Projects
 
