@@ -2,14 +2,14 @@
 
 ## fMRIPrep Bootcamp Geneva 2024
 
-- [Welcome Home](../../assets/fmriprep-bootcamp-geneva2024/home)
-- [Overview of the fMRI neuroimaging pipeline & *fMRIPrep*](../../assets/fmriprep-bootcamp-geneva2024/day1-01-fmriprep-primer)
-- [The Brain Imaging Data Structure (BIDS)](../../assets/fmriprep-bootcamp-geneva2024/day1-02-bids)
-- [BIDS Hands-on](../../assets/fmriprep-bootcamp-geneva2024/day1-03-bids-hands-on)
-- [Containers](../../assets/fmriprep-bootcamp-geneva2024/day1-04-containers)
-- [Data and HPC](../../assets/fmriprep-bootcamp-geneva2024/day1-05-data-and-hpc)
-- [Apptainer in UNIGE's HPC](../../assets/fmriprep-bootcamp-geneva2024/day1-06-apptainer)
-- [Links](../../assets/fmriprep-bootcamp-geneva2024/day2-links)
+- [Welcome Home](https://nipreps.github.io/presentations/2024-fMRIPrep-Bootcamp-Geneva/home/)
+- [Overview of the fMRI neuroimaging pipeline & *fMRIPrep*](https://nipreps.github.io/presentations/2024-fMRIPrep-Bootcamp-Geneva/day1-01-fmriprep-primer/)
+- [The Brain Imaging Data Structure (BIDS)](https://nipreps.github.io/presentations/2024-fMRIPrep-Bootcamp-Geneva/day1-02-bids/)
+- [BIDS Hands-on](https://nipreps.github.io/presentations/2024-fMRIPrep-Bootcamp-Geneva/day1-03-bids-hands-on/)
+- [Containers](https://nipreps.github.io/presentations/2024-fMRIPrep-Bootcamp-Geneva/day1-04-containers/)
+- [Data and HPC](https://nipreps.github.io/presentations/2024-fMRIPrep-Bootcamp-Geneva/day1-05-data-and-hpc/)
+- [Apptainer in UNIGE's HPC](https://nipreps.github.io/presentations/2024-fMRIPrep-Bootcamp-Geneva/day1-06-apptainer/)
+- [Links](https://nipreps.github.io/presentations/2024-fMRIPrep-Bootcamp-Geneva/day2-links/)
 
 ## Online books
 
