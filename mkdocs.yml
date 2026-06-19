@@ -32,6 +32,8 @@ nav:
         - Git-Annex and DataLad within containers: apps/datalad.md
       - Presentations: users/talks.md
       - Educational: users/educational.md
+      - Guides:
+        - How to read an fMRIPrep visual report: users/howto_read_fmriprep_visual_report.md
     - Documentation (devs):
       - Developer Environment: devs/devenv.md
       - Versions Matrix: devs/versions.md
