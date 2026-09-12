@@ -1,0 +1,13 @@
+{
+  "dMRIPrep": "https://www.nipreps.org/dmriprep/",
+  "fMRIPrep": "https://fmriprep.org/en/stable",
+  "MRIQC": "https://mriqc.readthedocs.io/en/latest/",
+  "MRIQC-learn": "https://github.com/nipreps/mriqc-learn",
+  "NiBabies": "https://nibabies.readthedocs.io/en/latest/",
+  "NiRodents": "https://github.com/nipreps/nirodents",
+  "NiTransforms": "https://nitransforms.readthedocs.io/en/latest/",
+  "NiWorkflows": "https://www.nipreps.org/niworkflows/master/index.html",
+  "PETPrep": "https://petprep.readthedocs.io/en/latest/",
+  "sMRIPrep": "https://www.nipreps.org/smriprep/",
+  "TemplateFlow": "https://www.templateflow.org/"
+}

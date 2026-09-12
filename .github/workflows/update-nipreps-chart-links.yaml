@@ -1,0 +1,71 @@
+name: Check and update NiPreps chart SVG project links
+
+on:
+  push:
+    branches: [mkdocs]
+  pull_request:
+    branches: [mkdocs]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+# Force to use color
+env:
+  FORCE_COLOR: true
+  COMMIT_MSG: "MNT: Update NiPreps SVG chart links"
+
+jobs:
+  check-and-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Check SVG Links
+        id: svg_check
+        continue-on-error: true
+        # Replace paths with your actual script, SVG file, and mapping JSON file paths
+        run: |
+          python path/to/your/script.py \
+            docs/assets/nipreps-chart.svg \
+            docs/assets/project_links.json \
+            --check
+
+      - name: Generate Updated SVG (if check failed)
+        if: steps.svg_check.outcome == 'failure'
+        run: |
+          python path/to/your/script.py \
+            docs/assets/nipreps-chart.svg \
+            docs/assets/nipreps-chart.svg \
+            docs/assets/project_links.json
+
+      - name: Create or Update Pull Request
+        if: steps.svg_check.outcome == 'failure'
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: ${{ env.COMMIT_MSG }}
+          committer: nipreps-bot <nipreps@gmail.com>
+          author: nipreps-bot <nipreps@gmail.com>
+          branch: auto-update-svg-links
+          delete-branch: true
+          title: ${{ env.COMMIT_MSG }}
+          body: |
+            This automated pull request runs the offline Python script because the
+            NiPreps SVG chart was missing one or more project links, ensuring the
+            figure is ready before site deployment.
+          labels: |
+            documentation
