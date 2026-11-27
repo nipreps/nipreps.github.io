@@ -6,6 +6,10 @@
     {"pattern": "doi\\.org"},
     {"pattern": "toptal\\.com"},
     {"pattern": "nbirn\\.net"},
+    {"pattern": "^https://(www\\.)?youtube\\.com/"},
+    {"pattern": "^https://youtu\\.be/"},
+    {"pattern": "^https://stackoverflow\\.com/"},
+    {"pattern": "^https://[a-z]+\\.stackexchange\\.com/"},
     {"pattern": "^/"}
   ]
 }
