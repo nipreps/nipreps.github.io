@@ -8,6 +8,15 @@ permalink: /news.html
 
 # News and Announcements
 
+## Index of the scientific production of NiPreps <span style="color: grey; font-size: 72%; position: relative; right: -10px;"> Nov 27, 2026</span>
+
+The website now indexes the scientific production of the *NiPreps* community since 2016:
+peer-reviewed papers and preprints, conference communications, *NiPreps* at the OHBM
+annual meetings from 2023 to 2026, talks and educational events, and a summary of
+the releases of each tool.
+See [Scientific production](../intro/production.md).
+If something is missing, please edit the page and send a pull request.
+
 ## NiPreps hackathon 2026 in Copenhagen <span style="color: grey; font-size: 72%; position: relative; right: -10px;"> Apr 28-30, 2026</span>
 
 Building on the success of previous editions, the *NiPreppers* gathered
