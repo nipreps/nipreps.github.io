@@ -17,6 +17,7 @@ nav:
     - NiPreps:
       - Framework: intro/nipreps.md
       - Transparency of workflows: intro/transparency.md
+      - Scientific production: intro/production.md
     - Community:
       - Welcome: community/index.md
       - Membership: community/members.md
