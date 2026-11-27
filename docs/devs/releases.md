@@ -109,3 +109,44 @@ Additional tasks required of an LTS manager:
     * If a bug is identified as existing within the LTS series and can be fixed without breaking API or derivative compatibility.
 
 As many dependencies as possible should be pinned to specific versions relevant to the environment they are installed in. Packages (Debian `.deb` files, conda packages, Python wheels) should be archived in case of a loss of the external packages.
+
+### Releasing versions
+
+The general principles to release a version across the NiPreps projects can be
+summarized as follows:
+
+1. Prepare the changes into the `CHANGES.rst` document under using the
+   appropriate version number.
+
+   Across the NiPreps, the `CHANGES.rst` document is intended to host the
+   version release notes, containing a high-level description of changes
+   across releases and changes requiring particular attention (e.g. breaking
+   changes of the API) being described in detail using dedicated subsections.
+   The list of all merged PRs is expected to be added at the end of the
+   release section.
+
+1. Tag the version in git, e.g.
+
+   ```
+   git tag 26.0.0rc0 -m "Memory-mapped dataset loading"
+   ```
+
+   and push it.
+
+   Note that the version number has to be determined manually following the
+   criteria established in this document.
+
+1. Release the version on GitHub from the tag, writing the appropriate release
+   notes on GitHub. Ideally, the release notes should be created using the
+   appropriate contents from the `CHANGES.rst` file.
+
+   At this point, the version should be pushed to [PyPI](https://pypi.org)
+   automatically upon a successful build.
+
+   Similarly, the documentation of the new version should be deployed
+   automatically to the web using the `gh-pages` branch.
+
+   !!! note "Note"
+   The NiPreps projects usually have dedicated GitHub Actions workflow files
+   for these purposes (e.g. named `.github/workflows/pypi-package.yml` and
+   `.github/workflows/docs-build-update.yml`).
