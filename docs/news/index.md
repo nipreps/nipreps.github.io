@@ -8,6 +8,16 @@ permalink: /news.html
 
 # News and Announcements
 
+## NiPreps hackathon 2026 in Copenhagen <span style="color: grey; font-size: 72%; position: relative; right: -10px;"> Apr 28-30, 2026</span>
+
+Building on the success of previous editions, the *NiPreppers* gathered
+virtually and in-person in Copenhagen, Denmark at this time to push
+forward different *NiPreps* projects.
+
+*PETPrep*, the initial development of *M/EEGPrep*, and efforts to align
+*NiWrap* and *T1Prep* with the *NiPreps* ecosystem were among the
+highlights of this edition.
+
 ## PETPrep sprint <span style="color: grey; font-size: 72%; position: relative; right: -10px;"> Aug 18-19, 2025</span>
 
 Several researchers across Europe and North America convened online to
