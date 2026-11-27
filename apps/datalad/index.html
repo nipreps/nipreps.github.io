@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/nipreps_brain.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
       
 
@@ -1234,12 +1234,12 @@ add the <code>--no-datalad-get</code> argument to workaround issues with
 the <em>DataLad</em> dataset, we will likely encounter the following error
 with relatively recent
 <a href="https://github.blog/open-source/git/git-security-vulnerability-announced/#"><em>Git</em> versions (+2.35.2)</a>:</p>
-<div class="highlight"><pre><span></span><code>datalad.runner.exception.CommandError: CommandError: &#39;git -c diff.ignoreSubmodules=none -c core.quotepath=false -c annex.merge-annex-branches=false annex find --not --in . --json --json-error-messages -c annex.dotfiles=true -- sub-0001/func/sub-0001_task-restingstate_acq-mb3_bold.nii.gz sub-0002/func/sub-0002_task-emomatching_acq-seq_bold.nii.gz sub-0002/func/sub-0002_task-restingstate_acq-mb3_bold.nii.gz sub-0001/func/sub-0001_task-emomatching_acq-seq_bold.nii.gz sub-0001/func/sub-0001_task-faces_acq-mb3_bold.nii.gz sub-0001/dwi/sub-0001_dwi.nii.gz sub-0002/func/sub-0002_task-workingmemory_acq-seq_bold.nii.gz sub-0001/anat/sub-0001_T1w.nii.gz sub-0002/anat/sub-0002_T1w.nii.gz sub-0001/func/sub-0001_task-gstroop_acq-seq_bold.nii.gz sub-0002/func/sub-0002_task-faces_acq-mb3_bold.nii.gz sub-0002/func/sub-0002_task-anticipation_acq-seq_bold.nii.gz sub-0002/dwi/sub-0002_dwi.nii.gz sub-0001/func/sub-0001_task-anticipation_acq-seq_bold.nii.gz sub-0001/func/sub-0001_task-workingmemory_acq-seq_bold.nii.gz sub-0002/func/sub-0002_task-gstroop_acq-seq_bold.nii.gz&#39; failed with exitcode 1 under /data [info keys: stdout_json] [err: &#39;git-annex: Git refuses to operate in this repository, probably because it is owned by someone else.
+<div class="highlight"><pre><span></span><code>datalad.runner.exception.CommandError: CommandError: 'git -c diff.ignoreSubmodules=none -c core.quotepath=false -c annex.merge-annex-branches=false annex find --not --in . --json --json-error-messages -c annex.dotfiles=true -- sub-0001/func/sub-0001_task-restingstate_acq-mb3_bold.nii.gz sub-0002/func/sub-0002_task-emomatching_acq-seq_bold.nii.gz sub-0002/func/sub-0002_task-restingstate_acq-mb3_bold.nii.gz sub-0001/func/sub-0001_task-emomatching_acq-seq_bold.nii.gz sub-0001/func/sub-0001_task-faces_acq-mb3_bold.nii.gz sub-0001/dwi/sub-0001_dwi.nii.gz sub-0002/func/sub-0002_task-workingmemory_acq-seq_bold.nii.gz sub-0001/anat/sub-0001_T1w.nii.gz sub-0002/anat/sub-0002_T1w.nii.gz sub-0001/func/sub-0001_task-gstroop_acq-seq_bold.nii.gz sub-0002/func/sub-0002_task-faces_acq-mb3_bold.nii.gz sub-0002/func/sub-0002_task-anticipation_acq-seq_bold.nii.gz sub-0002/dwi/sub-0002_dwi.nii.gz sub-0001/func/sub-0001_task-anticipation_acq-seq_bold.nii.gz sub-0001/func/sub-0001_task-workingmemory_acq-seq_bold.nii.gz sub-0002/func/sub-0002_task-gstroop_acq-seq_bold.nii.gz' failed with exitcode 1 under /data [info keys: stdout_json] [err: 'git-annex: Git refuses to operate in this repository, probably because it is owned by someone else.
 
 To add an exception for this directory, call:
 git config --global --add safe.directory /data
 
-git-annex: automatic initialization failed due to above problems&#39;]
+git-annex: automatic initialization failed due to above problems']
 </code></pre></div>
 <p>Confusingly, following the suggestion from <em>DataLad</em>
 (just propagated from <em>Git</em>) of executing
@@ -1273,10 +1273,10 @@ execute the application, <em>Docker</em> must be executed with the
 uid and gid corresponding to the user who installed the dataset.
 The uid corresponding to a given username (for instance <code>janedoe</code>)
 can be obtained as follows:</p>
-<div class="highlight"><pre><span></span><code>getent passwd &quot;janedoe&quot; | cut -f 3 -d &quot;:&quot;
+<div class="highlight"><pre><span></span><code>getent passwd "janedoe" | cut -f 3 -d ":"
 </code></pre></div>
 <p>and her gid:</p>
-<div class="highlight"><pre><span></span><code>getent passwd &quot;janedoe&quot; | cut -f 4 -d &quot;:&quot;
+<div class="highlight"><pre><span></span><code>getent passwd "janedoe" | cut -f 4 -d ":"
 </code></pre></div>
 </div>
 <h3 id="mounting-the-dataset-folder-without-read-only-permissions">Mounting the dataset folder without <em>read-only</em> permissions<a class="headerlink" href="#mounting-the-dataset-folder-without-read-only-permissions" title="Permanent link">&para;</a></h3>
@@ -1287,35 +1287,35 @@ will hit the following error
 action summary:
   get (error: 1)
 Traceback (most recent call last):
-  File &quot;/opt/conda/bin/mriqc&quot;, line 8, in &lt;module&gt;
+  File "/opt/conda/bin/mriqc", line 8, in &lt;module&gt;
     sys.exit(main())
              ^^^^^^
-  File &quot;/opt/conda/lib/python3.11/site-packages/mriqc/cli/run.py&quot;, line 43, in main
+  File "/opt/conda/lib/python3.11/site-packages/mriqc/cli/run.py", line 43, in main
     parse_args(argv)
-  File &quot;/opt/conda/lib/python3.11/site-packages/mriqc/cli/parser.py&quot;, line 658, in parse_args
+  File "/opt/conda/lib/python3.11/site-packages/mriqc/cli/parser.py", line 658, in parse_args
     initialize_meta_and_data()
-  File &quot;/opt/conda/lib/python3.11/site-packages/mriqc/utils/misc.py&quot;, line 447, in initialize_meta_and_data
+  File "/opt/conda/lib/python3.11/site-packages/mriqc/utils/misc.py", line 447, in initialize_meta_and_data
     _datalad_get(dataset)
-  File &quot;/opt/conda/lib/python3.11/site-packages/mriqc/utils/misc.py&quot;, line 282, in _datalad_get
+  File "/opt/conda/lib/python3.11/site-packages/mriqc/utils/misc.py", line 282, in _datalad_get
     return get(
            ^^^^
-  File &quot;/opt/conda/lib/python3.11/site-packages/datalad/interface/base.py&quot;, line 773, in eval_func
+  File "/opt/conda/lib/python3.11/site-packages/datalad/interface/base.py", line 773, in eval_func
     return return_func(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/opt/conda/lib/python3.11/site-packages/datalad/interface/base.py&quot;, line 763, in return_func
+  File "/opt/conda/lib/python3.11/site-packages/datalad/interface/base.py", line 763, in return_func
     results = list(results)
               ^^^^^^^^^^^^^
-  File &quot;/opt/conda/lib/python3.11/site-packages/datalad_next/patches/interface_utils.py&quot;, line 287, in _execute_command_
+  File "/opt/conda/lib/python3.11/site-packages/datalad_next/patches/interface_utils.py", line 287, in _execute_command_
     raise IncompleteResultsError(
 datalad.support.exceptions.IncompleteResultsError: Command did not complete successfully. 1 failed:
-[{&#39;action&#39;: &#39;get&#39;,
-  &#39;annexkey&#39;: &#39;MD5E-s76037251--344f061a3165c71e36b98ad1649c3c8c.nii.gz&#39;,
-  &#39;error_message&#39;: &#39;git-annex: .git/annex/tmp: createDirectory: permission &#39;
-                   &#39;denied (Read-only file system)&#39;,
-  &#39;path&#39;: &#39;/data/sub-0001/func/sub-0001_task-restingstate_acq-mb3_bold.nii.gz&#39;,
-  &#39;refds&#39;: &#39;/data&#39;,
-  &#39;status&#39;: &#39;error&#39;,
-  &#39;type&#39;: &#39;file&#39;}]
+[{'action': 'get',
+  'annexkey': 'MD5E-s76037251--344f061a3165c71e36b98ad1649c3c8c.nii.gz',
+  'error_message': 'git-annex: .git/annex/tmp: createDirectory: permission '
+                   'denied (Read-only file system)',
+  'path': '/data/sub-0001/func/sub-0001_task-restingstate_acq-mb3_bold.nii.gz',
+  'refds': '/data',
+  'status': 'error',
+  'type': 'file'}]
 </code></pre></div>
 <p>This error indicates that the container is executed with
 the appropriate uid and gid pair.
@@ -1402,10 +1402,10 @@ option (<code>-B</code>).</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>

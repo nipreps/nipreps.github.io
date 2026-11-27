@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/nipreps_brain.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
       
 
@@ -1399,7 +1399,7 @@ point you know it exists in the image or rebuild your singularity image
 with <code>docker2singularity</code> as follows:</p>
 <div class="highlight"><pre><span></span><code>$ docker run --privileged -ti --rm -v /var/run/docker.sock:/var/run/docker.sock \
          -v $PWD:/output singularityware/docker2singularity \
-         -m &quot;/gpfs /scratch /work /share /lscratch /opt/templateflow&quot;
+         -m "/gpfs /scratch /work /share /lscratch /opt/templateflow"
 </code></pre></div>
 <p>In the example above, the following bind points are created: <code>/gpfs</code>,
 <code>/scratch</code>, <code>/work</code>, <code>/share</code>, <code>/opt/templateflow</code>.</p>
@@ -1495,7 +1495,7 @@ $<span class="w"> </span>singularity<span class="w"> </span>run<span class="w"> 
 $<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>templateflow<span class="w">  </span><span class="c1"># Install the client</span>
 $<span class="w"> </span>python
 &gt;&gt;&gt;<span class="w"> </span>import<span class="w"> </span>templateflow.api
-&gt;&gt;&gt;<span class="w"> </span>templateflow.api.TF_S3_ROOT<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;http://templateflow.s3.amazonaws.com&#39;</span>
+&gt;&gt;&gt;<span class="w"> </span>templateflow.api.TF_S3_ROOT<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'http://templateflow.s3.amazonaws.com'</span>
 &gt;&gt;&gt;<span class="w"> </span>api.get<span class="o">(</span>‘MNI152NLin6Asym’<span class="o">)</span>
 </code></pre></div>
 </li>
@@ -1533,7 +1533,7 @@ environment and access to <em>fMRIPrep</em> resources, using
 Singularity<span class="w"> </span>fmriprep.simg:~&gt;<span class="w"> </span>ls<span class="w"> </span>/data
 CHANGES<span class="w">  </span>README<span class="w">  </span>dataset_description.json<span class="w">  </span>participants.tsv<span class="w">  </span>sub-01<span class="w">  </span>sub-02<span class="w">  </span>sub-03<span class="w">  </span>sub-04<span class="w">  </span>sub-05<span class="w">  </span>sub-06<span class="w">  </span>sub-07<span class="w">  </span>sub-08<span class="w">  </span>sub-09<span class="w">  </span>sub-10<span class="w">  </span>sub-11<span class="w">  </span>sub-12<span class="w">  </span>sub-13<span class="w">  </span>sub-14<span class="w">  </span>sub-15<span class="w">  </span>sub-16<span class="w">  </span>task-balloonanalogrisktask_bold.json
 Singularity<span class="w"> </span>fmriprep.simg:~&gt;<span class="w"> </span>bids-validator<span class="w"> </span>/data
-<span class="w">   </span><span class="m">1</span>:<span class="w"> </span><span class="o">[</span>WARN<span class="o">]</span><span class="w"> </span>You<span class="w"> </span>should<span class="w"> </span>define<span class="w"> </span><span class="s1">&#39;SliceTiming&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>this<span class="w"> </span>file.<span class="w"> </span>If<span class="w"> </span>you<span class="w"> </span>don<span class="err">&#39;</span>t<span class="w"> </span>provide<span class="w"> </span>this<span class="w"> </span>information<span class="w"> </span>slice<span class="w"> </span><span class="nb">time</span><span class="w"> </span>correction<span class="w"> </span>will<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>possible.<span class="w"> </span><span class="o">(</span>code:<span class="w"> </span><span class="m">13</span><span class="w"> </span>-<span class="w"> </span>SLICE_TIMING_NOT_DEFINED<span class="o">)</span>
+<span class="w">   </span><span class="m">1</span>:<span class="w"> </span><span class="o">[</span>WARN<span class="o">]</span><span class="w"> </span>You<span class="w"> </span>should<span class="w"> </span>define<span class="w"> </span><span class="s1">'SliceTiming'</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>this<span class="w"> </span>file.<span class="w"> </span>If<span class="w"> </span>you<span class="w"> </span>don<span class="err">'</span>t<span class="w"> </span>provide<span class="w"> </span>this<span class="w"> </span>information<span class="w"> </span>slice<span class="w"> </span><span class="nb">time</span><span class="w"> </span>correction<span class="w"> </span>will<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>possible.<span class="w"> </span><span class="o">(</span>code:<span class="w"> </span><span class="m">13</span><span class="w"> </span>-<span class="w"> </span>SLICE_TIMING_NOT_DEFINED<span class="o">)</span>
 <span class="w">          </span>./sub-01/func/sub-01_task-balloonanalogrisktask_run-01_bold.nii.gz
 <span class="w">          </span>./sub-01/func/sub-01_task-balloonanalogrisktask_run-02_bold.nii.gz
 <span class="w">          </span>./sub-01/func/sub-01_task-balloonanalogrisktask_run-03_bold.nii.gz
@@ -1569,7 +1569,7 @@ Singularity<span class="w"> </span>fmriprep.simg:~&gt;<span class="w"> </span>rm
       <div class="highlight"><pre><span></span><code>$<span class="w"> </span>singularity<span class="w"> </span>shell<span class="w"> </span>-B<span class="w"> </span>path/to/templateflow:/templateflow<span class="w"> </span>fmriprep.simg
 Singularity<span class="w"> </span>fmriprep.simg:~&gt;<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">TEMPLATEFLOW_HOME</span><span class="k">:-</span><span class="nv">$HOME</span><span class="p">/.cache/templateflow</span><span class="si">}</span>
 /home/users/oesteban/.cache/templateflow
-Singularity<span class="w"> </span>fmriprep.simg:~&gt;<span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;from templateflow.api import get; get([&#39;MNI152NLin2009cAsym&#39;, &#39;MNI152NLin6Asym&#39;, &#39;OASIS30ANTs&#39;, &#39;MNIPediatricAsym&#39;, &#39;MNIInfant&#39;])&quot;</span>
+Singularity<span class="w"> </span>fmriprep.simg:~&gt;<span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"from templateflow.api import get; get(['MNI152NLin2009cAsym', 'MNI152NLin6Asym', 'OASIS30ANTs', 'MNIPediatricAsym', 'MNIInfant'])"</span>
 <span class="w">   </span>Downloading<span class="w"> </span>https://templateflow.s3.amazonaws.com/tpl-MNI152NLin6Asym/tpl-MNI152NLin6Asym_res-01_atlas-HOCPA_desc-th0_dseg.nii.gz
 <span class="w">   </span>304B<span class="w"> </span><span class="o">[</span><span class="m">00</span>:00,<span class="w"> </span><span class="m">1</span>.28kB/s<span class="o">]</span>
 <span class="w">   </span>Downloading<span class="w"> </span>https://templateflow.s3.amazonaws.com/tpl-MNI152NLin6Asym/tpl-MNI152NLin6Asym_res-01_atlas-HOCPA_desc-th25_dseg.nii.gz
@@ -1599,9 +1599,9 @@ generate one task per subject using a <em>job array</em>.
 <span class="c1">#SBATCH --mail-type=ALL</span>
 <span class="c1"># ------------------------------------------</span>
 
-<span class="nv">BIDS_DIR</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$STUDY</span><span class="s2">/data&quot;</span>
-<span class="nv">DERIVS_DIR</span><span class="o">=</span><span class="s2">&quot;derivatives/fmriprep-20.2.2&quot;</span>
-<span class="nv">LOCAL_FREESURFER_DIR</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$STUDY</span><span class="s2">/data/derivatives/freesurfer-6.0.1&quot;</span>
+<span class="nv">BIDS_DIR</span><span class="o">=</span><span class="s2">"</span><span class="nv">$STUDY</span><span class="s2">/data"</span>
+<span class="nv">DERIVS_DIR</span><span class="o">=</span><span class="s2">"derivatives/fmriprep-20.2.2"</span>
+<span class="nv">LOCAL_FREESURFER_DIR</span><span class="o">=</span><span class="s2">"</span><span class="nv">$STUDY</span><span class="s2">/data/derivatives/freesurfer-6.0.1"</span>
 
 <span class="c1"># Prepare some writeable bind-mount points.</span>
 <span class="nv">TEMPLATEFLOW_HOST_HOME</span><span class="o">=</span><span class="nv">$HOME</span>/.cache/templateflow
@@ -1616,17 +1616,17 @@ mkdir<span class="w"> </span>-p<span class="w"> </span><span class="si">${</span
 <span class="nb">export</span><span class="w"> </span><span class="nv">SINGULARITYENV_FS_LICENSE</span><span class="o">=</span><span class="nv">$HOME</span>/.freesurfer.txt
 
 <span class="c1"># Designate a templateflow bind-mount point</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">SINGULARITYENV_TEMPLATEFLOW_HOME</span><span class="o">=</span><span class="s2">&quot;/templateflow&quot;</span>
-<span class="nv">SINGULARITY_CMD</span><span class="o">=</span><span class="s2">&quot;singularity run --cleanenv -B </span><span class="nv">$BIDS_DIR</span><span class="s2">:/data -B </span><span class="si">${</span><span class="nv">TEMPLATEFLOW_HOST_HOME</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">SINGULARITYENV_TEMPLATEFLOW_HOME</span><span class="si">}</span><span class="s2"> -B </span><span class="nv">$L_SCRATCH</span><span class="s2">:/work -B </span><span class="si">${</span><span class="nv">LOCAL_FREESURFER_DIR</span><span class="si">}</span><span class="s2">:/fsdir </span><span class="nv">$STUDY</span><span class="s2">/images/fmriprep_20.2.2.simg&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">SINGULARITYENV_TEMPLATEFLOW_HOME</span><span class="o">=</span><span class="s2">"/templateflow"</span>
+<span class="nv">SINGULARITY_CMD</span><span class="o">=</span><span class="s2">"singularity run --cleanenv -B </span><span class="nv">$BIDS_DIR</span><span class="s2">:/data -B </span><span class="si">${</span><span class="nv">TEMPLATEFLOW_HOST_HOME</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">SINGULARITYENV_TEMPLATEFLOW_HOME</span><span class="si">}</span><span class="s2"> -B </span><span class="nv">$L_SCRATCH</span><span class="s2">:/work -B </span><span class="si">${</span><span class="nv">LOCAL_FREESURFER_DIR</span><span class="si">}</span><span class="s2">:/fsdir </span><span class="nv">$STUDY</span><span class="s2">/images/fmriprep_20.2.2.simg"</span>
 
 <span class="c1"># Parse the participants.tsv file and extract one subject ID from the line corresponding to this SLURM task.</span>
-<span class="nv">subject</span><span class="o">=</span><span class="k">$(</span><span class="w"> </span>sed<span class="w"> </span>-n<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;</span><span class="k">$((</span><span class="si">${</span><span class="nv">SLURM_ARRAY_TASK_ID</span><span class="si">}</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="k">))</span><span class="s2">s/sub-(\S*)\&gt;.*/\1/gp&quot;</span><span class="w"> </span><span class="si">${</span><span class="nv">BIDS_DIR</span><span class="si">}</span>/participants.tsv<span class="w"> </span><span class="k">)</span>
+<span class="nv">subject</span><span class="o">=</span><span class="k">$(</span><span class="w"> </span>sed<span class="w"> </span>-n<span class="w"> </span>-E<span class="w"> </span><span class="s2">"</span><span class="k">$((</span><span class="si">${</span><span class="nv">SLURM_ARRAY_TASK_ID</span><span class="si">}</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="k">))</span><span class="s2">s/sub-(\S*)\&gt;.*/\1/gp"</span><span class="w"> </span><span class="si">${</span><span class="nv">BIDS_DIR</span><span class="si">}</span>/participants.tsv<span class="w"> </span><span class="k">)</span>
 
 <span class="c1"># Remove IsRunning files from FreeSurfer</span>
-find<span class="w"> </span><span class="si">${</span><span class="nv">LOCAL_FREESURFER_DIR</span><span class="si">}</span>/sub-<span class="nv">$subject</span>/<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*IsRunning*&quot;</span><span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-delete
+find<span class="w"> </span><span class="si">${</span><span class="nv">LOCAL_FREESURFER_DIR</span><span class="si">}</span>/sub-<span class="nv">$subject</span>/<span class="w"> </span>-name<span class="w"> </span><span class="s2">"*IsRunning*"</span><span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-delete
 
 <span class="c1"># Compose the command line</span>
-<span class="nv">cmd</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">SINGULARITY_CMD</span><span class="si">}</span><span class="s2"> /data /data/</span><span class="si">${</span><span class="nv">DERIVS_DIR</span><span class="si">}</span><span class="s2"> participant --participant-label </span><span class="nv">$subject</span><span class="s2"> -w /work/ -vv --omp-nthreads 8 --nthreads 12 --mem_mb 30000 --output-spaces MNI152NLin2009cAsym:res-2 anat fsnative fsaverage5 --use-aroma --fs-subjects-dir /fsdir&quot;</span>
+<span class="nv">cmd</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">SINGULARITY_CMD</span><span class="si">}</span><span class="s2"> /data /data/</span><span class="si">${</span><span class="nv">DERIVS_DIR</span><span class="si">}</span><span class="s2"> participant --participant-label </span><span class="nv">$subject</span><span class="s2"> -w /work/ -vv --omp-nthreads 8 --nthreads 12 --mem_mb 30000 --output-spaces MNI152NLin2009cAsym:res-2 anat fsnative fsaverage5 --use-aroma --fs-subjects-dir /fsdir"</span>
 
 <span class="c1"># Setup done, run the command</span>
 <span class="nb">echo</span><span class="w"> </span>Running<span class="w"> </span>task<span class="w"> </span><span class="si">${</span><span class="nv">SLURM_ARRAY_TASK_ID</span><span class="si">}</span>
@@ -1635,14 +1635,14 @@ find<span class="w"> </span><span class="si">${</span><span class="nv">LOCAL_FRE
 <span class="nv">exitcode</span><span class="o">=</span><span class="nv">$?</span>
 
 <span class="c1"># Output results to a table</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;sub-</span><span class="nv">$subject</span><span class="s2">   </span><span class="si">${</span><span class="nv">SLURM_ARRAY_TASK_ID</span><span class="si">}</span><span class="s2">    </span><span class="nv">$exitcode</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"sub-</span><span class="nv">$subject</span><span class="s2">   </span><span class="si">${</span><span class="nv">SLURM_ARRAY_TASK_ID</span><span class="si">}</span><span class="s2">    </span><span class="nv">$exitcode</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">      </span>&gt;&gt;<span class="w"> </span><span class="si">${</span><span class="nv">SLURM_JOB_NAME</span><span class="si">}</span>.<span class="si">${</span><span class="nv">SLURM_ARRAY_JOB_ID</span><span class="si">}</span>.tsv
 <span class="nb">echo</span><span class="w"> </span>Finished<span class="w"> </span>tasks<span class="w"> </span><span class="si">${</span><span class="nv">SLURM_ARRAY_TASK_ID</span><span class="si">}</span><span class="w"> </span>with<span class="w"> </span><span class="nb">exit</span><span class="w"> </span>code<span class="w"> </span><span class="nv">$exitcode</span>
 <span class="nb">exit</span><span class="w"> </span><span class="nv">$exitcode</span>
 </code></pre></div>
 Submission is then as easy as:</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">STUDY</span><span class="o">=</span>/path/to/some/folder
-$<span class="w"> </span>sbatch<span class="w"> </span>--array<span class="o">=</span><span class="m">1</span>-<span class="k">$((</span><span class="w"> </span><span class="k">$(</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="w"> </span><span class="nv">$STUDY</span>/data/participants.tsv<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-f1<span class="w"> </span>-d<span class="s1">&#39; &#39;</span><span class="w"> </span><span class="k">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="k">))</span><span class="w"> </span>fmriprep.slurm
+$<span class="w"> </span>sbatch<span class="w"> </span>--array<span class="o">=</span><span class="m">1</span>-<span class="k">$((</span><span class="w"> </span><span class="k">$(</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="w"> </span><span class="nv">$STUDY</span>/data/participants.tsv<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-f1<span class="w"> </span>-d<span class="s1">' '</span><span class="w"> </span><span class="k">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="k">))</span><span class="w"> </span>fmriprep.slurm
 </code></pre></div>
 <div class="footnote">
 <hr />
@@ -1707,10 +1707,10 @@ $<span class="w"> </span>sbatch<span class="w"> </span>--array<span class="o">=<
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>
